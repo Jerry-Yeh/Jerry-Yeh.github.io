@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '複製',
+      copy_success: '複製成功',
+      copy_failure: '複製失敗'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="ES6 開始可以使用箭頭 =&amp;gt; 來定義涵式，但與原先的韓次在某些情況並不完全相同，在這篇文章中會探討箭頭函式的寫法與傳統韓式的差異">
+<meta name="keywords" content="JavaScript,ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript - ES6 - 箭頭函式">
+<meta property="og:url" content="jerry-yeh.github.io/javascript/20191014/33154/index.html">
+<meta property="og:site_name" content="JustNOTE">
+<meta property="og:description" content="ES6 開始可以使用箭頭 =&amp;gt; 來定義涵式，但與原先的韓次在某些情況並不完全相同，在這篇文章中會探討箭頭函式的寫法與傳統韓式的差異">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:updated_time" content="2019-10-13T16:20:21.368Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript - ES6 - 箭頭函式">
+<meta name="twitter:description" content="ES6 開始可以使用箭頭 =&amp;gt; 來定義涵式，但與原先的韓次在某些情況並不完全相同，在這篇文章中會探討箭頭函式的寫法與傳統韓式的差異">
+  <link rel="canonical" href="jerry-yeh.github.io/javascript/20191014/33154/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.min.css">
+  <title>JavaScript - ES6 - 箭頭函式 | JustNOTE</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-TW">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JustNOTE</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切換導航欄">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首頁</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>標籤</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分類</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜尋</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜尋..." spellcheck="false" type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a class="book-mark-link book-mark-link-fixed" href="#"></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="jerry-yeh.github.io/javascript/20191014/33154/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jerry">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JustNOTE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">JavaScript - ES6 - 箭頭函式
+
+          
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              
+                
+              
+
+              <time title="創建時間：2019-10-14 00:00:12 / 修改時間：00:20:21" itemprop="dateCreated datePublished" datetime="2019-10-14T00:00:12+08:00">2019-10-14</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><code>ES6</code> 開始可以使用箭頭 <code>=&gt;</code> 來定義涵式，但與原先的韓次在某些情況並不完全相同，在這篇文章中會探討箭頭函式的寫法與傳統韓式的差異</p>
+<a id="more"></a>
+
+<h2 id="基本寫法"><a href="#基本寫法" class="headerlink" title="基本寫法"></a>基本寫法</h2><ul>
+<li><p>正常寫法，省略 <code>function</code> ，使用箭頭 <code>=&gt;</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fnc = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'Hello'</span> + e;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fnc = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'Hello'</span> + e ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果只有內容只有一行，可以省略 “大括號” <code>{ }</code> 和 <code>return</code>，並且自動回傳</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fnc = <span class="function">(<span class="params">e</span>) =&gt;</span> <span class="string">'Hello'</span> + e;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果只有 “一個參數”，可以省略 “小括號” <code>( )</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fnc = <span class="function"><span class="params">e</span> =&gt;</span> <span class="string">'Hello'</span> + e;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果 “沒有參數” 或 “多個參數”，就一定要有 “小括號” <code>( )</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fnc = <span class="function"><span class="params">()</span> =&gt;</span> <span class="string">'Hello'</span>;</span><br><span class="line"><span class="keyword">var</span> fnc2 = <span class="function">(<span class="params">num1, num2</span>) =&gt;</span> num1 + num2;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="沒有-arguments-參數"><a href="#沒有-arguments-參數" class="headerlink" title="沒有 arguments 參數"></a>沒有 arguments 參數</h2><p>一般函式被呼叫時，都會產生一個 <code>argument</code> 物件，這個物件的內容就是我們帶入的 “參數”，而箭頭函式中是沒有 <code>arguments</code> 物件的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fnc = <span class="function"><span class="keyword">function</span> (<span class="params">num1, num2</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="built_in">arguments</span>.length );   <span class="comment">// 5</span></span><br><span class="line">  <span class="keyword">return</span> num1 + num2;   </span><br><span class="line">&#125;;</span><br><span class="line">fuc(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)   <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fuc2(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="this-差異"><a href="#this-差異" class="headerlink" title="this 差異"></a>this 差異</h2><ul>
+<li><p>傳統函式 : <code>this</code> 的值是動態的，由呼叫這個函式的擁有物件 <code>object</code> 而定</p>
+</li>
+<li><p>箭頭函式 : <code>this</code> 的值綁定到其定義時所在的物件而定，也就是由周邊的作用域而定</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'我是全域'</span>;</span><br><span class="line"><span class="keyword">var</span> test = &#123;</span><br><span class="line">  name: <span class="string">'我是作用域'</span>,</span><br><span class="line"></span><br><span class="line">  callName: <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"1"</span>, <span class="keyword">this</span>.name);     <span class="comment">// 1 我是作用域</span></span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"2"</span>, <span class="keyword">this</span>.name);   <span class="comment">// 2 我是作用域</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"3"</span>, <span class="keyword">this</span>);        <span class="comment">// 3 test 這個物件</span></span><br><span class="line">    &#125;, <span class="number">100</span>);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  callName2: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"4"</span>, <span class="keyword">this</span>);          <span class="comment">// 4 我是全域</span></span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"5"</span>, <span class="keyword">this</span>.name);   <span class="comment">// 5 我是全域</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"6"</span>, <span class="keyword">this</span>);        <span class="comment">// 6 window 物件</span></span><br><span class="line">    &#125;, <span class="number">100</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test.callName();</span><br><span class="line">test.callName2();</span><br></pre></td></tr></table></figure>
+
+<p>由以上範例可以看到，傳統函式 <code>function</code> 的 <code>this</code> 指的是這個函式的擁有物件 <code>test</code>，而箭頭函式在全域被宣告定義，所以其 this 自然指向最高級物件 window</p>
+<p>而外層的 “函式” 並不回影響箭頭函式的 <code>this</code> 原先指向的 <code>window</code>，外層的 “物件” 才會使箭頭函式的 <code>this</code> 指向這個物件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> func2 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    &#125;, <span class="number">10</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">var</span> func3 = &#123;</span><br><span class="line">    func4: func2</span><br><span class="line">  &#125;</span><br><span class="line">  func2();         <span class="comment">// window 物件</span></span><br><span class="line">  func3.func4();   <span class="comment">// func3 這個物件</span></span><br><span class="line">&#125;</span><br><span class="line">func();</span><br></pre></td></tr></table></figure>
+
+<p>由上範例可以看到，如果 “不是” 建立在 “物件” 內的箭頭函式，就不會影響箭頭函式的 <code>this</code></p>
+<ul>
+<li>func() : 最外層的函式，不會影響內部箭頭函式的 <code>this</code></li>
+<li>func2() : 第二層的函式，也不會影響內部箭頭函式的 <code>this</code></li>
+<li>func3() : 為一個物件，內部箭頭函式的 <code>this</code> 就會指向這個物件</li>
+</ul>
+</li>
+</ul>
+<h2 id="特殊的情況"><a href="#特殊的情況" class="headerlink" title="特殊的情況"></a>特殊的情況</h2><p>內建函式 <code>call</code>、<code>apply</code> 和 <code>bind</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> func1 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> func2 = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  setTimeout( <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func4</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  setTimeout( <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> func5 = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  setTimeout( <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func1.call(obj);   <span class="comment">// obj </span></span><br><span class="line">func2.call(obj);   <span class="comment">// window </span></span><br><span class="line">func3.call(obj);   <span class="comment">// window </span></span><br><span class="line">func4.call(obj);   <span class="comment">// obj </span></span><br><span class="line">func5.call(obj);   <span class="comment">// window</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>func1</code> : 透過 <code>call</code> 呼叫給定 <code>this</code> ，所以 <code>this</code> 自然指向 <code>obj</code> 這個物件</li>
+<li><code>func2</code> : 箭頭函式沒有宣告在物件內部，所以 <code>this</code> 還是指向 <code>window</code></li>
+<li><code>func3</code> : 傳統函式的 <code>this</code> 依據呼叫的方式，可以看成是 <code>window.setTimeout</code>，所以 <code>this</code> 指向 <code>window</code></li>
+<li><code>func4</code> : 因為外層 <code>func4</code> 的 <code>this</code> 被指定為 <code>obj</code>，所以 <code>setTimeout</code> 內的箭頭函式會在 <code>obj</code> 中被宣告</li>
+<li><code>func5</code> : 因為外層 <code>func5</code> 在全域宣告，所以 <code>this</code> 自然指向 <code>window，setTimeout</code> 內箭頭函式的 <code>this</code> 也會指向 window`</li>
+</ul>
+<h3 id="不能用在建構式函式"><a href="#不能用在建構式函式" class="headerlink" title="不能用在建構式函式"></a>不能用在建構式函式</h3><p>由於箭頭函式的 <code>this</code> 是在其所定義的物件下建立，所以不能像 <code>function</code> 一樣作為建構式的函式，直接使用 <code>new</code> 會出現錯誤</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> test = <span class="function">(<span class="params">num</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">this</span>.text = num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> testAgain = <span class="keyword">new</span> test(<span class="string">'Hello World'</span>);</span><br><span class="line"><span class="comment">// Uncaught TypeError: test is not a constructor</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="DOM-事件的監聽"><a href="#DOM-事件的監聽" class="headerlink" title="DOM 事件的監聽"></a>DOM 事件的監聽</h3><p>在 <code>DOM</code> 事件監聽的情況下，函式的 <code>this</code> 應該指向這個 <code>DOM</code> 元素本身，但箭頭函式的 <code>this</code> 依然會指向定義其所在的物件 <code>window</code>，所以不適用於這類情況</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.querySelector(<span class="string">'.btn'</span>);</span><br><span class="line"><span class="keyword">var</span> addSomething = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);   <span class="comment">// window 物件</span></span><br><span class="line">  <span class="keyword">this</span>.innerHTML = <span class="string">'AddSomething'</span>;   <span class="comment">// Error</span></span><br><span class="line">&#125;</span><br><span class="line">            </span><br><span class="line">btn.addEventListener(<span class="string">'click'</span>, addSomething);</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用建議"><a href="#使用建議" class="headerlink" title="使用建議"></a>使用建議</h2><ul>
+<li>物件內的函式可以優先使用，因為傳統函式以往的做法會先將 <code>this</code> 賦予再另一個變數上，以記錄當下的 <code>this</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test = &#123;</span><br><span class="line">  callName ()&#123;</span><br><span class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">    setTimeout (<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(that);   <span class="comment">// test 這個物件</span></span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  callName2 ()&#123;</span><br><span class="line">    setTimeout (<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>);   <span class="comment">// test 這個物件</span></span><br><span class="line">    &#125;, <span class="number">1000</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>雖然只有一個參數時可以省略 “小括號” <code>( )</code>，但還是建議都加上，避免意外錯誤</li>
+</ul>
+
+    </div>
+
+    
+    
+    <div class="post-widgets">
+    <div class="likely">
+        <div class="twitter">Tweet 分享</div>
+        <div class="facebook">FB 分享</div>
+        <div class="linkedin">Link 分享</div>
+        <div class="gplus">Plus</div>
+        <div class="vkontakte">Share</div>
+        <div class="odnoklassniki">Class</div>
+        <div class="telegram">Send</div>
+        <div class="whatsapp">Send</div>
+        <div class="pinterest">Pin</div>
+    </div>
+  </div>
+  <script src="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.min.js"></script>
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/javascript/" rel="tag"># JavaScript</a>
+            
+              <a href="/tags/es6/" rel="tag"># ES6</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/javascript/20191013/50209/" rel="next" title="JavaScript - ES6 - 變數">
+                  <i class="fa fa-chevron-left"></i> JavaScript - ES6 - 變數
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/javascript/20191022/30921/" rel="prev" title="JavaScript - ES6 - 樣板字串">
+                  JavaScript - ES6 - 樣板字串 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本寫法"><span class="nav-number">1.</span> <span class="nav-text">基本寫法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#沒有-arguments-參數"><span class="nav-number">2.</span> <span class="nav-text">沒有 arguments 參數</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#this-差異"><span class="nav-number">3.</span> <span class="nav-text">this 差異</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊的情況"><span class="nav-number">4.</span> <span class="nav-text">特殊的情況</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不能用在建構式函式"><span class="nav-number">4.1.</span> <span class="nav-text">不能用在建構式函式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-事件的監聽"><span class="nav-number">4.2.</span> <span class="nav-text">DOM 事件的監聽</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用建議"><span class="nav-number">5.</span> <span class="nav-text">使用建議</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jerry</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分類</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">標籤</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/Jerry-Yeh" title="GitHub &rarr; https://github.com/Jerry-Yeh" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:qaz013039@gmail.com" title="E-Mail &rarr; mailto:qaz013039@gmail.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script><script src="/js/bookmark.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

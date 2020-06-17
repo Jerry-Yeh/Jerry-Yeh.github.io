@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '複製',
+      copy_success: '複製成功',
+      copy_failure: '複製失敗'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="this 是 JavaScript 中的一個關鍵字 this 是 function 執行時，自動生成的一個內部物件 隨著執行的場合不同， this 所指向的值也會有所不同 影響 this 的是 “函式的呼叫方法”，而非函式宣告的時機">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 中的 this">
+<meta property="og:url" content="jerry-yeh.github.io/javascript/20191024/42922/index.html">
+<meta property="og:site_name" content="JustNOTE">
+<meta property="og:description" content="this 是 JavaScript 中的一個關鍵字 this 是 function 執行時，自動生成的一個內部物件 隨著執行的場合不同， this 所指向的值也會有所不同 影響 this 的是 “函式的呼叫方法”，而非函式宣告的時機">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:updated_time" content="2019-10-23T16:41:04.142Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 中的 this">
+<meta name="twitter:description" content="this 是 JavaScript 中的一個關鍵字 this 是 function 執行時，自動生成的一個內部物件 隨著執行的場合不同， this 所指向的值也會有所不同 影響 this 的是 “函式的呼叫方法”，而非函式宣告的時機">
+  <link rel="canonical" href="jerry-yeh.github.io/javascript/20191024/42922/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.min.css">
+  <title>JavaScript 中的 this | JustNOTE</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-TW">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JustNOTE</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切換導航欄">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首頁</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>標籤</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分類</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜尋</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜尋..." spellcheck="false" type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a class="book-mark-link book-mark-link-fixed" href="#"></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="jerry-yeh.github.io/javascript/20191024/42922/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jerry">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JustNOTE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">JavaScript 中的 this
+
+          
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              
+                
+              
+
+              <time title="創建時間：2019-10-24 00:23:43 / 修改時間：00:41:04" itemprop="dateCreated datePublished" datetime="2019-10-24T00:23:43+08:00">2019-10-24</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ul>
+<li><code>this</code> 是 JavaScript 中的一個關鍵字</li>
+<li><code>this</code> 是 <code>function</code> 執行時，自動生成的一個內部物件</li>
+<li>隨著執行的場合不同， <code>this</code> 所指向的值也會有所不同</li>
+<li>影響 <code>this</code> 的是 “函式的呼叫方法”，而非函式宣告的時機</li>
+</ul>
+<a id="more"></a>
+
+<p>大多數情況 <code>this</code> 就代表 “呼叫函式 <code>function</code> 的物件”</p>
+<h2 id="直接呼叫"><a href="#直接呼叫" class="headerlink" title="直接呼叫"></a>直接呼叫</h2><p>如果是直接呼叫函式，此函式中的 <code>this</code> 都會指向 <code>window</code>，即使是在 <code>function</code> 中的 <code>function</code> 也是</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.name = <span class="string">'我是全域'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);   <span class="comment">// '我是全域'</span></span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">callName2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);   <span class="comment">// 我是全域</span></span><br><span class="line">  &#125;</span><br><span class="line">  callName2();</span><br><span class="line">&#125;</span><br><span class="line">callName();</span><br></pre></td></tr></table></figure>
+
+<h2 id="物件呼叫"><a href="#物件呼叫" class="headerlink" title="物件呼叫"></a>物件呼叫</h2><p>如果函式 <code>function</code> 是在物件下呼叫，函式中的 <code>this</code> 就會指向該物件，無論 <code>function</code> 是在那裡宣告</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'我是全域'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);   <span class="comment">// ''</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> test = &#123;</span><br><span class="line">  name: <span class="string">'我是區域'</span>,</span><br><span class="line">  callName2: callName</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">callName();         <span class="comment">// '我是全域' </span></span><br><span class="line">test.callName2();   <span class="comment">// '我是區域</span></span><br></pre></td></tr></table></figure>
+
+<p>如果將物件內的 <code>function</code> 賦予到變數上並呼叫，這個 <code>this</code> 就會指向全域</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">callName3 = test.callName2;</span><br><span class="line">callName3();    <span class="comment">// '我是全域'</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="DOM-元素呼叫"><a href="#DOM-元素呼叫" class="headerlink" title="DOM 元素呼叫"></a>DOM 元素呼叫</h2><p>透過 DOM 元素的事件監聽來呼叫 <code>function</code>，此 <code>function</code> 中的 <code>this</code> 就會指向該 DOM 元素</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"test"</span>&gt;</span>我是 DOM 元素<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> list = <span class="built_in">document</span>.querySelector(<span class="string">'.list'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);   <span class="comment">// &lt;p class="test"&gt;我是 DOM 元素&lt;/p&gt;</span></span><br><span class="line">&#125;;</span><br><span class="line">              </span><br><span class="line">list.addEventListener(<span class="string">'click'</span>, test);</span><br></pre></td></tr></table></figure>
+
+<h2 id="建構式呼叫"><a href="#建構式呼叫" class="headerlink" title="建構式呼叫"></a>建構式呼叫</h2><p>在建構式下會使用 <code>new</code> 來生成一個新物件( 物件被建構出來 )，而 <code>function</code> 中的 <code>this</code> 會指向這個物件，而且可以在生成的物件上重新定義</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'我是全域'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span> (<span class="params">newName</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = newName || <span class="string">'我是區域'</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> callName2 = <span class="keyword">new</span> callName(<span class="string">'我是新的區域'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> callName3 = <span class="keyword">new</span> callName();</span><br><span class="line"><span class="built_in">console</span>.log(callName2.name);   <span class="comment">// 我是新的區域</span></span><br><span class="line"><span class="built_in">console</span>.log(callName3.name);   <span class="comment">// 我是區域</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="內建函式來呼叫"><a href="#內建函式來呼叫" class="headerlink" title="內建函式來呼叫"></a>內建函式來呼叫</h2><p>透過內建函式 <code>call</code>、<code>bind</code>、<code>apply</code> 來呼叫函式，第一個參數會成為這個函式的 <code>this</code>，只是這三個內建函式在使用時機上有所不同</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'我是全域'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">callName();   <span class="comment">// '我是全域'</span></span><br><span class="line">callName.call(&#123;<span class="attr">name</span>: <span class="string">'我是區域'</span>&#125;);   <span class="comment">// '我是區域'</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="重新指向-this"><a href="#重新指向-this" class="headerlink" title="重新指向 this"></a>重新指向 this</h2><p>在實際操作時，遇到 “立即函式” IIFE 或 “非同步事件” 如 <code>setTimeout</code>，<code>this</code> 大多會指向 全域 <code>window</code>，如果要調用的是物件本身，可以先設定一個變數指向這個物件，再將這個變數帶入函式中</p>
+<p>常見的變數名稱有 <code>that</code>、<code>vm</code>、<code>self</code> 等</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'我是全域'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);     <span class="comment">// 我是區域</span></span><br><span class="line">  <span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);   <span class="comment">// 我是全域</span></span><br><span class="line">    <span class="built_in">console</span>.log(that.name);   <span class="comment">// 我是區域</span></span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> test = &#123;</span><br><span class="line">  name: <span class="string">'我是區域'</span>,</span><br><span class="line">  callName2: callName</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test.callName2();</span><br></pre></td></tr></table></figure>
+
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><ul>
+<li>如果 <code>function</code> 是透過物件來呼叫，那麼其中的 <code>this</code> 就會指向該物件</li>
+<li>如果 <code>function</code> 是透過 DOM 元素的事件監聽來呼叫，那麼其中的 <code>this</code> 就會指向該 DOM 元素</li>
+<li>如果 <code>function</code> 是透過建構式 <code>new</code> 生成的物件來呼叫，那麼其中的 <code>this</code> 就會指向該物件</li>
+<li>如果 <code>function</code> 是透過內建函式 <code>call</code>、<code>apply</code>、<code>bind</code> 來呼叫，那麼其中的 <code>this</code> 就會指向內建函式的第一個參數</li>
+<li>如果沒有滿足以上條件，那麼 <code>function</code> 的 <code>this</code> 就會指向全域物件 <code>window</code></li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://ithelp.ithome.com.tw/articles/10193193" rel="external nofollow noopener noreferrer" target="_blank">What’s “THIS” in JavaScript</a><br><a href="https://ithelp.ithome.com.tw/articles/10191393" rel="external nofollow noopener noreferrer" target="_blank">JavaScript 的 this 到底是誰？</a></p>
+
+    </div>
+
+    
+    
+    <div class="post-widgets">
+    <div class="likely">
+        <div class="twitter">Tweet 分享</div>
+        <div class="facebook">FB 分享</div>
+        <div class="linkedin">Link 分享</div>
+        <div class="gplus">Plus</div>
+        <div class="vkontakte">Share</div>
+        <div class="odnoklassniki">Class</div>
+        <div class="telegram">Send</div>
+        <div class="whatsapp">Send</div>
+        <div class="pinterest">Pin</div>
+    </div>
+  </div>
+  <script src="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.min.js"></script>
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/javascript/" rel="tag"># JavaScript</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/javascript/20191023/6199/" rel="next" title="JavaScript - ES6 - class 建構式語法糖">
+                  <i class="fa fa-chevron-left"></i> JavaScript - ES6 - class 建構式語法糖
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/javascript/20191024/33578/" rel="prev" title="JavaScript - 閉包 Closure">
+                  JavaScript - 閉包 Closure <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#直接呼叫"><span class="nav-number">1.</span> <span class="nav-text">直接呼叫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#物件呼叫"><span class="nav-number">2.</span> <span class="nav-text">物件呼叫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-元素呼叫"><span class="nav-number">3.</span> <span class="nav-text">DOM 元素呼叫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建構式呼叫"><span class="nav-number">4.</span> <span class="nav-text">建構式呼叫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#內建函式來呼叫"><span class="nav-number">5.</span> <span class="nav-text">內建函式來呼叫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重新指向-this"><span class="nav-number">6.</span> <span class="nav-text">重新指向 this</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#結論"><span class="nav-number">7.</span> <span class="nav-text">結論</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">8.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jerry</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分類</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">標籤</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/Jerry-Yeh" title="GitHub &rarr; https://github.com/Jerry-Yeh" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:qaz013039@gmail.com" title="E-Mail &rarr; mailto:qaz013039@gmail.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script><script src="/js/bookmark.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

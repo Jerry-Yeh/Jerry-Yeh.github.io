@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '複製',
+      copy_success: '複製成功',
+      copy_failure: '複製失敗'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="變數為 JS 用來儲存資料和進行運算的基本單位，可以視為一個存放資料的盒子，透過 var 來宣告，ES6 開始可以使用 let 和 const 來宣告，關於 ES6 於之後的文章再作介紹">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JaveScript入門篇 - 變數">
+<meta property="og:url" content="jerry-yeh.github.io/javascript/20190926/b2bfbc85/index.html">
+<meta property="og:site_name" content="JustNOTE">
+<meta property="og:description" content="變數為 JS 用來儲存資料和進行運算的基本單位，可以視為一個存放資料的盒子，透過 var 來宣告，ES6 開始可以使用 let 和 const 來宣告，關於 ES6 於之後的文章再作介紹">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:updated_time" content="2019-09-26T10:55:44.022Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JaveScript入門篇 - 變數">
+<meta name="twitter:description" content="變數為 JS 用來儲存資料和進行運算的基本單位，可以視為一個存放資料的盒子，透過 var 來宣告，ES6 開始可以使用 let 和 const 來宣告，關於 ES6 於之後的文章再作介紹">
+  <link rel="canonical" href="jerry-yeh.github.io/javascript/20190926/b2bfbc85/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.min.css">
+  <title>JaveScript入門篇 - 變數 | JustNOTE</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-TW">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JustNOTE</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切換導航欄">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首頁</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>標籤</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分類</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜尋</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜尋..." spellcheck="false" type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a class="book-mark-link book-mark-link-fixed" href="#"></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="jerry-yeh.github.io/javascript/20190926/b2bfbc85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jerry">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JustNOTE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">JaveScript入門篇 - 變數
+
+          
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              
+                
+              
+
+              <time title="創建時間：2019-09-26 17:52:20 / 修改時間：18:55:44" itemprop="dateCreated datePublished" datetime="2019-09-26T17:52:20+08:00">2019-09-26</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>變數為 JS 用來儲存資料和進行運算的基本單位，可以視為一個存放資料的盒子，透過 <code>var</code> 來宣告，<code>ES6</code> 開始可以使用 <code>let</code> 和 <code>const</code> 來宣告，關於 <code>ES6</code> 於之後的文章再作介紹</p>
+<a id="more"></a>
+
+<h2 id="變數的規則"><a href="#變數的規則" class="headerlink" title="變數的規則"></a>變數的規則</h2><ul>
+<li><p>開頭不能是數字</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="number">3</span>k = <span class="number">30</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不能使用中線 <code>-</code> 和點 <code>.</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box-number = <span class="number">30</span>;</span><br><span class="line"><span class="keyword">var</span> box.number = <span class="number">30</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不能使用關鍵字</p>
+<p><a href="https://www.w3schools.com/js/js_reserved.asp" rel="external nofollow noopener noreferrer" target="_blank">JS 關鍵字列表</a></p>
+</li>
+<li><p>大小寫有區分，變數 <code>app</code> 不等於 <code>App</code></p>
+</li>
+<li><p>盡量使用語意化命名，能透過名稱了解功能</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> price = <span class="number">30</span>;</span><br><span class="line"><span class="keyword">var</span> total = <span class="number">100</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>變數名稱是可以使用非英文(中文)的，但在其他語言系統可能會出現亂碼，所以還是盡量避免</p>
+</li>
+</ul>
+<h2 id="變數的資料型別"><a href="#變數的資料型別" class="headerlink" title="變數的資料型別"></a>變數的資料型別</h2><p>變數本身沒有型別，變數的值才有，我們可以使用 <code>typeof</code> 運算子來判斷型別，型別分成基本型別 <code>string</code>、<code>number</code>、<code>boolean</code>、<code>null</code>、<code>undefined</code>，除了以上幾種型別，其他可以歸類為物件型別 <code>object</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span>(<span class="literal">true</span>);   <span class="comment">// boolean</span></span><br><span class="line"><span class="keyword">typeof</span>(<span class="string">'name'</span>);   <span class="comment">// string</span></span><br><span class="line"><span class="keyword">typeof</span>(<span class="number">123</span>);   <span class="comment">// number</span></span><br><span class="line"><span class="keyword">typeof</span>(&#123; &#125;);   <span class="comment">// object</span></span><br><span class="line"><span class="keyword">typeof</span>([ ]);   <span class="comment">// object</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 特例</span></span><br><span class="line"><span class="keyword">typeof</span>(<span class="built_in">window</span>.alert);   <span class="comment">// function</span></span><br><span class="line"><span class="keyword">typeof</span>(<span class="literal">null</span>);   <span class="comment">//object</span></span><br></pre></td></tr></table></figure>
+
+<p>由以上結果可以看到 <code>function</code> 這個型別，但 <code>function</code> 其實不是一種獨立的型別，<code>function</code> 仍然是屬於 <code>object</code><br>而 <code>null</code> 反而是不屬於 <code>object</code>，而是獨立的 <code>null</code> 型別，詳細可以參考以下資料</p>
+<p><a href="https://javascriptrefined.io/null-and-typeof-9330e475d272" rel="external nofollow noopener noreferrer" target="_blank">Null and typeof</a><br><a href="https://2ality.com/2013/10/typeof-null.html" rel="external nofollow noopener noreferrer" target="_blank">The history of “typeof null”</a></p>
+<ul>
+<li><h3 id="數字-number"><a href="#數字-number" class="headerlink" title="數字 number"></a>數字 number</h3><p>分為整數和浮點數(有小數)，可以透過加 <code>+</code> 、減 <code>-</code>、乘 <code>*</code>、除 <code>/</code> 來做運算</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">10.32</span>;</span><br><span class="line"><span class="keyword">var</span> c = <span class="number">3</span> + <span class="number">4</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="字串-string"><a href="#字串-string" class="headerlink" title="字串 string"></a>字串 string</h3><ul>
+<li><p>字串必須用單引號 <code>&#39;&#39;</code> 或雙引號 <code>&quot;&quot;</code> 將其包住，而兩者不可混用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str1 = <span class="string">"字串1"</span>;</span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">"字串2"</span>;</span><br><span class="line"><span class="keyword">var</span> str3 = <span class="string">"字串3';  // error</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果內容出現單引號 ‘，就只能用雙引號 <code>&quot;&quot;</code> 包住，若非用不可，可以使用反斜線 <code>\</code> 跳脫字元 (escape character)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'Let'</span>s go!<span class="string">';  // error</span></span><br><span class="line"><span class="string">var str = "Let'</span>s go!<span class="string">"; // OK</span></span><br><span class="line"><span class="string">var str = 'Let\'s go!';  // OK</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以使用加號 <code>+</code> 來組合字串</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'Hello'</span>+<span class="string">'World'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多行字串可以透過反斜線 <code>\</code> 來換行繼續，注意 每行的反斜線 <code>\</code> 之後不能有任何東西，包括 <code>空白</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'第一行 \</span></span><br><span class="line"><span class="string">第二行 \</span></span><br><span class="line"><span class="string">第三行'</span>;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h3 id="布林值-boolean"><a href="#布林值-boolean" class="headerlink" title="布林值 boolean"></a>布林值 <code>boolean</code></h3><p>分為 true 和 false 兩種，通常用在判斷式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c = (<span class="number">100</span> &gt; <span class="number">10</span>);  <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="空值-null"><a href="#空值-null" class="headerlink" title="空值 null"></a>空值 <code>null</code></h3><p>代表曾經有值或沒有值，但現在此變數沒有值</p>
+</li>
+<li><h3 id="未定義-undefined"><a href="#未定義-undefined" class="headerlink" title="未定義 undefined"></a>未定義 <code>undefined</code></h3><p>變數的宣告分成兩個步驟，”宣告” 與 “賦值”，當已經宣告變數但還未賦值時，就會出現 <code>undefined</code></p>
+</li>
+<li><h3 id="物件-object"><a href="#物件-object" class="headerlink" title="物件 object"></a>物件 <code>object</code></h3><p>除了以上型別，其他都可以歸類為物件型別，關於物件型別後續會在介紹</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    <div class="post-widgets">
+    <div class="likely">
+        <div class="twitter">Tweet 分享</div>
+        <div class="facebook">FB 分享</div>
+        <div class="linkedin">Link 分享</div>
+        <div class="gplus">Plus</div>
+        <div class="vkontakte">Share</div>
+        <div class="odnoklassniki">Class</div>
+        <div class="telegram">Send</div>
+        <div class="whatsapp">Send</div>
+        <div class="pinterest">Pin</div>
+    </div>
+  </div>
+  <script src="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.min.js"></script>
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/javascript/" rel="tag"># JavaScript</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/javascript/20190926/e0d364c/" rel="next" title="JavaScript入門篇 - JavaScript簡介與環境">
+                  <i class="fa fa-chevron-left"></i> JavaScript入門篇 - JavaScript簡介與環境
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/javascript/20190926/b767e9f3/" rel="prev" title="JavaScript入門篇 - function">
+                  JavaScript入門篇 - function <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#變數的規則"><span class="nav-number">1.</span> <span class="nav-text">變數的規則</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#變數的資料型別"><span class="nav-number">2.</span> <span class="nav-text">變數的資料型別</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#數字-number"><span class="nav-number">2.1.</span> <span class="nav-text">數字 number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字串-string"><span class="nav-number">2.2.</span> <span class="nav-text">字串 string</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#布林值-boolean"><span class="nav-number">2.3.</span> <span class="nav-text">布林值 boolean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空值-null"><span class="nav-number">2.4.</span> <span class="nav-text">空值 null</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#未定義-undefined"><span class="nav-number">2.5.</span> <span class="nav-text">未定義 undefined</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物件-object"><span class="nav-number">2.6.</span> <span class="nav-text">物件 object</span></a></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jerry</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分類</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">標籤</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/Jerry-Yeh" title="GitHub &rarr; https://github.com/Jerry-Yeh" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:qaz013039@gmail.com" title="E-Mail &rarr; mailto:qaz013039@gmail.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script><script src="/js/bookmark.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
