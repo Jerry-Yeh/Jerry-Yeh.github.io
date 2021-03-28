@@ -1,96 +1,56 @@
 <!DOCTYPE html>
-
-
-
-
-
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.4.0',
-    exturl: false,
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":true,"show_result":true,"style":"flat"},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
-    bookmark: {"enable":true,"color":"#222","save":"auto"},
-    fancybox: true,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '複製',
-      copy_success: '複製成功',
-      copy_failure: '複製失敗'
-    },
-    sidebarPadding: 40
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jerry-yeh.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta name="description" content="前端開發在網頁的操作方法其實都是由 JS 的執行平台，也就是 瀏覽器 所提供，操作方法分別由 BOM 和 DOM 這兩種物件所擁有，而 JavaScript 就是透過 BOM 和 DOM 所提供的 API 來控制瀏覽器的行為與網頁的內容">
-<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="瀏覽器裡的 JavaScript">
-<meta property="og:url" content="jerry-yeh.github.io/javascript/20190928/32632/index.html">
+<meta property="og:url" content="http://jerry-yeh.github.io/javascript/20190928/32632/index.html">
 <meta property="og:site_name" content="JustNOTE">
 <meta property="og:description" content="前端開發在網頁的操作方法其實都是由 JS 的執行平台，也就是 瀏覽器 所提供，操作方法分別由 BOM 和 DOM 這兩種物件所擁有，而 JavaScript 就是透過 BOM 和 DOM 所提供的 API 來控制瀏覽器的行為與網頁的內容">
-<meta property="og:locale" content="zh-TW">
-<meta property="og:image" content="jerry-yeh.github.io/javascript/20190928/32632/DOM.png">
-<meta property="og:image" content="jerry-yeh.github.io/javascript/20190928/32632/BOM.png">
-<meta property="og:updated_time" content="2019-09-27T18:15:02.320Z">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://jerry-yeh.github.io/javascript/20190928/32632/DOM.png">
+<meta property="og:image" content="http://jerry-yeh.github.io/javascript/20190928/32632/BOM.png">
+<meta property="article:published_time" content="2019-09-27T17:22:53.000Z">
+<meta property="article:modified_time" content="2019-09-27T18:15:02.320Z">
+<meta property="article:author" content="Yeh">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="瀏覽器裡的 JavaScript">
-<meta name="twitter:description" content="前端開發在網頁的操作方法其實都是由 JS 的執行平台，也就是 瀏覽器 所提供，操作方法分別由 BOM 和 DOM 這兩種物件所擁有，而 JavaScript 就是透過 BOM 和 DOM 所提供的 API 來控制瀏覽器的行為與網頁的內容">
-<meta name="twitter:image" content="jerry-yeh.github.io/javascript/20190928/32632/DOM.png">
-  <link rel="canonical" href="jerry-yeh.github.io/javascript/20190928/32632/">
+<meta name="twitter:image" content="http://jerry-yeh.github.io/javascript/20190928/32632/DOM.png">
+
+<link rel="canonical" href="http://jerry-yeh.github.io/javascript/20190928/32632/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
   };
 </script>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.min.css">
+
   <title>瀏覽器裡的 JavaScript | JustNOTE</title>
   
-
-
 
 
 
@@ -109,7 +69,6 @@
   .use-motion .post-body,
   .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -123,108 +82,56 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-TW">
+<body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">JustNOTE</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切換導航欄">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">JustNOTE</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
+
+
 
 
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-      
-      
-      
-        
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
-      
-    
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首頁</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
 
   </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-tags">
-      
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>標籤</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-categories">
-      
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分類</a>
-
-  </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-archives">
-      
-    
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>歸檔</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
 
   </li>
-      <li class="menu-item menu-item-search">
-        <a href="javascript:;" class="popup-trigger">
-        
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜尋</a>
-      </li>
-    
   </ul>
-
 </nav>
-  <div class="site-search">
-    <div class="popup search-popup">
-    <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜尋..." spellcheck="false" type="text" id="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result"></div>
 
-</div>
-<div class="search-pop-overlay"></div>
 
-  </div>
+
+
 </div>
     </header>
 
@@ -233,71 +140,55 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <a class="book-mark-link book-mark-link-fixed" href="#"></a>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
             
 
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-      <article itemscope itemtype="http://schema.org/Article">
+    
   
   
-  
-  <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="jerry-yeh.github.io/javascript/20190928/32632/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://jerry-yeh.github.io/javascript/20190928/32632/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jerry">
-      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yeh">
+      <meta itemprop="description" content>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="JustNOTE">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">瀏覽器裡的 JavaScript
-
-          
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          瀏覽器裡的 JavaScript
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-
-              
-                
               
 
               <time title="創建時間：2019-09-28 01:22:53 / 修改時間：02:15:02" itemprop="dateCreated datePublished" datetime="2019-09-28T01:22:53+08:00">2019-09-28</time>
             </span>
-          
-            
-
-            
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分類於</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
             </span>
-          
 
           
 
@@ -311,7 +202,7 @@
 
       
         <p>前端開發在網頁的操作方法其實都是由 JS 的執行平台，也就是 瀏覽器 所提供，操作方法分別由 <code>BOM</code> 和 <code>DOM</code> 這兩種物件所擁有，而 JavaScript 就是透過 <code>BOM</code> 和 <code>DOM</code> 所提供的 <code>API</code> 來控制瀏覽器的行為與網頁的內容</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h2 id="瀏覽器裡的-JavaScript-實際包含"><a href="#瀏覽器裡的-JavaScript-實際包含" class="headerlink" title="瀏覽器裡的 JavaScript 實際包含"></a>瀏覽器裡的 JavaScript 實際包含</h2><ul>
 <li><code>JavaScript 核心</code> (以 ECMAScript 標準為基礎)</li>
@@ -326,7 +217,7 @@
 <li><p>每個 <code>HTML</code> 標籤 都會產生一個 節點，往下又可以再延伸出 文本節點 和 屬性節點</p>
 </li>
 <li><p>如下，我們寫了一段網頁程式碼，就會產生這樣的 <code>DOM</code></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>MyTitle<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Header<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>MyLink<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>MyTitle<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Header<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>MyLink<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="DOM.png" alt></p>
 </li>
@@ -346,7 +237,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">window</span>.b = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);   <span class="comment">// 10</span></span><br><span class="line"><span class="built_in">console</span>.log(b);   <span class="comment">// 10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> <span class="built_in">window</span>.a;   <span class="comment">// false</span></span><br><span class="line"><span class="keyword">delete</span> <span class="built_in">window</span>.b;   <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a);   <span class="comment">// 10</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.b);   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>window</code> 物件下的屬性，是可以省略 <code>window</code> 不打的，如常見的 <code>alert</code> 完整語法是這樣的</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.alert(<span class="string">"message"</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.alert(<span class="string">&quot;message&quot;</span>);</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -368,28 +259,28 @@
 </li>
 <li><p><code>document.querySelector(&#39;xxx&#39;)</code></p>
 <p>可以選取 <code>ID</code>、<code>class</code> 或 <code>HTML tag</code>，遇到相同名稱的元素只會選取第一個</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'#id'</span>);</span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'.class a'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&#x27;#id&#x27;</span>);</span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&#x27;.class a&#x27;</span>);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>document.querySelectorAll(&#39;xxx&#39;)</code></p>
 <p>可以重複選取多個元素，選取到的元素會形成一個 “陣列” ，可以透過 <code>for 迴圈</code> 給值</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"titleClass"</span>&gt;</span><span class="tag">&lt;<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"titleClass"</span>&gt;</span><span class="tag">&lt;<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"titleClass"</span>&gt;</span><span class="tag">&lt;<span class="name">em</span>&gt;</span>0123<span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"titleClass"</span>&gt;</span><span class="tag">&lt;<span class="name">em</span>&gt;</span>1123<span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">&quot;titleClass&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">&quot;titleClass&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">&quot;titleClass&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">em</span>&gt;</span>0123<span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">&quot;titleClass&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">em</span>&gt;</span>1123<span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.titleClass em'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(el);   <span class="comment">// [em, em]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> elLen = el.length;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; el &lt; elLen; i++)&#123;</span><br><span class="line">  el[i].textContent = i + <span class="string">'123'</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;.titleClass em&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(el);   <span class="comment">// [em, em]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> elLen = el.length;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; el &lt; elLen; i++)&#123;</span><br><span class="line">  el[i].textContent = i + <span class="string">&#x27;123&#x27;</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <h3 id="DOM-節點的新增"><a href="#DOM-節點的新增" class="headerlink" title="DOM 節點的新增"></a>DOM 節點的新增</h3><ul>
 <li><p><code>innerHTML</code></p>
 <p>組完字串後，傳進語法進行渲染，會直接取代原先的內容，如果外層是 單引號 <code>&#39;&#39;</code>，內層就要使用 雙引號 <code>&quot;&quot;</code> 以做區別</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                      </span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"blue"</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;main&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                      </span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;main&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;blue&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.getElementById(<span class="string">'main'</span>);</span><br><span class="line">el.innerHTML = <span class="string">'&lt;h1 class="blue"&gt;&lt;/h1&gt;'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;main&#x27;</span>);</span><br><span class="line">el.innerHTML = <span class="string">&#x27;&lt;h1 class=&quot;blue&quot;&gt;&lt;/h1&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>createElement</code></p>
 <p>以 <code>DOM</code> 節點來處理，每個節點都須透過 <code>JavaScript</code> 來新增</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">em</span> <span class="attr">class</span>=<span class="string">"blue"</span>&gt;</span>title<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">em</span> <span class="attr">class</span>=<span class="string">&quot;blue&quot;</span>&gt;</span>title<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="built_in">document</span>.createElement(<span class="string">'em'</span>);</span><br><span class="line">str.textContent = <span class="string">'1234'</span>;</span><br><span class="line">str.setAttribute(<span class="string">'class'</span>, <span class="string">'blue'</span>);</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 增加子節點</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'.title'</span>).appendChild(str);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="built_in">document</span>.createElement(<span class="string">&#x27;em&#x27;</span>);</span><br><span class="line">str.textContent = <span class="string">&#x27;1234&#x27;</span>;</span><br><span class="line">str.setAttribute(<span class="string">&#x27;class&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>);</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 增加子節點</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&#x27;.title&#x27;</span>).appendChild(str);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>innerHTML</code> 與 <code>createElement</code> 的差異</p>
 <ul>
@@ -403,38 +294,38 @@
 <li><code>Node.appendChild(&#39;子節點&#39;)</code></li>
 </ul>
 <p>透過這個方法可以將指定的 “子節點” 加入到父容器節點的末端</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"myList"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"myList"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;myList&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;myList&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取得容器</span></span><br><span class="line"><span class="keyword">var</span> myList = <span class="built_in">document</span>.getElementById(<span class="string">'myList'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立 li 元素</span></span><br><span class="line"><span class="keyword">var</span> newList = <span class="built_in">document</span>.creatElement(<span class="string">'li'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立文字節點</span></span><br><span class="line"><span class="keyword">var</span> textNode = <span class="built_in">document</span>.creatTextNode(<span class="string">'Hello World'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 將文字節點加入 li </span></span><br><span class="line">newList.appendChild(textNode);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 將 li 子節點加入 #myList 父節點</span></span><br><span class="line">myList.appendList(newList);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取得容器</span></span><br><span class="line"><span class="keyword">var</span> myList = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;myList&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立 li 元素</span></span><br><span class="line"><span class="keyword">var</span> newList = <span class="built_in">document</span>.creatElement(<span class="string">&#x27;li&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立文字節點</span></span><br><span class="line"><span class="keyword">var</span> textNode = <span class="built_in">document</span>.creatTextNode(<span class="string">&#x27;Hello World&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 將文字節點加入 li </span></span><br><span class="line">newList.appendChild(textNode);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 將 li 子節點加入 #myList 父節點</span></span><br><span class="line">myList.appendList(newList);</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><code>NODE.insertBefore(&#39;新節點&#39;, &#39;指定節點&#39;)</code></li>
 </ul>
 <p>透過這個方法將 “新節點” 加到 “指定節點” 的 “前面”</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"myList"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">                </span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"myList"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;myList&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">                </span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;myList&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取得容器</span></span><br><span class="line"><span class="keyword">var</span> myList = <span class="built_in">document</span>.getElementById(<span class="string">'myList'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得 &lt;li&gt;Item 2&lt;/li&gt; 元素</span></span><br><span class="line"><span class="keyword">var</span> refNode = <span class="built_in">document</span>.querySelectorAll(<span class="string">'li'</span>)[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立 li 元素節點</span></span><br><span class="line"><span class="keyword">var</span> newNode = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立文字節點</span></span><br><span class="line"><span class="keyword">var</span> textNode = <span class="built_in">document</span>.creatTextNode(<span class="string">'Hello World'</span>);</span><br><span class="line">newNode.appendChild(textNode);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 將'新節點'插入到 '指定節點' 的 前方</span></span><br><span class="line">myList.insertBefore(newNode, refNode);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取得容器</span></span><br><span class="line"><span class="keyword">var</span> myList = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;myList&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得 &lt;li&gt;Item 2&lt;/li&gt; 元素</span></span><br><span class="line"><span class="keyword">var</span> refNode = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;li&#x27;</span>)[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立 li 元素節點</span></span><br><span class="line"><span class="keyword">var</span> newNode = <span class="built_in">document</span>.createElement(<span class="string">&#x27;li&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立文字節點</span></span><br><span class="line"><span class="keyword">var</span> textNode = <span class="built_in">document</span>.creatTextNode(<span class="string">&#x27;Hello World&#x27;</span>);</span><br><span class="line">newNode.appendChild(textNode);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 將&#x27;新節點&#x27;插入到 &#x27;指定節點&#x27; 的 前方</span></span><br><span class="line">myList.insertBefore(newNode, refNode);</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><code>NODE.replaceChild(&#39;新節點&#39;, &#39;指定節點&#39;)</code></li>
 </ul>
 <p>透過這個方法將 “新節點” 取代 “指定節點”</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"myList"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">                  </span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"myList"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;myList&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">                  </span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;myList&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取得容器</span></span><br><span class="line"><span class="keyword">var</span> myList = <span class="built_in">document</span>.getElementById(<span class="string">'myList'</span>);</span><br><span class="line">  </span><br><span class="line"><span class="comment">// 取得 &lt;li&gt;Item 2&lt;/li&gt; 元素</span></span><br><span class="line"><span class="keyword">var</span> refNode = <span class="built_in">document</span>.querySelectorAll(<span class="string">'li'</span>)[<span class="number">1</span>];</span><br><span class="line">  </span><br><span class="line"><span class="comment">// 建立 li 元素節點</span></span><br><span class="line"><span class="keyword">var</span> newNode = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>);</span><br><span class="line">  </span><br><span class="line"><span class="comment">// 建立文字節點</span></span><br><span class="line"><span class="keyword">var</span> textNode = <span class="built_in">document</span>.creatTextNode(<span class="string">'Hello World'</span>);</span><br><span class="line">newNode.appendChild(textNode);</span><br><span class="line">  </span><br><span class="line"><span class="comment">// 將'新節點' 取代 '指定節點' </span></span><br><span class="line">myList.replaceChild(newNode, refNode);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取得容器</span></span><br><span class="line"><span class="keyword">var</span> myList = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;myList&#x27;</span>);</span><br><span class="line">  </span><br><span class="line"><span class="comment">// 取得 &lt;li&gt;Item 2&lt;/li&gt; 元素</span></span><br><span class="line"><span class="keyword">var</span> refNode = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;li&#x27;</span>)[<span class="number">1</span>];</span><br><span class="line">  </span><br><span class="line"><span class="comment">// 建立 li 元素節點</span></span><br><span class="line"><span class="keyword">var</span> newNode = <span class="built_in">document</span>.createElement(<span class="string">&#x27;li&#x27;</span>);</span><br><span class="line">  </span><br><span class="line"><span class="comment">// 建立文字節點</span></span><br><span class="line"><span class="keyword">var</span> textNode = <span class="built_in">document</span>.creatTextNode(<span class="string">&#x27;Hello World&#x27;</span>);</span><br><span class="line">newNode.appendChild(textNode);</span><br><span class="line">  </span><br><span class="line"><span class="comment">// 將&#x27;新節點&#x27; 取代 &#x27;指定節點&#x27; </span></span><br><span class="line">myList.replaceChild(newNode, refNode);</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><code>NODE.removeChild(&#39;指定節點&#39;)</code></li>
 </ul>
 <p>透過這個方法將 “指定節點” 移除</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"myList"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">                    </span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"myList"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;myList&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">                    </span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;myList&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取得容器</span></span><br><span class="line"><span class="keyword">var</span> myList = <span class="built_in">document</span>.getElementById(<span class="string">'myList'</span>);</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 取得 &lt;li&gt;Item 2&lt;/li&gt; 元素</span></span><br><span class="line"><span class="keyword">var</span> removeNode = <span class="built_in">document</span>.querySelectorAll(<span class="string">'li'</span>)[<span class="number">1</span>];</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 將'#myList' 下的 '指定節點' 移除 </span></span><br><span class="line">myList.removeChild(removeNode);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取得容器</span></span><br><span class="line"><span class="keyword">var</span> myList = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;myList&#x27;</span>);</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 取得 &lt;li&gt;Item 2&lt;/li&gt; 元素</span></span><br><span class="line"><span class="keyword">var</span> removeNode = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;li&#x27;</span>)[<span class="number">1</span>];</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 將&#x27;#myList&#x27; 下的 &#x27;指定節點&#x27; 移除 </span></span><br><span class="line">myList.removeChild(removeNode);</span><br></pre></td></tr></table></figure>
 
 <h3 id="新增節點屬性"><a href="#新增節點屬性" class="headerlink" title="新增節點屬性"></a>新增節點屬性</h3><p><code>setAttribute(&#39;屬性&#39;, &#39;新增的值&#39;)</code> : 動態為 html tag 增加屬性</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"titleClass"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"titleClass"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://www.google.com/"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">&quot;titleClass&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">&quot;titleClass&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.google.com/&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.querySelector(<span class="string">'.titleClass a'</span>);</span><br><span class="line">el.setAttribute(<span class="string">'href'</span>, <span class="string">'http://www.google.com'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.titleClass a&#x27;</span>);</span><br><span class="line">el.setAttribute(<span class="string">&#x27;href&#x27;</span>, <span class="string">&#x27;http://www.google.com&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
 <h2 id="DOM-節點的類型"><a href="#DOM-節點的類型" class="headerlink" title="DOM 節點的類型"></a>DOM 節點的類型</h2><p>DOM 節點的類型常見的有以下幾種 :</p>
 <table>
@@ -479,7 +370,7 @@
   </tbody>
 </table>
 
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType" rel="external nofollow noopener noreferrer" target="_blank">Node.nodeType</a></p>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType">Node.nodeType</a></p>
 <h2 id="DOM-API-節點間的查找"><a href="#DOM-API-節點間的查找" class="headerlink" title="DOM API 節點間的查找"></a>DOM API 節點間的查找</h2><p>DOM 節點有分層的概念，節點與節點之間的關係分成兩種</p>
 <ul>
 <li><code>父子節點</code> : 每個節點的上層節點稱為 父節點 <code>Parent node</code> ; 相對地，下層的節點稱為子節點 <code>Child node</code>，而隔層的節點基本上沒有直接關係，也就是 不具備孫節點</li>
@@ -499,21 +390,21 @@
 </ul>
 </li>
 <li><p><code>Node.children</code> 回傳的是 <code>HTMLColllection</code> 只包含一種可能就是 “HTML 元素節點 (element nodes)”</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test"</span>&gt;</span></span><br><span class="line">  我是第一個子節點 ( 文本節點 )</span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>我是第二個子節點 ( 第一個 元素節點 )<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  我是第三個子節點 ( 文本節點 )</span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>我是第四個子節點 ( 第二個 元素節點 )<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 我是註解 (註解節點)--&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>我是第五個子節點 ( 第三個 元素節點 )，但我前面有空行</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>我是第五個子節點的子節點<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;test&quot;</span>&gt;</span></span><br><span class="line">  我是第一個子節點 ( 文本節點 )</span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>我是第二個子節點 ( 第一個 元素節點 )<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  我是第三個子節點 ( 文本節點 )</span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>我是第四個子節點 ( 第二個 元素節點 )<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 我是註解 (註解節點)--&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>我是第五個子節點 ( 第三個 元素節點 )，但我前面有空行</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>我是第五個子節點的子節點<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="built_in">document</span>.querySelector(<span class="string">'.test'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(test.childNodes.length);   <span class="comment">// 9</span></span><br><span class="line"><span class="built_in">console</span>.log(test.childNodes);   <span class="comment">// NodeList(9) [text, div, text, div, text, comment, text, div, text]</span></span><br><span class="line"><span class="built_in">console</span>.log(test.childNodes[<span class="number">7</span>].hasChildNodes());   <span class="comment">// true</span></span><br><span class="line">              </span><br><span class="line"><span class="built_in">console</span>.log(test.children.length);   <span class="comment">// 3</span></span><br><span class="line"><span class="built_in">console</span>.log(test.children);   <span class="comment">// HTMLCollection(3) [div, div, div]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.test&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(test.childNodes.length);   <span class="comment">// 9</span></span><br><span class="line"><span class="built_in">console</span>.log(test.childNodes);   <span class="comment">// NodeList(9) [text, div, text, div, text, comment, text, div, text]</span></span><br><span class="line"><span class="built_in">console</span>.log(test.childNodes[<span class="number">7</span>].hasChildNodes());   <span class="comment">// true</span></span><br><span class="line">              </span><br><span class="line"><span class="built_in">console</span>.log(test.children.length);   <span class="comment">// 3</span></span><br><span class="line"><span class="built_in">console</span>.log(test.children);   <span class="comment">// HTMLCollection(3) [div, div, div]</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>Node.firstChild</code> 第一個子節點</p>
 <p><code>Node.firstChild</code> 可以取得 <code>Node</code> 節點的 第一個子節點，沒有子節點則會回傳 <code>null</code></p>
 <p>如下範例取得的第一個子節點為 <code>&lt;p&gt;</code> 與 <code>&lt;span&gt;</code> 中間的 “換行字元”</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>span1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>span2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.querySelector(<span class="string">'p'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p.firstChild.tagName);   <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(p.firstChild.textContent);   <span class="comment">//</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;p&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p.firstChild.tagName);   <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(p.firstChild.textContent);   <span class="comment">// </span></span><br></pre></td></tr></table></figure>
 
 <p>如果把中間的換行與空白移除，就會得到預期的 <code>SPAN</code></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>span1<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>span2<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.querySelector(<span class="string">'p'</span>);</span><br><span class="line">  </span><br><span class="line"><span class="built_in">console</span>.log(p.firstChild.tagName);   <span class="comment">// SPAN</span></span><br><span class="line"><span class="built_in">console</span>.log(p.firstChild.textContent);   <span class="comment">// span1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;p&#x27;</span>);</span><br><span class="line">  </span><br><span class="line"><span class="built_in">console</span>.log(p.firstChild.tagName);   <span class="comment">// SPAN</span></span><br><span class="line"><span class="built_in">console</span>.log(p.firstChild.textContent);   <span class="comment">// span1</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>Node.lastChild</code> 最後一個子節點</p>
 </li>
@@ -527,10 +418,10 @@
 </li>
 <li><p>根節點 (Document node)</p>
 </li>
-<li><p><a href="https://developer.mozilla.org/zh-TW/docs/Web/API/DocumentFragment" rel="external nofollow noopener noreferrer" target="_blank">DocumentFragment</a> 節點 (詳細介紹可以參考此連結)</p>
+<li><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://developer.mozilla.org/zh-TW/docs/Web/API/DocumentFragment">DocumentFragment</a> 節點 (詳細介紹可以參考此連結)</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>span1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>span1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.querySelector(<span class="string">'span'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(el.parentNode.nodeName);   <span class="comment">// "P"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;span&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(el.parentNode.nodeName);   <span class="comment">// &quot;P&quot;</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -540,13 +431,13 @@
 <p><code>querySelectorAll</code> 會選取所有符合的元素形成陣列，透過 中括號 <code>[]</code> 可以選取指定元素</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>span1<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>span2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>span3<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.querySelector(<span class="string">'span'</span>);</span><br><span class="line"><span class="keyword">var</span> el2 = <span class="built_in">document</span>.querySelectorAll(<span class="string">'span'</span>)[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> el3 = <span class="built_in">document</span>.querySelectorAll(<span class="string">'span'</span>)[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( el.previousSibling );    <span class="comment">// null</span></span><br><span class="line"><span class="built_in">console</span>.log( el2.previousSibling.textContent );    <span class="comment">// "span 2"</span></span><br><span class="line"><span class="built_in">console</span>.log( el3.previousSibling.textContent );    <span class="comment">// "我是空白"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;span&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> el2 = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;span&#x27;</span>)[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> el3 = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;span&#x27;</span>)[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( el.previousSibling );    <span class="comment">// null</span></span><br><span class="line"><span class="built_in">console</span>.log( el2.previousSibling.textContent );    <span class="comment">// &quot;span 2&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log( el3.previousSibling.textContent );    <span class="comment">// &quot;我是空白&quot;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>Node.previousElementSibling</code> 和 <code>Node.nextElementSibling</code> 兄弟節點(只包含 “元素節點”)</p>
 <p>和上一組尋找兄弟節點的語法在用法上相同，唯一不同的是，搜尋時只包括 “元素節點”，會忽略空白節點和文字節點，是比較實用的方式</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>span1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>span2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>span3<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.querySelector(<span class="string">'span'</span>);</span><br><span class="line"><span class="keyword">var</span> el2 = <span class="built_in">document</span>.querySelectorAll(<span class="string">'span'</span>)[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> el3 = <span class="built_in">document</span>.querySelectorAll(<span class="string">'span'</span>)[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( el.previousElementSibling );    <span class="comment">// null</span></span><br><span class="line"><span class="built_in">console</span>.log( el2.previousElementSibling.textContent );    <span class="comment">// "span 1"</span></span><br><span class="line"><span class="built_in">console</span>.log( el3.previousElementSibling.textContent );    <span class="comment">// "span 2"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;span&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> el2 = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;span&#x27;</span>)[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> el3 = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;span&#x27;</span>)[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( el.previousElementSibling );    <span class="comment">// null</span></span><br><span class="line"><span class="built_in">console</span>.log( el2.previousElementSibling.textContent );    <span class="comment">// &quot;span 1&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log( el3.previousElementSibling.textContent );    <span class="comment">// &quot;span 2&quot;</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -561,16 +452,16 @@
 <li>HTML 元素節點 (element nodes)</li>
 </ul>
 <p><code>HTHLCollection</code> 與 <code>NodeList</code> 都可以使用 “陣列索引” 來存取內容，兩者在大部分的情況下也都是 “即時更新” 的，但透過 <code>document.querySelector/doucment.querySelectorAll</code> 取得的 <code>NodeList</code> 是 “靜態的”</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"outer"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"inner"</span>&gt;</span>inner<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;outer&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;inner&quot;</span>&gt;</span>inner<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> outerDiv = <span class="built_in">document</span>.getElementById(<span class="string">'outer'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> allDivs = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>);</span><br><span class="line"><span class="keyword">var</span> allDivs2 = <span class="built_in">document</span>.querySelectorAll(<span class="string">'div'</span>);</span><br><span class="line">            </span><br><span class="line"><span class="built_in">console</span>.log(allDivs.length);   <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">console</span>.log(allDivs2.length);   <span class="comment">// 2</span></span><br><span class="line">            </span><br><span class="line"><span class="comment">// 清空 &lt;div id="outer"&gt; 下的節點</span></span><br><span class="line">outerDiv.innerHTML = <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 因為  &lt;div id="inner"&gt; 被清空，所以只剩下 &lt;div id="outer"&gt;</span></span><br><span class="line"><span class="built_in">console</span>.log(allDivs.length);   <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 但是 document.querySelectorAll 回傳的是 "靜態" 的 NodeList ，所以不受 outerDiv 更新影響</span></span><br><span class="line"><span class="built_in">console</span>.log(allDivs2.length);   <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> outerDiv = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;outer&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> allDivs = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> allDivs2 = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">            </span><br><span class="line"><span class="built_in">console</span>.log(allDivs.length);   <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">console</span>.log(allDivs2.length);   <span class="comment">// 2</span></span><br><span class="line">            </span><br><span class="line"><span class="comment">// 清空 &lt;div id=&quot;outer&quot;&gt; 下的節點</span></span><br><span class="line">outerDiv.innerHTML = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 因為  &lt;div id=&quot;inner&quot;&gt; 被清空，所以只剩下 &lt;div id=&quot;outer&quot;&gt;</span></span><br><span class="line"><span class="built_in">console</span>.log(allDivs.length);   <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 但是 document.querySelectorAll 回傳的是 &quot;靜態&quot; 的 NodeList ，所以不受 outerDiv 更新影響</span></span><br><span class="line"><span class="built_in">console</span>.log(allDivs2.length);   <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="BOM-API"><a href="#BOM-API" class="headerlink" title="BOM API"></a>BOM API</h2><h3 id="回上一頁功能實作-window-history"><a href="#回上一頁功能實作-window-history" class="headerlink" title="回上一頁功能實作 window.history"></a>回上一頁功能實作 <code>window.history</code></h3><p>透過 <code>window.history.forward()</code> 切換到下一頁，<code>window.history.back(</code>) 切換到上一頁，以此功能切換頁面</p>
-<p><a href="https://codepen.io/Jerry-Yeh/pen/KjrgNW?editors=1010" rel="external nofollow noopener noreferrer" target="_blank">範例程式碼</a></p>
-<h3 id="列印功能-window-print"><a href="#列印功能-window-print" class="headerlink" title="列印功能 window.print()"></a>列印功能 window.print()</h3><p><a href="https://codepen.io/Jerry-Yeh/pen/ewQdPj" rel="external nofollow noopener noreferrer" target="_blank">範例程式碼</a></p>
-<h3 id="位置訊息-window-location"><a href="#位置訊息-window-location" class="headerlink" title="位置訊息 window.location"></a>位置訊息 window.location</h3><p><a href="https://codepen.io/Jerry-Yeh/pen/ewQdPj" rel="external nofollow noopener noreferrer" target="_blank">範例程式碼</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://codepen.io/Jerry-Yeh/pen/KjrgNW?editors=1010">範例程式碼</a></p>
+<h3 id="列印功能-window-print"><a href="#列印功能-window-print" class="headerlink" title="列印功能 window.print()"></a>列印功能 window.print()</h3><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://codepen.io/Jerry-Yeh/pen/ewQdPj">範例程式碼</a></p>
+<h3 id="位置訊息-window-location"><a href="#位置訊息-window-location" class="headerlink" title="位置訊息 window.location"></a>位置訊息 window.location</h3><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://codepen.io/Jerry-Yeh/pen/ewQdPj">範例程式碼</a></p>
 <h3 id="移動位置-window-open"><a href="#移動位置-window-open" class="headerlink" title="移動位置 window.open()"></a>移動位置 window.open()</h3><p>使用此方法移動位置會 “開新分頁”</p>
-<p><a href="https://codepen.io/Jerry-Yeh/pen/ewQdPj" rel="external nofollow noopener noreferrer" target="_blank">範例程式碼</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://codepen.io/Jerry-Yeh/pen/ewQdPj">範例程式碼</a></p>
 <h3 id="動態擷取瀏覽器尺寸"><a href="#動態擷取瀏覽器尺寸" class="headerlink" title="動態擷取瀏覽器尺寸"></a>動態擷取瀏覽器尺寸</h3><ul>
 <li><code>window.innerHeight</code> : 擷取瀏覽器內部高度</li>
 <li><code>window.innerWidth</code> : 擷取瀏覽器內部寬度</li>
@@ -578,96 +469,80 @@
 <li><code>window.outerWidth</code> : 擷取瀏覽器外部寬度</li>
 <li><code>window.onresize</code> : 瀏覽器尺寸改變就會觸發</li>
 </ul>
-<p><a href="https://codepen.io/Jerry-Yeh/pen/mZQjxG" rel="external nofollow noopener noreferrer" target="_blank">範例程式碼</a></p>
-<h2 id="DOM-API"><a href="#DOM-API" class="headerlink" title="DOM API"></a>DOM API</h2><p><a href="https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/541219/" rel="external nofollow noopener noreferrer" target="_blank">JS 和 jquery 獲取各種螢幕的寬度和高度</a></p>
-<h2 id="參考資料-1"><a href="#參考資料-1" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://ithelp.ithome.com.tw/users/20065504/ironman/1259" rel="external nofollow noopener noreferrer" target="_blank">重新認識 JavaScript</a><br><a href="https://ithelp.ithome.com.tw/users/20083608/ironman/1354" rel="external nofollow noopener noreferrer" target="_blank">邁向 JavaScript 勇者之路</a><br><a href="https://www.udemy.com/javascript-learning/" rel="external nofollow noopener noreferrer" target="_blank">JavaScript 入門篇 - 學徒的試煉</a></p>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://codepen.io/Jerry-Yeh/pen/mZQjxG">範例程式碼</a></p>
+<h2 id="DOM-API"><a href="#DOM-API" class="headerlink" title="DOM API"></a>DOM API</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/541219/">JS 和 jquery 獲取各種螢幕的寬度和高度</a></p>
+<h2 id="參考資料-1"><a href="#參考資料-1" class="headerlink" title="參考資料"></a>參考資料</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://ithelp.ithome.com.tw/users/20065504/ironman/1259">重新認識 JavaScript</a><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://ithelp.ithome.com.tw/users/20083608/ironman/1354">邁向 JavaScript 勇者之路</a><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.udemy.com/javascript-learning/">JavaScript 入門篇 - 學徒的試煉</a></p>
 
     </div>
 
     
     
-    <div class="post-widgets">
-    <div class="likely">
-        <div class="twitter">Tweet 分享</div>
-        <div class="facebook">FB 分享</div>
-        <div class="linkedin">Link 分享</div>
-        <div class="gplus">Plus</div>
-        <div class="vkontakte">Share</div>
-        <div class="odnoklassniki">Class</div>
-        <div class="telegram">Send</div>
-        <div class="whatsapp">Send</div>
-        <div class="pinterest">Pin</div>
-    </div>
-  </div>
-  <script src="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.min.js"></script>
-        
-      
+    
 
       <footer class="post-footer">
-          
-            
-          
           <div class="post-tags">
-            
               <a href="/tags/javascript/" rel="tag"># JavaScript</a>
-            
           </div>
-        
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-              
-                <a href="/css/20190927/6900c966/" rel="next" title="CSS 設計模式">
-                  <i class="fa fa-chevron-left"></i> CSS 設計模式
-                </a>
-              
-            </div>
 
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-              
-                <a href="/javascript/20191003/52047/" rel="prev" title="JavaScript - 事件">
-                  JavaScript - 事件 <i class="fa fa-chevron-right"></i>
-                </a>
-              
-            </div>
-          </div>
         
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/css/20190927/6900c966/" rel="prev" title="CSS 設計模式">
+      <i class="fa fa-chevron-left"></i> CSS 設計模式
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/javascript/20191003/52047/" rel="next" title="JavaScript - 事件">
+      JavaScript - 事件 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
     
-  </div>
-  
-  
-  
   </article>
+  
+  
+  
 
-  </div>
 
 
           </div>
           
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
   <aside class="sidebar">
     <div class="sidebar-inner">
-        
-        
-        
-        
-      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -680,77 +555,36 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#瀏覽器裡的-JavaScript-實際包含"><span class="nav-number">1.</span> <span class="nav-text">瀏覽器裡的 JavaScript 實際包含</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什麼是-DOM-Document-Object-Modal"><span class="nav-number">2.</span> <span class="nav-text">什麼是 DOM (Document Object Modal) ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什麼是-BOM-Browser-Object-Modal"><span class="nav-number">3.</span> <span class="nav-text">什麼是 BOM (Browser Object Modal) ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-與-BOM-的區別"><span class="nav-number">4.</span> <span class="nav-text">DOM 與 BOM 的區別</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-API-節點控制"><span class="nav-number">5.</span> <span class="nav-text">DOM API 節點控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-節點的選取"><span class="nav-number">5.1.</span> <span class="nav-text">DOM 節點的選取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-節點的新增"><span class="nav-number">5.2.</span> <span class="nav-text">DOM 節點的新增</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#節點的修改與刪除"><span class="nav-number">5.3.</span> <span class="nav-text">節點的修改與刪除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新增節點屬性"><span class="nav-number">5.4.</span> <span class="nav-text">新增節點屬性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-節點的類型"><span class="nav-number">6.</span> <span class="nav-text">DOM 節點的類型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#參考資料"><span class="nav-number">6.1.</span> <span class="nav-text">參考資料</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-API-節點間的查找"><span class="nav-number">7.</span> <span class="nav-text">DOM API 節點間的查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#子節點"><span class="nav-number">7.1.</span> <span class="nav-text">子節點</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#父節點"><span class="nav-number">7.2.</span> <span class="nav-text">父節點</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#兄弟節點"><span class="nav-number">7.3.</span> <span class="nav-text">兄弟節點</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#document-getElementsBy-與-document-querySelector-querySelectorAll-的差異"><span class="nav-number">7.4.</span> <span class="nav-text">document.getElementsBy** 與 document.querySelector/.querySelectorAll 的差異</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BOM-API"><span class="nav-number">8.</span> <span class="nav-text">BOM API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#回上一頁功能實作-window-history"><span class="nav-number">8.1.</span> <span class="nav-text">回上一頁功能實作 window.history</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列印功能-window-print"><span class="nav-number">8.2.</span> <span class="nav-text">列印功能 window.print()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位置訊息-window-location"><span class="nav-number">8.3.</span> <span class="nav-text">位置訊息 window.location</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移動位置-window-open"><span class="nav-number">8.4.</span> <span class="nav-text">移動位置 window.open()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#動態擷取瀏覽器尺寸"><span class="nav-number">8.5.</span> <span class="nav-text">動態擷取瀏覽器尺寸</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-API"><span class="nav-number">9.</span> <span class="nav-text">DOM API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料-1"><span class="nav-number">10.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
-        
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%80%8F%E8%A6%BD%E5%99%A8%E8%A3%A1%E7%9A%84-JavaScript-%E5%AF%A6%E9%9A%9B%E5%8C%85%E5%90%AB"><span class="nav-number">1.</span> <span class="nav-text">瀏覽器裡的 JavaScript 實際包含</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-DOM-Document-Object-Modal"><span class="nav-number">2.</span> <span class="nav-text">什麼是 DOM (Document Object Modal) ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-BOM-Browser-Object-Modal"><span class="nav-number">3.</span> <span class="nav-text">什麼是 BOM (Browser Object Modal) ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-%E8%88%87-BOM-%E7%9A%84%E5%8D%80%E5%88%A5"><span class="nav-number">4.</span> <span class="nav-text">DOM 與 BOM 的區別</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-API-%E7%AF%80%E9%BB%9E%E6%8E%A7%E5%88%B6"><span class="nav-number">5.</span> <span class="nav-text">DOM API 節點控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-%E7%AF%80%E9%BB%9E%E7%9A%84%E9%81%B8%E5%8F%96"><span class="nav-number">5.1.</span> <span class="nav-text">DOM 節點的選取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-%E7%AF%80%E9%BB%9E%E7%9A%84%E6%96%B0%E5%A2%9E"><span class="nav-number">5.2.</span> <span class="nav-text">DOM 節點的新增</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%80%E9%BB%9E%E7%9A%84%E4%BF%AE%E6%94%B9%E8%88%87%E5%88%AA%E9%99%A4"><span class="nav-number">5.3.</span> <span class="nav-text">節點的修改與刪除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E7%AF%80%E9%BB%9E%E5%B1%AC%E6%80%A7"><span class="nav-number">5.4.</span> <span class="nav-text">新增節點屬性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-%E7%AF%80%E9%BB%9E%E7%9A%84%E9%A1%9E%E5%9E%8B"><span class="nav-number">6.</span> <span class="nav-text">DOM 節點的類型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">6.1.</span> <span class="nav-text">參考資料</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-API-%E7%AF%80%E9%BB%9E%E9%96%93%E7%9A%84%E6%9F%A5%E6%89%BE"><span class="nav-number">7.</span> <span class="nav-text">DOM API 節點間的查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%90%E7%AF%80%E9%BB%9E"><span class="nav-number">7.1.</span> <span class="nav-text">子節點</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B6%E7%AF%80%E9%BB%9E"><span class="nav-number">7.2.</span> <span class="nav-text">父節點</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%84%E5%BC%9F%E7%AF%80%E9%BB%9E"><span class="nav-number">7.3.</span> <span class="nav-text">兄弟節點</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#document-getElementsBy-%E8%88%87-document-querySelector-querySelectorAll-%E7%9A%84%E5%B7%AE%E7%95%B0"><span class="nav-number">7.4.</span> <span class="nav-text">document.getElementsBy** 與 document.querySelector&#x2F;.querySelectorAll 的差異</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BOM-API"><span class="nav-number">8.</span> <span class="nav-text">BOM API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E4%B8%8A%E4%B8%80%E9%A0%81%E5%8A%9F%E8%83%BD%E5%AF%A6%E4%BD%9C-window-history"><span class="nav-number">8.1.</span> <span class="nav-text">回上一頁功能實作 window.history</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E5%8D%B0%E5%8A%9F%E8%83%BD-window-print"><span class="nav-number">8.2.</span> <span class="nav-text">列印功能 window.print()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E7%BD%AE%E8%A8%8A%E6%81%AF-window-location"><span class="nav-number">8.3.</span> <span class="nav-text">位置訊息 window.location</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%BB%E5%8B%95%E4%BD%8D%E7%BD%AE-window-open"><span class="nav-number">8.4.</span> <span class="nav-text">移動位置 window.open()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8B%95%E6%85%8B%E6%93%B7%E5%8F%96%E7%80%8F%E8%A6%BD%E5%99%A8%E5%B0%BA%E5%AF%B8"><span class="nav-number">8.5.</span> <span class="nav-text">動態擷取瀏覽器尺寸</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-API"><span class="nav-number">9.</span> <span class="nav-text">DOM API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99-1"><span class="nav-number">10.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Jerry</p>
+  <p class="site-author-name" itemprop="name">Yeh</p>
   <div class="site-description" itemprop="description"></div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/archives/">
         
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">58</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-categories">
-        
-          
             <a href="/categories/">
-          
-        
-        <span class="site-state-item-count">10</span>
-        <span class="site-state-item-name">分類</span>
-        </a>
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分類</span></a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/tags/">
-          
-        
         <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">標籤</span>
-        </a>
+        <span class="site-state-item-name">標籤</span></a>
       </div>
-    
   </nav>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://github.com/Jerry-Yeh" title="GitHub &rarr; https://github.com/Jerry-Yeh" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-    
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="mailto:qaz013039@gmail.com" title="E-Mail &rarr; mailto:qaz013039@gmail.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-    
-  </div>
+</div>
 
 
 
@@ -764,14 +598,23 @@
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Jerry</span>
+  <span class="author" itemprop="copyrightHolder">Yeh</span>
 </div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Muse</a> 強力驅動
+  </div>
 
         
 
@@ -782,54 +625,43 @@
 
 
 
-
-
-
-
-        
       </div>
     </footer>
   </div>
 
   
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
 
 
-  <script src="/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
-<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
-<script src="/js/schemes/pisces.js?v=7.4.0"></script>
-<script src="/js/next-boot.js?v=7.4.0"></script><script src="/js/bookmark.js?v=7.4.0"></script>
+<script src="/js/schemes/muse.js"></script>
 
 
-
-  
-
-
-
-
-
-
-
-
-  <script src="/js/local-search.js?v=7.4.0"></script>
-
-
-
-
-
-
-
-
-
-
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 

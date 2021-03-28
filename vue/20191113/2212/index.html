@@ -1,96 +1,57 @@
 <!DOCTYPE html>
-
-
-
-
-
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.4.0',
-    exturl: false,
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":true,"show_result":true,"style":"flat"},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
-    bookmark: {"enable":true,"color":"#222","save":"auto"},
-    fancybox: true,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '複製',
-      copy_success: '複製成功',
-      copy_failure: '複製失敗'
-    },
-    sidebarPadding: 40
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jerry-yeh.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta name="description" content="在第一個章節中有提到，在 vuex 中，actions 處理非同步的事件或取得遠端的資料，但不處理資料的狀態，而 mutation 則是改變資料內容的方法，所以上一章節直接更改變數的方式在 vuex 中並不完全正確">
-<meta name="keywords" content="Vue,Vuex">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Actions 與 Mutations 改變資料狀態">
-<meta property="og:url" content="jerry-yeh.github.io/vue/20191113/2212/index.html">
+<meta property="og:url" content="http://jerry-yeh.github.io/vue/20191113/2212/index.html">
 <meta property="og:site_name" content="JustNOTE">
 <meta property="og:description" content="在第一個章節中有提到，在 vuex 中，actions 處理非同步的事件或取得遠端的資料，但不處理資料的狀態，而 mutation 則是改變資料內容的方法，所以上一章節直接更改變數的方式在 vuex 中並不完全正確">
-<meta property="og:locale" content="zh-TW">
-<meta property="og:image" content="jerry-yeh.github.io/vue/20191113/2212/Vuex-devtool.png">
-<meta property="og:image" content="jerry-yeh.github.io/vue/20191113/2212/Vuex-devtool-timeTravel.png">
-<meta property="og:updated_time" content="2019-11-12T17:22:02.915Z">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://jerry-yeh.github.io/vue/20191113/2212/Vuex-devtool.png">
+<meta property="og:image" content="http://jerry-yeh.github.io/vue/20191113/2212/Vuex-devtool-timeTravel.png">
+<meta property="article:published_time" content="2019-11-12T17:13:20.000Z">
+<meta property="article:modified_time" content="2019-11-12T17:22:02.915Z">
+<meta property="article:author" content="Yeh">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="Vuex">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Actions 與 Mutations 改變資料狀態">
-<meta name="twitter:description" content="在第一個章節中有提到，在 vuex 中，actions 處理非同步的事件或取得遠端的資料，但不處理資料的狀態，而 mutation 則是改變資料內容的方法，所以上一章節直接更改變數的方式在 vuex 中並不完全正確">
-<meta name="twitter:image" content="jerry-yeh.github.io/vue/20191113/2212/Vuex-devtool.png">
-  <link rel="canonical" href="jerry-yeh.github.io/vue/20191113/2212/">
+<meta name="twitter:image" content="http://jerry-yeh.github.io/vue/20191113/2212/Vuex-devtool.png">
+
+<link rel="canonical" href="http://jerry-yeh.github.io/vue/20191113/2212/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
   };
 </script>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.min.css">
+
   <title>Actions 與 Mutations 改變資料狀態 | JustNOTE</title>
   
-
-
 
 
 
@@ -109,7 +70,6 @@
   .use-motion .post-body,
   .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -123,108 +83,56 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-TW">
+<body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">JustNOTE</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切換導航欄">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">JustNOTE</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
+
+
 
 
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-      
-      
-      
-        
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
-      
-    
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首頁</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
 
   </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-tags">
-      
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>標籤</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-categories">
-      
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分類</a>
-
-  </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-archives">
-      
-    
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>歸檔</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
 
   </li>
-      <li class="menu-item menu-item-search">
-        <a href="javascript:;" class="popup-trigger">
-        
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜尋</a>
-      </li>
-    
   </ul>
-
 </nav>
-  <div class="site-search">
-    <div class="popup search-popup">
-    <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="搜尋..." spellcheck="false" type="text" id="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result"></div>
 
-</div>
-<div class="search-pop-overlay"></div>
 
-  </div>
+
+
 </div>
     </header>
 
@@ -233,71 +141,55 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
-  <a class="book-mark-link book-mark-link-fixed" href="#"></a>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
             
 
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-      <article itemscope itemtype="http://schema.org/Article">
+    
   
   
-  
-  <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="jerry-yeh.github.io/vue/20191113/2212/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://jerry-yeh.github.io/vue/20191113/2212/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jerry">
-      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yeh">
+      <meta itemprop="description" content>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="JustNOTE">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">Actions 與 Mutations 改變資料狀態
-
-          
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Actions 與 Mutations 改變資料狀態
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-
-              
-                
               
 
               <time title="創建時間：2019-11-13 01:13:20 / 修改時間：01:22:02" itemprop="dateCreated datePublished" datetime="2019-11-13T01:13:20+08:00">2019-11-13</time>
             </span>
-          
-            
-
-            
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分類於</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
             </span>
-          
 
           
 
@@ -311,12 +203,12 @@
 
       
         <p>在第一個章節中有提到，在 <code>vuex</code> 中，<code>actions</code> 處理非同步的事件或取得遠端的資料，但不處理資料的狀態，而 <code>mutation</code> 則是改變資料內容的方法，所以上一章節直接更改變數的方式在 <code>vuex</code> 中並不完全正確</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <p>在這裡可以透過開發者工具中的 <code>Vue</code> 並在其中找到 <code>Vuex</code> 的選項，可以看到裡面有我們剛才在 <code>state</code> 中新增的變數 <code>isLoading</code></p>
 <p><img src="Vuex-devtool.png" alt></p>
 <h2 id="新增-Actions-與-Mutation"><a href="#新增-Actions-與-Mutation" class="headerlink" title="新增 Actions 與 Mutation"></a>新增 Actions 與 Mutation</h2><p>在官方資料中我們可以得到以下資訊 :</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    isLoading: <span class="literal">false</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  actions: &#123;</span><br><span class="line">    updateLoading(context, payload) &#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    LOADING(state, payload) &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    isLoading: <span class="literal">false</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  actions: &#123;</span><br><span class="line">    <span class="function"><span class="title">updateLoading</span>(<span class="params">context, payload</span>)</span> &#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    <span class="function"><span class="title">LOADING</span>(<span class="params">state, payload</span>)</span> &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <h3 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h3><p>處理非同步的事件或取得遠端的資料，但不處理資料的狀態</p>
 <ul>
@@ -340,109 +232,92 @@
 <li>第二個參數 <code>payload</code>: 同為從外部傳進來的數值，由使用者所自訂，所以可以直接透過 <code>action</code> 中的 <code>payload</code> 傳入</li>
 </ul>
 <h2 id="設定方法"><a href="#設定方法" class="headerlink" title="設定方法"></a>設定方法</h2><p>首先透過 <code>mutations</code> 來設定更改變數的 “方法”</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mutations: &#123;</span><br><span class="line">  LOADING(state, payload) &#123;</span><br><span class="line">    state.isLoading = payload;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mutations: &#123;</span><br><span class="line">  <span class="function"><span class="title">LOADING</span>(<span class="params">state, payload</span>)</span> &#123;</span><br><span class="line">    state.isLoading = payload;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="觸發方法"><a href="#觸發方法" class="headerlink" title="觸發方法"></a>觸發方法</h2><p>設定方法後，透過 <code>actions</code> 來觸發 <code>mutations</code> 中的方法，觸發的方式會使用第一個參數 <code>context</code> 中的 <code>commit</code>，而其第一個參數就是要觸發的 “方法名稱”，第二個參數就是要帶入的載荷 <code>status</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">actions: &#123;</span><br><span class="line">  updateLoading(context, payload) &#123;</span><br><span class="line">    context.commit(<span class="string">'LOADING'</span>, payload);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">actions: &#123;</span><br><span class="line">  <span class="function"><span class="title">updateLoading</span>(<span class="params">context, payload</span>)</span> &#123;</span><br><span class="line">    context.commit(<span class="string">&#x27;LOADING&#x27;</span>, payload);</span><br><span class="line">  &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 
 <h2 id="更改變數"><a href="#更改變數" class="headerlink" title="更改變數"></a>更改變數</h2><p>上一章節中，我們直接透過 <code>this.$store.state</code> 來改變變數的值並不完全正確，正確的方式是透過 <code>this.$store.dispatch</code> 來呼叫 <code>actions</code> 中的方法，第一個參數就是 “方法名稱”，第二個參數是要 “帶入的值”，再進一步呼叫 <code>mutations</code> 來更改變數的值</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 錯誤方式</span></span><br><span class="line"><span class="keyword">this</span>.$store.state.isLoading = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正確方式</span></span><br><span class="line"><span class="keyword">this</span>.$store.dispatch(<span class="string">'updateLoading'</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 錯誤方式</span></span><br><span class="line"><span class="built_in">this</span>.$store.state.isLoading = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正確方式</span></span><br><span class="line"><span class="built_in">this</span>.$store.dispatch(<span class="string">&#x27;updateLoading&#x27;</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
 
 <p>在這裡要注意的是，<code>dispatch</code> 是用來 “賦予值” 的，所以 <code>computed</code> 中還是直接 <code>return state</code> 中的變數 <code>isLoading</code> 就可以了</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  isLoading() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.isLoading;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  <span class="function"><span class="title">isLoading</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.$store.state.isLoading;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
 <h2 id="開發者工具"><a href="#開發者工具" class="headerlink" title="開發者工具"></a>開發者工具</h2><p>將 <code>vuex</code> 改成正確的方式後，打開開發者工具中的 <code>Vue/Vuex</code>，每次呼叫 <code>mutations</code> 中的方法都會保有紀錄，將游標移到上方就會顯示幾個按鈕，按下 <code>Time Travel to This State</code> 會可回到該狀態檢視</p>
 <p><img src="Vuex-devtool-timeTravel.png" alt></p>
-<h2 id="資料參考"><a href="#資料參考" class="headerlink" title="資料參考"></a>資料參考</h2><p><a href="https://vuex.vuejs.org/zh/api/#mutations" rel="external nofollow noopener noreferrer" target="_blank">官方資料</a></p>
+<h2 id="資料參考"><a href="#資料參考" class="headerlink" title="資料參考"></a>資料參考</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://vuex.vuejs.org/zh/api/#mutations">官方資料</a></p>
 
     </div>
 
     
     
-    <div class="post-widgets">
-    <div class="likely">
-        <div class="twitter">Tweet 分享</div>
-        <div class="facebook">FB 分享</div>
-        <div class="linkedin">Link 分享</div>
-        <div class="gplus">Plus</div>
-        <div class="vkontakte">Share</div>
-        <div class="odnoklassniki">Class</div>
-        <div class="telegram">Send</div>
-        <div class="whatsapp">Send</div>
-        <div class="pinterest">Pin</div>
-    </div>
-  </div>
-  <script src="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.min.js"></script>
-        
-      
+    
 
       <footer class="post-footer">
-          
-            
-          
           <div class="post-tags">
-            
               <a href="/tags/vue/" rel="tag"># Vue</a>
-            
               <a href="/tags/vuex/" rel="tag"># Vuex</a>
-            
           </div>
-        
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-              
-                <a href="/vue/20191113/33419/" rel="next" title="新增一個 store 來管理網站資料狀態">
-                  <i class="fa fa-chevron-left"></i> 新增一個 store 來管理網站資料狀態
-                </a>
-              
-            </div>
 
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-              
-                <a href="/vue/20191113/36215/" rel="prev" title="Vuex 嚴謹模式">
-                  Vuex 嚴謹模式 <i class="fa fa-chevron-right"></i>
-                </a>
-              
-            </div>
-          </div>
         
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/vue/20191113/33419/" rel="prev" title="新增一個 store 來管理網站資料狀態">
+      <i class="fa fa-chevron-left"></i> 新增一個 store 來管理網站資料狀態
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/vue/20191113/36215/" rel="next" title="Vuex 嚴謹模式">
+      Vuex 嚴謹模式 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
     
-  </div>
-  
-  
-  
   </article>
+  
+  
+  
 
-  </div>
 
 
           </div>
           
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
   <aside class="sidebar">
     <div class="sidebar-inner">
-        
-        
-        
-        
-      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -455,77 +330,36 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#新增-Actions-與-Mutation"><span class="nav-number">1.</span> <span class="nav-text">新增 Actions 與 Mutation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#actions"><span class="nav-number">1.1.</span> <span class="nav-text">actions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mutations"><span class="nav-number">1.2.</span> <span class="nav-text">mutations</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#設定方法"><span class="nav-number">2.</span> <span class="nav-text">設定方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#觸發方法"><span class="nav-number">3.</span> <span class="nav-text">觸發方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改變數"><span class="nav-number">4.</span> <span class="nav-text">更改變數</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#開發者工具"><span class="nav-number">5.</span> <span class="nav-text">開發者工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#資料參考"><span class="nav-number">6.</span> <span class="nav-text">資料參考</span></a></li></ol></div>
-        
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E-Actions-%E8%88%87-Mutation"><span class="nav-number">1.</span> <span class="nav-text">新增 Actions 與 Mutation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#actions"><span class="nav-number">1.1.</span> <span class="nav-text">actions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mutations"><span class="nav-number">1.2.</span> <span class="nav-text">mutations</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">設定方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%B8%E7%99%BC%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">觸發方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E8%AE%8A%E6%95%B8"><span class="nav-number">4.</span> <span class="nav-text">更改變數</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%96%8B%E7%99%BC%E8%80%85%E5%B7%A5%E5%85%B7"><span class="nav-number">5.</span> <span class="nav-text">開發者工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E5%8F%83%E8%80%83"><span class="nav-number">6.</span> <span class="nav-text">資料參考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Jerry</p>
+  <p class="site-author-name" itemprop="name">Yeh</p>
   <div class="site-description" itemprop="description"></div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/archives/">
         
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">58</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-categories">
-        
-          
             <a href="/categories/">
-          
-        
-        <span class="site-state-item-count">10</span>
-        <span class="site-state-item-name">分類</span>
-        </a>
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分類</span></a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/tags/">
-          
-        
         <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">標籤</span>
-        </a>
+        <span class="site-state-item-name">標籤</span></a>
       </div>
-    
   </nav>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://github.com/Jerry-Yeh" title="GitHub &rarr; https://github.com/Jerry-Yeh" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-    
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="mailto:qaz013039@gmail.com" title="E-Mail &rarr; mailto:qaz013039@gmail.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-    
-  </div>
+</div>
 
 
 
@@ -539,14 +373,23 @@
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Jerry</span>
+  <span class="author" itemprop="copyrightHolder">Yeh</span>
 </div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Muse</a> 強力驅動
+  </div>
 
         
 
@@ -557,54 +400,43 @@
 
 
 
-
-
-
-
-        
       </div>
     </footer>
   </div>
 
   
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
 
 
-  <script src="/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
-<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
-<script src="/js/schemes/pisces.js?v=7.4.0"></script>
-<script src="/js/next-boot.js?v=7.4.0"></script><script src="/js/bookmark.js?v=7.4.0"></script>
+<script src="/js/schemes/muse.js"></script>
 
 
-
-  
-
-
-
-
-
-
-
-
-  <script src="/js/local-search.js?v=7.4.0"></script>
-
-
-
-
-
-
-
-
-
-
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 
