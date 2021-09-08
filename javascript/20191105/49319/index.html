@@ -2,9 +2,11 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
+
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -13,14 +15,12 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jerry-yeh.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="JavaScript 是一門 “物件導向” 的程式語言，但物件彼此是透過 “原型” 來繼承屬性，在介紹原型鍊之前，會先透過 “串聯” Cascade 與物件來了解背後的觀念">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jerry-yeh.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="JavaScript 是一門 “物件導向” 的程式語言，但物件彼此是透過 “原型” 來繼承屬性，在介紹原型鍊之前，會先透過 “串聯” Cascade 與物件來了解背後的觀念">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 物件與原型鍊">
 <meta property="og:url" content="https://jerry-yeh.github.io/javascript/20191105/49319/index.html">
@@ -33,72 +33,42 @@
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
 
+
 <link rel="canonical" href="https://jerry-yeh.github.io/javascript/20191105/49319/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-TW'
-  };
-</script>
 
-  <title>JavaScript 物件與原型鍊 | JustNOTE</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://jerry-yeh.github.io/javascript/20191105/49319/","path":"javascript/20191105/49319/","title":"JavaScript 物件與原型鍊"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JavaScript 物件與原型鍊 | JustNOTE</title>
   
 
 
 
 
-
-
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切換導航欄">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切換導航欄" role="button">
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
+      <i class="logo-line"></i>
       <h1 class="site-title">JustNOTE</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
     </a>
   </div>
 
@@ -111,46 +81,98 @@
 
 
 
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
-
-  </li>
-  </ul>
-</nav>
-
 
 
 
 </div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cascade-%E4%B8%B2%E8%81%AF"><span class="nav-number">1.</span> <span class="nav-text">Cascade 串聯</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E5%AF%AB%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">一般寫法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cascade-%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">Cascade 的方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6-Object"><span class="nav-number">2.</span> <span class="nav-text">物件 Object</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9E%8B%E5%88%A5-Type"><span class="nav-number">2.1.</span> <span class="nav-text">型別 Type</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%9E%8B%E5%88%A5"><span class="nav-number">2.1.1.</span> <span class="nav-text">基本型別</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E8%A8%82%E7%89%A9%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">自訂物件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E6%A7%8B%E5%BC%8F-Constructor"><span class="nav-number">2.3.</span> <span class="nav-text">建構式 Constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%AC%E6%80%A7%E6%8F%8F%E8%BF%B0%E5%99%A8-Property-descriptor"><span class="nav-number">2.4.</span> <span class="nav-text">屬性描述器 Property descriptor</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9%E5%B1%AC%E6%80%A7-Object-defineProperty-%E8%88%87-%E6%9F%A5%E8%A9%A2%E5%B1%AC%E6%80%A7%E6%8F%8F%E8%BF%B0-Object-getOwnPropertyDescriptor"><span class="nav-number">2.4.1.</span> <span class="nav-text">定義屬性 Object.defineProperty 與 查詢屬性描述 Object.getOwnPropertyDescriptor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%AC%E6%80%A7%E6%8F%8F%E8%BF%B0%E5%99%A8-get-%E8%88%87-set"><span class="nav-number">2.4.2.</span> <span class="nav-text">屬性描述器 get 與 set</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%9E%8B%E5%88%A5%E5%8C%85%E8%A3%B9%E5%99%A8-Primitive-Wrapper"><span class="nav-number">3.</span> <span class="nav-text">基本型別包裹器 Primitive Wrapper</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E5%9E%8B%E5%88%A5"><span class="nav-number">3.1.</span> <span class="nav-text">物件型別</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%9E%8B%E5%88%A5%E5%8C%85%E8%A3%B9%E5%99%A8-Primitive-Wrapper-1"><span class="nav-number">3.2.</span> <span class="nav-text">基本型別包裹器 Primitive Wrapper</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E8%88%87%E5%8E%9F%E5%9E%8B%E9%8D%8A-Object-amp-Prototype-Chain"><span class="nav-number">4.</span> <span class="nav-text">物件與原型鍊 Object &amp; Prototype Chain</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%9E%8B%E9%8D%8A-Prototype-Chain"><span class="nav-number">4.1.</span> <span class="nav-text">原型鍊 Prototype Chain</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-setPrototypeOf-%E2%80%9C%E7%B9%BC%E6%89%BF%E8%80%85%E2%80%9D-%E2%80%9C%E5%8E%9F%E5%9E%8B%E2%80%9D"><span class="nav-number">4.1.1.</span> <span class="nav-text">Object.setPrototypeOf(“繼承者”, “原型”)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E9%A0%82%E5%B1%A4%E5%8E%9F%E5%9E%8B%E7%89%A9%E4%BB%B6-Object-prototype"><span class="nav-number">4.2.</span> <span class="nav-text">最頂層原型物件 Object.prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E6%A7%8B%E5%BC%8F%E8%88%87%E5%8E%9F%E5%9E%8B"><span class="nav-number">4.3.</span> <span class="nav-text">建構式與原型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B9%BC%E6%89%BF%E5%88%A4%E6%96%B7"><span class="nav-number">4.4.</span> <span class="nav-text">繼承判斷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E7%9A%84-proto-%E5%B1%AC%E6%80%A7"><span class="nav-number">4.5.</span> <span class="nav-text">物件的 __proto__ 屬性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E8%88%87%E5%8E%9F%E5%9E%8B%E7%B9%BC%E6%89%BF"><span class="nav-number">4.6.</span> <span class="nav-text">物件與原型繼承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#proto-amp-prototype"><span class="nav-number">4.7.</span> <span class="nav-text">proto &amp; prototype</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E5%8F%83%E8%80%83"><span class="nav-number">5.</span> <span class="nav-text">資料參考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yeh</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
     </header>
 
     
-  <div class="back-to-top">
+  <div class="back-to-top" role="button" aria-label="回到頂端">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
 
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
 
-          <div class="content post posts-expand">
-            
+    <div class="main-inner post posts-expand">
 
-    
+
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191105/49319/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -167,27 +189,29 @@
           JavaScript 物件與原型鍊
         </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
 
-              <time title="創建時間：2019-11-05 12:34:42 / 修改時間：14:44:28" itemprop="dateCreated datePublished" datetime="2019-11-05T12:34:42+08:00">2019-11-05</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
+      <time title="創建時間：2019-11-05 12:34:42 / 修改時間：14:44:28" itemprop="dateCreated datePublished" datetime="2019-11-05T12:34:42+08:00">2019-11-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
 
-          
+  
+</div>
 
         </div>
       </header>
@@ -196,8 +220,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
         <p>JavaScript 是一門 “物件導向” 的程式語言，但物件彼此是透過 “原型” 來繼承屬性，在介紹原型鍊之前，會先透過 “串聯” <code>Cascade</code> 與物件來了解背後的觀念</p>
 <span id="more"></span>
 
@@ -233,12 +255,9 @@
 <h3 id="自訂物件"><a href="#自訂物件" class="headerlink" title="自訂物件"></a>自訂物件</h3><p>在 javascript 中，有兩種方式可以自訂物件</p>
 <ul>
 <li><p>使用 <code>new</code> 關鍵字來建立</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">preson.name = <span class="string">&#x27;Jerry&#x27;</span>;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">preson.name = <span class="string">&#x27;Jerry&#x27;</span>;</span><br></pre></td></tr></table></figure></li>
 <li><p>使用大括號 <code>&#123; &#125;</code> 直接建立新物件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  name: <span class="string">&quot;Jerry&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  name: <span class="string">&quot;Jerry&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="建構式-Constructor"><a href="#建構式-Constructor" class="headerlink" title="建構式 Constructor"></a>建構式 Constructor</h3><p>javascript 不像其他物件導向的語言具有 <code>class</code> 語法，但可以透過建構式來建立各種對應的物件，要注意的是建構式是使用 “函式” <code>function</code> 來建立物件樣板，不能使用 <code>ES6</code> 的 “箭頭函式”</p>
 <ul>
@@ -253,9 +272,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Jerry = &#123;&#125;;</span><br><span class="line">Person.call(Jerry, <span class="string">&#x27;Jerry&#x27;</span>, <span class="number">24</span>, <span class="string">&#x27;male&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
 <p>透過建構式建立的物件，還是可以透過 <code>.</code> 來存取屬性</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Jerry.age);   <span class="comment">// 24</span></span><br><span class="line">Jerry.age = <span class="number">18</span>;</span><br><span class="line"><span class="built_in">console</span>.log(Jerry.age);   <span class="comment">// 18</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Jerry.age);   <span class="comment">// 24</span></span><br><span class="line">Jerry.age = <span class="number">18</span>;</span><br><span class="line"><span class="built_in">console</span>.log(Jerry.age);   <span class="comment">// 18</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="屬性描述器-Property-descriptor"><a href="#屬性描述器-Property-descriptor" class="headerlink" title="屬性描述器 Property descriptor"></a>屬性描述器 Property descriptor</h3><p>從 ES5 開始，我們可以透過新的物件模型來靠至物件屬性的存取、刪除、列舉等。這些特殊的屬性就稱為 “屬性描述器” <code>Property descriptor</code></p>
 <p>屬性描述器分為六種 :</p>
@@ -273,12 +290,9 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Person = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(Person, <span class="string">&#x27;name&#x27;</span>, &#123;<span class="attr">value</span>: <span class="string">&#x27;Jerry&#x27;</span>&#125;);</span><br><span class="line">              </span><br><span class="line"><span class="comment">// resault</span></span><br><span class="line"><span class="keyword">var</span> Person = &#123;</span><br><span class="line">  name: <span class="string">&#x27;Jerry&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>當然也可以一次定義多個屬性描述</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.definedProperty(person, <span class="string">&#x27;name&#x27;</span>, &#123;</span><br><span class="line">  value: <span class="string">&#x27;Jerry&#x27;</span>,</span><br><span class="line">  writable: <span class="literal">true</span>,</span><br><span class="line">  enumerable: <span class="literal">true</span>,</span><br><span class="line">  configurable: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.definedProperty(person, <span class="string">&#x27;name&#x27;</span>, &#123;</span><br><span class="line">  value: <span class="string">&#x27;Jerry&#x27;</span>,</span><br><span class="line">  writable: <span class="literal">true</span>,</span><br><span class="line">  enumerable: <span class="literal">true</span>,</span><br><span class="line">  configurable: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
 <li><p><code>Object.getOwnPropertyDescriptor(Object, Property)</code> : 用來檢查物件屬性描述器的狀態</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(Person, <span class="string">&#x27;name&#x27;</span>);</span><br><span class="line"><span class="comment">// &#123;value: &#x27;Jerry&#x27;, writable: false, enumerable: false, configuarable: false&#125;</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(Person, <span class="string">&#x27;name&#x27;</span>);</span><br><span class="line"><span class="comment">// &#123;value: &#x27;Jerry&#x27;, writable: false, enumerable: false, configuarable: false&#125;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>要注意的是，使用兩種物件屬性的定義方式在 <code>writable</code>、<code>enumerable</code> 和 <code>configurable</code> 這三種屬性描述器上會有不同的預設值，使用 <code>Object.definedProperty</code> 定義的物件屬性的預設值會是 <code>false</code>，直接定義物件的預設值則會是 <code>true</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">&#x27;name&#x27;</span>, &#123;</span><br><span class="line">  value: <span class="string">&#x27;Jerry&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line">person.name = <span class="string">&quot;Tom&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(person.name);   <span class="comment">// Jerry</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDescriptor(person, <span class="string">&#x27;name&#x27;</span>));   </span><br><span class="line"><span class="comment">// &#123;value: &quot;Jerry&quot;, writable: false, enumerable: false, configurable: false&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Person = &#123;</span><br><span class="line">  name: <span class="string">&#x27;Jerry&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line">Person.name = <span class="string">&quot;Tom&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(Person.name);   <span class="comment">// Tom</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDescriptor(Person, <span class="string">&#x27;name&#x27;</span>))</span><br><span class="line"><span class="comment">// &#123;value: &quot;Jerry&quot;, writable: true, enumerable: true, configurable: true&#125;</span></span><br></pre></td></tr></table></figure>
@@ -341,7 +355,7 @@
 <h3 id="繼承判斷"><a href="#繼承判斷" class="headerlink" title="繼承判斷"></a>繼承判斷</h3><p>透過 <code>hasOwnProperty()</code> 可以判斷該屬性是物件本身所有還是繼承而來的</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.name = <span class="string">&#x27;Jerry&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Person.prototype.age = <span class="number">18</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person;</span><br><span class="line"><span class="built_in">console</span>.log(p.name);   <span class="comment">// &quot;Jerry&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(p.age);   <span class="comment">// 18</span></span><br><span class="line"><span class="built_in">console</span>.log(p.hasOwnProperty(<span class="string">&#x27;name&#x27;</span>));   <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(p.hasOwnProperty(<span class="string">&#x27;age&#x27;</span>));   <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="物件的-proto-屬性"><a href="#物件的-proto-屬性" class="headerlink" title="物件的 __proto__ 屬性"></a>物件的 <code>__proto__</code> 屬性</h3><p>從上方的 <a href="#建構式與原型">建構式與原型</a> 中可以知道，當透過函式建構出一個新的物件時，這個新物件的原型會自動指向函式的原型物件 <code>prototype</code></p>
+<h3 id="物件的-proto-屬性"><a href="#物件的-proto-屬性" class="headerlink" title="物件的 __proto__ 屬性"></a>物件的 <code>__proto__</code> 屬性</h3><p>從上方的 <a href="#%E5%BB%BA%E6%A7%8B%E5%BC%8F%E8%88%87%E5%8E%9F%E5%9E%8B">建構式與原型</a> 中可以知道，當透過函式建構出一個新的物件時，這個新物件的原型會自動指向函式的原型物件 <code>prototype</code></p>
 <p>在 JavaScript 中，所有物件都有 <code>__proto__</code> 這個特殊屬性，這個屬性會指向這個物件的原型物件 ; 在 ES5 中，也可以透過 <code>Object.getPropertyOf()</code> 這個方法來取得物件的原型物件</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person(<span class="string">&#x27;Jerry&#x27;</span>);</span><br><span class="line"></span><br><span class="line">Person.prototype.sayHello = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;Hi! &quot;</span> + <span class="built_in">this</span>.name;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p.sayHello());</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getPrototypeOf(p) === Person.prototype);   <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getPrototypeOf(p) === <span class="built_in">Function</span>.prototype);   <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getPrototypeOf(Person) === <span class="built_in">Function</span>.prototype);   <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p.__proto__ === Person.prototype);   <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(p.__proto__ === <span class="built_in">Function</span>.prototype);   <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(Person.__proto__ === <span class="built_in">Function</span>.prototype);   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
@@ -351,17 +365,14 @@
 <h3 id="物件與原型繼承"><a href="#物件與原型繼承" class="headerlink" title="物件與原型繼承"></a>物件與原型繼承</h3><p>前面都是透過建構式來介紹，但直接透過物件來繼承是比較常見的做法</p>
 <ul>
 <li><p>第一種是上方所提到的 Object.setPropertyOf()</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.setPropertyOf(p, Person);</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.setPropertyOf(p, Person);</span><br></pre></td></tr></table></figure></li>
 <li><p>第二種是透過 <code>Object.create()</code> 來建立一個新物件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Person = &#123;</span><br><span class="line">  name: <span class="string">&#x27;Jerry&#x27;</span>,</span><br><span class="line">  sayHello: <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hi! &quot;</span> + <span class="built_in">this</span>.name</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p = <span class="built_in">Object</span>.create(Person);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p.sayHello());   <span class="comment">// &quot;Hi! Jerry&quot;</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Person = &#123;</span><br><span class="line">  name: <span class="string">&#x27;Jerry&#x27;</span>,</span><br><span class="line">  sayHello: <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hi! &quot;</span> + <span class="built_in">this</span>.name</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p = <span class="built_in">Object</span>.create(Person);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p.sayHello());   <span class="comment">// &quot;Hi! Jerry&quot;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>而 <code>Object.create()</code> 背後的原理是將物件作為參數帶入，先建立一個新函式，再將這個函式的原型指向這個物件，最後回傳一個 <code>new</code> 的新物件</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.create = <span class="function"><span class="keyword">function</span>(<span class="params">proto</span>)</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">F</span> (<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">  F.prototype = proto;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="proto-amp-prototype"><a href="#proto-amp-prototype" class="headerlink" title="proto &amp; prototype"></a><strong>proto</strong> &amp; prototype</h3><p>總結一下<code>__proto__</code> &amp; <code>prototype</code> 的關係，JavaScript 的內建物件 <code>Array``、Function</code> 等，這些物件的 <code>prototype</code> 屬性本身也是一個物件，而這些屬性實際上都是繼承自最頂層物件 <code>Object.prototype</code></p>
+<h3 id="proto-amp-prototype"><a href="#proto-amp-prototype" class="headerlink" title="proto &amp; prototype"></a><strong>proto</strong> &amp; prototype</h3><p>總結一下<code> __proto__</code> &amp; <code>prototype</code> 的關係，JavaScript 的內建物件 <code>Array``、Function</code> 等，這些物件的 <code>prototype</code> 屬性本身也是一個物件，而這些屬性實際上都是繼承自最頂層物件 <code>Object.prototype</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getPrototypeOf(<span class="built_in">Function</span>.prototype) === <span class="built_in">Object</span>.prototype);   <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Function</span>.prototype.__proto__ === <span class="built_in">Object</span>.prototype);   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
 <p>由此可知下層物件的 <code>__proto__</code> 屬性都會指向上層物件的 <code>prototype</code> 屬性，這就是 JavaScript 的繼承關係</p>
@@ -373,133 +384,42 @@
     
     
 
-      <footer class="post-footer">
+    <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/javascript/" rel="tag"># JavaScript</a>
           </div>
 
         
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/javascript/20191105/30734/" rel="prev" title="JavaScript 中的傳值與傳址">
-      <i class="fa fa-chevron-left"></i> JavaScript 中的傳值與傳址
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/javascript/20191105/37805/" rel="next" title="JavaScript 同步與非同步">
-      JavaScript 同步與非同步 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/javascript/20191105/30734/" rel="prev" title="JavaScript 中的傳值與傳址">
+                  <i class="fa fa-chevron-left"></i> JavaScript 中的傳值與傳址
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/javascript/20191105/37805/" rel="next" title="JavaScript 同步與非同步">
+                  JavaScript 同步與非同步 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目錄
-        </li>
-        <li class="sidebar-nav-overview">
-          本站概要
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cascade-%E4%B8%B2%E8%81%AF"><span class="nav-number">1.</span> <span class="nav-text">Cascade 串聯</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E5%AF%AB%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">一般寫法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cascade-%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">Cascade 的方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6-Object"><span class="nav-number">2.</span> <span class="nav-text">物件 Object</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9E%8B%E5%88%A5-Type"><span class="nav-number">2.1.</span> <span class="nav-text">型別 Type</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%9E%8B%E5%88%A5"><span class="nav-number">2.1.1.</span> <span class="nav-text">基本型別</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E8%A8%82%E7%89%A9%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">自訂物件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E6%A7%8B%E5%BC%8F-Constructor"><span class="nav-number">2.3.</span> <span class="nav-text">建構式 Constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%AC%E6%80%A7%E6%8F%8F%E8%BF%B0%E5%99%A8-Property-descriptor"><span class="nav-number">2.4.</span> <span class="nav-text">屬性描述器 Property descriptor</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9%E5%B1%AC%E6%80%A7-Object-defineProperty-%E8%88%87-%E6%9F%A5%E8%A9%A2%E5%B1%AC%E6%80%A7%E6%8F%8F%E8%BF%B0-Object-getOwnPropertyDescriptor"><span class="nav-number">2.4.1.</span> <span class="nav-text">定義屬性 Object.defineProperty 與 查詢屬性描述 Object.getOwnPropertyDescriptor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%AC%E6%80%A7%E6%8F%8F%E8%BF%B0%E5%99%A8-get-%E8%88%87-set"><span class="nav-number">2.4.2.</span> <span class="nav-text">屬性描述器 get 與 set</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%9E%8B%E5%88%A5%E5%8C%85%E8%A3%B9%E5%99%A8-Primitive-Wrapper"><span class="nav-number">3.</span> <span class="nav-text">基本型別包裹器 Primitive Wrapper</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E5%9E%8B%E5%88%A5"><span class="nav-number">3.1.</span> <span class="nav-text">物件型別</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%9E%8B%E5%88%A5%E5%8C%85%E8%A3%B9%E5%99%A8-Primitive-Wrapper-1"><span class="nav-number">3.2.</span> <span class="nav-text">基本型別包裹器 Primitive Wrapper</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E8%88%87%E5%8E%9F%E5%9E%8B%E9%8D%8A-Object-amp-Prototype-Chain"><span class="nav-number">4.</span> <span class="nav-text">物件與原型鍊 Object &amp; Prototype Chain</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%9E%8B%E9%8D%8A-Prototype-Chain"><span class="nav-number">4.1.</span> <span class="nav-text">原型鍊 Prototype Chain</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-setPrototypeOf-%E2%80%9C%E7%B9%BC%E6%89%BF%E8%80%85%E2%80%9D-%E2%80%9C%E5%8E%9F%E5%9E%8B%E2%80%9D"><span class="nav-number">4.1.1.</span> <span class="nav-text">Object.setPrototypeOf(“繼承者”, “原型”)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E9%A0%82%E5%B1%A4%E5%8E%9F%E5%9E%8B%E7%89%A9%E4%BB%B6-Object-prototype"><span class="nav-number">4.2.</span> <span class="nav-text">最頂層原型物件 Object.prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E6%A7%8B%E5%BC%8F%E8%88%87%E5%8E%9F%E5%9E%8B"><span class="nav-number">4.3.</span> <span class="nav-text">建構式與原型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B9%BC%E6%89%BF%E5%88%A4%E6%96%B7"><span class="nav-number">4.4.</span> <span class="nav-text">繼承判斷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E7%9A%84-proto-%E5%B1%AC%E6%80%A7"><span class="nav-number">4.5.</span> <span class="nav-text">物件的 __proto__ 屬性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E8%88%87%E5%8E%9F%E5%9E%8B%E7%B9%BC%E6%89%BF"><span class="nav-number">4.6.</span> <span class="nav-text">物件與原型繼承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#proto-amp-prototype"><span class="nav-number">4.7.</span> <span class="nav-text">proto &amp; prototype</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E5%8F%83%E8%80%83"><span class="nav-number">5.</span> <span class="nav-text">資料參考</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Yeh</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">58</span>
-          <span class="site-state-item-name">文章</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-        <span class="site-state-item-count">11</span>
-        <span class="site-state-item-name">分類</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-        <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">標籤</span></a>
-      </div>
-  </nav>
+    </footer>
+  </article>
 </div>
 
 
 
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
 
 
-      </div>
-    </main>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
+</div>
+  </main>
 
-        
+  <footer class="footer">
+    <div class="footer-inner">
+
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -507,36 +427,17 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Yeh</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Muse</a> 強力驅動
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 強力驅動
   </div>
 
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
+  
 
 
 
@@ -546,20 +447,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
 
 </body>
 </html>

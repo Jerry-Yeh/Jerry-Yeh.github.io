@@ -2,9 +2,11 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
+
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -13,14 +15,12 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jerry-yeh.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="前言Sass 是一種指令碼解析成 CSS 的手稿語言，即 SassScript。Sass 檔案本身本身不被瀏覽器所讀取，需要透過 Sass 直譯器將 SassScript 轉成 CSS 語法的 CSS 檔案。同時，SassScript 直譯器會同時對 Sass 檔案進行監視，即時更新 CSS 檔案。">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jerry-yeh.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="前言Sass 是一種指令碼解析成 CSS 的手稿語言，即 SassScript。Sass 檔案本身本身不被瀏覽器所讀取，需要透過 Sass 直譯器將 SassScript 轉成 CSS 語法的 CSS 檔案。同時，SassScript 直譯器會同時對 Sass 檔案進行監視，即時更新 CSS 檔案。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sass 簡介">
 <meta property="og:url" content="https://jerry-yeh.github.io/scss/20190924/ad533d91/index.html">
@@ -42,72 +42,42 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jerry-yeh.github.io/scss/20190924/ad533d91/prepros-1.png">
 
+
 <link rel="canonical" href="https://jerry-yeh.github.io/scss/20190924/ad533d91/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-TW'
-  };
-</script>
 
-  <title>Sass 簡介 | JustNOTE</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://jerry-yeh.github.io/scss/20190924/ad533d91/","path":"scss/20190924/ad533d91/","title":"Sass 簡介"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Sass 簡介 | JustNOTE</title>
   
 
 
 
 
-
-
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切換導航欄">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切換導航欄" role="button">
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
+      <i class="logo-line"></i>
       <h1 class="site-title">JustNOTE</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
     </a>
   </div>
 
@@ -120,46 +90,98 @@
 
 
 
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
-
-  </li>
-  </ul>
-</nav>
-
 
 
 
 </div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sass-%E6%9C%89%E4%BB%80%E9%BA%BC%E5%A5%BD%E8%99%95"><span class="nav-number">2.</span> <span class="nav-text">Sass 有什麼好處 ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sass-%E8%88%87-Scss"><span class="nav-number">3.</span> <span class="nav-text">Sass 與 Scss</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E8%88%AC-CSS-%E5%AF%AB%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">一般 CSS 寫法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SASS-%E5%AF%AB%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">SASS 寫法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SCSS-%E5%AF%AB%E6%B3%95"><span class="nav-number">3.3.</span> <span class="nav-text">SCSS 寫法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A2%E7%8B%80%E7%B5%90%E6%A7%8B"><span class="nav-number">4.</span> <span class="nav-text">巢狀結構</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#amp-%E9%80%A3%E6%8E%A5%E7%AC%A6%E8%99%9F"><span class="nav-number">5.</span> <span class="nav-text">&amp; 連接符號</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sass-%E7%B7%A8%E8%AD%AF%E6%96%B9%E5%BC%8F"><span class="nav-number">6.</span> <span class="nav-text">Sass 編譯方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BB%9F%E9%AB%94%E7%B7%A8%E8%AD%AF-prepros"><span class="nav-number">6.1.</span> <span class="nav-text">軟體編譯 : prepros</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B7%A8%E8%BC%AF%E5%99%A8%E5%85%A7%E5%BB%BA%E6%8F%92%E4%BB%B6-VS-Code-%E5%85%A7%E5%BB%BA%E7%9A%84-Live-Sass-Compiler"><span class="nav-number">6.2.</span> <span class="nav-text">編輯器內建插件 :　VS Code 內建的 Live Sass Compiler</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E4%BB%BB%E5%8B%99%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7-gulp%E3%80%81webpack-%E9%9C%80%E7%94%A8%E5%88%B0-JavaScirpt%EF%BC%8C%E5%9C%A8%E6%AD%A4%E5%85%88%E4%B8%8D%E4%BB%8B%E7%B4%B9"><span class="nav-number">6.3.</span> <span class="nav-text">前端任務打包工具 : gulp、webpack (需用到 JavaScirpt，在此先不介紹)</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yeh</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
     </header>
 
     
-  <div class="back-to-top">
+  <div class="back-to-top" role="button" aria-label="回到頂端">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
 
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
 
-          <div class="content post posts-expand">
-            
+    <div class="main-inner post posts-expand">
 
-    
+
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/scss/20190924/ad533d91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -176,27 +198,29 @@
           Sass 簡介
         </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
 
-              <time title="創建時間：2019-09-24 17:32:57 / 修改時間：22:36:51" itemprop="dateCreated datePublished" datetime="2019-09-24T17:32:57+08:00">2019-09-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/scss/" itemprop="url" rel="index"><span itemprop="name">Scss</span></a>
-                </span>
-            </span>
+      <time title="創建時間：2019-09-24 17:32:57 / 修改時間：22:36:51" itemprop="dateCreated datePublished" datetime="2019-09-24T17:32:57+08:00">2019-09-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/scss/" itemprop="url" rel="index"><span itemprop="name">Scss</span></a>
+        </span>
+    </span>
 
-          
+  
+</div>
 
         </div>
       </header>
@@ -205,8 +229,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Sass 是一種指令碼解析成 CSS 的手稿語言，即 SassScript。Sass 檔案本身本身不被瀏覽器所讀取，需要透過 Sass 直譯器將 SassScript 轉成 CSS 語法的 CSS 檔案。同時，SassScript 直譯器會同時對 Sass 檔案進行監視，即時更新 CSS 檔案。</p>
 <span id="more"></span>
 
@@ -235,37 +257,42 @@
 <h2 id="Sass-編譯方式"><a href="#Sass-編譯方式" class="headerlink" title="Sass 編譯方式"></a>Sass 編譯方式</h2><p>Sass 檔案無法被瀏覽器解讀，需要編譯成 CSS 檔案，而編譯方式一共有三種，在此先介紹兩種</p>
 <h3 id="軟體編譯-prepros"><a href="#軟體編譯-prepros" class="headerlink" title="軟體編譯 : prepros"></a>軟體編譯 : prepros</h3><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://prepros.io/">prepros 官方網站</a></p>
 <ol>
-<li><p>從網站下載完後，開啟 prepros，將整個跟目錄資料夾拖曳到 prepros 內，也可以藉由左下角的 <code>+</code> 將檔案拉到 prepros 內</p>
-<p><img src="prepros-1.png" alt></p>
-</li>
-<li><p>拖曳到 prepros 後會自動產生一個名為 <code>prepros-6.config</code> 設定檔，就可以開始新增 <code>scss</code> 資料夾，並在裡面建立 <code>.scss</code> 檔案</p>
-<p><img src="prepros-2.png" alt></p>
-</li>
-<li><p>所有在裡面的檔案都會出現在 prepros 的 <code>Files</code> 欄位</p>
-<p><img src="prepros-3.png" alt></p>
-</li>
-<li><p>在檔案內撰寫存檔後，prepros 就會自動在根目錄幫你建立相對的 <code>css</code> 資料夾，同時在裡面也建立相對的 <code>.css</code> 檔案</p>
-<p><img src="prepros-4.png" alt></p>
-</li>
-<li><p>所有編輯的紀錄都會出現在 prepros 的 <code>log</code> 欄位，如果編輯失敗也會列出錯誤的位置</p>
-<p><img src="prepros-5.png" alt></p>
-</li>
+<li>從網站下載完後，開啟 prepros，將整個跟目錄資料夾拖曳到 prepros 內，也可以藉由左下角的 <code>+</code> 將檔案拉到 prepros 內</li>
 </ol>
+<p>  <img src="prepros-1.png"></p>
+<ol start="2">
+<li>拖曳到 prepros 後會自動產生一個名為 <code>prepros-6.config</code> 設定檔，就可以開始新增 <code>scss</code> 資料夾，並在裡面建立 <code>.scss</code> 檔案</li>
+</ol>
+<p>  <img src="prepros-2.png"></p>
+<ol start="3">
+<li>所有在裡面的檔案都會出現在 prepros 的 <code>Files</code> 欄位</li>
+</ol>
+<p>  <img src="prepros-3.png"></p>
+<ol start="4">
+<li>在檔案內撰寫存檔後，prepros 就會自動在根目錄幫你建立相對的 <code>css</code> 資料夾，同時在裡面也建立相對的 <code>.css</code> 檔案</li>
+</ol>
+<p>  <img src="prepros-4.png"></p>
+<ol start="5">
+<li>所有編輯的紀錄都會出現在 prepros 的 <code>log</code> 欄位，如果編輯失敗也會列出錯誤的位置</li>
+</ol>
+<p>  <img src="prepros-5.png"></p>
 <h3 id="編輯器內建插件-VS-Code-內建的-Live-Sass-Compiler"><a href="#編輯器內建插件-VS-Code-內建的-Live-Sass-Compiler" class="headerlink" title="編輯器內建插件 :　VS Code 內建的 Live Sass Compiler"></a>編輯器內建插件 :　VS Code 內建的 Live Sass Compiler</h3><ol>
-<li><p>如果是 <code>VS Code</code> 的使用者，可以下載名為 <code>Live Sass Compiler</code> 的插件</p>
-<p><img src="live-sass-1.png" alt></p>
-</li>
-<li><p>下載後，開啟檔案下方會出現 <code>Watch Sass</code> 按鈕，按下後就會開始監聽 <code>sass</code> 檔案，並建立相對的 <code>css</code> 檔案，且及時更新</p>
-<p><img src="live-sass-2.png" alt></p>
-</li>
-<li><p>如果 Sass 檔案編譯出現錯誤，會在下方的 輸出 欄位顯示 <code>Error</code>，並列出錯誤的位置</p>
-<p><img src="live-sass-3.png" alt></p>
-</li>
-<li><p>如果想要改變 css 檔案的路徑，可以在設定中 <code>setting.json</code>，新增以下程式碼</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&quot;liveSassCompile.settings.formats&quot;:[</span><br><span class="line">  <span class="comment">// 預設為在 css 資料夾中產生相對的 .css 檔案</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">&quot;format&quot;</span>: <span class="string">&quot;expanded&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;extensionName&quot;</span>: <span class="string">&quot;.css&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;savePath&quot;</span>: <span class="string">&quot;/css&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 生成壓縮檔</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">&quot;format&quot;</span>: <span class="string">&quot;compressed&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;extensionName&quot;</span>: <span class="string">&quot;.min.css&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;savePath&quot;</span>: <span class="string">&quot;/css&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>如果是 <code>VS Code</code> 的使用者，可以下載名為 <code>Live Sass Compiler</code> 的插件</li>
 </ol>
+<p>  <img src="live-sass-1.png"></p>
+<ol start="2">
+<li>下載後，開啟檔案下方會出現 <code>Watch Sass</code> 按鈕，按下後就會開始監聽 <code>sass</code> 檔案，並建立相對的 <code>css</code> 檔案，且及時更新</li>
+</ol>
+<p>  <img src="live-sass-2.png"></p>
+<ol start="3">
+<li>如果 Sass 檔案編譯出現錯誤，會在下方的 輸出 欄位顯示 <code>Error</code>，並列出錯誤的位置</li>
+</ol>
+<p>  <img src="live-sass-3.png"></p>
+<ol start="4">
+<li>如果想要改變 css 檔案的路徑，可以在設定中 <code>setting.json</code>，新增以下程式碼</li>
+</ol>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&quot;liveSassCompile.settings.formats&quot;:[</span><br><span class="line">  <span class="comment">// 預設為在 css 資料夾中產生相對的 .css 檔案</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">&quot;format&quot;</span>: <span class="string">&quot;expanded&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;extensionName&quot;</span>: <span class="string">&quot;.css&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;savePath&quot;</span>: <span class="string">&quot;/css&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 生成壓縮檔</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">&quot;format&quot;</span>: <span class="string">&quot;compressed&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;extensionName&quot;</span>: <span class="string">&quot;.min.css&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;savePath&quot;</span>: <span class="string">&quot;/css&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
 <h3 id="前端任務打包工具-gulp、webpack-需用到-JavaScirpt，在此先不介紹"><a href="#前端任務打包工具-gulp、webpack-需用到-JavaScirpt，在此先不介紹" class="headerlink" title="前端任務打包工具 : gulp、webpack (需用到 JavaScirpt，在此先不介紹)"></a>前端任務打包工具 : gulp、webpack (需用到 JavaScirpt，在此先不介紹)</h3>
     </div>
 
@@ -273,130 +300,39 @@
     
     
 
-      <footer class="post-footer">
+    <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/scss/" rel="tag"># Scss</a>
           </div>
 
         
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item"></div>
-      <div class="post-nav-item">
-    <a href="/scss/20190924/4740e2f1/" rel="next" title="Scss 變數">
-      Scss 變數 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/scss/20190924/4740e2f1/" rel="next" title="Scss 變數">
+                  Scss 變數 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目錄
-        </li>
-        <li class="sidebar-nav-overview">
-          本站概要
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sass-%E6%9C%89%E4%BB%80%E9%BA%BC%E5%A5%BD%E8%99%95"><span class="nav-number">2.</span> <span class="nav-text">Sass 有什麼好處 ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sass-%E8%88%87-Scss"><span class="nav-number">3.</span> <span class="nav-text">Sass 與 Scss</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E8%88%AC-CSS-%E5%AF%AB%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">一般 CSS 寫法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SASS-%E5%AF%AB%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">SASS 寫法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SCSS-%E5%AF%AB%E6%B3%95"><span class="nav-number">3.3.</span> <span class="nav-text">SCSS 寫法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A2%E7%8B%80%E7%B5%90%E6%A7%8B"><span class="nav-number">4.</span> <span class="nav-text">巢狀結構</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#amp-%E9%80%A3%E6%8E%A5%E7%AC%A6%E8%99%9F"><span class="nav-number">5.</span> <span class="nav-text">&amp; 連接符號</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sass-%E7%B7%A8%E8%AD%AF%E6%96%B9%E5%BC%8F"><span class="nav-number">6.</span> <span class="nav-text">Sass 編譯方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BB%9F%E9%AB%94%E7%B7%A8%E8%AD%AF-prepros"><span class="nav-number">6.1.</span> <span class="nav-text">軟體編譯 : prepros</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B7%A8%E8%BC%AF%E5%99%A8%E5%85%A7%E5%BB%BA%E6%8F%92%E4%BB%B6-VS-Code-%E5%85%A7%E5%BB%BA%E7%9A%84-Live-Sass-Compiler"><span class="nav-number">6.2.</span> <span class="nav-text">編輯器內建插件 :　VS Code 內建的 Live Sass Compiler</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E4%BB%BB%E5%8B%99%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7-gulp%E3%80%81webpack-%E9%9C%80%E7%94%A8%E5%88%B0-JavaScirpt%EF%BC%8C%E5%9C%A8%E6%AD%A4%E5%85%88%E4%B8%8D%E4%BB%8B%E7%B4%B9"><span class="nav-number">6.3.</span> <span class="nav-text">前端任務打包工具 : gulp、webpack (需用到 JavaScirpt，在此先不介紹)</span></a></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Yeh</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">58</span>
-          <span class="site-state-item-name">文章</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-        <span class="site-state-item-count">11</span>
-        <span class="site-state-item-name">分類</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-        <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">標籤</span></a>
-      </div>
-  </nav>
+    </footer>
+  </article>
 </div>
 
 
 
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
 
 
-      </div>
-    </main>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
+</div>
+  </main>
 
-        
+  <footer class="footer">
+    <div class="footer-inner">
+
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -404,36 +340,17 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Yeh</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Muse</a> 強力驅動
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 強力驅動
   </div>
 
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
+  
 
 
 
@@ -443,20 +360,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
 
 </body>
 </html>

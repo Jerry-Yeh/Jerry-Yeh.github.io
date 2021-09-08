@@ -2,9 +2,11 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
+
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -13,14 +15,12 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jerry-yeh.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="變數為 JS 用來儲存資料和進行運算的基本單位，可以視為一個存放資料的盒子，透過 var 來宣告，ES6 開始可以使用 let 和 const 來宣告，關於 ES6 於之後的文章再作介紹">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jerry-yeh.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="變數為 JS 用來儲存資料和進行運算的基本單位，可以視為一個存放資料的盒子，透過 var 來宣告，ES6 開始可以使用 let 和 const 來宣告，關於 ES6 於之後的文章再作介紹">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JaveScript入門篇 - 變數">
 <meta property="og:url" content="https://jerry-yeh.github.io/javascript/20190926/b2bfbc85/index.html">
@@ -33,72 +33,42 @@
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
 
+
 <link rel="canonical" href="https://jerry-yeh.github.io/javascript/20190926/b2bfbc85/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-TW'
-  };
-</script>
 
-  <title>JaveScript入門篇 - 變數 | JustNOTE</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://jerry-yeh.github.io/javascript/20190926/b2bfbc85/","path":"javascript/20190926/b2bfbc85/","title":"JaveScript入門篇 - 變數"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JaveScript入門篇 - 變數 | JustNOTE</title>
   
 
 
 
 
-
-
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切換導航欄">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切換導航欄" role="button">
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
+      <i class="logo-line"></i>
       <h1 class="site-title">JustNOTE</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
     </a>
   </div>
 
@@ -111,46 +81,98 @@
 
 
 
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
-
-  </li>
-  </ul>
-</nav>
-
 
 
 
 </div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%8A%E6%95%B8%E7%9A%84%E8%A6%8F%E5%89%87"><span class="nav-number">1.</span> <span class="nav-text">變數的規則</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E5%88%A5"><span class="nav-number">2.</span> <span class="nav-text">變數的資料型別</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B8%E5%AD%97-number"><span class="nav-number">2.1.</span> <span class="nav-text">數字 number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E4%B8%B2-string"><span class="nav-number">2.2.</span> <span class="nav-text">字串 string</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E6%9E%97%E5%80%BC-boolean"><span class="nav-number">2.3.</span> <span class="nav-text">布林值 boolean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E5%80%BC-null"><span class="nav-number">2.4.</span> <span class="nav-text">空值 null</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AA%E5%AE%9A%E7%BE%A9-undefined"><span class="nav-number">2.5.</span> <span class="nav-text">未定義 undefined</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6-object"><span class="nav-number">2.6.</span> <span class="nav-text">物件 object</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yeh</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
     </header>
 
     
-  <div class="back-to-top">
+  <div class="back-to-top" role="button" aria-label="回到頂端">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
 
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
 
-          <div class="content post posts-expand">
-            
+    <div class="main-inner post posts-expand">
 
-    
+
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20190926/b2bfbc85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -167,27 +189,29 @@
           JaveScript入門篇 - 變數
         </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
 
-              <time title="創建時間：2019-09-26 17:52:20 / 修改時間：18:55:44" itemprop="dateCreated datePublished" datetime="2019-09-26T17:52:20+08:00">2019-09-26</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
+      <time title="創建時間：2019-09-26 17:52:20 / 修改時間：18:55:44" itemprop="dateCreated datePublished" datetime="2019-09-26T17:52:20+08:00">2019-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
 
-          
+  
+</div>
 
         </div>
       </header>
@@ -196,26 +220,21 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
         <p>變數為 JS 用來儲存資料和進行運算的基本單位，可以視為一個存放資料的盒子，透過 <code>var</code> 來宣告，<code>ES6</code> 開始可以使用 <code>let</code> 和 <code>const</code> 來宣告，關於 <code>ES6</code> 於之後的文章再作介紹</p>
 <span id="more"></span>
 
 <h2 id="變數的規則"><a href="#變數的規則" class="headerlink" title="變數的規則"></a>變數的規則</h2><ul>
 <li><p>開頭不能是數字</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> 3k = <span class="number">30</span>;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> 3k = <span class="number">30</span>;</span><br></pre></td></tr></table></figure></li>
 <li><p>不能使用中線 <code>-</code> 和點 <code>.</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box-number = <span class="number">30</span>;</span><br><span class="line"><span class="keyword">var</span> box.number = <span class="number">30</span>;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box-number = <span class="number">30</span>;</span><br><span class="line"><span class="keyword">var</span> box.number = <span class="number">30</span>;</span><br></pre></td></tr></table></figure></li>
 <li><p>不能使用關鍵字</p>
 <p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.w3schools.com/js/js_reserved.asp">JS 關鍵字列表</a></p>
 </li>
 <li><p>大小寫有區分，變數 <code>app</code> 不等於 <code>App</code></p>
 </li>
 <li><p>盡量使用語意化命名，能透過名稱了解功能</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> price = <span class="number">30</span>;</span><br><span class="line"><span class="keyword">var</span> total = <span class="number">100</span>;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> price = <span class="number">30</span>;</span><br><span class="line"><span class="keyword">var</span> total = <span class="number">100</span>;</span><br></pre></td></tr></table></figure></li>
 <li><p>變數名稱是可以使用非英文(中文)的，但在其他語言系統可能會出現亂碼，所以還是盡量避免</p>
 </li>
 </ul>
@@ -226,26 +245,20 @@
 <p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://javascriptrefined.io/null-and-typeof-9330e475d272">Null and typeof</a><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://2ality.com/2013/10/typeof-null.html">The history of “typeof null”</a></p>
 <ul>
 <li><h3 id="數字-number"><a href="#數字-number" class="headerlink" title="數字 number"></a>數字 number</h3><p>分為整數和浮點數(有小數)，可以透過加 <code>+</code> 、減 <code>-</code>、乘 <code>*</code>、除 <code>/</code> 來做運算</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">10.32</span>;</span><br><span class="line"><span class="keyword">var</span> c = <span class="number">3</span> + <span class="number">4</span>;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">10.32</span>;</span><br><span class="line"><span class="keyword">var</span> c = <span class="number">3</span> + <span class="number">4</span>;</span><br></pre></td></tr></table></figure></li>
 <li><h3 id="字串-string"><a href="#字串-string" class="headerlink" title="字串 string"></a>字串 string</h3><ul>
 <li><p>字串必須用單引號 <code>&#39;&#39;</code> 或雙引號 <code>&quot;&quot;</code> 將其包住，而兩者不可混用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str1 = <span class="string">&quot;字串1&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">&quot;字串2&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> str3 = <span class="string">&quot;字串3&#x27;;  // error</span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str1 = <span class="string">&quot;字串1&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">&quot;字串2&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> str3 = <span class="string">&quot;字串3&#x27;;  // error</span></span><br></pre></td></tr></table></figure></li>
 <li><p>如果內容出現單引號 ‘，就只能用雙引號 <code>&quot;&quot;</code> 包住，若非用不可，可以使用反斜線 <code>\</code> 跳脫字元 (escape character)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;Let&#x27;</span>s go!<span class="string">&#x27;;  // error</span></span><br><span class="line"><span class="string">var str = &quot;Let&#x27;</span>s go!<span class="string">&quot;; // OK</span></span><br><span class="line"><span class="string">var str = &#x27;Let\&#x27;s go!&#x27;;  // OK</span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;Let&#x27;</span>s go!<span class="string">&#x27;;  // error</span></span><br><span class="line"><span class="string">var str = &quot;Let&#x27;</span>s go!<span class="string">&quot;; // OK</span></span><br><span class="line"><span class="string">var str = &#x27;Let\&#x27;s go!&#x27;;  // OK</span></span><br></pre></td></tr></table></figure></li>
 <li><p>可以使用加號 <code>+</code> 來組合字串</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;Hello&#x27;</span>+<span class="string">&#x27;World&#x27;</span>;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;Hello&#x27;</span>+<span class="string">&#x27;World&#x27;</span>;</span><br></pre></td></tr></table></figure></li>
 <li><p>多行字串可以透過反斜線 <code>\</code> 來換行繼續，注意 每行的反斜線 <code>\</code> 之後不能有任何東西，包括 <code>空白</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;第一行 \</span></span><br><span class="line"><span class="string">第二行 \</span></span><br><span class="line"><span class="string">第三行&#x27;</span>;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;第一行 \</span></span><br><span class="line"><span class="string">第二行 \</span></span><br><span class="line"><span class="string">第三行&#x27;</span>;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><h3 id="布林值-boolean"><a href="#布林值-boolean" class="headerlink" title="布林值 boolean"></a>布林值 <code>boolean</code></h3><p>分為 true 和 false 兩種，通常用在判斷式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c = (<span class="number">100</span> &gt; <span class="number">10</span>);  <span class="comment">//true </span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c = (<span class="number">100</span> &gt; <span class="number">10</span>);  <span class="comment">//true </span></span><br></pre></td></tr></table></figure></li>
 <li><h3 id="空值-null"><a href="#空值-null" class="headerlink" title="空值 null"></a>空值 <code>null</code></h3><p>代表曾經有值或沒有值，但現在此變數沒有值</p>
 </li>
 <li><h3 id="未定義-undefined"><a href="#未定義-undefined" class="headerlink" title="未定義 undefined"></a>未定義 <code>undefined</code></h3><p>變數的宣告分成兩個步驟，”宣告” 與 “賦值”，當已經宣告變數但還未賦值時，就會出現 <code>undefined</code></p>
@@ -260,133 +273,42 @@
     
     
 
-      <footer class="post-footer">
+    <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/javascript/" rel="tag"># JavaScript</a>
           </div>
 
         
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/javascript/20190926/e0d364c/" rel="prev" title="JavaScript入門篇 - JavaScript簡介與環境">
-      <i class="fa fa-chevron-left"></i> JavaScript入門篇 - JavaScript簡介與環境
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/javascript/20190926/b767e9f3/" rel="next" title="JavaScript入門篇 - function">
-      JavaScript入門篇 - function <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/javascript/20190926/e0d364c/" rel="prev" title="JavaScript入門篇 - JavaScript簡介與環境">
+                  <i class="fa fa-chevron-left"></i> JavaScript入門篇 - JavaScript簡介與環境
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/javascript/20190926/b767e9f3/" rel="next" title="JavaScript入門篇 - function">
+                  JavaScript入門篇 - function <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目錄
-        </li>
-        <li class="sidebar-nav-overview">
-          本站概要
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%8A%E6%95%B8%E7%9A%84%E8%A6%8F%E5%89%87"><span class="nav-number">1.</span> <span class="nav-text">變數的規則</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E5%88%A5"><span class="nav-number">2.</span> <span class="nav-text">變數的資料型別</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B8%E5%AD%97-number"><span class="nav-number">2.1.</span> <span class="nav-text">數字 number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E4%B8%B2-string"><span class="nav-number">2.2.</span> <span class="nav-text">字串 string</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E6%9E%97%E5%80%BC-boolean"><span class="nav-number">2.3.</span> <span class="nav-text">布林值 boolean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E5%80%BC-null"><span class="nav-number">2.4.</span> <span class="nav-text">空值 null</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AA%E5%AE%9A%E7%BE%A9-undefined"><span class="nav-number">2.5.</span> <span class="nav-text">未定義 undefined</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6-object"><span class="nav-number">2.6.</span> <span class="nav-text">物件 object</span></a></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Yeh</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">58</span>
-          <span class="site-state-item-name">文章</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-        <span class="site-state-item-count">11</span>
-        <span class="site-state-item-name">分類</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-        <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">標籤</span></a>
-      </div>
-  </nav>
+    </footer>
+  </article>
 </div>
 
 
 
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
 
 
-      </div>
-    </main>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
+</div>
+  </main>
 
-        
+  <footer class="footer">
+    <div class="footer-inner">
+
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -394,36 +316,17 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Yeh</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Muse</a> 強力驅動
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 強力驅動
   </div>
 
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
+  
 
 
 
@@ -433,20 +336,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
 
 </body>
 </html>

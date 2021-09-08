@@ -2,9 +2,11 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
+
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -13,14 +15,12 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jerry-yeh.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="JavaScript 的變數再賦予不同型別的時候，會有同的傳遞方式，以 “基本型別” Primitive 和 “物件型別” Object 作為區分">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jerry-yeh.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="JavaScript 的變數再賦予不同型別的時候，會有同的傳遞方式，以 “基本型別” Primitive 和 “物件型別” Object 作為區分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 中的傳值與傳址">
 <meta property="og:url" content="https://jerry-yeh.github.io/javascript/20191105/30734/index.html">
@@ -39,72 +39,42 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jerry-yeh.github.io/javascript/20191105/30734/%E5%82%B3%E5%80%BC-1.png">
 
+
 <link rel="canonical" href="https://jerry-yeh.github.io/javascript/20191105/30734/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-TW'
-  };
-</script>
 
-  <title>JavaScript 中的傳值與傳址 | JustNOTE</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://jerry-yeh.github.io/javascript/20191105/30734/","path":"javascript/20191105/30734/","title":"JavaScript 中的傳值與傳址"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JavaScript 中的傳值與傳址 | JustNOTE</title>
   
 
 
 
 
-
-
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切換導航欄">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切換導航欄" role="button">
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
+      <i class="logo-line"></i>
       <h1 class="site-title">JustNOTE</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
     </a>
   </div>
 
@@ -117,46 +87,98 @@
 
 
 
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
-
-  </li>
-  </ul>
-</nav>
-
 
 
 
 </div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9E%8B%E5%88%A5-Types"><span class="nav-number">1.</span> <span class="nav-text">型別 Types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%9E%8B%E5%88%A5-Primitive-type"><span class="nav-number">1.1.</span> <span class="nav-text">基本型別 Primitive type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E5%9E%8B%E5%88%A5-Object-type"><span class="nav-number">1.2.</span> <span class="nav-text">物件型別 Object type</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%82%B3%E5%80%BC%E8%88%87%E5%82%B3%E5%9D%80"><span class="nav-number">2.</span> <span class="nav-text">傳值與傳址</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%82%B3%E5%80%BC-pass-by-value"><span class="nav-number">2.1.</span> <span class="nav-text">傳值 pass by value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%82%B3%E5%9D%80-pass-by-reference"><span class="nav-number">2.2.</span> <span class="nav-text">傳址 pass by reference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%A4%96%E6%83%85%E6%B3%81"><span class="nav-number">2.3.</span> <span class="nav-text">例外情況</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E5%8F%83%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">資料參考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yeh</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
     </header>
 
     
-  <div class="back-to-top">
+  <div class="back-to-top" role="button" aria-label="回到頂端">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
 
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
 
-          <div class="content post posts-expand">
-            
+    <div class="main-inner post posts-expand">
 
-    
+
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191105/30734/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -173,27 +195,29 @@
           JavaScript 中的傳值與傳址
         </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
 
-              <time title="創建時間：2019-11-05 10:30:59 / 修改時間：12:34:52" itemprop="dateCreated datePublished" datetime="2019-11-05T10:30:59+08:00">2019-11-05</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
+      <time title="創建時間：2019-11-05 10:30:59 / 修改時間：12:34:52" itemprop="dateCreated datePublished" datetime="2019-11-05T10:30:59+08:00">2019-11-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
 
-          
+  
+</div>
 
         </div>
       </header>
@@ -202,8 +226,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
         <p>JavaScript 的變數再賦予不同型別的時候，會有同的傳遞方式，以 “基本型別” <code>Primitive</code> 和 “物件型別” <code>Object</code> 作為區分 </p>
 <span id="more"></span>
 
@@ -221,24 +243,24 @@
 <p>因為當指定 <code>b</code> 的值等於 <code>a</code> 時，會建立一個新的記憶體來存放相同的值，彼此不會互相干擾，這種情況稱為 “傳值” <code>pass by value</code> </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);   <span class="comment">// 10</span></span><br><span class="line"><span class="built_in">console</span>.log(b);   <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="%E5%82%B3%E5%80%BC-1.png" alt></p>
+<p><img src="%E5%82%B3%E5%80%BC-1.png"></p>
 <p>所以我們更改原先變數 <code>a</code> 的值時，並不會影響新變數 <code>b</code> 的值</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);   <span class="comment">// 100</span></span><br><span class="line">consolg.log(b);   <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="%E5%82%B3%E5%80%BC-2.png" alt></p>
+<p><img src="%E5%82%B3%E5%80%BC-2.png"></p>
 <h3 id="傳址-pass-by-reference"><a href="#傳址-pass-by-reference" class="headerlink" title="傳址 pass by reference"></a>傳址 pass by reference</h3><p>當我們建立一個物件型別的變數 a 時，一樣會建立一個位置在記憶體中;但是當我們另建立一個變數 b 並賦予他的值等於 a，這時和基本型別不一樣的是，並不會建立一個新的位置在記憶體中，而是讓變數 b 指向和 a 同一個記憶體中的位置，稱為 “傳址” <code>pass by reference</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123; <span class="attr">value</span>: <span class="number">10</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);   <span class="comment">// &#123;value: 10&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(b);   <span class="comment">// &#123;value: 10&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="%E5%82%B3%E5%9D%80-1.png" alt></p>
+<p><img src="%E5%82%B3%E5%9D%80-1.png"></p>
 <p>所以當我們更改 <code>a</code> 的內容時，<code>b</code> 自然會跟著更改</p>
-<p><img src="%E5%82%B3%E5%9D%80-2.png" alt></p>
+<p><img src="%E5%82%B3%E5%9D%80-2.png"></p>
 <h3 id="例外情況"><a href="#例外情況" class="headerlink" title="例外情況"></a>例外情況</h3><p>有一些例外的情況透過傳值的方式複製物件，而複製又分為 “深度複製” <code>Deep copy</code> 和 “淺度複製” <code>Shallow copy</code>，”深度複製” 全部透過 “傳值” 的方式複製，而 “淺度複製” 只有 “第一層傳值”，內層還是 “傳址”</p>
 <ul>
 <li><p>重新賦值</p>
 <p>凡事都有例外，當物件型別的變數被重新賦值時，就會在記憶體中產生一個新的位置來存放這個內容</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">value</span>: <span class="number">10</span>&#125;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line"></span><br><span class="line">a = &#123;<span class="attr">value</span>: <span class="number">100</span>&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a);   <span class="comment">// &#123;value: 100&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(b);   <span class="comment">// &#123;value: 10&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="%E5%82%B3%E5%80%BC%E8%88%87%E5%82%B3%E5%9D%80%E7%9A%84%E4%BE%8B%E5%A4%96.png" alt></p>
+<p><img src="%E5%82%B3%E5%80%BC%E8%88%87%E5%82%B3%E5%9D%80%E7%9A%84%E4%BE%8B%E5%A4%96.png"></p>
 </li>
 <li><p>手動賦值 (淺度複製)</p>
 <p>手動賦值很直接的把 “物件傳址” 改用 “傳值” 的方式傳遞，傳值的部分就會完全獨立 ; 但要注意的是，”內層物件” 還是 “傳址”</p>
@@ -264,9 +286,7 @@
 <li>ES6</li>
 </ul>
 <p>在原生 JavaScript 中 ES6 也推出 <code>Object.assign()</code> 新的方法，但只適用於 “淺度複製”</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p = <span class="built_in">Object</span>.assign(&#123;&#125;, Person);</span><br><span class="line"></span><br><span class="line">Person.name = <span class="string">&#x27;Tom&#x27;</span>;</span><br><span class="line">Person.bwh.strength = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p.name);   <span class="comment">// 還是 &quot;Jerry&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(p.bwh.strength);    <span class="comment">// 改成 0</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p = <span class="built_in">Object</span>.assign(&#123;&#125;, Person);</span><br><span class="line"></span><br><span class="line">Person.name = <span class="string">&#x27;Tom&#x27;</span>;</span><br><span class="line">Person.bwh.strength = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p.name);   <span class="comment">// 還是 &quot;Jerry&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(p.bwh.strength);    <span class="comment">// 改成 0</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="資料參考"><a href="#資料參考" class="headerlink" title="資料參考"></a>資料參考</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://pjchender.blogspot.com/2016/03/javascriptby-referenceby-value.html">[筆記] 談談JavaScript中by reference和by value的重要觀念</a><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://ithelp.ithome.com.tw/articles/10191057">JavaScript 是「傳值」或「傳址」？</a></p>
 
@@ -276,133 +296,42 @@
     
     
 
-      <footer class="post-footer">
+    <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/javascript/" rel="tag"># JavaScript</a>
           </div>
 
         
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/javascript/20191024/33578/" rel="prev" title="JavaScript - 閉包 Closure">
-      <i class="fa fa-chevron-left"></i> JavaScript - 閉包 Closure
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/javascript/20191105/49319/" rel="next" title="JavaScript 物件與原型鍊">
-      JavaScript 物件與原型鍊 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/javascript/20191024/33578/" rel="prev" title="JavaScript - 閉包 Closure">
+                  <i class="fa fa-chevron-left"></i> JavaScript - 閉包 Closure
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/javascript/20191105/49319/" rel="next" title="JavaScript 物件與原型鍊">
+                  JavaScript 物件與原型鍊 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目錄
-        </li>
-        <li class="sidebar-nav-overview">
-          本站概要
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9E%8B%E5%88%A5-Types"><span class="nav-number">1.</span> <span class="nav-text">型別 Types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%9E%8B%E5%88%A5-Primitive-type"><span class="nav-number">1.1.</span> <span class="nav-text">基本型別 Primitive type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E5%9E%8B%E5%88%A5-Object-type"><span class="nav-number">1.2.</span> <span class="nav-text">物件型別 Object type</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%82%B3%E5%80%BC%E8%88%87%E5%82%B3%E5%9D%80"><span class="nav-number">2.</span> <span class="nav-text">傳值與傳址</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%82%B3%E5%80%BC-pass-by-value"><span class="nav-number">2.1.</span> <span class="nav-text">傳值 pass by value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%82%B3%E5%9D%80-pass-by-reference"><span class="nav-number">2.2.</span> <span class="nav-text">傳址 pass by reference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%A4%96%E6%83%85%E6%B3%81"><span class="nav-number">2.3.</span> <span class="nav-text">例外情況</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E5%8F%83%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">資料參考</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Yeh</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">58</span>
-          <span class="site-state-item-name">文章</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-        <span class="site-state-item-count">11</span>
-        <span class="site-state-item-name">分類</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-        <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">標籤</span></a>
-      </div>
-  </nav>
+    </footer>
+  </article>
 </div>
 
 
 
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
 
 
-      </div>
-    </main>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
+</div>
+  </main>
 
-        
+  <footer class="footer">
+    <div class="footer-inner">
+
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -410,36 +339,17 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Yeh</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Muse</a> 強力驅動
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 強力驅動
   </div>
 
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
+  
 
 
 
@@ -449,20 +359,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
 
 </body>
 </html>

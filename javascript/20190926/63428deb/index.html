@@ -2,9 +2,11 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
+
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -13,14 +15,12 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jerry-yeh.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="在前兩篇關於變數的文章中有提到，在 JavaScript 中，除了基本型別以外都可以歸類為物件型別，在這篇文章中就來介紹最基本的物件型別，陣列 Array 與物件 Object">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jerry-yeh.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="在前兩篇關於變數的文章中有提到，在 JavaScript 中，除了基本型別以外都可以歸類為物件型別，在這篇文章中就來介紹最基本的物件型別，陣列 Array 與物件 Object">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JaveScript入門篇 - 陣列(Array)與物件(Object)">
 <meta property="og:url" content="https://jerry-yeh.github.io/javascript/20190926/63428deb/index.html">
@@ -33,72 +33,42 @@
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
 
+
 <link rel="canonical" href="https://jerry-yeh.github.io/javascript/20190926/63428deb/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-TW'
-  };
-</script>
 
-  <title>JaveScript入門篇 - 陣列(Array)與物件(Object) | JustNOTE</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://jerry-yeh.github.io/javascript/20190926/63428deb/","path":"javascript/20190926/63428deb/","title":"JaveScript入門篇 - 陣列(Array)與物件(Object)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JaveScript入門篇 - 陣列(Array)與物件(Object) | JustNOTE</title>
   
 
 
 
 
-
-
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切換導航欄">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切換導航欄" role="button">
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
+      <i class="logo-line"></i>
       <h1 class="site-title">JustNOTE</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
     </a>
   </div>
 
@@ -111,46 +81,98 @@
 
 
 
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
-
-  </li>
-  </ul>
-</nav>
-
 
 
 
 </div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6-Object"><span class="nav-number">1.</span> <span class="nav-text">物件 Object</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%B7%E5%B1%AC%E6%80%A7%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="nav-number">1.1.</span> <span class="nav-text">判斷屬性是否存在</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E8%88%89%E7%89%A9%E4%BB%B6-for-in"><span class="nav-number">1.2.</span> <span class="nav-text">列舉物件 (for ... in)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%A3%E5%88%97-Array"><span class="nav-number">2.</span> <span class="nav-text">陣列 Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%A3%E5%88%97-%E7%89%A9%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">陣列 + 物件</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yeh</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
     </header>
 
     
-  <div class="back-to-top">
+  <div class="back-to-top" role="button" aria-label="回到頂端">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
 
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
 
-          <div class="content post posts-expand">
-            
+    <div class="main-inner post posts-expand">
 
-    
+
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20190926/63428deb/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -167,33 +189,35 @@
           JaveScript入門篇 - 陣列(Array)與物件(Object)
         </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
 
-              <time title="創建時間：2019-09-26 19:30:02" itemprop="dateCreated datePublished" datetime="2019-09-26T19:30:02+08:00">2019-09-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2019-09-27 00:55:03" itemprop="dateModified" datetime="2019-09-27T00:55:03+08:00">2019-09-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
+      <time title="創建時間：2019-09-26 19:30:02" itemprop="dateCreated datePublished" datetime="2019-09-26T19:30:02+08:00">2019-09-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新於</span>
+        <time title="修改時間：2019-09-27 00:55:03" itemprop="dateModified" datetime="2019-09-27T00:55:03+08:00">2019-09-27</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
 
-          
+  
+</div>
 
         </div>
       </header>
@@ -202,8 +226,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
         <p>在前兩篇關於變數的文章中有提到，在 JavaScript 中，除了基本型別以外都可以歸類為物件型別，在這篇文章中就來介紹最基本的物件型別，陣列 <code>Array</code> 與物件 <code>Object</code></p>
 <span id="more"></span>
 
@@ -219,15 +241,11 @@
 <li><p>屬性 property 使用冒號 <code>:</code> 隔開值 <code>value</code>，而值 <code>value</code> 結尾使用逗號 <code>,</code> 連接下一個屬性 <code>property</code></p>
 </li>
 <li><p>屬性 <code>property</code> 可以透過 “點” <code>.</code> 來存取</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> farm = &#123;</span><br><span class="line">  farmer: <span class="string">&quot;卡斯伯&quot;</span>,   <span class="comment">// string</span></span><br><span class="line">  dogs: [<span class="string">&#x27;張姆士&#x27;</span>, <span class="string">&#x27;龐的&#x27;</span>],   <span class="comment">// array(object)</span></span><br><span class="line">  chicken: <span class="number">15</span>,   <span class="comment">// number</span></span><br><span class="line">  duck: <span class="number">3</span>,</span><br><span class="line">  poultryTotal: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> num = farm.chicken + farm.duck;</span><br><span class="line">    <span class="built_in">console</span>.log(num);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;001&quot;</span>: <span class="string">&quot;Hello&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(farm.farmer);   <span class="comment">// 卡斯伯</span></span><br><span class="line">farm.poultryTotal();   <span class="comment">// 18</span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> farm = &#123;</span><br><span class="line">  farmer: <span class="string">&quot;卡斯伯&quot;</span>,   <span class="comment">// string</span></span><br><span class="line">  dogs: [<span class="string">&#x27;張姆士&#x27;</span>, <span class="string">&#x27;龐的&#x27;</span>],   <span class="comment">// array(object)</span></span><br><span class="line">  chicken: <span class="number">15</span>,   <span class="comment">// number</span></span><br><span class="line">  duck: <span class="number">3</span>,</span><br><span class="line">  poultryTotal: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> num = farm.chicken + farm.duck;</span><br><span class="line">    <span class="built_in">console</span>.log(num);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;001&quot;</span>: <span class="string">&quot;Hello&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(farm.farmer);   <span class="comment">// 卡斯伯</span></span><br><span class="line">farm.poultryTotal();   <span class="comment">// 18</span></span><br></pre></td></tr></table></figure></li>
 <li><p>屬性也可以透過中括號 <code>[ ]</code> 來存取，好處是遇到不合法的 JavaScript 的識別字 (如帶有空白的字串或是數字) 時，不會出現錯誤</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">farm<span class="number">.001</span>;   <span class="comment">// SyntaxError: Unexpected number</span></span><br><span class="line">farm[<span class="string">&quot;001&quot;</span>];   <span class="comment">// &quot;Hello&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">farm<span class="number">.001</span>;   <span class="comment">// SyntaxError: Unexpected number</span></span><br><span class="line">farm[<span class="string">&quot;001&quot;</span>];   <span class="comment">// &quot;Hello&quot;</span></span><br></pre></td></tr></table></figure></li>
 <li><p>屬性 <code>property</code> 可以透過 <code>=</code> “新增” 與 <code>delete</code> “刪除”</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; &#125;;</span><br><span class="line"></span><br><span class="line">obj.name = <span class="string">&#x27;123&#x27;</span>;   <span class="comment">// 新增</span></span><br><span class="line"></span><br><span class="line">obj.name;   <span class="comment">// &#x27;123&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> obj.name;   <span class="comment">// 刪除</span></span><br><span class="line"></span><br><span class="line">obj.name;   <span class="comment">// 刪除屬性後變成 undefined</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; &#125;;</span><br><span class="line"></span><br><span class="line">obj.name = <span class="string">&#x27;123&#x27;</span>;   <span class="comment">// 新增</span></span><br><span class="line"></span><br><span class="line">obj.name;   <span class="comment">// &#x27;123&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> obj.name;   <span class="comment">// 刪除</span></span><br><span class="line"></span><br><span class="line">obj.name;   <span class="comment">// 刪除屬性後變成 undefined</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="判斷屬性是否存在"><a href="#判斷屬性是否存在" class="headerlink" title="判斷屬性是否存在"></a>判斷屬性是否存在</h3><p>判斷屬性是存在最簡單的方式就是檢查該屬性是不是 <code>undefined</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">          </span><br><span class="line"><span class="built_in">console</span>.log( obj.name );   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
@@ -248,29 +266,22 @@
 <li><p>每個元素以逗號 <code>,</code> 隔開</p>
 </li>
 <li><p>可以透過 <code>.length</code> 來取得陣列長度，而陣列長度是 可以被覆寫 的，如下原來的陣列長度為 3，透過 <code>a.length = 1</code> 將陣列長度改成 1 後，後面的元素就被移除了，之後再透過 <code>a.length = 3</code> 將陣列長度改回 3，後面被移除的元素也只會使用 <code>undefined</code> 來填補</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;boy&quot;</span>, <span class="string">&quot;cat&quot;</span>];</span><br><span class="line">a.length;    <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line">a.length = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);   <span class="comment">// [&quot;apple&quot;]</span></span><br><span class="line"></span><br><span class="line">a.length = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);   <span class="comment">// [&quot;apple&quot;, undefined, undefined]</span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;boy&quot;</span>, <span class="string">&quot;cat&quot;</span>];</span><br><span class="line">a.length;    <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line">a.length = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);   <span class="comment">// [&quot;apple&quot;]</span></span><br><span class="line"></span><br><span class="line">a.length = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);   <span class="comment">// [&quot;apple&quot;, undefined, undefined]</span></span><br></pre></td></tr></table></figure></li>
 <li><p>陣列的索引是從 <code>0</code> 開始計算的</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array = [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>];</span><br><span class="line">array[<span class="number">0</span>] = <span class="string">&quot;a&quot;</span>;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array = [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>];</span><br><span class="line">array[<span class="number">0</span>] = <span class="string">&quot;a&quot;</span>;</span><br></pre></td></tr></table></figure></li>
 <li><p><code>.push(&#39;要新增的資料&#39;)</code> 新增資料</p>
 <p>透過 <code>.push()</code> 可以在陣列末端新增新元素</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>];</span><br><span class="line"></span><br><span class="line">array.push(<span class="string">&#x27;d&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(array);   <span class="comment">// [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]</span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>];</span><br><span class="line"></span><br><span class="line">array.push(<span class="string">&#x27;d&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(array);   <span class="comment">// [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]</span></span><br></pre></td></tr></table></figure></li>
 <li><p><code>.splice(&#39;從第幾筆資料開始&#39;,&#39;要刪除幾筆資料&#39;)</code> 刪除資料</p>
 <p>透過 <code>.splice()</code> 可以刪除陣列中指定資料以後的資料</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>]</span><br><span class="line"></span><br><span class="line">array.splice(<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2&#x27;</span>);   <span class="comment">// [&#x27;b&#x27;, &#x27;c&#x27;]</span></span><br><span class="line"><span class="built_in">console</span>.log(array);   <span class="comment">// [&#x27;a&#x27;]</span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>]</span><br><span class="line"></span><br><span class="line">array.splice(<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2&#x27;</span>);   <span class="comment">// [&#x27;b&#x27;, &#x27;c&#x27;]</span></span><br><span class="line"><span class="built_in">console</span>.log(array);   <span class="comment">// [&#x27;a&#x27;]</span></span><br></pre></td></tr></table></figure></li>
 <li><p>可以直接指定改變元素</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>];</span><br><span class="line"></span><br><span class="line">array[<span class="number">1</span>] = <span class="string">&#x27;B&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(array);   <span class="comment">// [&#x27;a&#x27;, &#x27;B&#x27;, &#x27;c&#x27;]</span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>];</span><br><span class="line"></span><br><span class="line">array[<span class="number">1</span>] = <span class="string">&#x27;B&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(array);   <span class="comment">// [&#x27;a&#x27;, &#x27;B&#x27;, &#x27;c&#x27;]</span></span><br></pre></td></tr></table></figure></li>
 <li><p>除了 <code>.push</code> 外，陣列還有許多語法，可以參考以下連結</p>
 <p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array">Array 語法</a></p>
 </li>
 <li><p>使用 <code>typeof</code> 來判斷陣列和物件都會顯示 <code>object</code>，我們可以使用 <code>.inArray</code> 來判斷此變數是陣列而非物件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.isArray([]);            <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Array</span>.isArray([<span class="number">1</span>]);           <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Array</span>.isArray(<span class="keyword">new</span> <span class="built_in">Array</span>());   <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.isArray();              <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Array</span>.isArray(&#123;&#125;);            <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Array</span>.isArray(<span class="literal">null</span>);          <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Array</span>.isArray(<span class="literal">undefined</span>);     <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.isArray([]);            <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Array</span>.isArray([<span class="number">1</span>]);           <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Array</span>.isArray(<span class="keyword">new</span> <span class="built_in">Array</span>());   <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.isArray();              <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Array</span>.isArray(&#123;&#125;);            <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Array</span>.isArray(<span class="literal">null</span>);          <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Array</span>.isArray(<span class="literal">undefined</span>);     <span class="comment">// false</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="陣列-物件"><a href="#陣列-物件" class="headerlink" title="陣列 + 物件"></a>陣列 + 物件</h2><p>陣列和物件時常會混和著使用，陣列透過中括號 <code>[ ]</code>，而物件透過點 <code>.</code> 來撈出資料</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> farms = [</span><br><span class="line">  &#123;</span><br><span class="line">    dogs: [<span class="string">&#x27;張姆士&#x27;</span>, <span class="string">&#x27;龐的&#x27;</span>],</span><br><span class="line">    chick: <span class="number">15</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    dogs: [<span class="string">&#x27;皮皮&#x27;</span>],</span><br><span class="line">    chick: <span class="number">30</span></span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(farm[<span class="number">1</span>].dogs[<span class="number">0</span>]);   <span class="comment">// &#x27;皮皮&#x27;</span></span><br></pre></td></tr></table></figure>
@@ -282,133 +293,42 @@
     
     
 
-      <footer class="post-footer">
+    <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/javascript/" rel="tag"># JavaScript</a>
           </div>
 
         
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/javascript/20190926/b767e9f3/" rel="prev" title="JavaScript入門篇 - function">
-      <i class="fa fa-chevron-left"></i> JavaScript入門篇 - function
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/jquery/20190927/1d3a5dfe/" rel="next" title="滾動視差-滾動套用CSS效果">
-      滾動視差-滾動套用CSS效果 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/javascript/20190926/b767e9f3/" rel="prev" title="JavaScript入門篇 - function">
+                  <i class="fa fa-chevron-left"></i> JavaScript入門篇 - function
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/jquery/20190927/1d3a5dfe/" rel="next" title="滾動視差-滾動套用CSS效果">
+                  滾動視差-滾動套用CSS效果 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目錄
-        </li>
-        <li class="sidebar-nav-overview">
-          本站概要
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6-Object"><span class="nav-number">1.</span> <span class="nav-text">物件 Object</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%B7%E5%B1%AC%E6%80%A7%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="nav-number">1.1.</span> <span class="nav-text">判斷屬性是否存在</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E8%88%89%E7%89%A9%E4%BB%B6-for-in"><span class="nav-number">1.2.</span> <span class="nav-text">列舉物件 (for ... in)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%A3%E5%88%97-Array"><span class="nav-number">2.</span> <span class="nav-text">陣列 Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%A3%E5%88%97-%E7%89%A9%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">陣列 + 物件</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Yeh</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">58</span>
-          <span class="site-state-item-name">文章</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-        <span class="site-state-item-count">11</span>
-        <span class="site-state-item-name">分類</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-        <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">標籤</span></a>
-      </div>
-  </nav>
+    </footer>
+  </article>
 </div>
 
 
 
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
 
 
-      </div>
-    </main>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
+</div>
+  </main>
 
-        
+  <footer class="footer">
+    <div class="footer-inner">
+
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -416,36 +336,17 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Yeh</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Muse</a> 強力驅動
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 強力驅動
   </div>
 
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
+  
 
 
 
@@ -455,20 +356,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
 
 </body>
 </html>

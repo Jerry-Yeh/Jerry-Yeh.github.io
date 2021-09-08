@@ -2,9 +2,11 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
+
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -13,14 +15,12 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jerry-yeh.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="在 Bootstrap 中，設計了相當完善的響應式格線系統，即使沒有要使用其中的模組化框架，也可以單獨使用格線系統，而且只要修改設定檔，就可以輕鬆做出客製化的響應式格線系統">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jerry-yeh.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="在 Bootstrap 中，設計了相當完善的響應式格線系統，即使沒有要使用其中的模組化框架，也可以單獨使用格線系統，而且只要修改設定檔，就可以輕鬆做出客製化的響應式格線系統">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bootstrap 4 Grid System">
 <meta property="og:url" content="https://jerry-yeh.github.io/boostrap/20190925/99a4840c/index.html">
@@ -33,72 +33,42 @@
 <meta property="article:tag" content="Bootstrap">
 <meta name="twitter:card" content="summary">
 
+
 <link rel="canonical" href="https://jerry-yeh.github.io/boostrap/20190925/99a4840c/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-TW'
-  };
-</script>
 
-  <title>Bootstrap 4 Grid System | JustNOTE</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://jerry-yeh.github.io/boostrap/20190925/99a4840c/","path":"boostrap/20190925/99a4840c/","title":"Bootstrap 4 Grid System"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Bootstrap 4 Grid System | JustNOTE</title>
   
 
 
 
 
-
-
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切換導航欄">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切換導航欄" role="button">
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
+      <i class="logo-line"></i>
       <h1 class="site-title">JustNOTE</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
     </a>
   </div>
 
@@ -111,46 +81,98 @@
 
 
 
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
-
-  </li>
-  </ul>
-</nav>
-
 
 
 
 </div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9F%BF%E6%87%89%E5%BC%8F%E6%96%B7%E9%BB%9E"><span class="nav-number">1.</span> <span class="nav-text">響應式斷點</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A0%90%E8%A8%AD%E6%96%B7%E9%BB%9E"><span class="nav-number">1.1.</span> <span class="nav-text">預設斷點</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B7%E9%BB%9E%E8%AE%8A%E6%95%B8"><span class="nav-number">1.2.</span> <span class="nav-text">斷點變數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mixin"><span class="nav-number">1.3.</span> <span class="nav-text">@mixin</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Grid-System"><span class="nav-number">2.</span> <span class="nav-text">Grid System</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%A7%8B"><span class="nav-number">2.1.</span> <span class="nav-text">基本架構</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E7%B7%9A%E8%AE%8A%E6%95%B8"><span class="nav-number">2.2.</span> <span class="nav-text">格線變數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#container-%E5%AE%B9%E5%99%A8"><span class="nav-number">2.3.</span> <span class="nav-text">container 容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#row-%E5%88%97"><span class="nav-number">2.4.</span> <span class="nav-text">row 列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#col-%E6%AC%84"><span class="nav-number">2.5.</span> <span class="nav-text">col 欄</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E4%B8%8D%E5%90%8C%E8%9E%A2%E5%B9%95%E5%B0%BA%E5%AF%B8%E4%B8%8B%E8%A8%AD%E5%AE%9A%E4%B8%8D%E5%90%8C%E7%9A%84%E5%AF%AC%E5%BA%A6"><span class="nav-number">2.5.1.</span> <span class="nav-text">在不同螢幕尺寸下設定不同的寬度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#offset-%E6%AC%84%E7%9A%84%E6%8E%A8%E7%A7%BB"><span class="nav-number">2.6.</span> <span class="nav-text">offset 欄的推移</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Utilities-%E9%80%9A%E7%94%A8%E9%A1%9E%E5%88%A5"><span class="nav-number">3.</span> <span class="nav-text">Utilities 通用類別</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#spacing-%E9%96%93%E9%9A%94"><span class="nav-number">3.1.</span> <span class="nav-text">spacing 間隔</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%8A%E6%95%B8"><span class="nav-number">3.1.1.</span> <span class="nav-text">變數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%A6%E8%99%9F"><span class="nav-number">3.1.2.</span> <span class="nav-text">符號</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex"><span class="nav-number">3.2.</span> <span class="nav-text">flex</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E5%8F%83%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">資料參考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yeh</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
     </header>
 
     
-  <div class="back-to-top">
+  <div class="back-to-top" role="button" aria-label="回到頂端">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
 
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
 
-          <div class="content post posts-expand">
-            
+    <div class="main-inner post posts-expand">
 
-    
+
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/boostrap/20190925/99a4840c/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -167,33 +189,35 @@
           Bootstrap 4 Grid System
         </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
 
-              <time title="創建時間：2019-09-25 01:42:43" itemprop="dateCreated datePublished" datetime="2019-09-25T01:42:43+08:00">2019-09-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2019-09-26 01:32:41" itemprop="dateModified" datetime="2019-09-26T01:32:41+08:00">2019-09-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/boostrap/" itemprop="url" rel="index"><span itemprop="name">Boostrap</span></a>
-                </span>
-            </span>
+      <time title="創建時間：2019-09-25 01:42:43" itemprop="dateCreated datePublished" datetime="2019-09-25T01:42:43+08:00">2019-09-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新於</span>
+        <time title="修改時間：2019-09-26 01:32:41" itemprop="dateModified" datetime="2019-09-26T01:32:41+08:00">2019-09-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/boostrap/" itemprop="url" rel="index"><span itemprop="name">Boostrap</span></a>
+        </span>
+    </span>
 
-          
+  
+</div>
 
         </div>
       </header>
@@ -202,8 +226,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
         <p>在 Bootstrap 中，設計了相當完善的響應式格線系統，即使沒有要使用其中的模組化框架，也可以單獨使用格線系統，而且只要修改設定檔，就可以輕鬆做出客製化的響應式格線系統 </p>
 <span id="more"></span>
 
@@ -227,12 +249,9 @@
 </ul>
 <h3 id="格線變數"><a href="#格線變數" class="headerlink" title="格線變數"></a>格線變數</h3><ul>
 <li><p>預設的欄位數 <code>12</code> 與欄間距 <code>30px</code>，我們可以在 <code>._variable.scss</code> 找到以下相關變數來修改成想要的格式</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$grid-columns</span>: <span class="number">12</span> !default;</span><br><span class="line"><span class="variable">$grid-gutter-width</span>: <span class="number">30px</span> !default;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$grid-columns</span>: <span class="number">12</span> !default;</span><br><span class="line"><span class="variable">$grid-gutter-width</span>: <span class="number">30px</span> !default;</span><br></pre></td></tr></table></figure></li>
 <li><p><code>.container</code> 在每個斷點都有預設寬度，同樣的我們也可以在<br><code>._variable.scss</code> 中找到相關變數來修改成想要的寬度</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$container-max-width</span>: (</span><br><span class="line">  sm: <span class="number">540px</span>,</span><br><span class="line">  md: <span class="number">720px</span>,</span><br><span class="line">  lg: <span class="number">960px</span>,</span><br><span class="line">  xl: <span class="number">1140px</span></span><br><span class="line">) !default;</span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$container-max-width</span>: (</span><br><span class="line">  sm: <span class="number">540px</span>,</span><br><span class="line">  md: <span class="number">720px</span>,</span><br><span class="line">  lg: <span class="number">960px</span>,</span><br><span class="line">  xl: <span class="number">1140px</span></span><br><span class="line">) !default;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="container-容器"><a href="#container-容器" class="headerlink" title="container 容器"></a>container 容器</h3><p>以下為 <code>.container</code> 的預設樣式</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">margin-right</span>: auto;</span><br><span class="line">  <span class="attribute">margin-left</span>: auto;</span><br><span class="line">  <span class="attribute">padding-right</span>: <span class="number">15px</span>; <span class="comment">/* $grid-gutter-width */</span></span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="number">15px</span>;  <span class="comment">/* $grid-gutter-width */</span></span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">max-width</span>: <span class="number">1140px</span>;　<span class="comment">/* 隨螢幕尺寸而變 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -242,7 +261,7 @@
 <li>因為有 <code>padding</code>，所以 <code>.container</code> 的實際寬度為 <code>max-width</code> 減 <code>$grid-gutter-width</code>，這個斷點下為 <code>1110px</code></li>
 <li>如果是 <code>.container-fluid</code> 就沒有設定 <code>max-width</code>，所以會自適應延伸滿版寬</li>
 </ul>
-<h3 id="row-列"><a href="#row-列" class="headerlink" title="row 列"></a>row 列</h3><p>以下為<code>.row</code> 的預設樣式</p>
+<h3 id="row-列"><a href="#row-列" class="headerlink" title="row 列"></a>row 列</h3><p>以下為<code> .row</code> 的預設樣式</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.row</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">  <span class="attribute">margin-right</span>: -<span class="number">15px</span>; <span class="comment">/* $grid-gutter-width */</span></span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">15px</span>; <span class="comment">/* $grid-gutter-width */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -251,9 +270,7 @@
 <li><p>負值的 <code>margin</code> 將 <code>.container</code> 的 <code>padding</code> 外推，所以 <code>.container</code> 的內容寬度在此段點變回 1140px</p>
 </li>
 <li><p>因為 <code>.row</code> 是使用 <code>flex</code> 來排版，所以可以直接使用 <code>flexbox</code> 來操作內容，Bootstrap 已經有寫好的 class</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row justify-content-center align-items-end&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row justify-content-center align-items-end&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="col-欄"><a href="#col-欄" class="headerlink" title="col 欄"></a>col 欄</h3><p>以下為 <code>.col</code> 的預設樣式</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.col</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">flex-basis</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">flex-grow</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">max-width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">min-height</span>: <span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">padding-right</span>: <span class="number">15px</span>;</span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="number">15</span>xp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -262,12 +279,9 @@
 <li><p>因為有 <code>padding</code>，所以此斷點的內容寬度又變回 <code>1110px</code></p>
 </li>
 <li><p>因為是使用 <code>flex</code> 來排版，所以預設每個欄位是等寬的</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 <li><p>當然也可以指定 <code>.col</code> 的寬度，總和超過 <code>12</code> 就會自動換行</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-4&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-7&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-3&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-4&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-7&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-3&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h4 id="在不同螢幕尺寸下設定不同的寬度"><a href="#在不同螢幕尺寸下設定不同的寬度" class="headerlink" title="在不同螢幕尺寸下設定不同的寬度"></a>在不同螢幕尺寸下設定不同的寬度</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.col-</span>&quot;螢幕尺寸&quot;-&quot;欄位數&quot;</span><br></pre></td></tr></table></figure>
 
@@ -295,16 +309,15 @@
 <h2 id="Utilities-通用類別"><a href="#Utilities-通用類別" class="headerlink" title="Utilities 通用類別"></a>Utilities 通用類別</h2><p>在 Bootstrap 中，所有共用的變數都會放在 Utilites 這個分類中，以下介紹幾個常見的類別</p>
 <h3 id="spacing-間隔"><a href="#spacing-間隔" class="headerlink" title="spacing 間隔"></a>spacing 間隔</h3><ul>
 <li><h4 id="變數"><a href="#變數" class="headerlink" title="變數"></a>變數</h4><p>我們可以透過 <code>_variable.scss</code> 來修改間距數值，除了新增和刪除，也可以修改 “單位”</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$spacer</span>: <span class="number">1rem</span> !default;</span><br><span class="line"><span class="variable">$spacers</span>: () !default;</span><br><span class="line"></span><br><span class="line"><span class="variable">$spacers</span>: map-merge (</span><br><span class="line">  (</span><br><span class="line">    <span class="number">0</span>: <span class="number">0</span>;</span><br><span class="line">    1: (<span class="variable">$spacer</span> * .<span class="number">25</span>),</span><br><span class="line">    <span class="number">2</span>: (<span class="variable">$spacer</span> * .<span class="number">5</span>),</span><br><span class="line">    <span class="number">3</span>: <span class="variable">$spacer</span>,</span><br><span class="line">    <span class="number">4</span>: (<span class="variable">$spacer</span> * <span class="number">1.5</span>),</span><br><span class="line">    <span class="number">5</span>: (<span class="variable">$spacer</span> * <span class="number">3</span>)</span><br><span class="line">  ),<span class="variable">$spacers</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$spacer</span>: <span class="number">1rem</span> !default;</span><br><span class="line"><span class="variable">$spacers</span>: () !default;</span><br><span class="line"></span><br><span class="line"><span class="variable">$spacers</span>: map-merge (</span><br><span class="line">  (</span><br><span class="line">    <span class="number">0</span>: <span class="number">0</span>;</span><br><span class="line">    1: (<span class="variable">$spacer</span> * .<span class="number">25</span>),</span><br><span class="line">    <span class="number">2</span>: (<span class="variable">$spacer</span> * .<span class="number">5</span>),</span><br><span class="line">    <span class="number">3</span>: <span class="variable">$spacer</span>,</span><br><span class="line">    <span class="number">4</span>: (<span class="variable">$spacer</span> * <span class="number">1.5</span>),</span><br><span class="line">    <span class="number">5</span>: (<span class="variable">$spacer</span> * <span class="number">3</span>)</span><br><span class="line">  ),<span class="variable">$spacers</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
 <li><h4 id="符號"><a href="#符號" class="headerlink" title="符號"></a>符號</h4><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;屬性&quot;</span><span class="string">&quot;方位&quot;</span>-<span class="string">&quot;螢幕尺寸&quot;</span>-<span class="string">&quot;數值&quot;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>屬性 :<br><code>.m</code> 代表 <code>margin</code><br><code>.p</code>代表 <code>padding</code></p>
+<li><p>屬性 :<br><code>.m</code> 代表 <code>margin</code><br><code>.p </code>代表 <code>padding</code></p>
 </li>
 <li><p>方位 :<br><code>t</code> 代表 <code>top</code><br><code>r</code> 代表 <code>right</code><br><code>b</code> 代表 <code>bottm</code><br><code>l</code> 代表 <code>left</code><br><code>x</code> 代表 <code>left</code> 和 <code>right</code><br><code>y</code> 代表 <code>top</code> 和 <code>bottom</code><br>沒有給值則是四邊全方位</p>
 </li>
-<li><p><a href="#在不同螢幕尺寸下設定不同的寬度">螢幕尺寸:</a><br>上方已提過，點選回去查看</p>
+<li><p><a href="#%E5%9C%A8%E4%B8%8D%E5%90%8C%E8%9E%A2%E5%B9%95%E5%B0%BA%E5%AF%B8%E4%B8%8B%E8%A8%AD%E5%AE%9A%E4%B8%8D%E5%90%8C%E7%9A%84%E5%AF%AC%E5%BA%A6">螢幕尺寸:</a><br>上方已提過，點選回去查看</p>
 </li>
 <li><p>數值 :<br><code>0</code> 代表 <code>歸零</code><br><code>auto</code> 代表 <code>auto</code><br>其餘數值由上方變數定義，預設為 <code>1 ~ 5</code></p>
 </li>
@@ -321,133 +334,42 @@
     
     
 
-      <footer class="post-footer">
+    <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/bootstrap/" rel="tag"># Bootstrap</a>
           </div>
 
         
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/css/20190925/1185305d/" rel="prev" title="錯誤的CSS設計方式">
-      <i class="fa fa-chevron-left"></i> 錯誤的CSS設計方式
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/git/20190926/a121fcd1/" rel="next" title="Git 入門">
-      Git 入門 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/css/20190925/1185305d/" rel="prev" title="錯誤的CSS設計方式">
+                  <i class="fa fa-chevron-left"></i> 錯誤的CSS設計方式
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/git/20190926/a121fcd1/" rel="next" title="Git 入門">
+                  Git 入門 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目錄
-        </li>
-        <li class="sidebar-nav-overview">
-          本站概要
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9F%BF%E6%87%89%E5%BC%8F%E6%96%B7%E9%BB%9E"><span class="nav-number">1.</span> <span class="nav-text">響應式斷點</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A0%90%E8%A8%AD%E6%96%B7%E9%BB%9E"><span class="nav-number">1.1.</span> <span class="nav-text">預設斷點</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B7%E9%BB%9E%E8%AE%8A%E6%95%B8"><span class="nav-number">1.2.</span> <span class="nav-text">斷點變數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mixin"><span class="nav-number">1.3.</span> <span class="nav-text">@mixin</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Grid-System"><span class="nav-number">2.</span> <span class="nav-text">Grid System</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%A7%8B"><span class="nav-number">2.1.</span> <span class="nav-text">基本架構</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E7%B7%9A%E8%AE%8A%E6%95%B8"><span class="nav-number">2.2.</span> <span class="nav-text">格線變數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#container-%E5%AE%B9%E5%99%A8"><span class="nav-number">2.3.</span> <span class="nav-text">container 容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#row-%E5%88%97"><span class="nav-number">2.4.</span> <span class="nav-text">row 列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#col-%E6%AC%84"><span class="nav-number">2.5.</span> <span class="nav-text">col 欄</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E4%B8%8D%E5%90%8C%E8%9E%A2%E5%B9%95%E5%B0%BA%E5%AF%B8%E4%B8%8B%E8%A8%AD%E5%AE%9A%E4%B8%8D%E5%90%8C%E7%9A%84%E5%AF%AC%E5%BA%A6"><span class="nav-number">2.5.1.</span> <span class="nav-text">在不同螢幕尺寸下設定不同的寬度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#offset-%E6%AC%84%E7%9A%84%E6%8E%A8%E7%A7%BB"><span class="nav-number">2.6.</span> <span class="nav-text">offset 欄的推移</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Utilities-%E9%80%9A%E7%94%A8%E9%A1%9E%E5%88%A5"><span class="nav-number">3.</span> <span class="nav-text">Utilities 通用類別</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#spacing-%E9%96%93%E9%9A%94"><span class="nav-number">3.1.</span> <span class="nav-text">spacing 間隔</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%8A%E6%95%B8"><span class="nav-number">3.1.1.</span> <span class="nav-text">變數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%A6%E8%99%9F"><span class="nav-number">3.1.2.</span> <span class="nav-text">符號</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex"><span class="nav-number">3.2.</span> <span class="nav-text">flex</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E5%8F%83%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">資料參考</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Yeh</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">58</span>
-          <span class="site-state-item-name">文章</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-        <span class="site-state-item-count">11</span>
-        <span class="site-state-item-name">分類</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-        <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">標籤</span></a>
-      </div>
-  </nav>
+    </footer>
+  </article>
 </div>
 
 
 
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
 
 
-      </div>
-    </main>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
+</div>
+  </main>
 
-        
+  <footer class="footer">
+    <div class="footer-inner">
+
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -455,36 +377,17 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Yeh</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Muse</a> 強力驅動
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 強力驅動
   </div>
 
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
+  
 
 
 
@@ -494,20 +397,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
 
 </body>
 </html>

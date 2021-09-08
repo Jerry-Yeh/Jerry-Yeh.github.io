@@ -2,9 +2,11 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
+
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -13,14 +15,12 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jerry-yeh.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="透過 AJAX，可與伺服器進行非同步更新，不需要重新載入網頁就可以更新內容">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jerry-yeh.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="透過 AJAX，可與伺服器進行非同步更新，不需要重新載入網頁就可以更新內容">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript - AJAX">
 <meta property="og:url" content="https://jerry-yeh.github.io/javascript/20191004/50136/index.html">
@@ -37,72 +37,42 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jerry-yeh.github.io/javascript/20191004/50136/XMLHttpRequest.png">
 
+
 <link rel="canonical" href="https://jerry-yeh.github.io/javascript/20191004/50136/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-TW'
-  };
-</script>
 
-  <title>JavaScript - AJAX | JustNOTE</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://jerry-yeh.github.io/javascript/20191004/50136/","path":"javascript/20191004/50136/","title":"JavaScript - AJAX"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JavaScript - AJAX | JustNOTE</title>
   
 
 
 
 
-
-
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切換導航欄">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切換導航欄" role="button">
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
+      <i class="logo-line"></i>
       <h1 class="site-title">JustNOTE</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
     </a>
   </div>
 
@@ -115,46 +85,98 @@
 
 
 
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
-
-  </li>
-  </ul>
-</nav>
-
 
 
 
 </div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-AJAX"><span class="nav-number">1.</span> <span class="nav-text">什麼是 AJAX ?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81-AJAX"><span class="nav-number">1.1.</span> <span class="nav-text">為什麼需要 AJAX ?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AJAX-%E6%87%89%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">AJAX 應用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AJAX-%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">AJAX 操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#XMLHttpRequest-%E7%89%A9%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">XMLHttpRequest 物件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readyState-%E7%8B%80%E6%85%8B%E7%A2%BC"><span class="nav-number">2.2.</span> <span class="nav-text">readyState 狀態碼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%82%B3%E7%B5%B1%E8%A1%A8%E5%96%AE%E8%BC%B8%E5%85%A5"><span class="nav-number">2.3.</span> <span class="nav-text">傳統表單輸入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post-%E5%82%B3%E9%80%81%E8%A1%A8%E5%96%AE%E8%B3%87%E6%96%99"><span class="nav-number">2.4.</span> <span class="nav-text">post 傳送表單資料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post-JSON"><span class="nav-number">2.5.</span> <span class="nav-text">post JSON</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CORS-Corss-Origin-Resourse-Sharing-%E8%B7%A8%E4%BE%86%E6%BA%90%E8%B3%87%E6%BA%90%E5%85%B1%E4%BA%AB"><span class="nav-number">3.</span> <span class="nav-text">CORS (Corss-Origin Resourse Sharing) 跨來源資源共享</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-%E7%8B%80%E6%85%8B%E7%A2%BC"><span class="nav-number">4.</span> <span class="nav-text">HTTP 狀態碼</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AJAX-%E5%AF%A6%E5%8B%99%E7%AF%84%E4%BE%8B"><span class="nav-number">5.</span> <span class="nav-text">AJAX 實務範例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E5%8F%83%E8%80%83"><span class="nav-number">6.</span> <span class="nav-text">資料參考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yeh</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
     </header>
 
     
-  <div class="back-to-top">
+  <div class="back-to-top" role="button" aria-label="回到頂端">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
 
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
 
-          <div class="content post posts-expand">
-            
+    <div class="main-inner post posts-expand">
 
-    
+
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191004/50136/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -171,33 +193,35 @@
           JavaScript - AJAX
         </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
 
-              <time title="創建時間：2019-10-04 22:32:23" itemprop="dateCreated datePublished" datetime="2019-10-04T22:32:23+08:00">2019-10-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2019-10-05 01:30:13" itemprop="dateModified" datetime="2019-10-05T01:30:13+08:00">2019-10-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
+      <time title="創建時間：2019-10-04 22:32:23" itemprop="dateCreated datePublished" datetime="2019-10-04T22:32:23+08:00">2019-10-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新於</span>
+        <time title="修改時間：2019-10-05 01:30:13" itemprop="dateModified" datetime="2019-10-05T01:30:13+08:00">2019-10-05</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
 
-          
+  
+</div>
 
         </div>
       </header>
@@ -206,8 +230,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
         <p>透過 AJAX，可與伺服器進行非同步更新，不需要重新載入網頁就可以更新內容</p>
 <span id="more"></span>
 
@@ -219,14 +241,16 @@
 <li><code>XMLHttpRequest</code> 與 “網頁伺服器” 進行 “非同步” 資料交換</li>
 </ul>
 <h2 id="AJAX-操作"><a href="#AJAX-操作" class="headerlink" title="AJAX 操作"></a>AJAX 操作</h2><h3 id="XMLHttpRequest-物件"><a href="#XMLHttpRequest-物件" class="headerlink" title="XMLHttpRequest 物件"></a><code>XMLHttpRequest</code> 物件</h3><ol>
-<li><p>宣告一個 <code>XMLHttpRequest</code> 物件</p>
-<p>當宣告一個 <code>XMLHttpRequest</code> 物件後，我們可以透過 <code>console.log</code> 來查看這個物件的屬性，並透過這些屬性來操作資料與確認狀態</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"><span class="built_in">console</span>.log(xhr);</span><br></pre></td></tr></table></figure>
+<li>宣告一個 <code>XMLHttpRequest</code> 物件</li>
+</ol>
+<p>  當宣告一個 <code>XMLHttpRequest</code> 物件後，我們可以透過 <code>console.log</code> 來查看這個物件的屬性，並透過這些屬性來操作資料與確認狀態</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"><span class="built_in">console</span>.log(xhr);</span><br></pre></td></tr></table></figure>
 
-<p><img src="XMLHttpRequest.png" alt></p>
-</li>
-<li><p><code>.open(&quot;格式&quot;, &quot;網址&quot;, &quot;同步/非同步&quot;)</code> 定義連線方式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">&quot;get&quot;</span>, <span class="string">&quot;https://hexschool.github.io/ajaxHomework/data.json&quot;</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+<p>  <img src="XMLHttpRequest.png"></p>
+<ol start="2">
+<li><code>.open(&quot;格式&quot;, &quot;網址&quot;, &quot;同步/非同步&quot;)</code> 定義連線方式</li>
+</ol>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">&quot;get&quot;</span>, <span class="string">&quot;https://hexschool.github.io/ajaxHomework/data.json&quot;</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>格式</p>
@@ -245,27 +269,32 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p><code>send()</code> 送出請求</p>
-<p>在定義完連線方式後，接著就會送出請求，小括號 <code>()</code> 內放入要送出的資料，如果只是要取得資料，就會填入 <code>null</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>responseText</code> 資料內容</p>
-<p>送出請求後我們可以透過 <code>responseText</code> 來查看資料內容</p>
-<p><img src="xhr.responseText.png" alt></p>
-<p>但如果在送出請求後，接著使用 <code>console.log</code> 來查看資料，會發現取得 空值，因為 <code>AJAX</code> 是 “非同步” 取得資料，所以在取得資料前往網頁就換渲染完畢</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(xhr.responseText);   <span class="comment">// 空值</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>onload</code> 成功取得資料後執行</p>
-<p>要解決上述問題，只要使用 <code>onload</code> 在成功取得資料後再印出結果，要注意的是，從 <code>.json</code> 檔案取得的資料型態是 “字串”，所以要使用 <code>JSON.parse</code> 還原資料型態</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;message&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;message&quot;</span>&gt;</span>王小明<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><code>send()</code> 送出請求</li>
+</ol>
+<p>  在定義完連線方式後，接著就會送出請求，小括號 <code>()</code> 內放入要送出的資料，如果只是要取得資料，就會填入 <code>null</code></p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; in json</span><br><span class="line">[</span><br><span class="line">  &#123;name: &quot;王小名&quot;&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li><code>responseText</code> 資料內容</li>
+</ol>
+<p>  送出請求後我們可以透過 <code>responseText</code> 來查看資料內容</p>
+<p>  <img src="xhr.responseText.png"></p>
+<p>  但如果在送出請求後，接著使用 <code>console.log</code> 來查看資料，會發現取得 空值，因為 <code>AJAX</code> 是 “非同步” 取得資料，所以在取得資料前往網頁就換渲染完畢</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(xhr.responseText);   <span class="comment">// 空值</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xhr.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(xhr.responseText);   <span class="comment">// &quot;[&#123;&quot;name&quot;:&quot;王小名&quot;&#125;]&quot;</span></span><br><span class="line">  <span class="keyword">var</span> str = JOSN.parse(xhr.responseText);</span><br><span class="line">  <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.message&#x27;</span>).textContent = str[<span class="number">0</span>].name;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>onerror</code> 取得資料失敗後執行</p>
-</li>
+<ol start="5">
+<li><code>onload</code> 成功取得資料後執行</li>
+</ol>
+<p>  要解決上述問題，只要使用 <code>onload</code> 在成功取得資料後再印出結果，要注意的是，從 <code>.json</code> 檔案取得的資料型態是 “字串”，所以要使用 <code>JSON.parse</code> 還原資料型態</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;message&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;message&quot;</span>&gt;</span>王小明<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; in json</span><br><span class="line">[</span><br><span class="line">  &#123;name: &quot;王小名&quot;&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xhr.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(xhr.responseText);   <span class="comment">// &quot;[&#123;&quot;name&quot;:&quot;王小名&quot;&#125;]&quot;</span></span><br><span class="line">  <span class="keyword">var</span> str = JOSN.parse(xhr.responseText);</span><br><span class="line">  <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.message&#x27;</span>).textContent = str[<span class="number">0</span>].name;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li><code>onerror</code> 取得資料失敗後執行</li>
 </ol>
 <p>除了設定成功取得資料後執行的內容，當然也可以設定取得資料失敗後執行的內容</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.onerror = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;...&#125;;</span><br></pre></td></tr></table></figure>
@@ -291,15 +320,11 @@
 <li><p>因為要發送的資料會直接寫在 <code>send()</code> 中，所以需要先使用 <code>setRequestHeader</code> 來設定資料類型，如果發送的資料類型是表單，分別設立兩個參數為 <code>Content-Type</code> 和 <code>application/x-www-form-urlencoded</code></p>
 </li>
 <li><p>如上 “傳統表單” 送出一樣的資料</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">&#x27;post&#x27;</span>, <span class="string">&#x27;https://hexschool-tutorial.herokuapp.com/api/signup&#x27;</span>, <span class="literal">true</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">&#x27;Content-type&#x27;</span>, <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>);</span><br><span class="line">xhr.send(<span class="string">&#x27;email=abc@gmail.com&amp;password=abcde&#x27;</span>);</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">&#x27;post&#x27;</span>, <span class="string">&#x27;https://hexschool-tutorial.herokuapp.com/api/signup&#x27;</span>, <span class="literal">true</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">&#x27;Content-type&#x27;</span>, <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>);</span><br><span class="line">xhr.send(<span class="string">&#x27;email=abc@gmail.com&amp;password=abcde&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
 <li><p>傳送資料過去後，可以使用 console.log 查詢回傳的資料</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(xhr.responseText);   <span class="comment">// &#123;&quot;success&quot;:true,&quot;result&quot;:&#123;&#125;,&quot;message&quot;:&quot;帳號註冊成功&quot;&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(xhr.responseText);   <span class="comment">// &#123;&quot;success&quot;:true,&quot;result&quot;:&#123;&#125;,&quot;message&quot;:&quot;帳號註冊成功&quot;&#125;</span></span><br></pre></td></tr></table></figure></li>
 <li><p>如果帳號已經被註冊。就會出現以下結果</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(xhr.responseText);   <span class="comment">// &#123;&quot;success&quot;:false,&quot;result&quot;:&#123;&#125;,&quot;message&quot;:&quot;此帳號已被使用&quot;&#125;</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(xhr.responseText);   <span class="comment">// &#123;&quot;success&quot;:false,&quot;result&quot;:&#123;&#125;,&quot;message&quot;:&quot;此帳號已被使用&quot;&#125;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="post-JSON"><a href="#post-JSON" class="headerlink" title="post JSON"></a>post JSON</h3><p>除了使用 <code>post</code> 傳送表單格式資料外，也可以直接傳送 <code>json</code> 格式，只要把 <code>setRequestHeader()</code> 中第二個參數改成 <code>application/json</code>， 但要注意的是，和 <code>localStorage</code> 一樣，都是使用 “字串” 來傳送，所以要使用 <code>JSON.stringify</code> 和 <code>JSON.parse</code> 來轉換型態</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> account = &#123;</span><br><span class="line">  email: <span class="string">&#x27;abc@gmail.com&#x27;</span>,</span><br><span class="line">  password: <span class="string">&#x27;abcde&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> xhr = XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">&#x27;post&#x27;</span>, <span class="string">&#x27;https://hexschool-tutorial.herokuapp.com/api/signup&#x27;</span>, <span class="literal">true</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">&#x27;Content-type&#x27;</span>, <span class="string">&#x27;application/json&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> data = <span class="built_in">JSON</span>.stringify(account);</span><br><span class="line">xhr.send(data);</span><br></pre></td></tr></table></figure>
@@ -333,7 +358,7 @@
     
     
 
-      <footer class="post-footer">
+    <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/javascript/" rel="tag"># JavaScript</a>
               <a href="/tags/ajax/" rel="tag"># AJAX</a>
@@ -341,126 +366,35 @@
 
         
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/javascript/20191003/52047/" rel="prev" title="JavaScript - 事件">
-      <i class="fa fa-chevron-left"></i> JavaScript - 事件
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/javascript/20191004/8109/" rel="next" title="JavaScript - localStorage">
-      JavaScript - localStorage <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/javascript/20191003/52047/" rel="prev" title="JavaScript - 事件">
+                  <i class="fa fa-chevron-left"></i> JavaScript - 事件
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/javascript/20191004/8109/" rel="next" title="JavaScript - localStorage">
+                  JavaScript - localStorage <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目錄
-        </li>
-        <li class="sidebar-nav-overview">
-          本站概要
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-AJAX"><span class="nav-number">1.</span> <span class="nav-text">什麼是 AJAX ?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81-AJAX"><span class="nav-number">1.1.</span> <span class="nav-text">為什麼需要 AJAX ?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AJAX-%E6%87%89%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">AJAX 應用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AJAX-%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">AJAX 操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#XMLHttpRequest-%E7%89%A9%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">XMLHttpRequest 物件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readyState-%E7%8B%80%E6%85%8B%E7%A2%BC"><span class="nav-number">2.2.</span> <span class="nav-text">readyState 狀態碼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%82%B3%E7%B5%B1%E8%A1%A8%E5%96%AE%E8%BC%B8%E5%85%A5"><span class="nav-number">2.3.</span> <span class="nav-text">傳統表單輸入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post-%E5%82%B3%E9%80%81%E8%A1%A8%E5%96%AE%E8%B3%87%E6%96%99"><span class="nav-number">2.4.</span> <span class="nav-text">post 傳送表單資料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post-JSON"><span class="nav-number">2.5.</span> <span class="nav-text">post JSON</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CORS-Corss-Origin-Resourse-Sharing-%E8%B7%A8%E4%BE%86%E6%BA%90%E8%B3%87%E6%BA%90%E5%85%B1%E4%BA%AB"><span class="nav-number">3.</span> <span class="nav-text">CORS (Corss-Origin Resourse Sharing) 跨來源資源共享</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-%E7%8B%80%E6%85%8B%E7%A2%BC"><span class="nav-number">4.</span> <span class="nav-text">HTTP 狀態碼</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AJAX-%E5%AF%A6%E5%8B%99%E7%AF%84%E4%BE%8B"><span class="nav-number">5.</span> <span class="nav-text">AJAX 實務範例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E5%8F%83%E8%80%83"><span class="nav-number">6.</span> <span class="nav-text">資料參考</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Yeh</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">58</span>
-          <span class="site-state-item-name">文章</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-        <span class="site-state-item-count">11</span>
-        <span class="site-state-item-name">分類</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-        <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">標籤</span></a>
-      </div>
-  </nav>
+    </footer>
+  </article>
 </div>
 
 
 
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
 
 
-      </div>
-    </main>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
+</div>
+  </main>
 
-        
+  <footer class="footer">
+    <div class="footer-inner">
+
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -468,36 +402,17 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Yeh</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Muse</a> 強力驅動
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="external nofollow noopener noreferrer" target="_blank">NexT.Pisces</a> 強力驅動
   </div>
 
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
+  
 
 
 
@@ -507,20 +422,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
 
 </body>
 </html>
