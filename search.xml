@@ -4034,7 +4034,7 @@
     <title>運算子的優先性與相依性</title>
     <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211003/33835/</url>
     <content><![CDATA[<p>在一般的運算式中，通常不會只有一個運算子，所以當出現多個運算子時，就需要透過<code>優先性 Precedence</code> 和 <code>相依性 Associativity</code> 這兩個原則來規範運算，而這兩個原則並沒有名義上的複雜，國小數學中的先乘除後加減即是基礎規範的體現</p>
-<!-- more  -->
+<span id="more"></span>
 
 <h3 id="優先性-Precedence"><a href="#優先性-Precedence" class="headerlink" title="優先性 Precedence"></a>優先性 Precedence</h3><p>優先性即是當出現不同運算子時，函式執行的優先順序，如<code>乘號 *</code> 優先於<code>加號+</code> </p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">3</span> + <span class="number">4</span> * <span class="number">5</span>;   <span class="comment">// 23</span></span><br></pre></td></tr></table></figure>
