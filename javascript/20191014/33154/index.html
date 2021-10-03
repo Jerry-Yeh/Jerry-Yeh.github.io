@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jerry-yeh.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="ES6 開始可以使用箭頭 &#x3D;&gt; 來定義涵式，但與原先的韓次在某些情況並不完全相同，在這篇文章中會探討箭頭函式的寫法與傳統韓式的差異">
+<meta name="description" content="ES6 開始可以使用箭頭 &#x3D;&gt; 來定義涵式，但與原先的函式在某些情況並不完全相同，在這篇文章中會探討箭頭函式的寫法與傳統函式的差異">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript - ES6 - 箭頭函式">
 <meta property="og:url" content="https://jerry-yeh.github.io/javascript/20191014/33154/index.html">
 <meta property="og:site_name" content="JustNOTE">
-<meta property="og:description" content="ES6 開始可以使用箭頭 &#x3D;&gt; 來定義涵式，但與原先的韓次在某些情況並不完全相同，在這篇文章中會探討箭頭函式的寫法與傳統韓式的差異">
+<meta property="og:description" content="ES6 開始可以使用箭頭 &#x3D;&gt; 來定義涵式，但與原先的函式在某些情況並不完全相同，在這篇文章中會探討箭頭函式的寫法與傳統函式的差異">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2019-10-13T16:00:12.000Z">
-<meta property="article:modified_time" content="2019-10-13T16:20:21.368Z">
+<meta property="article:modified_time" content="2021-09-30T15:56:08.018Z">
 <meta property="article:author" content="Yeh">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="ES6">
@@ -152,7 +152,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">69</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -226,10 +226,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
-      
 
-      <time title="創建時間：2019-10-14 00:00:12 / 修改時間：00:20:21" itemprop="dateCreated datePublished" datetime="2019-10-14T00:00:12+08:00">2019-10-14</time>
+      <time title="創建時間：2019-10-14 00:00:12" itemprop="dateCreated datePublished" datetime="2019-10-14T00:00:12+08:00">2019-10-14</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新於</span>
+        <time title="修改時間：2021-09-30 23:56:08" itemprop="dateModified" datetime="2021-09-30T23:56:08+08:00">2021-09-30</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -250,7 +256,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><code>ES6</code> 開始可以使用箭頭 <code>=&gt;</code> 來定義涵式，但與原先的韓次在某些情況並不完全相同，在這篇文章中會探討箭頭函式的寫法與傳統韓式的差異</p>
+        <p><code>ES6</code> 開始可以使用箭頭 <code>=&gt;</code> 來定義涵式，但與原先的函式在某些情況並不完全相同，在這篇文章中會探討箭頭函式的寫法與傳統函式的差異</p>
 <span id="more"></span>
 
 <h2 id="基本寫法"><a href="#基本寫法" class="headerlink" title="基本寫法"></a>基本寫法</h2><ul>
@@ -264,13 +270,13 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fnc = <span class="function">() =&gt;</span> <span class="string">&#x27;Hello&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> fnc2 = <span class="function">(<span class="params">num1, num2</span>) =&gt;</span> num1 + num2;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="沒有-arguments-參數"><a href="#沒有-arguments-參數" class="headerlink" title="沒有 arguments 參數"></a>沒有 arguments 參數</h2><p>一般函式被呼叫時，都會產生一個 <code>argument</code> 物件，這個物件的內容就是我們帶入的 “參數”，而箭頭函式中是沒有 <code>arguments</code> 物件的</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fnc = <span class="function"><span class="keyword">function</span> (<span class="params">num1, num2</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="built_in">arguments</span>.length );   <span class="comment">// 5</span></span><br><span class="line">  <span class="keyword">return</span> num1 + num2;   </span><br><span class="line">&#125;;</span><br><span class="line">fuc(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)   <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fuc2(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>) </span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fnc = <span class="function"><span class="keyword">function</span> (<span class="params">num1, num2</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="built_in">arguments</span>.length );</span><br><span class="line">  <span class="keyword">return</span> num1 + num2;   </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">fuc(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>);   <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="this-差異"><a href="#this-差異" class="headerlink" title="this 差異"></a>this 差異</h2><ul>
 <li><p>傳統函式 : <code>this</code> 的值是動態的，由呼叫這個函式的擁有物件 <code>object</code> 而定</p>
 </li>
 <li><p>箭頭函式 : <code>this</code> 的值綁定到其定義時所在的物件而定，也就是由周邊的作用域而定</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&#x27;我是全域&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> test = &#123;</span><br><span class="line">  name: <span class="string">&#x27;我是作用域&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  callName: <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;1&quot;</span>, <span class="built_in">this</span>.name);     <span class="comment">// 1 我是作用域</span></span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;2&quot;</span>, <span class="built_in">this</span>.name);   <span class="comment">// 2 我是作用域</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;3&quot;</span>, <span class="built_in">this</span>);        <span class="comment">// 3 test 這個物件</span></span><br><span class="line">    &#125;, <span class="number">100</span>);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  callName2: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;4&quot;</span>, <span class="built_in">this</span>);          <span class="comment">// 4 我是全域</span></span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;5&quot;</span>, <span class="built_in">this</span>.name);   <span class="comment">// 5 我是全域</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;6&quot;</span>, <span class="built_in">this</span>);        <span class="comment">// 6 window 物件</span></span><br><span class="line">    &#125;, <span class="number">100</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test.callName();</span><br><span class="line">test.callName2();</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&#x27;我是全域&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> test = &#123;</span><br><span class="line">  name: <span class="string">&#x27;我是作用域&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  callName: <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;1&quot;</span>, <span class="built_in">this</span>.name);     <span class="comment">// 1 我是作用域</span></span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;2&quot;</span>, <span class="built_in">this</span>.name);   <span class="comment">// 2 我是作用域</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;3&quot;</span>, <span class="built_in">this</span>);        <span class="comment">// 3 test 這個物件</span></span><br><span class="line">    &#125;, <span class="number">100</span>);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  callName2: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;4&quot;</span>, <span class="built_in">this</span>.name);          <span class="comment">// 4 我是全域</span></span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;5&quot;</span>, <span class="built_in">this</span>.name);   <span class="comment">// 5 我是全域</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;6&quot;</span>, <span class="built_in">this</span>);        <span class="comment">// 6 window 物件</span></span><br><span class="line">    &#125;, <span class="number">100</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test.callName();</span><br><span class="line">test.callName2();</span><br></pre></td></tr></table></figure>
 
 <p>由以上範例可以看到，傳統函式 <code>function</code> 的 <code>this</code> 指的是這個函式的擁有物件 <code>test</code>，而箭頭函式在全域被宣告定義，所以其 this 自然指向最高級物件 window</p>
 <p>而外層的 “函式” 並不回影響箭頭函式的 <code>this</code> 原先指向的 <code>window</code>，外層的 “物件” 才會使箭頭函式的 <code>this</code> 指向這個物件</p>

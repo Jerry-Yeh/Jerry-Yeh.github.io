@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://jerry-yeh.github.io/javascript/20191004/50136/XMLHttpRequest.png">
 <meta property="og:image" content="https://jerry-yeh.github.io/javascript/20191004/50136/xhr.responseText.png">
 <meta property="article:published_time" content="2019-10-04T14:32:23.000Z">
-<meta property="article:modified_time" content="2019-10-04T17:30:13.388Z">
+<meta property="article:modified_time" content="2021-09-21T05:47:06.005Z">
 <meta property="article:author" content="Yeh">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="AJAX">
@@ -155,7 +155,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">69</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -237,7 +237,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2019-10-05 01:30:13" itemprop="dateModified" datetime="2019-10-05T01:30:13+08:00">2019-10-05</time>
+        <time title="修改時間：2021-09-21 13:47:06" itemprop="dateModified" datetime="2021-09-21T13:47:06+08:00">2021-09-21</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -270,64 +270,37 @@
 <li><code>XMLHttpRequest</code> 與 “網頁伺服器” 進行 “非同步” 資料交換</li>
 </ul>
 <h2 id="AJAX-操作"><a href="#AJAX-操作" class="headerlink" title="AJAX 操作"></a>AJAX 操作</h2><h3 id="XMLHttpRequest-物件"><a href="#XMLHttpRequest-物件" class="headerlink" title="XMLHttpRequest 物件"></a><code>XMLHttpRequest</code> 物件</h3><ol>
-<li>宣告一個 <code>XMLHttpRequest</code> 物件</li>
+<li>宣告一個 <code>XMLHttpRequest</code> 物件<br>當宣告一個 <code>XMLHttpRequest</code> 物件後，我們可以透過 <code>console.log</code> 來查看這個物件的屬性，並透過這些屬性來操作資料與確認狀態<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"><span class="built_in">console</span>.log(xhr);</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p>  當宣告一個 <code>XMLHttpRequest</code> 物件後，我們可以透過 <code>console.log</code> 來查看這個物件的屬性，並透過這些屬性來操作資料與確認狀態</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"><span class="built_in">console</span>.log(xhr);</span><br></pre></td></tr></table></figure>
-
 <p>  <img src="XMLHttpRequest.png"></p>
 <ol start="2">
-<li><code>.open(&quot;格式&quot;, &quot;網址&quot;, &quot;同步/非同步&quot;)</code> 定義連線方式</li>
-</ol>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">&quot;get&quot;</span>, <span class="string">&quot;https://hexschool.github.io/ajaxHomework/data.json&quot;</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
-
+<li><p><code>.open(&quot;格式&quot;, &quot;網址&quot;, &quot;同步/非同步&quot;)</code> 定義連線方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">&quot;get&quot;</span>, <span class="string">&quot;https://hexschool.github.io/ajaxHomework/data.json&quot;</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>格式</p>
-<ul>
+<li>格式<ul>
 <li><code>get</code> : 讀取資料</li>
 <li><code>post</code> : 傳資料到伺服器確認</li>
 </ul>
 </li>
-<li><p>網址<br>要讀取的資料位置</p>
-</li>
-<li><p>同步與非同步</p>
-<p>通常都使用 <code>true</code> 非同步，否則當資料太大時，會等到資料傳送完畢才會繼續渲染網頁</p>
-<ul>
+<li>網址<br>要讀取的資料位置</li>
+<li>同步與非同步<br>通常都使用 <code>true</code> 非同步，否則當資料太大時，會等到資料傳送完畢才會繼續渲染網頁<ul>
 <li><code>true</code> 非同步: 不會等資料傳回來，就會讓程式碼繼續往下跑</li>
 <li><code>false</code> 同步: 會等資料傳回來，才讓程式碼繼續往下跑</li>
 </ul>
 </li>
 </ul>
-<ol start="3">
-<li><code>send()</code> 送出請求</li>
+</li>
+<li><p><code>send()</code> 送出請求<br>在定義完連線方式後，接著就會送出請求，小括號 <code>()</code> 內放入要送出的資料，如果只是要取得資料，就會填入 <code>null</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p><code>responseText</code> 資料內容<br>送出請求後我們可以透過 <code>responseText</code> 來查看資料內容<br><img src="xhr.responseText.png"><br>但如果在送出請求後，接著使用 <code>console.log</code> 來查看資料，會發現取得 空值，因為 <code>AJAX</code> 是 “非同步” 取得資料，所以在取得資料前網頁就會渲染完畢</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(xhr.responseText);   <span class="comment">// 空值</span></span><br></pre></td></tr></table></figure></li>
+<li><p><code>onload</code> 成功取得資料後執行<br>要解決上述問題，只要使用 <code>onload</code> 在成功取得資料後再印出結果，要注意的是，從 <code>.json</code> 檔案取得的資料型態是 “字串”，所以要使用 <code>JSON.parse</code> 還原資料型態</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;message&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;message&quot;</span>&gt;</span>王小明<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; in json</span><br><span class="line">[</span><br><span class="line">  &#123;name: &quot;王小名&quot;&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xhr.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(xhr.responseText);   <span class="comment">// &quot;[&#123;&quot;name&quot;:&quot;王小名&quot;&#125;]&quot;</span></span><br><span class="line">  <span class="keyword">var</span> str = JOSN.parse(xhr.responseText);</span><br><span class="line">  <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.message&#x27;</span>).textContent = str[<span class="number">0</span>].name;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p><code>onerror</code> 取得資料失敗後執行<br>除了設定成功取得資料後執行的內容，當然也可以設定取得資料失敗後執行的內容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.onerror = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;...&#125;;</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p>  在定義完連線方式後，接著就會送出請求，小括號 <code>()</code> 內放入要送出的資料，如果只是要取得資料，就會填入 <code>null</code></p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li><code>responseText</code> 資料內容</li>
-</ol>
-<p>  送出請求後我們可以透過 <code>responseText</code> 來查看資料內容</p>
-<p>  <img src="xhr.responseText.png"></p>
-<p>  但如果在送出請求後，接著使用 <code>console.log</code> 來查看資料，會發現取得 空值，因為 <code>AJAX</code> 是 “非同步” 取得資料，所以在取得資料前往網頁就換渲染完畢</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(xhr.responseText);   <span class="comment">// 空值</span></span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li><code>onload</code> 成功取得資料後執行</li>
-</ol>
-<p>  要解決上述問題，只要使用 <code>onload</code> 在成功取得資料後再印出結果，要注意的是，從 <code>.json</code> 檔案取得的資料型態是 “字串”，所以要使用 <code>JSON.parse</code> 還原資料型態</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;message&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- after js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;message&quot;</span>&gt;</span>王小明<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; in json</span><br><span class="line">[</span><br><span class="line">  &#123;name: &quot;王小名&quot;&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xhr.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(xhr.responseText);   <span class="comment">// &quot;[&#123;&quot;name&quot;:&quot;王小名&quot;&#125;]&quot;</span></span><br><span class="line">  <span class="keyword">var</span> str = JOSN.parse(xhr.responseText);</span><br><span class="line">  <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.message&#x27;</span>).textContent = str[<span class="number">0</span>].name;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<ol start="6">
-<li><code>onerror</code> 取得資料失敗後執行</li>
-</ol>
-<p>除了設定成功取得資料後執行的內容，當然也可以設定取得資料失敗後執行的內容</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.onerror = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;...&#125;;</span><br></pre></td></tr></table></figure>
-
 <h3 id="readyState-狀態碼"><a href="#readyState-狀態碼" class="headerlink" title="readyState 狀態碼"></a><code>readyState</code> 狀態碼</h3><p>在操作 <code>XMLHttpRequest</code> 物件的每個步驟都會有專屬的狀態碼以辨別當下進度</p>
 <p>通常 <code>2</code>、<code>3</code> 會在一瞬間執行完畢，所以在取得資料後查看會是 <code>4</code></p>
 <ul>
@@ -337,7 +310,7 @@
 <li><code>3</code> : <code>loading</code> 資料中</li>
 <li><code>4</code> : 已經取得資料，且完全接收數據</li>
 </ul>
-<h3 id="傳統表單輸入"><a href="#傳統表單輸入" class="headerlink" title="傳統表單輸入"></a>傳統表單輸入</h3><p>傳統的表單如下，輸入後資料後，會傳送到 action 所指定的位置</p>
+<h3 id="傳統表單輸入"><a href="#傳統表單輸入" class="headerlink" title="傳統表單輸入"></a>傳統表單輸入</h3><p>傳統的表單如下，輸入資料後，會傳送到 action 所指定的位置</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;index.html&quot;</span>&gt;</span></span><br><span class="line">  帳號 : </span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span>&gt;</span>   // abc@gmail.com</span><br><span class="line">  <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  密碼 : </span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span>&gt;</span>   // abcde</span><br><span class="line">  <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;send&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>傳送的資料以問號 <code>?</code> 隔開 “位置” 內容，如果有多筆內容，使用 <code>&amp;</code> 隔開</p>
@@ -363,7 +336,7 @@
 <p><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.test-cors.org/">test-cors.org</a></p>
 <p>詳細說明可以參考以下資料</p>
 <p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://blog.techbridge.cc/2017/05/20/api-ajax-cors-and-jsonp/">輕鬆理解 Ajax 與跨來源請求</a></p>
-<h2 id="HTTP-狀態碼"><a href="#HTTP-狀態碼" class="headerlink" title="HTTP 狀態碼"></a><code>HTTP</code> 狀態碼</h2><p><code>HTTP</code> 狀態碼指的是伺服器回應 <code>HTTP response</code> 我們發出的請求 ，而 <code>HTTP request``HTTP</code> 狀態碼分為五大類、三個層級，三個層級分別使用三個數字來表示，第一個數字就表示大類</p>
+<h2 id="HTTP-狀態碼"><a href="#HTTP-狀態碼" class="headerlink" title="HTTP 狀態碼"></a><code>HTTP</code> 狀態碼</h2><p><code>HTTP</code> 狀態碼指的是伺服器回應 <code>HTTP response</code> 我們發出的請求 ，而 <code>HTTP request``HTTP</code> 狀態碼分為五大類、三個層級，而三個層級分別使用三個數字來表示，第一個數字就表示大類</p>
 <ul>
 <li>1xx - 參考資訊 (informational)</li>
 <li>2xx - 成功 (OK)</li>
