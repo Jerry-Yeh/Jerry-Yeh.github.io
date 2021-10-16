@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://jerry-yeh.github.io/git/20190926/a121fcd1/auto-merge.png">
 <meta property="og:image" content="https://jerry-yeh.github.io/git/20190926/a121fcd1/conflict-merge.png">
 <meta property="article:published_time" content="2019-09-25T16:03:23.000Z">
-<meta property="article:modified_time" content="2019-09-25T16:46:16.700Z">
+<meta property="article:modified_time" content="2021-10-04T02:21:26.433Z">
 <meta property="article:author" content="Yeh">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
@@ -155,18 +155,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -229,10 +229,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
-      
 
-      <time title="創建時間：2019-09-26 00:03:23 / 修改時間：00:46:16" itemprop="dateCreated datePublished" datetime="2019-09-26T00:03:23+08:00">2019-09-26</time>
+      <time title="創建時間：2019-09-26 00:03:23" itemprop="dateCreated datePublished" datetime="2019-09-26T00:03:23+08:00">2019-09-26</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新於</span>
+        <time title="修改時間：2021-10-04 10:21:26" itemprop="dateModified" datetime="2021-10-04T10:21:26+08:00">2021-10-04</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -256,7 +262,7 @@
         <p>Git 為分散式版本控制系統，最初目的是為更好地管理Linux核心開發而設計</p>
 <span id="more"></span>
 
-<h2 id="Git-簡介"><a href="#Git-簡介" class="headerlink" title="Git 簡介"></a>Git 簡介</h2><h3 id="什麼是「分散式」"><a href="#什麼是「分散式」" class="headerlink" title="什麼是「分散式」?"></a>什麼是「分散式」?</h3><p>「分散式」版本控制系統也需要一台專用的伺服器，但即使沒有伺服器或網路的奇況下也可以在本地端進行版本更新，等待網路或伺服器恢復再上傳更新，不會受到影響，而 Git 大部分也可以在自己電腦完成</p>
+<h2 id="Git-簡介"><a href="#Git-簡介" class="headerlink" title="Git 簡介"></a>Git 簡介</h2><h3 id="什麼是「分散式」"><a href="#什麼是「分散式」" class="headerlink" title="什麼是「分散式」?"></a>什麼是「分散式」?</h3><p>「分散式」版本控制系統也需要一台專用的伺服器，但即使沒有伺服器或網路的情況下也可以在本地端進行版本更新，等待網路或伺服器恢復再上傳更新，不會受到影響，而 Git 大部分也可以在自己電腦完成</p>
 <h3 id="什麼是「版本控制系統」"><a href="#什麼是「版本控制系統」" class="headerlink" title="什麼是「版本控制系統」 ?"></a>什麼是「版本控制系統」 ?</h3><p>「版本控制系統」指的是會幫你紀錄每次檔案的新增、刪除與修改的狀態變化，並同時記錄修改者的名稱與修改時間，因此檔案出錯時可以輕易找出原因，如果檔案損毀也可以回到上一個紀錄重新來過</p>
 <h3 id="速度快、檔案體積小"><a href="#速度快、檔案體積小" class="headerlink" title="速度快、檔案體積小"></a>速度快、檔案體積小</h3><p>過去要記錄每次檔案的版本往往是複製整個新的檔案或是只複製每個版本的差異，因此檔案會隨著不斷的修改與更新而使檔案大小日益增加</p>
 <p>Git 在版本控制上不同的地方在於使用「快照」（snapshot），如同相機拍照般拍下每式的版本內容，在開啟某個版本時，並非拼湊每次的更新差異，而是各個檔案自動搜尋選擇的版本以前各自最新的檔案版本，因此速度上也較快</p>
@@ -437,7 +443,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch</span><br></pre></td></tr></table></figure>
 
 <p>接著將抓下來的超前內容合併到本地端分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge</span><br></pre></td></tr></table></figure>
 
 <p><strong>git pull = git fetch + git merge</strong><br>下載遠端數據庫合併到本地端數據庫</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>

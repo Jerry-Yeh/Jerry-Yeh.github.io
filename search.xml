@@ -1004,7 +1004,7 @@
     <content><![CDATA[<p>Git 為分散式版本控制系統，最初目的是為更好地管理Linux核心開發而設計</p>
 <span id="more"></span>
 
-<h2 id="Git-簡介"><a href="#Git-簡介" class="headerlink" title="Git 簡介"></a>Git 簡介</h2><h3 id="什麼是「分散式」"><a href="#什麼是「分散式」" class="headerlink" title="什麼是「分散式」?"></a>什麼是「分散式」?</h3><p>「分散式」版本控制系統也需要一台專用的伺服器，但即使沒有伺服器或網路的奇況下也可以在本地端進行版本更新，等待網路或伺服器恢復再上傳更新，不會受到影響，而 Git 大部分也可以在自己電腦完成</p>
+<h2 id="Git-簡介"><a href="#Git-簡介" class="headerlink" title="Git 簡介"></a>Git 簡介</h2><h3 id="什麼是「分散式」"><a href="#什麼是「分散式」" class="headerlink" title="什麼是「分散式」?"></a>什麼是「分散式」?</h3><p>「分散式」版本控制系統也需要一台專用的伺服器，但即使沒有伺服器或網路的情況下也可以在本地端進行版本更新，等待網路或伺服器恢復再上傳更新，不會受到影響，而 Git 大部分也可以在自己電腦完成</p>
 <h3 id="什麼是「版本控制系統」"><a href="#什麼是「版本控制系統」" class="headerlink" title="什麼是「版本控制系統」 ?"></a>什麼是「版本控制系統」 ?</h3><p>「版本控制系統」指的是會幫你紀錄每次檔案的新增、刪除與修改的狀態變化，並同時記錄修改者的名稱與修改時間，因此檔案出錯時可以輕易找出原因，如果檔案損毀也可以回到上一個紀錄重新來過</p>
 <h3 id="速度快、檔案體積小"><a href="#速度快、檔案體積小" class="headerlink" title="速度快、檔案體積小"></a>速度快、檔案體積小</h3><p>過去要記錄每次檔案的版本往往是複製整個新的檔案或是只複製每個版本的差異，因此檔案會隨著不斷的修改與更新而使檔案大小日益增加</p>
 <p>Git 在版本控制上不同的地方在於使用「快照」（snapshot），如同相機拍照般拍下每式的版本內容，在開啟某個版本時，並非拼湊每次的更新差異，而是各個檔案自動搜尋選擇的版本以前各自最新的檔案版本，因此速度上也較快</p>
@@ -1185,7 +1185,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch</span><br></pre></td></tr></table></figure>
 
 <p>接著將抓下來的超前內容合併到本地端分支</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git fetch</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git merge</span><br></pre></td></tr></table></figure>
 
 <p><strong>git pull = git fetch + git merge</strong><br>下載遠端數據庫合併到本地端數據庫</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
@@ -2160,7 +2160,7 @@
 </ul>
 <p>同樣的，如果沒有回傳結果會是 <code>undefined</code>，其中 <code>0</code> 就是 <code>initialValue</code></p>
 <h3 id="加總"><a href="#加總" class="headerlink" title="加總"></a>加總</h3><p>加總是 <code>reduce</code> 很常用到的技巧，只要將前一個值與當下的值相加，就會得到加總</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> wanted = [</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">&#x27;魯夫&#x27;</span>,</span><br><span class="line">    price: <span class="number">15</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">&#x27;索隆&#x27;</span>,</span><br><span class="line">    price: <span class="number">3.2</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">&#x27;香吉士&#x27;</span>,</span><br><span class="line">    price: <span class="number">3.3</span></span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> reduceEmpty = wanted.reduce(<span class="function">(<span class="params">previousValue, currentValue, currentIndex, array</span>) =&gt;</span> &#123;&#125;, initialValue);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(reduceEmpty);   <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> reduce = wanted.reduce(<span class="function">(<span class="params">previousValue, currentValue, currentIndex, array</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(previousValue, currentValue.price, currentIndex);</span><br><span class="line">  <span class="keyword">return</span> previousValue + currentValue.price;   <span class="comment">// 21.5</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(reduce);   </span><br><span class="line"><span class="comment">// 0 15 0 </span></span><br><span class="line"><span class="comment">// 15 3.2 1 </span></span><br><span class="line"><span class="comment">// 18.2 3.3 2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> wanted = [</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">&#x27;魯夫&#x27;</span>,</span><br><span class="line">    price: <span class="number">15</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">&#x27;索隆&#x27;</span>,</span><br><span class="line">    price: <span class="number">3.2</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">&#x27;香吉士&#x27;</span>,</span><br><span class="line">    price: <span class="number">3.3</span></span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> reduceEmpty = wanted.reduce(<span class="function">(<span class="params">previousValue, currentValue, currentIndex, array</span>) =&gt;</span> &#123;&#125;, initialValue);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(reduceEmpty);   <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> reduce = wanted.reduce(<span class="function">(<span class="params">previousValue, currentValue, currentIndex, array</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(previousValue, currentValue.price, currentIndex);</span><br><span class="line">  <span class="keyword">return</span> previousValue + currentValue.price;   <span class="comment">// 21.5</span></span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(reduce);   </span><br><span class="line"><span class="comment">// 0 15 0 </span></span><br><span class="line"><span class="comment">// 15 3.2 1 </span></span><br><span class="line"><span class="comment">// 18.2 3.3 2</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="取最大值"><a href="#取最大值" class="headerlink" title="取最大值"></a>取最大值</h3><p><code>reduce</code> 是前一個值與當下的值不斷循環，所以透過 <code>max</code> 取較大值就可以取得最大值，同理最小值 <code>min</code> 也可以</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> maxPrice = wanted.reduce(<span class="function">(<span class="params">pre, cur, i</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.max(pre, cur.price);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(maxPrice);   <span class="comment">// 15</span></span><br></pre></td></tr></table></figure>]]></content>
@@ -4061,6 +4061,151 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> b = <span class="string">&#x27;1&#x27;</span> + <span class="number">2</span>;   <span class="comment">// 12</span></span><br></pre></td></tr></table></figure>
 
 <p>即使這麼做不會出現錯誤，但一般來說盡量避免這樣的運算出現，原因是在開發時通常不會只有這麼簡單的運算，兩個參數之間可能有大量的程式碼，避免出現無法預期的 Bug</p>
+]]></content>
+      <categories>
+        <category>克服JS的奇怪部分</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>面試紀錄-哲煜科技-前端工程師</title>
+    <url>/interview/20211005/27559/</url>
+    <content><![CDATA[<p>哲煜科技接案公司前端工程師面試紀錄</p>
+<span id="more"></span>
+
+<h3 id="面試流程"><a href="#面試流程" class="headerlink" title="面試流程"></a>面試流程</h3><p>前端主管與技術長二人同時一起面試，主要針對過往工作經歷、專案內容操作與相關技術進行提問</p>
+<h3 id="提問"><a href="#提問" class="headerlink" title="提問"></a>提問</h3><h4 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h4><ul>
+<li>Q: Vue 生命週期了解程度</li>
+<li>Q: 如何處理不同裝置解析度下載入不同圖片</li>
+<li>Q: Vue 中如何使用 jQuery<br>A: 於 <code>mounted</code> 後 Vue 綁定到 DOM 上方可使用</li>
+<li>Q: created 更新 data <code>watch()</code> 會先觸發還是 <code>mounted</code> ?</li>
+</ul>
+<h4 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h4><ul>
+<li>Q: ES6 &amp; ES6+ 了解程度<br>A: 常用於變數、函式宣告與陣列方法</li>
+<li>Q: 什麼是 JavaScript 中的 Event Loop ?</li>
+<li>Q: JavaScript 是一個單線程還是多線程的程式語言 ?</li>
+</ul>
+<h4 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h4><ul>
+<li>Q: 協作時發生 <code>conflict</code> 應該下什麼指令來解決</li>
+</ul>
+<h4 id="Else"><a href="#Else" class="headerlink" title="Else"></a>Else</h4><ul>
+<li>Q: 是否使用過 CI/CD 進行自動部屬 ?</li>
+</ul>
+<h3 id="最後對公司提問"><a href="#最後對公司提問" class="headerlink" title="最後對公司提問"></a>最後對公司提問</h3><ul>
+<li>Q: 接案公司開發週期<br>A: 是專案內容而定，常見半年至一年不等</li>
+<li>Q: 什麼情況下會採用新技術 (Ex: Vue3)<br>A: 判定技術社群較為成熟且採用成本可以接受為主</li>
+<li>Q: 如何規範 Coding Style ?<br>A: 透過 ESLint 與命名方式同步開發，並進行互相 Code Review</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Interview</category>
+      </categories>
+      <tags>
+        <tag>Interview</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>比較運算子 Comparison Operators</title>
+    <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211010/9237/</url>
+    <content><![CDATA[<p>結合上一章的強制轉型與運算子介紹比較運算子的應用範例</p>
+<span id="more"></span>
+
+<p>我們直接從一個最簡單的例子來理解 JavaScrit 中比較運算子的規則，下方的例子我們可以很直覺的反應答案是 <code>true</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> &lt; <span class="number">2</span> &lt; <span class="number">3</span>);   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>接著看到第二個例子</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span> &lt; <span class="number">2</span> &lt; <span class="number">1</span>);   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>會發現答案也是 <code>true</code> ?，這裡我們先看一下 <code>&lt;</code> 這個比較運算子的規則</p>
+<p><img src="less-than.PNG"></p>
+<p>規則為由左到右，而兩個相同的運算子層級相同，所以由最左邊開始</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">false</span> &lt; <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>在強制轉型章節有提到，當不同型別的值進行運算時，會被強制轉型，而 <code>false</code> 經過轉型成數字後會是 <code>0</code>，<code>true</code> 則是 <code>1</code>，所以最後答案才會是 <code>true</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span> &lt; <span class="number">1</span>);   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>這時候我們回過頭看到一開始大家覺得理所當然的比較運算就會發現，雖然答案剛好和直覺相同，但運算的過程其實不一樣</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 初始狀態</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> &lt; <span class="number">2</span> &lt; <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一次運算</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">true</span> &lt; <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 強制轉型後</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> &lt; <span class="number">3</span>);   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="常見的特別轉型結果"><a href="#常見的特別轉型結果" class="headerlink" title="常見的特別轉型結果"></a>常見的特別轉型結果</h3><p>以下列出 JavaScript 特別的轉型結果</p>
+<h4 id="數字轉型"><a href="#數字轉型" class="headerlink" title="數字轉型"></a>數字轉型</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Number</span>(<span class="literal">undefined</span>);   <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">null</span>);   <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="運算子"><a href="#運算子" class="headerlink" title="== 運算子"></a>== 運算子</h4><p>雙等號在不同型別比較時也會進行強制轉型</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> == <span class="string">&#x27;1&#x27;</span>;     <span class="comment">// true</span></span><br><span class="line"><span class="literal">false</span> == <span class="number">0</span>;   <span class="comment">// true</span></span><br><span class="line"><span class="string">&quot;&quot;</span> == <span class="number">0</span>;      <span class="comment">// true</span></span><br><span class="line"><span class="string">&quot;&quot;</span> == <span class="literal">false</span>;  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>但這裡有一個很特別的案例，在上方 <code>null</code> 轉型成數字時是 <code>0</code>，但透過 <code>==</code> 比較又是 <code>false</code>，這也被視為 JavaScript 的缺陷，因此開發時建議使用三個等號 <code>===</code> 避免將值強制轉型</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="literal">null</span> == <span class="number">0</span>;   <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="運算子-1"><a href="#運算子-1" class="headerlink" title="=== 運算子"></a>=== 運算子</h4><p>這也是一般開發在進行值的比較時建議使用的方式，避免值被強制傳型出現無法預期的錯誤</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> === <span class="number">1</span>;     <span class="comment">// true</span></span><br><span class="line"><span class="number">1</span> === <span class="string">&#x27;1&#x27;</span>;   <span class="comment">// false </span></span><br></pre></td></tr></table></figure>
+
+<h4 id="amp-運算子"><a href="#amp-運算子" class="headerlink" title="!= &amp; !== 運算子"></a>!= &amp; !== 運算子</h4><p>同理 <code>!=</code> 在比較是否不相等時會強制傳型，<code>!==</code> 則不會</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">0</span> != <span class="literal">false</span>;   <span class="comment">// false</span></span><br><span class="line"><span class="number">0</span> !== <span class="literal">false</span>;  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#Less_than_operator">MDN Expressions and operators</a><br><a href="Operator+Precedence+In+Javascript">Operator+Precedence+In+Javascript</a><br><a href="Equalty+Comparison+And+Sameness+">Equalty+Comparison+And+Sameness</a></p>
+]]></content>
+      <categories>
+        <category>克服JS的奇怪部分</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>存在與布林 Existence and Booleans</title>
+    <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211016/61081/</url>
+    <content><![CDATA[<p>在 JavaScript 中，我們可以透過 <code>Boolean</code> 來判斷一個值是否存在，某些值被轉型為布林後會被判斷為 <code>false</code>，如下:</p>
+<span id="more"></span>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Boolean</span>(<span class="literal">undefined</span>);   <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="literal">null</span>);        <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="string">&#x27;&#x27;</span>);          <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="number">0</span>);           <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>表示這些值都不存在，但其實一般開發並不太會使用 <code>Boolean</code> 這個函式直接強制轉型，而是會透過 <code>if-else</code> 來判斷<br>如下範例，如果沒有為一個參數主動賦值，預設值就是 <code>undefined</code>，因此會被強制轉型為 <code>false</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"></span><br><span class="line"><span class="comment">// goes to internet and looks for a value</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (a) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Something is there.&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接著看到如果賦值為 <code>0</code>，也會被強制轉型為 <code>false</code>，但如果再加上一個 <code>||</code> 使值為 <code>0</code> 的時候也通過，因為 <code>===</code> 優先於 <code>||</code>，在 <code>false</code> 或 <code>true</code> 的結果，結果就會是 <code>true</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始條件</span></span><br><span class="line"><span class="keyword">if</span> (a || a === <span class="number">0</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// === 運算子優先運算</span></span><br><span class="line"><span class="keyword">if</span> (a || <span class="literal">true</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// || 運算子由左到右，0 被轉型為 false</span></span><br><span class="line"><span class="keyword">if</span> (<span class="literal">false</span> || <span class="literal">true</span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>克服JS的奇怪部分</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>預設值 Default Value</title>
+    <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211016/58810/</url>
+    <content><![CDATA[<p>這章節會透過其他角度來看 JavaScript 強制轉型的特性</p>
+<span id="more"></span>
+
+<p>首先先宣告一個擁有一個參數的函式，我們都知道 JavaScript 的變數如果沒有主動賦值，都會被給予一個 <code>undefined</code>，所以城市並不會出錯</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Hello &#x27;</span> + name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greet();        <span class="comment">// Hello undefined</span></span><br><span class="line">greet(Jerry);   <span class="comment">// Hello Jerry  </span></span><br></pre></td></tr></table></figure>
+
+<p>接著將變數改成如果沒有賦值，我們透過 <code>||</code> 給予一個預設值</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  name = name || <span class="string">&#x27;&lt;Your name here&gt;&#x27;</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Hello &#x27;</span> + name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greet();   <span class="comment">// Hello &lt;Your name here&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>原因是 <code>||</code> 優先於 <code>=</code>，而 <code>||</code> 會回傳優先為 <code>true</code> 的值，所以如果沒有賦與參數，會回傳透過 <code>Boolean</code> 轉型為 <code>true</code> 的值</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  name = <span class="literal">false</span> || <span class="literal">true</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Hello &#x27;</span> + name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greet();   <span class="comment">// // Hello &lt;Your name here&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>克服JS的奇怪部分</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>框架小叮嚀:預設值 Framework Aside</title>
+    <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211016/19790/</url>
+    <content><![CDATA[<p>在開發 JavaScript 時，我們常會透過 <code>&lt;script&gt;</code> 來導入不同的套件，這章節來進一步了解透件被引入後的執行方式</p>
+<span id="more"></span>
+
+<p>一段常見的用法如下，我們透過 <code>&lt;script&gt;</code> 導入 <code>lib1.js</code> 和 <code>lib2.js</code> 這兩個框架，最後導入 <code>app.js</code> 來執行</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;lib1.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;lib2.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;app.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>各自的程式碼如下</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// lib1.js</span></span><br><span class="line"><span class="keyword">var</span> libraryName = <span class="string">&#x27;Lib 1&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// lib2.js</span></span><br><span class="line"><span class="keyword">var</span> libraryName = <span class="string">&#x27;Lib 2&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="built_in">console</span>.log(libraryName);   <span class="comment">// Lib 2</span></span><br></pre></td></tr></table></figure>
+
+<p>結果會是 <code>Lib 2</code>，原因是 JavaScript 在執行這三段程式碼的時候，並不會為它們各自創造一個執行環境，直接地說是將彼此程式碼進行堆疊，所以實際上這兩個 Library 宣告了一個相同的全域變數，結果自然會以後者來取代。</p>
+<p>所以如果在看許多套件的原始碼會看到類似以下的方式來宣告變數，避免影響到已存在的程式碼。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// lib2.js</span></span><br><span class="line"><span class="keyword">var</span> libraryName = libraryName || <span class="string">&#x27;Lib 2&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 其實也就是在 window 宣告一個全域變數</span></span><br><span class="line"><span class="built_in">window</span>.libraryName = <span class="built_in">window</span>.libraryName || <span class="string">&#x27;Lib 2&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>這麼一來後續導入的套件就不會影響到前者了</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> libraryName = libraryName || <span class="string">&#x27;Lib 1&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> libraryName = libraryName || <span class="string">&#x27;Lib 2&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(libraryName);   <span class="comment">// Lib 1</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>克服JS的奇怪部分</category>
