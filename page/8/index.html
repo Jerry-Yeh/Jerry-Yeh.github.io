@@ -145,18 +145,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">79</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -195,7 +195,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/vue/20191113/2839/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/vue/20191113/32048/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -208,7 +208,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/vue/20191113/2839/" class="post-title-link" itemprop="url">Vuex 是什麼 ?</a>
+          <a href="/vue/20191113/32048/" class="post-title-link" itemprop="url">payload 傳遞參數</a>
         </h2>
 
         <div class="post-meta-container">
@@ -220,7 +220,7 @@
       <span class="post-meta-item-text">發表於</span>
       
 
-      <time title="創建時間：2019-11-13 00:51:06 / 修改時間：01:02:32" itemprop="dateCreated datePublished" datetime="2019-11-13T00:51:06+08:00">2019-11-13</time>
+      <time title="創建時間：2019-11-13 23:53:07 / 修改時間：23:59:57" itemprop="dateCreated datePublished" datetime="2019-11-13T23:53:07+08:00">2019-11-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -242,10 +242,90 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>Vuex 是用來管理前端網站的資料狀態，適用於規模較大的網站，如果網站規模不夠大，反而是多了限制</p>
+          <p>當我們要從元件傳遞參數到 <code>actions</code> 時，如果原先在元件中的事件就有一個以上的參數，則第二個以後的參數就會出現 <code>undefined</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in component</span></span><br><span class="line"><span class="function"><span class="title">addtoCart</span>(<span class="params">id, qty = <span class="number">1</span></span>)</span> &#123;</span><br><span class="line">  <span class="built_in">this</span>.$store.dispatch(<span class="string">&#x27;addtoCart&#x27;</span>, id, qty);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// in store</span></span><br><span class="line">actions: &#123;</span><br><span class="line">  <span class="function"><span class="title">addtoCart</span>(<span class="params">context, id, qty</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(context, id, qty);   <span class="comment">// &#x27;預設 context 內容&#x27; &#x27;id&#x27; undefined</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="物件形式傳遞多個參數"><a href="#物件形式傳遞多個參數" class="headerlink" title="物件形式傳遞多個參數"></a>物件形式傳遞多個參數</h2><p>如果原先事件就有一個以上的參數，就可以透過物件 <code>&#123;&#125;</code> 的形式將所有參數包起來傳遞，再透過 “解構” 的方式取出參數</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in component</span></span><br><span class="line"><span class="function"><span class="title">addtoCart</span>(<span class="params">id, qty = <span class="number">1</span></span>)</span> &#123;</span><br><span class="line">  <span class="built_in">this</span>.$store.dispatch(<span class="string">&#x27;addtoCart&#x27;</span>, &#123; id, qty &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// in store</span></span><br><span class="line">actions: &#123;</span><br><span class="line">  <span class="function"><span class="title">addtoCart</span>(<span class="params">context, &#123; id, qty &#125;</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(context, id, qty);   <span class="comment">// &#x27;預設 context 內容&#x27; &#x27;id&#x27; &#x27;qty&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/vue/20191113/7550/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yeh">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JustNOTE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/vue/20191113/7550/" class="post-title-link" itemprop="url">使用 actions 取得遠端資料</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2019-11-13 23:46:46 / 修改時間：23:52:42" itemprop="dateCreated datePublished" datetime="2019-11-13T23:46:46+08:00">2019-11-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><code>Vuex</code> 最大的特色就是可以將 “重複” 使用到的變數與方法統一放到 <code>store</code> 來管理，而其管理的流程是透過元件來呼叫 <code>actions</code> 來觸發 “非同步” 的事件，再透過 <code>commit</code> 呼叫 <code>mutations</code> 中的同步事件來改變 <code>state</code> 中的資料狀態，進而影響畫面的呈現</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/vue/20191113/2839/#more" rel="contents">
+              <a class="btn" href="/vue/20191113/7550/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -276,7 +356,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191105/37805/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/vue/20191113/36215/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -289,7 +369,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/javascript/20191105/37805/" class="post-title-link" itemprop="url">JavaScript 同步與非同步</a>
+          <a href="/vue/20191113/36215/" class="post-title-link" itemprop="url">Vuex 嚴謹模式</a>
         </h2>
 
         <div class="post-meta-container">
@@ -299,17 +379,23 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
-      
 
-      <time title="創建時間：2019-11-05 16:49:19 / 修改時間：17:02:12" itemprop="dateCreated datePublished" datetime="2019-11-05T16:49:19+08:00">2019-11-05</time>
+      <time title="創建時間：2019-11-13 01:22:53" itemprop="dateCreated datePublished" datetime="2019-11-13T01:22:53+08:00">2019-11-13</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新於</span>
+        <time title="修改時間：2020-06-17 23:23:24" itemprop="dateModified" datetime="2020-06-17T23:23:24+08:00">2020-06-17</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">分類於</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+          <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
         </span>
     </span>
 
@@ -323,10 +409,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><code>synchronous</code> 和 <code>asynchronous</code> 如果將其翻譯成中文的 “同步” 與 “非同步” 反而很容易誤解其含義，同步 <code>synchronous</code> 指的是 <code>one at a time</code>，一次執行一列程式碼並依序執行，非同步 <code>asynchronous</code> 指的是 <code>more than one at a time</code>，同時執行不只一列程式碼</p>
+          <p>在 <code>Vuex</code> 中，一直重複提到一個很重要的觀念就是 <code>mutations</code> 只負責同步的行為，非同步的行為如 <code>AJAX</code> 與 <code>setTimeout</code> 等都是由 <code>actions</code> 來負責</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/javascript/20191105/37805/#more" rel="contents">
+              <a class="btn" href="/vue/20191113/36215/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -357,7 +443,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191105/49319/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/vue/20191113/2212/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -370,7 +456,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/javascript/20191105/49319/" class="post-title-link" itemprop="url">JavaScript 物件與原型鍊</a>
+          <a href="/vue/20191113/2212/" class="post-title-link" itemprop="url">Actions 與 Mutations 改變資料狀態</a>
         </h2>
 
         <div class="post-meta-container">
@@ -382,7 +468,7 @@
       <span class="post-meta-item-text">發表於</span>
       
 
-      <time title="創建時間：2019-11-05 12:34:42 / 修改時間：14:44:28" itemprop="dateCreated datePublished" datetime="2019-11-05T12:34:42+08:00">2019-11-05</time>
+      <time title="創建時間：2019-11-13 01:13:20 / 修改時間：01:22:02" itemprop="dateCreated datePublished" datetime="2019-11-13T01:13:20+08:00">2019-11-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -390,7 +476,7 @@
       </span>
       <span class="post-meta-item-text">分類於</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+          <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
         </span>
     </span>
 
@@ -404,10 +490,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>JavaScript 是一門 “物件導向” 的程式語言，但物件彼此是透過 “原型” 來繼承屬性，在介紹原型鍊之前，會先透過 “串聯” <code>Cascade</code> 與物件來了解背後的觀念</p>
+          <p>在第一個章節中有提到，在 <code>vuex</code> 中，<code>actions</code> 處理非同步的事件或取得遠端的資料，但不處理資料的狀態，而 <code>mutation</code> 則是改變資料內容的方法，所以上一章節直接更改變數的方式在 <code>vuex</code> 中並不完全正確</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/javascript/20191105/49319/#more" rel="contents">
+              <a class="btn" href="/vue/20191113/2212/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -438,7 +524,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191105/30734/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/vue/20191113/33419/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -451,7 +537,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/javascript/20191105/30734/" class="post-title-link" itemprop="url">JavaScript 中的傳值與傳址</a>
+          <a href="/vue/20191113/33419/" class="post-title-link" itemprop="url">新增一個 store 來管理網站資料狀態</a>
         </h2>
 
         <div class="post-meta-container">
@@ -463,7 +549,7 @@
       <span class="post-meta-item-text">發表於</span>
       
 
-      <time title="創建時間：2019-11-05 10:30:59 / 修改時間：12:34:52" itemprop="dateCreated datePublished" datetime="2019-11-05T10:30:59+08:00">2019-11-05</time>
+      <time title="創建時間：2019-11-13 01:02:27 / 修改時間：01:12:37" itemprop="dateCreated datePublished" datetime="2019-11-13T01:02:27+08:00">2019-11-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -471,7 +557,7 @@
       </span>
       <span class="post-meta-item-text">分類於</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+          <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
         </span>
     </span>
 
@@ -485,91 +571,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>JavaScript 的變數再賦予不同型別的時候，會有同的傳遞方式，以 “基本型別” <code>Primitive</code> 和 “物件型別” <code>Object</code> 作為區分 </p>
+          <p>這章節會將兩個各自透過變數 <code>Loading</code> 管理 <code>vue-loading-overlay</code> 的元件統一由 <code>store</code> 來管理</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/javascript/20191105/30734/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191024/33578/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yeh">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JustNOTE">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/javascript/20191024/33578/" class="post-title-link" itemprop="url">JavaScript - 閉包 Closure</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-      
-
-      <time title="創建時間：2019-10-24 00:40:03 / 修改時間：01:14:02" itemprop="dateCreated datePublished" datetime="2019-10-24T00:40:03+08:00">2019-10-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>閉包 <code>Closure</code> 是 JavaScript 中一種透過函式包住函式的技巧，透過這種技巧可以避免函式中的變數汙染到全域，而出現相同變數名稱互相干擾的情況</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/javascript/20191024/33578/#more" rel="contents">
+              <a class="btn" href="/vue/20191113/33419/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -593,7 +598,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 </div>
