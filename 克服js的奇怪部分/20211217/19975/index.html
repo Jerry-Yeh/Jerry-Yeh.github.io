@@ -29,8 +29,9 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211217/19975/Invoke-IIFE.png">
 <meta property="og:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211217/19975/Anonymous-Function.png">
+<meta property="og:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211217/19975/IIFE-Execution-Context.png">
 <meta property="article:published_time" content="2021-12-16T16:03:24.000Z">
-<meta property="article:modified_time" content="2021-12-16T16:59:11.227Z">
+<meta property="article:modified_time" content="2021-12-18T07:15:18.307Z">
 <meta property="article:author" content="Yeh">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211217/19975/Invoke-IIFE.png">
@@ -139,7 +140,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-State-amp-Function-Expressions"><span class="nav-number">1.</span> <span class="nav-text">Function State &amp; Function Expressions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%8B%E5%8D%B3%E5%91%BC%E5%8F%AB%E5%87%BD%E5%BC%8F-Immediately-Invoked-Function-Expressions-IIFE"><span class="nav-number">2.</span> <span class="nav-text">立即呼叫函式 Immediately Invoked Function Expressions (IIFE)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%BB%BA%E7%AB%8B-IIFE"><span class="nav-number">2.1.</span> <span class="nav-text">直接建立 IIFE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90"><span class="nav-number">3.</span> <span class="nav-text">資料來源</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-State-amp-Function-Expressions"><span class="nav-number">1.</span> <span class="nav-text">Function State &amp; Function Expressions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%8B%E5%8D%B3%E5%91%BC%E5%8F%AB%E5%87%BD%E5%BC%8F-Immediately-Invoked-Function-Expressions-IIFE"><span class="nav-number">2.</span> <span class="nav-text">立即呼叫函式 Immediately Invoked Function Expressions (IIFE)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%BB%BA%E7%AB%8B-IIFE"><span class="nav-number">2.1.</span> <span class="nav-text">直接建立 IIFE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="nav-number">2.2.</span> <span class="nav-text">安全程式碼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%8F%E9%81%8E%E5%BD%B1%E9%9F%BF%E5%A4%96%E5%B1%A4%E8%AE%8A%E6%95%B8%E9%87%8D%E8%A4%87%E4%BD%BF%E7%94%A8"><span class="nav-number">2.3.</span> <span class="nav-text">透過影響外層變數重複使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90"><span class="nav-number">3.</span> <span class="nav-text">資料來源</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -153,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-count">93</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -227,10 +228,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
-      
 
-      <time title="創建時間：2021-12-17 00:03:24 / 修改時間：00:59:11" itemprop="dateCreated datePublished" datetime="2021-12-17T00:03:24+08:00">2021-12-17</time>
+      <time title="創建時間：2021-12-17 00:03:24" itemprop="dateCreated datePublished" datetime="2021-12-17T00:03:24+08:00">2021-12-17</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新於</span>
+        <time title="修改時間：2021-12-18 15:15:18" itemprop="dateModified" datetime="2021-12-18T15:15:18+08:00">2021-12-18</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -287,6 +294,13 @@
 <p>這樣的寫法常見於各大 <code>Framework</code> 和 <code>Library</code> 中，我們也許會看到呼叫的括號有的放在裡面，有的放在外面，這些其實都是合法的寫法，只要選擇一種風格並保持就可以了。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// inside</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log)(<span class="string">&#x27;Hello&#x27;</span> + name);</span><br><span class="line">&#125;(firstname));   <span class="comment">// Hello John</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// outside</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log)(<span class="string">&#x27;Hello&#x27;</span> + name);</span><br><span class="line">&#125;)(firstname);   <span class="comment">// Hello John</span></span><br></pre></td></tr></table></figure>
 
+<h3 id="安全程式碼"><a href="#安全程式碼" class="headerlink" title="安全程式碼"></a>安全程式碼</h3><p>當 <code>JavaScript Engine</code> 開始執行時，會產生一個全域的執行階段 <code>Global Execution Context</code>;接著當程式執行到我們所建立的 <code>IIFE</code> 時，這段匿名函式 <code>Anonymous Function</code> 會儲存在 <code>Global Exection Context</code> 中，而因為這是一個在最後有加上括號 <code>()</code> 的 <code>IIFE</code>，所以這個函是會立即被執行並產生一個新的 <code>Execution Context</code>，而其中所建立的變數 <code>gretting</code> 就會在這個 <code>Execution Context</code> 裡面，不會影響到 <code>Global Execution Context</code>;因此，透過 <code>IIFE</code> 我們就可以達到變數彼此不會互相影響目的了。 </p>
+<p><img src="IIFE-Execution-Context.png"></p>
+<h3 id="透過影響外層變數重複使用"><a href="#透過影響外層變數重複使用" class="headerlink" title="透過影響外層變數重複使用"></a>透過影響外層變數重複使用</h3><p>那如果我們希望 <code>IIFE</code> 中的變數可以重複使用的話該怎麼做呢 ?</p>
+<p>雖然我們使用 <code>IIFE</code> 的目的就是希望變數彼此不會互相影響，但有時候又希望可以在全域環境中使用到這些變數，這時候就可以透過將全域物件 <code>window</code> 帶入到 <code>IIFE</code> 中，並將目標變數綁訂到 <code>window</code> 上，如此一來既可以在其他 <code>Execution Context</code> 使用到它了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// IIFE</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"><span class="built_in">global</span>, name</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> gretting = <span class="string">&#x27;Hello&#x27;</span>;</span><br><span class="line">  <span class="built_in">global</span>.greeting = greeting;</span><br><span class="line">  <span class="built_in">console</span>.log(gretting + <span class="string">&#x27; &#x27;</span> + name);   <span class="comment">// Hello John</span></span><br><span class="line"></span><br><span class="line">&#125;(<span class="built_in">window</span>, <span class="string">&#x27;John&#x27;</span>));</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;gretting&#x27;</span>);   <span class="comment">// Hello</span></span><br></pre></td></tr></table></figure>
+
+<p>但在開發時，我們需要確定的定義綁定到全域的變數，不能因為一個問題或一時方便就這麼做，否則就失去 <code>IIFE</code> 將變數環境各自獨立的目的了。</p>
 <h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.udemy.com/course/understand-javascript/">Udemy-JavaScript: Understanding the Weird Parts</a></p>
 
     </div>
@@ -306,6 +320,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211218/44904/" rel="next" title="了解閉包 Closures (一)">
+                  了解閉包 Closures (一) <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
