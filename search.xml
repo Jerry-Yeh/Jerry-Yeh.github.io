@@ -3921,7 +3921,7 @@
   <entry>
     <title>函數的陳述句與表達式的用法</title>
     <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211212/33122/</url>
-    <content><![CDATA[<!-- @format -->
+    <content><![CDATA[<!-- @format --> 
 
 <p>在這堂課中，介紹了函數陳述式 <code>Function Statement</code> 和函數表達式 <code>Function Expressions</code> 兩種函數的建立方式</p>
 <span id="more"></span>
@@ -4851,6 +4851,386 @@
 
 
 <h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p><a href="https://www.udemy.com/course/understand-javascript/">Udemy-JavaScript: Understanding the Weird Parts</a>`</p>
+]]></content>
+      <categories>
+        <category>克服JS的奇怪部分</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>古典與原型繼承</title>
+    <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211226/8192/</url>
+    <content><![CDATA[<p>這堂課將介紹 <code>JavaScript</code> 中，和其他城市語言很不一樣的觀念，物件導向 <code>Object-Oriented</code> 與原型繼承 <code>Prototypal Inheritance</code></p>
+<span id="more"></span>
+
+<h2 id="Classical-Inheritance-v-s-Prototypal-Inheritance"><a href="#Classical-Inheritance-v-s-Prototypal-Inheritance" class="headerlink" title="Classical Inheritance v.s Prototypal Inheritance"></a>Classical Inheritance v.s Prototypal Inheritance</h2><p>首先，我們先來了解一下名什麼是繼承 <code>Inheritance</code>，其實就是一個物件取得另一個物件的屬性 <code>properties</code> 和方法 <code>method</code>。</p>
+<p>而繼承又分為兩種，一種是 <code>Classical Inheritance</code>，其他程式語言如 C#、Java 所使用的物件繼承方式 ; 另一種則是 <code>JavaScript</code> 所使用的繼承方式，<code>Prototypal Inheritance</code>。</p>
+<h2 id="Prototype-Chain-原型鍊"><a href="#Prototype-Chain-原型鍊" class="headerlink" title="Prototype Chain 原型鍊"></a>Prototype Chain 原型鍊</h2><p>延續前面的說法， <code>JavaScript</code> 是一個透過 <code>Prototypal Inheritance</code> 來讓物件取得另一個物件的屬性 <code>properties</code> 或方法 <code>method</code>，先來讓我們看一下底下這張圖:</p>
+<p><img src="prototype-chain.png"></p>
+<p>首先在記憶體中有一個叫做 <code>obj</code> 的物件，如果它底下有一個名為 <code>prop1</code> 的屬性，我們可以透過點 <code>. (dot operator)</code> 來取得這個物件屬性 <code>obj.prop1</code>。</p>
+<p>在前面 <code>call()、bind() and apply()</code> 的課程中，我們知道物件在被建立時，會有一些預設的屬性和方法，所有物件 (包括函式) 都會有一個 <code>prototype</code> 屬性，這裡我們先稱它為 <code>proto</code>，接著，當我們要找一個名為 <code>prop2</code> 的屬性時，在 <code>obj</code> 身上找不到，便會向 <code>proto</code> 去找，如果找到了，一樣可以透過點 <code>. dot operator</code> 來指向它 <code>obj.prop2</code>，而不須使用 <code>obj.proto.prop2</code> 來使用它。</p>
+<p>然而，如果找不到就會繼續向 <code>proto</code> 的 <code>prototype</code> 找下去，前面提到，每個物件都有 <code>prototype</code>，而 <code>obj</code> 的 <code>proto</code> 也不例外，所以當我們輸入 <code>obj.prop3</code> 時，在 <code>obj</code> 與 <code>proto</code> 都找不到便會向 <code>proto</code> 的 <code>prototype</code> 找下去，並回傳 <code>obj.proto.proto.prop3</code> 給我們。</p>
+<p>在物件上尋找屬性找不到便向 <code>prototype</code> 查詢的形式便會形成一個原型鍊 <code>Prototype Chain</code>，那麼一直找下去會到什麼時候呢 ? 會一直指向原型直到返回 <code>null</code> 為止。</p>
+<p><img src="share-prototype-chain.png"></p>
+<p>接著我們看到第二張圖，物件的 <code>prototype</code> 其實是可以分享給其他物件的，如圖中的第二個物件 <code>obj2</code>，它將 <code>prototype</code> 同樣指向 <code>obj</code> 的 <code>proto</code>，所以當我們輸入 <code>obj2.prop2</code> 時，其實會和 <code>obj.porp2</code> 同樣指向記憶體中相同的位置。</p>
+<p>我們其實不用把這個觀念想得太複雜，當我們呼叫物件的屬性時，如果找不到便會向它的 <code>prototype</code> 尋找，找到了同樣可以把它當作物件的屬性來呼叫。</p>
+<h2 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h2><p>讓我們透過範例進一步了解這個概念，這個範例其實不會在一般的開發中這麼使用，因為現代瀏覽器提供了其他方式來使用它，如果按照範例使用，還會造成開發應用程式的效能問題。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  firstname: <span class="string">&#x27;Default&#x27;</span>,</span><br><span class="line">  lastname: <span class="string">&#x27;Default&#x27;</span>,</span><br><span class="line">  getFullName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.firstname + <span class="string">&#x27; &#x27;</span> + lastname;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> john = &#123;</span><br><span class="line">  firstname: <span class="string">&#x27;John&#x27;</span>,</span><br><span class="line">  lastname: <span class="string">&#x27;Doe&#x27;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>再次強調不要在實際開發上這麼使用，這只是為了方便了解原型鍊 <code>Prototypal Chain</code> 的概念而已。<br>首先，為了讓新建立的物件 <code>john</code> 使用到 <code>person</code> 的方法 <code>getFullName</code>，我們要將 <code>john</code> 的 <code>prototype</code> 指向 <code>person</code>，在 <code>JavaScript</code> 我們可以透過兩個下底線 <code>_</code> 包住 proto <code>__proto__</code> 來指定，這麼一來輸入 <code>john.getFullName()</code> 時因為找不到，就會沿著 <code>Prototypal Chain</code> 找到 <code>person</code> 的 <code>getFullName</code> 方法了。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// don&#x27;t do this EVER! for demo purpose only !!! </span></span><br><span class="line"></span><br><span class="line">john.__proto__ = person;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(john.getFullName());   <span class="comment">// John Doe</span></span><br></pre></td></tr></table></figure>
+
+<p>那麼如果在這之後單純呼叫物件 <code>john</code> 的屬性呢 ?</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(john.firstname);   <span class="comment">// John</span></span><br></pre></td></tr></table></figure>
+
+<p>會發現結果還是物件 <code>john</code> 自己的屬性而不是 <code>person</code> 的 <code>Default</code>，因為原型鍊的概念是，我在物件本身找不到時，才會沿著 <code>prototype</code> 往上尋找。</p>
+<p>接著我們來看到另一個範例，首先，建立一個只有 <code>firstname</code> 屬性的物件 <code>jane</code>，同樣地，我們將它的 <code>portotype</code> 指向 <code>person</code>，所以當它呼叫 <code>getFullName</code> 方法時，因為物件本身沒有，自然就會往 <code>protype</code> 物件 <code>person</code> 尋找 ; 但是該物件並沒有 <code>lastname</code> 屬性，所以延續前面提到的，當物件沒有對應的屬性和方法時，就會往 <code>prototype</code> 尋找，結果就會是 <code>person.lastname</code> 的 <code>Default</code> 了。 </p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> jane = &#123;</span><br><span class="line">  firstname: <span class="string">&#x27;jane&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">jane.__proto__ = person;</span><br><span class="line"></span><br><span class="line">jane.getFullName();   <span class="comment">// Jane Default</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p><a href="https://www.udemy.com/course/understand-javascript/">Udemy-JavaScript: Understanding the Weird Parts</a>`</p>
+]]></content>
+      <categories>
+        <category>克服JS的奇怪部分</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>所有東西都是物件或純值</title>
+    <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211228/29342/</url>
+    <content><![CDATA[<p>前一堂課了解到 <code>JavaScript</code> 中的 <code>Prototypal Chain</code> 後，這堂課將進一步探討物件中的 <code>prototype</code>。</p>
+<span id="more"></span>
+
+<p>在 <code>JavaScript</code> 中，所有物件都有 <code>prototype</code>，除了最基礎物件 <code>base object</code>。</p>
+<p>那到底什麼是 <code>base object</code> 呢 ?</p>
+<p>首先，我們透過 <code>console</code> 來看到每一種物件的 <code>prototype</code>，分別是物件 <code>object</code>、函式 <code>function</code> 與陣列 <code>array</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;;              <span class="comment">// object</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;   <span class="comment">// function</span></span><br><span class="line"><span class="keyword">var</span> c = [];              <span class="comment">// array</span></span><br></pre></td></tr></table></figure>
+
+<p>透過 <code>a.__proto__</code> 我們可以看到物件的 <code>prototype</code> 也是一個物件，打開它會發現已經有許多預設的 <code>method</code>，包含我們在開發時常用到的 <code>toString</code>、<code>valueOf</code> 等等，從這裡就可以得知為什麼每當我們創造一個物件時就會有這些 <code>method</code> 可以使用，因為我們透過自己宣告的物件來使用這些 <code>method</code> 時，會發現自己身上找不到，便會透過 <code>prototypal chain</code> 的概念往 <code>prototype</code> 找到這個物件，所以我們宣告的物件就有這些 <code>method</code> 了。</p>
+<p><img src="object-prototype.png"></p>
+<p>接著來看到 <code>function</code>，我們一樣透過 <code>b.__proto__</code> 來看 <code>function</code> 的 <code>prototype</code>，會得到一個空的函式，進一步在後方加上一個點 <code>dot operator</code> 查看它 <code>method</code>，會發現出現許多 <code>method</code> ，其中包含前幾堂課中學過的 <code>call</code>、<code>bind</code> 和 <code>apply</code>，同理這也就是我們在建立函式後會有這些 <code>method</code> 可以使用的原因了。</p>
+<p><img src="function-prototype.png"></p>
+<p>最後透過 <code>c.__proto__</code> 看到 <code>array</code> 的 <code>prototype</code>，同樣會有許多預設的 <code>method</code> 供我們使用。</p>
+<p><img src="array-prototype.png"></p>
+<p>那麼回到最一開始的問題，什麼是最基礎物件 <code>base object</code> 呢 ?</p>
+<p>其實就是一般物件 (前面範例的 a) 的 <code>prototype</code> 了，前面提到，所有物件都有 <code>prototype</code>，除了這個 <code>base object</code> 除外，所以當我們不斷透過 <code>.__proto__</code> 指向物件的 <code>prototype</code> 直到指向這個 <code>base object</code>，它就會出現 <code>null</code> ，包含函式 <code>function</code> 和陣列 <code>array</code> 的 <code>prototype</code> 最後也會指向 <code>base object</code>，所以我們才會說所有物件除了 <code>base object</code> 都有 <code>prototype</code>。</p>
+<h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p><a href="https://www.udemy.com/course/understand-javascript/">Udemy-JavaScript: Understanding the Weird Parts</a>`</p>
+]]></content>
+      <categories>
+        <category>克服JS的奇怪部分</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Reflection and Extend</title>
+    <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211228/40176/</url>
+    <content><![CDATA[<!-- @format -->
+
+<p>這堂課將來介紹一個在很多 <code>Libaries</code> 會使用到的觀念 - <code>Extend</code>，而 <code>Extend</code> 又因為 <code>Reflection</code> 而成立，讓我們來了解一下這兩個名詞吧。</p>
+<span id="more"></span>
+
+<p>首先，來了解一下 <code>Reflection</code> 這個名詞，<code>Reflection</code> 指的是物件可以取得並更改自己的屬性 <code>properties</code> 和方法 <code>method</code>。</p>
+<p>延續上次堂課的範例，我們建立兩個物件 <code>person</code> 和 <code>john</code>，並將 <code>john</code> 的 <code>prototype</code> 指向 <code>person</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  firstname: <span class="string">&quot;Default&quot;</span>,</span><br><span class="line">  lastname: <span class="string">&quot;Default&quot;</span>,</span><br><span class="line">  getFullName: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> firstname + <span class="string">&quot; &quot;</span> + lastname;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> john = &#123;</span><br><span class="line">  firstname: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">  lastname: <span class="string">&quot;Doe&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// don&#x27;t do this EVER! for demo purposes only !!</span></span><br><span class="line">john.__proto__ = person;</span><br></pre></td></tr></table></figure>
+
+<h2 id="for-in-基本應用"><a href="#for-in-基本應用" class="headerlink" title="for in 基本應用"></a>for in 基本應用</h2><p>接著透過 <code>for...in</code> 列出物件 <code>person</code> 中的所有 <code>properties</code> 與 <code>method</code>，也就是每個 <code>for</code> 迴圈的變數 <code>prop</code>，結果會發現連 <code>prototype</code> 的方法 <code>getFullName</code> 也被囊括進去了。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> john) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(prop + <span class="string">&quot;: &quot;</span> + john[prop]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// firstname: John</span></span><br><span class="line"><span class="comment">// lastname: Doe</span></span><br><span class="line"><span class="comment">// getFullName: function() &#123;</span></span><br><span class="line"><span class="comment">//   return firstname + &#x27; &#x27; + lastname;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="判斷屬性是否為繼承-hasOwnProperty"><a href="#判斷屬性是否為繼承-hasOwnProperty" class="headerlink" title="判斷屬性是否為繼承 hasOwnProperty"></a>判斷屬性是否為繼承 hasOwnProperty</h2><p>那麼如果我們只希望取得該物件本身的 <code>properties</code> 該怎麼辦呢 ?</p>
+<p>這時候便可以透過 <code>prototypal chain</code> 概念取得 <code>base object</code> 的方法 <code>hasOwnProperty</code> 來判斷該 <code>property</code> 是否來自於物件本身，是的話回傳 <code>true</code>，反之則回傳 <code>false</code>，因此我們就可以透過這個方法來篩選了。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> john) &#123;</span><br><span class="line">  <span class="keyword">if</span> (john.hasOwnPorperty(prop)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(prop + <span class="string">&quot;: &quot;</span> + john[prop]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// firstname: John</span></span><br><span class="line"><span class="comment">// lastname: Doe</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="underscore-js-extend"><a href="#underscore-js-extend" class="headerlink" title="underscore.js extend()"></a>underscore.js extend()</h2><p>接下來我們將透過 <code>underscore.js</code> 這個 <code>libaries</code> 的 <code>source code</code> 進一步了解 <code>extend</code> 的觀念。</p>
+<p>讓我們來看一下透過 <code>underscore.js</code> 中的 <code>extend()</code> 可以做到什麼 ; 在載入 <code>underscrore.js</code> 的程式碼後，我們可透過下底線 <code>_</code> 來使用其中所有 API，在 <code>extned()</code> 這個 API 中，第一個參數是我們要擴充的物件，後續的參數則是擴充的來源，所以透過 <code>_.extend(john, jane, jim)</code> 便可讓 <code>john</code> 得到 <code>jane</code> 和 <code>jim</code> 的所有 <code>properties</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> john = &#123;</span><br><span class="line">  firstname: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">  lastname: <span class="string">&quot;Doe&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> jane = &#123;</span><br><span class="line">  address: <span class="string">&#x27;111 Main St.&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> jim = &#123;</span><br><span class="line">  getFirstName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> firstname;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">_.extend(john, jane, jim);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(john);</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//   firstname: &quot;John&quot;,</span></span><br><span class="line"><span class="comment">//   lastname: &quot;Doe&quot;,</span></span><br><span class="line"><span class="comment">//   address: &#x27;111 Main St.&#x27;,</span></span><br><span class="line"><span class="comment">//     getFirstName: function() &#123;</span></span><br><span class="line"><span class="comment">//     return firstname;</span></span><br><span class="line"><span class="comment">//   &#125;</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br></pre></td></tr></table></figure>
+
+<p>接下來讓我們到 <a href="https://github.com/jashkenas/underscore/blob/master/underscore.js">underscore.js extend source code</a> 中，依序解析它的程式碼來了解它是如何辦到的。</p>
+<p>首先，我們可以看到 <code>extend</code> 這個 API 來自於 <code>createAssign</code> 這個函式，透過回傳一個函式這裡便形成一個 <code>closures</code>，以下依序為各個名詞的含意:</p>
+<ul>
+<li><code>obj</code> : 要擴充的物件 <code>john</code></li>
+<li><code>keysFunc</code> : 取得物件中所有 <code>key</code> 的方法</li>
+<li><code>length</code> : 傳入的物件數，如果只傳一個物件 <code>john</code> 則代表不擴充 <code>length &lt; 2</code>，因此直接回傳</li>
+<li>第 1 個 <code>for</code>: 從 <code>john</code> 的物件開始遍歷</li>
+<li><code>keys</code> : 擴充來源物件 <code>jane</code> 和 <code>jim</code> 的所有 <code>key</code> </li>
+<li><code>l</code> : 擴充來源物件 <code>jane</code> 和 <code>jim</code> 的所有 <code>key</code> 的數量</li>
+<li>第 2 個 <code>for</code>: 將擴充來源物件所有屬性指派給要擴充的物件 <code>john</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Extend a given object with all the properties in passed-in object(s).</span></span><br><span class="line"><span class="keyword">var</span> extend = createAssigner(allKeys);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createAssigner</span>(<span class="params">keysFunc, defaults</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> length = <span class="built_in">arguments</span>.length;</span><br><span class="line">    <span class="keyword">if</span> (defaults) obj = <span class="built_in">Object</span>(obj);</span><br><span class="line">    <span class="keyword">if</span> (length &lt; <span class="number">2</span> || obj == <span class="literal">null</span>) <span class="keyword">return</span> obj;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> index = <span class="number">1</span>; index &lt; length; index++) &#123;</span><br><span class="line">      <span class="keyword">var</span> source = <span class="built_in">arguments</span>[index],</span><br><span class="line">        keys = keysFunc(source),</span><br><span class="line">        l = keys.length;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; l; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> key = keys[i];</span><br><span class="line">        <span class="keyword">if</span> (!defaults || obj[key] === <span class="keyword">void</span> <span class="number">0</span>) obj[key] = source[key];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上便是透過解析 <code>underscore.js</code> 來了解 <code>extend</code> 概念，讓我們透過原型鍊 <code>prototypal chain</code> 的方式就可以擴充物件的屬性 ; 其實多閱讀這些知名 <code>Library</code> 的 <code>source code</code> 可以增進我們的程式撰寫技巧，讓我們用更聰明、簡潔的方式達到一樣的目的。</p>
+<h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p><a href="https://www.udemy.com/course/understand-javascript/">Udemy-JavaScript: Understanding the Weird Parts</a>`</p>
+]]></content>
+      <categories>
+        <category>克服JS的奇怪部分</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>函數建構子、new 與 JavaScript 的歷史</title>
+    <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211229/60572/</url>
+    <content><![CDATA[<p>在過去的章節介紹過物件最基本的建立方式 - <code>literal object</code>，這堂課將透過 <code>JavaScript</code> 的歷史來介紹物件的其他建立方式。</p>
+<span id="more"></span>
+
+<p><code>JavaScript</code> 在創立初期，作者為了吸引 <code>Java</code> 的開發者使用它，所以在命名上便參考 <code>Java</code> 這個字，但在開發上其實有非常大的不同 ; 其中 <code>new</code> 這個關鍵字便是模仿 <code>Java</code> 而來，但在 <code>Java</code> 中，<code>new</code> 是用來建立一個 <code>class</code>，<code>class</code> 並非 <code>object</code>，而是用來定義並建立 <code>object</code> ; 然而在 <code>JavaScript</code> 中，<code>new</code> 則是被用來建立 <code>object</code>，這也是本堂課將介紹的用法 ; <code>JavaScript</code> 在 <code>ES6</code> 後的本版也有 <code>class</code> 這個關鍵字，但用法則和 <code>Java</code> 完全不同。</p>
+<h2 id="new-object"><a href="#new-object" class="headerlink" title="new object"></a>new object</h2><p>前面提到，<code>JavaScript</code> 中的關鍵字 <code>new</code> 和 <code>Java</code> 中的用法並不一樣，那麼當我們透過 <code>new</code> 來建立物件的時候到底會發生什麼事呢 ?</p>
+<p>讓我們透過一段程式碼範例來了解:</p>
+<p>首先，建立一個函式 <code>person</code>，接著透過 <code>new</code> 來呼叫這個函式並指派給一個變數 <code> john</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">  <span class="built_in">this</span>.firstname = <span class="string">&#x27;John&#x27;</span>;</span><br><span class="line">  <span class="built_in">this</span>.lastname = <span class="string">&#x27;Doe&#x27;</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;This function is invoked.&#x27;</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> john = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(john);</span><br></pre></td></tr></table></figure>
+
+<p>讓我們依序拆解這段程式碼，首先，呼叫函式 <code>Person()</code> 其實就和一般呼叫函式相同，會直接執行函式內的程式碼，如果沒有特別 <code>return</code>，就會回傳 <code>undefined</code>，接著前面的關鍵字 <code>new</code> 會建立一個空物件 <code>&#123;&#125;</code>，並將函式的 <code>this</code> 指向這個物件，所以當我們透過 <code>console.log</code> 查看 <code>john</code> 時，會得到一個含有兩個屬性 <code>firstname</code> 和 <code>lastname</code> 的物件。</p>
+<p><img src="new-object.png"></p>
+<p>那麼如果再透過 <code>new</code> 函式來建立第二個物件呢 ?</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> jane = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(jane);</span><br></pre></td></tr></table></figure>
+
+<p>會和第一個物件 <code>john</code> 得到一個含有兩個屬性的物件。</p>
+<p><img src="new-two-object.png"></p>
+<p>但如果我們希望透過 <code>new</code> 來建立的物件能自由地賦予它屬性的值該怎麼做呢 ?</p>
+<p>前面提到，這種建立物件的方式其實會先呼叫這個函式，再將它的 <code>this</code> 指向一個新產生的空物件，所以就如同一般函式，我們可以傳入參數，並指派給它的屬性，這麼一來就可以達到自由賦予屬性值的目的了。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">firstname, lastnmae</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">this</span>.firstname = firstname;</span><br><span class="line">  <span class="built_in">this</span>.lastname = lastname;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> john = <span class="keyword">new</span> Person(<span class="string">&#x27;John&#x27;</span>, <span class="string">&#x27;Doe&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(john);   <span class="comment">// &#123;firstname: &#x27;John&#x27;, lastname: &#x27;Doe&#x27;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> jane = <span class="keyword">new</span> Person(<span class="string">&#x27;Jane&#x27;</span>, <span class="string">&#x27;Doe&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(jane);   <span class="comment">// &#123;firstname: &#x27;Jane&#x27;, lastname: &#x27;Doe&#x27;&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>這種被用來透過關鍵字 <code>new</code> 來建立物件並回傳將 <code>this</code> 指派給新生成空物件的函式就稱為 <code>Function Constructors</code>。</p>
+<h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p><a href="https://www.udemy.com/course/understand-javascript/">Udemy-JavaScript: Understanding the Weird Parts</a>`</p>
+]]></content>
+      <categories>
+        <category>克服JS的奇怪部分</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>function-constructors-and-prototype</title>
+    <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20220102/42224/</url>
+    <content><![CDATA[<p>前一堂課介紹了如何透過關鍵字 <code>new</code> 來建立物件，這堂課將進一步介紹 <code>function construsctors</code> 和 <code>.prototype</code></p>
+<span id="more"></span>
+
+<h2 id="Prototype"><a href="#Prototype" class="headerlink" title="Prototype"></a>Prototype</h2><p>延續上一堂課的範例，如果透過 <code>new</code> 關鍵字來建立的物件，並使用 <code>__proto__</code> 來查看它的 <code>prototype</code> 會是什麼呢 ?</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">firstname, lastname</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">  <span class="built_in">this</span>.firstname = firstname;</span><br><span class="line">  <span class="built_in">this</span>.lastname = lastname;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;This function is invoked.&#x27;</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> john = <span class="keyword">new</span> Person(<span class="string">&#x27;John&#x27;</span>, <span class="string">&#x27;Doe&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(john.__proto__);</span><br></pre></td></tr></table></figure>
+
+<p>我們會得到一個名為 <code>Person</code> 的空物件</p>
+<p><img src="proto.png"></p>
+<p>但這到底是如何形成的呢 ?</p>
+<p>之前的課程有提到過，在一個函式被件建立時，它會有幾個預設的屬性，函式內的程式碼 - <code>code</code>、匿名函式不會有的 - <code>name</code> 和一個只被用來產生物件的 <code>function constructor</code> 才會有的屬性 - <code>prototype</code></p>
+<p><img src="function.png"></p>
+<p>但這裡很弔詭的是，函式的 <code>prototype</code> 屬性並不是這個函式的 <code>prototype</code>，而是透過 <code>new</code> 建立的物件的 <code>__proto__</code> 會自動指向這個函式的 <code>prototype</code> 屬性，這裡我們透過一個範例來了解</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">firstname, lastname</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">this</span>.firstname = firstname;</span><br><span class="line">  <span class="built_in">this</span>.lastname = lastname;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.getFullName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.firstname + <span class="string">&#x27; &#x27;</span> + <span class="built_in">this</span>.lastname;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> john = <span class="keyword">new</span> Person(<span class="string">&#x27;John&#x27;</span>, <span class="string">&#x27;Doe&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(john);</span><br><span class="line"><span class="built_in">console</span>.log(john.getFullName());   <span class="comment">// John Doe</span></span><br></pre></td></tr></table></figure>
+
+<p>這裡我們將一個函式 <code>getFullName</code> 指派給 <code>Person.prototype</code>，接著呼叫 <code>john.getFUllName()</code> 時，因為 <code>john</code> 本身並沒有這個方法，因此會沿著 <code>prototypal chain</code> 尋找，這時會找到 <code>Person.prototype</code>，所以我們會得到 <code>return</code> 的結果。</p>
+<p>那麼我們是不是也可以將這麼方法直接在函式 <code>Person</code> 建立時就賦予給它呢 ?</p>
+<p>當然可以，因為透過 <code>new</code> 來建立物件時會呼叫這個函式，並將 <code>this</code> 指向新的空物件，就和屬性一樣，方法也會出現在新建立的物件中</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">firstname, lastname</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">this</span>.firstname = firstname;</span><br><span class="line">  <span class="built_in">this</span>.lastname = lastname;</span><br><span class="line">  <span class="built_in">this</span>.getFullName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.firstname + <span class="string">&#x27; &#x27;</span> + <span class="built_in">this</span>.lastname;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.getFullName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.firstname + <span class="string">&#x27; &#x27;</span> + <span class="built_in">this</span>.lastname;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> john = <span class="keyword">new</span> Person(<span class="string">&#x27;John&#x27;</span>, <span class="string">&#x27;Doe&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(john.getFullName());   <span class="comment">// John Doe</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="記憶體占用"><a href="#記憶體占用" class="headerlink" title="記憶體占用"></a>記憶體占用</h2><p>但這裡不一樣的是，如果把方法 <code>getFullName</code> 在函式建立時就賦予給它，每當我們透過 <code>new</code> 建立一個物件時，這些物件都會有自己的 <code>getFullName</code> 方法，所以自然會有各自占用的記憶體空間 ; 但如果透過 <code>Person.prototype</code> 賦予時，在呼叫物件的方法時，因為找不到，所以會沿著 <code>prototypal chain</code> 找到賦予在函式 <code>prototype</code> 的方法，藉此減少相同方法占用記憶體空間。</p>
+<h2 id="後續新增方法"><a href="#後續新增方法" class="headerlink" title="後續新增方法"></a>後續新增方法</h2><p>透過函式的 <code>prototype</code> 新增方法的方式甚至可以在物件被建立後追加，不需要因為後續新增方法而去修改先前建立的物件</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">firstname, lastname</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">this</span>.firstname = firstname;</span><br><span class="line">  <span class="built_in">this</span>.lastname = lastname;</span><br><span class="line">  <span class="built_in">this</span>.getFullName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.firstname + <span class="string">&#x27; &#x27;</span> + <span class="built_in">this</span>.lastname;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.getFullName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.firstname + <span class="string">&#x27; &#x27;</span> + <span class="built_in">this</span>.lastname;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> john = <span class="keyword">new</span> Person(<span class="string">&#x27;John&#x27;</span>, <span class="string">&#x27;Doe&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(john.getFullName());   <span class="comment">// John Doe</span></span><br><span class="line"></span><br><span class="line">Person.prototype.getFormalFullName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.lastname + <span class="string">&#x27;, &#x27;</span> + <span class="built_in">this</span>.firstname;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(john.getFormalFullName());   <span class="comment">// Doe, John</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h2><p>在 <code>JavaScript</code> 透過 <code>function constructor</code> 的方式建立物件時，我們需要在呼叫函式前加上一個關鍵字 <code>new</code>，但如果我們漏掉關鍵字 <code>new</code>，整個程式碼還是可以執行的，只是這個變數會被賦予函式 <code>return</code> 的值，如果沒有回傳任何資料，這個值就會是 <code>undefined</code>，因為這也是一般呼叫函式的方式</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">firstname, lastname</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>);   <span class="comment">// window</span></span><br><span class="line">  <span class="built_in">this</span>.firstname = firstname;</span><br><span class="line">  <span class="built_in">this</span>.lastname = lastname;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;This function is invoked.&#x27;</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.getFullName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.firstname + <span class="string">&#x27; &#x27;</span> + <span class="built_in">this</span>.lastname;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> john = Person(<span class="string">&#x27;John&#x27;</span>, <span class="string">&#x27;Doe&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(john);   <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(john.getFullName()):   <span class="comment">// error... </span></span><br></pre></td></tr></table></figure>
+
+<p>為了盡量避免發生這種錯誤，所以在開發時通常會一個慣例，那就是如果這個函式是一個 <code>function constructor</code>，那命名上就會使用大寫開頭 <code>capital letter</code> (person –&gt; Person)，藉此提醒我們在透過這類函式建立物件時，記得加上關鍵字 <code>new</code>。</p>
+<h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p><a href="https://www.udemy.com/course/understand-javascript/">Udemy-JavaScript: Understanding the Weird Parts</a>`</p>
+]]></content>
+      <categories>
+        <category>克服JS的奇怪部分</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>內建函式建構子</title>
+    <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20220103/32940/</url>
+    <content><![CDATA[<p>前一堂課介紹了透過函是來建立物件的函式建構子 <code>Function Constructor</code>，這堂課將進一步介紹”內建”的函式建構子</p>
+<span id="more"></span>
+
+<h2 id="new-Number"><a href="#new-Number" class="headerlink" title="new Number()"></a>new Number()</h2><p>直接看到一段範例如下:</p>
+<p>透過內建的函式 <code>Number</code> 來建立一個物件，內建的 <code>Function Constructor</code> 也有按照大寫開頭的慣例</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="built_in">Number</span>(<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<p>當我們透過瀏覽器的 <code>console</code> 查看 <code>a</code> 的值時，它不是一個數字 <code>number</code>，還記得前面提到 <code>function constructor</code> 會建立的會是一個物件，所以得到的 <code>a</code> 會是一個包含數字 <code>3</code> 的 <code>object</code>。</p>
+<p><img src="Number.png"></p>
+<p>透過這些內建的 <code>function constructor</code> 所建立的物件會有一些內建的 <code>method</code> 可以使用，只要在瀏覽器的 <code>console</code> 中透過 <code>Number.prototype</code> 就可以查看</p>
+<p><img src="Number-prototype.png"></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">a.toString();   <span class="comment">// &#x27;3&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>不透過關鍵字 <code>new</code> 我們也可以單純使用 <code>Number()</code> 來將 <code>String</code> 轉為 <code>Number</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="built_in">Number</span>(<span class="string">&#x27;3&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);   <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="new-String"><a href="#new-String" class="headerlink" title="new String()"></a>new String()</h2><p>接著看到第二個範例:</p>
+<p>我們透過 <code>String</code> 來建立一個新的物件</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">&#x27;John&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>透過 <code>function constructor</code> 所建立的 <code>object</code> 同樣會有一些預設的 <code>method</code>，同樣可以透過 <code>String.prototype</code> 來查看，但如果直接這麼使用會發現結果不如預期</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">String</span>.prototype.indexOf(<span class="string">&#x27;o&#x27;</span>);   <span class="comment">// -1</span></span><br><span class="line"><span class="built_in">String</span>.prototype.indexOf(<span class="string">&#x27;Jo&#x27;</span>);   <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line">a.indexOf(<span class="string">&#x27;o&#x27;</span>);   <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>總結以上兩個範例，不管使用的 <code>function constructor</code> 是哪一種，所建立的只是長得像原始型別 <code>primitive</code> 的 <code>object</code>，並提供許多預設的 <code>method</code> 供我們使用。</p>
+<p>另外有一點很重要的是，我們在開發時常透過 <code>.length</code> 來取得字串的長度，但仔細想想，字串 <code>String</code> 是原始型別 <code>primitive</code>，並不是 <code>object</code>，所以並不會有 <code>property</code> 和 <code>method</code>，但當我們對 <code>primitive</code> 的值這麼做時，<code>JavaScript</code> 會自動幫你的值進行物件般的處理，如下:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;John&#x27;</span>.length);   <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="為內建的-Function-Constructor-新增屬性和方法"><a href="#為內建的-Function-Constructor-新增屬性和方法" class="headerlink" title="為內建的 Function Constructor 新增屬性和方法"></a>為內建的 Function Constructor 新增屬性和方法</h2><p>當我們透過內建的 <code>function constructor</code> 建立物件時，會有許多預設的屬性和方法供我們使用，但在 <code>JavaScript</code> 中能做的不僅如此，我們還可以在這些內建的 <code>function constructor</code> 上新增屬性和方法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">String</span>.prototype.isLengthGreaterThan = <span class="function"><span class="keyword">function</span>(<span class="params">limit</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.length &gt; limit;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;John&#x27;</span>.isLengthGreaterThan(<span class="number">3</span>));   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>在上面的範例中，我們在 <code>String.prototype</code> 上新增一個方法 <code>isLengthGreaterThan</code>，其函式中的 <code>this</code> 就是新建立的物件，而這裡則是 <code>John</code> 這個字串被當作物件般處理，結果是 <code>4 &gt; 3</code>，所以回傳 <code>true</code>。</p>
+<h2 id="自動將原始型別轉為物件處理"><a href="#自動將原始型別轉為物件處理" class="headerlink" title="自動將原始型別轉為物件處理"></a>自動將原始型別轉為物件處理</h2><p>那麼如果我們對數字 <code>number</code> 也這麼做會得到什麼呢 ?</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Number</span>.prototype.isPositive = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span> &gt; <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="Number-prototype-method.png"></p>
+<p>結果會得到 <code>error</code>，因為 <code>JavaScript</code> 只會將字串 <code>String</code> 自動轉為物件般處理，所以如果是其他原始型別，只能透過 <code>function constructor</code> 建立物件才能為它擴充屬性與方法。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">a.isPositive();   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="避免都使用-Function-Constructor-建立原始值"><a href="#避免都使用-Function-Constructor-建立原始值" class="headerlink" title="避免都使用 Function Constructor 建立原始值"></a>避免都使用 Function Constructor 建立原始值</h2><p>即便以上透過 <code>function constructor</code> 來建立原始值的物件看似方便好用，但在開發時，除非你很清楚這麼做的目的，否則都建議直接使用原始型別來建立，讓我們透過一段範例來了解為什麼要這麼做。</p>
+<p>首先，分別使用 <code>primitive</code> 和 <code>function constructor</code> 來建立數字 <code>3</code>，當我們透過雙等號 <code>==</code> 比較時，會得到 <code>true</code>，因為透過 <code>==</code> 比較時，<code>JavaScript</code> 會發現等號兩側不同型別，因此會幫我們自動轉型，所以得到 <code>true</code> 的結果，反之三等號 <code>===</code> 不會自動轉型，所以得到 <code>false</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a == b);   <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(a === b);   <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>所以在開發時，使用 <code>function constructor</code> 必須有很明確的目的，否則盡量單純使用 <code>primitive</code> 建立原始值即可</p>
+<h2 id="Moment-js"><a href="#Moment-js" class="headerlink" title="Moment.js"></a>Moment.js</h2><p>這裡介紹一個處理 <code>Date</code> 很有名的 <code>Library</code> - <a href="https://momentjs.com/">Moment.js</a>，它就是透過 <code>Date</code> 這個 <code>function constructor</code> 提供許多關於日期的方法。</p>
+<h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p><a href="https://www.udemy.com/course/understand-javascript/">Udemy-JavaScript: Understanding the Weird Parts</a>`</p>
+]]></content>
+      <categories>
+        <category>克服JS的奇怪部分</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>陣列與 for in</title>
+    <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20220103/39808/</url>
+    <content><![CDATA[<p>這堂課將介紹一個很容易誤會的用法，<code>Array</code> &amp; <code>for in</code></p>
+<span id="more"></span>
+
+<p>還記得在 <a href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211228/40176/" title="reflection and extend">reflection and extend</a> 這堂課中我們透過 <code>for</code> 迴圈將物件的屬性與方法擴充到另一個物件，而在 <code>JavaScript</code> 中，陣列也是物件，所以我們可以透過 <code>for in</code> 的方式取得陣列中的索引與值 <code>name value pair</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">&#x27;John&#x27;</span>, <span class="string">&#x27;Jane&#x27;</span>, <span class="string">&#x27;Jim&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> prop <span class="keyword">in</span> arr) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(prop + <span class="string">&#x27;: &#x27;</span> + arr[prop]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 0 John</span></span><br><span class="line"><span class="comment">// 1 Jane</span></span><br><span class="line"><span class="comment">// 2 Jim</span></span><br></pre></td></tr></table></figure>
+
+<p>在單純透過中括號建立物件 <code>literal array</code> 時，其實也是 <code>new</code> 一個物件，所以它的 <code>prototype</code> 也會指向 <code>Array.prototype</code>，所以如果我們在這上方直接新增屬性或方法，新建立的陣列也會取得，但透過 <code>for in</code> 列出陣列的 <code>name value pair</code> 時，新增在 <code>Array.prototype</code> 的屬性與方法也會被列出</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.myCustomFeature = <span class="string">&#x27;cool!&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">&#x27;John&#x27;</span>, <span class="string">&#x27;Jane&#x27;</span>, <span class="string">&#x27;Jim&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> prop <span class="keyword">in</span> arr) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(prop + <span class="string">&#x27;: &#x27;</span> + arr[prop]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 0: John</span></span><br><span class="line"><span class="comment">// 1: Jane</span></span><br><span class="line"><span class="comment">// 2: Jim</span></span><br><span class="line"><span class="comment">// myCustomFeature: cool!</span></span><br></pre></td></tr></table></figure>
+
+<p>所以在開發 <code>Array</code> 相關程式時，避免使用 <code>for in</code> 方式遍歷它的內容，使用標準的 <code>for</code> 迴圈即可，就不會出現 <code>prototype</code> 所新增的屬性與方法了。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++&gt;) &#123;</span><br><span class="line">  <span class="comment">// do something ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p><a href="https://www.udemy.com/course/understand-javascript/">Udemy-JavaScript: Understanding the Weird Parts</a>`</p>
+]]></content>
+      <categories>
+        <category>克服JS的奇怪部分</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Object.create and Pure Prototypal Inheritance</title>
+    <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20220104/21385/</url>
+    <content><![CDATA[<!-- @format -->
+
+<p>在前一堂課介紹了 <code>JavaScript</code> 模仿其他程式語言透過 <code>class</code> 定義並創造 <code>object</code> 的方式 - <code>function constructor</code>，接下來將介紹一個 <code>JavaScript</code> 獨有且瀏覽器預設就有的創造 <code>object</code> 方式 - <code>Object.create。</code></p>
+<span id="more"></span>
+
+<p>首先看到一段範例如下:</p>
+<p>我們創造了一個含有屬性與方法的物件 <code>person</code> ，並在方法中取得並回傳屬性值</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  firstname: <span class="string">&quot;Default&quot;</span>,</span><br><span class="line">  lastname: <span class="string">&quot;Default&quot;</span>,</span><br><span class="line">  greet: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hi&quot;</span> + <span class="built_in">this</span>.firstname;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>但如果方法中指向物件屬性的 <code>this</code> 被忽略了，在方法執行時，因為當前函式的 <code>execution context</code> 找不到該變數，便會向外找向 <code>Global execution context</code>，導致因為全域環境沒有這個變數結果出現 <code>error</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  firstname: <span class="string">&quot;Default&quot;</span>,</span><br><span class="line">  lastname: <span class="string">&quot;Default&quot;</span>,</span><br><span class="line">  greet: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hi&quot;</span> + firstname;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create"></a>Object.create</h2><p>在 <code>JavaScript</code> 中，有一種瀏覽器預設的方式來建立物件，那就是 <code>Object.create()</code>，首先我們同樣先建立一個物件 <code>person</code>，接著透過 <code>Object.create()</code> 建立另一個物件 <code>john</code> ，並把物件 <code>person</code> 作為參數帶入</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  firstname: <span class="string">&quot;Default&quot;</span>,</span><br><span class="line">  lastname: <span class="string">&quot;Default&quot;</span>,</span><br><span class="line">  greet: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hi&quot;</span> + firstname;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> john = <span class="built_in">Object</span>.create(person);</span><br><span class="line"><span class="built_in">console</span>.log(john);</span><br></pre></td></tr></table></figure>
+
+<p>當我們透過 <code>console.log</code> 查看物件 <code>john</code> 時，會發現得到一個空物件，並將 <code>prototype</code> 指向作為參數帶入的物件 <code>person</code>。</p>
+<p><img src="Object-create.png"></p>
+<p>因為新建立物件 <code>john</code> 的 <code>prototype</code> 指向原物件 <code>person</code>，所以我們可以直接在 <code>john</code> 之下使用 <code>person</code> 的屬性和方法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(john.firstname);   <span class="comment">// Default</span></span><br><span class="line">consoel.log(john.greet());     <span class="comment">// Hi Default</span></span><br></pre></td></tr></table></figure>
+
+<p>如果我們希望自定義 <code>john</code> 的屬性，也可以直接加上去，因為當我們呼叫物件的屬性和方法時，在找不到的情況才會找向 <code>prototype</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">john.firstname = <span class="string">&quot;John&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(john.greet());   <span class="comment">// Hi John</span></span><br></pre></td></tr></table></figure>
+
+<p>透過這種方式建立物件並繼承原物件我們就稱為 <code>Pure Prototypal Inheritance</code></p>
+<h2 id="polyfill"><a href="#polyfill" class="headerlink" title="polyfill"></a>polyfill</h2><p>上述透過 <code>Object.create()</code> 建立物件繼承的方式不僅簡潔易懂，還可以彈性的覆蓋或新增屬性和方法，但如果遇到需要支援舊瀏覽器的專案時，可能會有無法使用 <code>Object.create()</code> 的情況，接下來就讓我們談談一個名詞 - <code>polyfill</code>。</p>
+<p><code>polyfill</code>: 透過程式碼讓我們新增舊環境下缺少的特性 </p>
+<p>聽起來有點複雜，讓我們直接透過上方的 <code>Object.create()</code> 來了解這個概念 ; 首先判斷這個環境有沒有這個特性，如果有就不用做任何事，沒有的我們就透過程式碼幫它補上原本預期要做到的事 ; 首先確認是否只有傳入一個參數，接著新增一個空函式 <code>F</code> 做為 <code>function constructor</code>，再把它的 <code>prototype</code> 指向傳入的物件 <code>o</code>，並回傳 <code>new F()</code> 來創造一個 <code>prototype</code> 指向 <code>o</code> 的空物件，如此一來就和 <code>Object.create()</code> 達到相同的目的了。 </p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Object</span>.create) &#123;</span><br><span class="line">  <span class="built_in">Object</span>.create = <span class="function"><span class="keyword">function</span> (<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">arguments</span>.length &gt; <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(</span><br><span class="line">        <span class="string">&quot;Object.create implemention only accepts the first parameter.&quot;</span></span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    F.prototype = o;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p><a href="https://www.udemy.com/course/understand-javascript/">Udemy-JavaScript: Understanding the Weird Parts</a>`</p>
+]]></content>
+      <categories>
+        <category>克服JS的奇怪部分</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ES6與類別</title>
+    <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20220104/6272/</url>
+    <content><![CDATA[<p>在過去的的課程中有提到，<code>JavaScript</code> 並不像其他程式語言一樣有 <code>class</code> 來定義並創造物件，但在 <code>ES6</code> 開始，<code>JavaScript</code> 有了 <code>class</code> 這個用法，但與其它程式語言的功能並不一樣，接下來讓我們來了解一下如何使用這個新用法吧。</p>
+<span id="more"></span>
+
+<h2 id="建立一個-Class"><a href="#建立一個-Class" class="headerlink" title="建立一個 Class"></a>建立一個 Class</h2><p>讓我們直接透過程式碼來了解什麼是 <code>class</code>，首先 <code>class</code> 會有 <code>constructor</code> 來定義物件的屬性，且可以帶入參數來改變屬性的值，另外方法則可以直接寫在 <code>class</code> 內，而創立物件的用法就和 <code>function constructor</code> 一樣透過關鍵字 <code>new</code> 創立一個新的物件</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">firstname, lastname</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.firstname = firstname;</span><br><span class="line">    <span class="built_in">this</span>.lastname = lastname;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hi&#x27;</span> + firstname;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> john = <span class="keyword">new</span> Person(<span class="string">&#x27;John&#x27;</span>, <span class="string">&#x27;Doe&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(john);</span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//   firstname: &#x27;John&#x27;,</span></span><br><span class="line"><span class="comment">//   lastname: &#x27;Doe&#x27;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>這裡要注意的是，與其他程式語言不同，<code>class</code> 只是定義物件，它並不是一個物件，<code>JavaScript</code> 中的 <code>class</code> 不僅定義物件，它本身就是一個物件。</p>
+<h2 id="Class-Prototype"><a href="#Class-Prototype" class="headerlink" title="Class Prototype"></a>Class Prototype</h2><p>前面提到 <code>JavaScript</code> 中的 <code>class</code> 也是一個物件，因此它也可以繼承另一個 <code>class</code>，只要透過 <code>extend</code> 指向要繼承的目標 <code>class</code>，並透過 <code>super</code> 傳遞 <code>constructor</code> 的參數 ; 另外我也可以覆蓋掉原有的方法 <code>greet</code> 或屬性。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InformalPerson</span> <span class="title">extend</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">firstname, lastname</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(firstname, lastname);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">greet</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Yo &#x27;</span> + firstname;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Syntactic-Sugar-語法糖"><a href="#Syntactic-Sugar-語法糖" class="headerlink" title="Syntactic Sugar 語法糖"></a>Syntactic Sugar 語法糖</h2><p>同樣的，如果專案需支援 <code>ES6</code> 以下的環境，我們就需需要撰寫 <code>polyfill</code> 來達到相同的效果，如同上一堂課提到的 <code>Object.create()</code> ; 在 <code>JavaScript</code> 中，<code>class</code> 被稱為一種語法糖 <code>Syntactic Sugar</code>，<code>Syntactic Sugar</code> 指的是在 <code>JavaScript</code> 底層其實是一模一樣的行為，只是我們將它包裝成另一種用法，如 <code>function constructor</code>、<code>Object.create()</code> 和 <code>class</code> 其實都是 <code>prototypal ingeritance</code>。</p>
+<h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p><a href="https://www.udemy.com/course/understand-javascript/">Udemy-JavaScript: Understanding the Weird Parts</a></p>
+]]></content>
+      <categories>
+        <category>克服JS的奇怪部分</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Initialization</title>
+    <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20220105/4260/</url>
+    <content><![CDATA[<p>這堂課將介紹一個常見的情況 - 初始化 <code>Initialization</code></p>
+<span id="more"></span>
+
+<p>當我們在開發時，有時會見到一段物件資料透過基本的方法 <code>object literal</code>、<code>array literal</code> 或 <code>expression function</code> 來建立，如下:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> people = [</span><br><span class="line">  &#123;</span><br><span class="line">    firstname: <span class="string">&#x27;John&#x27;</span>,</span><br><span class="line">    lastname: <span class="string">&#x27;Doe&#x27;</span>,</span><br><span class="line">    addresses: [</span><br><span class="line">      <span class="string">&#x27;111 Main St.&#x27;</span>,</span><br><span class="line">      <span class="string">&#x27;22 Third St.&#x27;</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    firstname: <span class="string">&#x27;Jane&#x27;</span>,</span><br><span class="line">    lastname: <span class="string">&#x27;Doe&#x27;</span>,</span><br><span class="line">    addresses: [</span><br><span class="line">      <span class="string">&#x27;333 Main St.&#x27;</span>,</span><br><span class="line">      <span class="string">&#x27;444 Fifth St.&#x27;</span></span><br><span class="line">    ],</span><br><span class="line">    greet: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">&#x27;Hello !&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>這一個陣列可能包含許多資料，物件的資料又可能包含許多屬性與方法，但當我們看到這種情況時，其實不需要太緊張，因為這其實是非常直覺又簡潔的資料呈現方式，常用於在透過 API 取得資料前，先給定一些預設值來呈現。</p>
+<h2 id="Error-log"><a href="#Error-log" class="headerlink" title="Error log"></a>Error log</h2><p>當我們在開發時，如果遇到以下 <code>error log</code>，常常是漏掉了分隔資料的逗號 <code>,</code>，導致資料結構出現非預期的呈現。</p>
+<p><img src="error-log.png"></p>
+<h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p><a href="https://www.udemy.com/course/understand-javascript/">Udemy-JavaScript: Understanding the Weird Parts</a>`</p>
+]]></content>
+      <categories>
+        <category>克服JS的奇怪部分</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>typeof and instanceof</title>
+    <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20220105/35648/</url>
+    <content><![CDATA[<p>這堂課將介紹兩個實用的內建語法，<code>typeof</code> and <code>instanceof</code></p>
+<span id="more"></span>
+
+<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h2><p>當我們都過 <code>typeof</code> 加上一個空格後，放上我們要辨識的變數，它就會回傳一個該變數型別的字串，如下:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a);   <span class="comment">// number</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = <span class="string">&#x27;Hello&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> b):   <span class="comment">// string</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c = &#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> c);   <span class="comment">// object</span></span><br></pre></td></tr></table></figure>
+
+<p>而因為陣列也是物件，所以透過 <code>typeof</code> 查看陣列型別時，也會回傳字串 <code>object</code>，但這裡有一個更實用的方法來辨別一般物件與陣列，只要將 <code>Object.prototype</code> 的方法 <code>toString</code> 透過 <code>call</code> 將 <code>this</code> 指向陣列，它就不會單純回傳一個字串 <code>object</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> d = [];</span><br><span class="line"><span class="built_in">console</span>.log(d);   <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(d));   <span class="comment">// [object Array]</span></span><br></pre></td></tr></table></figure>
+
+<p>但如果直接在陣列呼叫 <code>toString</code>，它會將陣列中的值字串化，如陣列 <code>d</code> 是一個空陣列，因此回傳空值</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(d.toString());   <span class="comment">//</span></span><br></pre></td></tr></table></figure>
+
+<p>而 <code>undefined</code> 的型別就是 <code>undefined</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">undefined</span>);   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Bug"><a href="#Bug" class="headerlink" title="Bug"></a>Bug</h3><p>但這裡有一個 <code>JavaScript</code> 的 Bug，而且它也沒有打算修復，因為這個 Bug 已經存在很久了，如果修復它會影響很多已存在的專案和 <code>library</code> ; 那就是透過 <code>typeof</code> 查看 <code>null</code> 時，會回傳字串 <code>object</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">null</span>);   <span class="comment">// object</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h2><p><code>instanceof</code> 則是會判斷前面的值是否可以在它的 <code>prototypal chain</code> 找到後面的值，如下範例:</p>
+<p>先建立一個 <code>function constructor</code> - <code>Person</code>，再透過 <code>new</code> 建立新的物件 <code>e</code> ，因為 <code>e</code> 的 <code>prototype</code> 就是 <code>Person</code>，所以回傳 <code>true</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> e = <span class="keyword">new</span> Person(<span class="string">&#x27;Jane&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> e);   <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(e <span class="keyword">instanceof</span> Person);   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p><a href="https://www.udemy.com/course/understand-javascript/">Udemy-JavaScript: Understanding the Weird Parts</a> ㄍ</p>
+]]></content>
+      <categories>
+        <category>克服JS的奇怪部分</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>嚴謹模式</title>
+    <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20220106/47596/</url>
+    <content><![CDATA[<!-- @format -->
+
+<p><code>JavaScript</code> 有一個特別的選擇性模式來偵測我們所寫的程式碼，開啟它可以迫使 <code>JavaScript Engine</code> 更嚴謹的審視程式碼，它就是嚴謹模式 <code>strict mode</code></p>
+<span id="more"></span>
+
+<p>只要在 <code>JavaScript</code> 中加上字串 <code>use strict</code>，就會開啟嚴謹模式 <code>strict mode</code>。在嚴謹模式下，會有許多更嚴謹的規範來避免開發上的疏失，如下範例:</p>
+<p>如果先建立一個變數，但在之後賦值時拼錯了，一般情況下並不會有任何錯誤，只是前者會因為沒有值而為預設的 <code>undefined</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person;</span><br><span class="line"></span><br><span class="line">persom = &#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(person); <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(persom); <span class="comment">// &#123;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>但如果加上 <code>use strict</code> 來開啟嚴謹模式，就會因為拼錯的 <code>persom</code> 沒有宣告而跳錯。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="meta">&quot;use strict&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person;</span><br><span class="line"></span><br><span class="line">persom = &#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(person); <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(persom); <span class="comment">// &#123;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="error.png"></p>
+<p>嚴謹模式除了可以在整個檔案開啟，也可以單獨在函式作用域中開啟</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logNewPerson</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">  &quot;use strict&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> person2;</span><br><span class="line"></span><br><span class="line">  persom2 = &#123;&#125;;</span><br><span class="line">  <span class="built_in">console</span>.log(person2); <span class="comment">// undefined</span></span><br><span class="line">  <span class="built_in">console</span>.log(persom2); <span class="comment">// &#123;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person;</span><br><span class="line"></span><br><span class="line">persom = &#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(person); <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(persom); <span class="comment">// &#123;&#125;</span></span><br><span class="line">logNewPerson();</span><br></pre></td></tr></table></figure>
+
+<p><img src="error-in-function.png"></p>
+<p>嚴謹模式固然好用，但需要選擇性開啟的原因是每個 <code>JavaScript Engine</code> 對嚴謹模式所支援的規範並不相同，因此我們無法完全依賴它來開發。</p>
+<p>另外有一種情況是如果我們在一支主要的 <code>JavaScript</code> 檔案開啟嚴謹模式，並透過它引入其它的 <code>JavaScript</code> 檔案，但其它的 <code>JavaScript</code> 檔案在開發時並沒有開啟且遵守嚴謹模式的規範，那麼這可能為你帶來一些預料之外的問題。</p>
+<h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">MDN Mozilla Developer Network</a><br><a href="https://www.udemy.com/course/understand-javascript/">Udemy-JavaScript: Understanding the Weird Parts</a></p>
 ]]></content>
       <categories>
         <category>克服JS的奇怪部分</category>
