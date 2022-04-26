@@ -3058,17 +3058,14 @@
     <content><![CDATA[<p>在 JS 中，無論你寫的程式碼在何時、何處執行，都會被包在一個 JS 為你準備的執行環境之中，稱之為’全域環境’，全域顧名思義就是在任何區域都可以被取得，在其內所建立的物件也稱之為’全域物件’。</p>
 <span id="more"></span>
 
-<h2 id="何未全域"><a href="#何未全域" class="headerlink" title="何未全域"></a>何未全域</h2><p>在開發前端網頁時，我們基本會有一個 html 檔案，並載入如 app.js 的 JS 程式碼如下:</p>
+<h2 id="何為全域"><a href="#何為全域" class="headerlink" title="何為全域 ?"></a>何為全域 ?</h2><p>在開發前端網頁時，我們基本會有一個 html 檔案，並載入如 app.js 的 JS 程式碼如下:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">scr</span>=<span class="string">&quot;app.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>在瀏覽器內打開這個檔案會發現，即使在 app.js 中沒有寫任何的內容也會在全域環境中看到以下兩項是 JS 幫你建立好的</p>
 <ul>
-<li><p>變數 this<br>  this 是 JS 執行環境自動幫你產生的全域變數，開啟瀏覽器 console 即可查看其內容<br>  <img src="this.PNG"></p>
+<li><p>變數 - this<br>  this 是 JS 執行環境自動幫你產生的全域變數，開啟瀏覽器 console 即可查看其內容<br>  <img src="this.PNG"></p>
 </li>
-<li><p>Global Object</p>
-<ul>
-<li>window<br>打開瀏覽器，在 console 內輸入 this 並點選打開內層，就會發現裡面有一個 window 的全域物件，其所代表的就是瀏覽器這個畫面本身，所以在後端 node.js 中輸入 this 就不會是 window 這個全域物件，但仍會有一個 JS 幫你產生的全域物件，因為 JS 執行環境已被產生</li>
-</ul>
+<li><p>Global Object - window<br>  打開瀏覽器，在 console 內輸入 this 並點選打開內層，就會發現裡面有一個 window 的全域物件，其所代表的就是瀏覽器這個畫面本身，所以在後端 node.js 中輸入 this 就不會是 window 這個全域物件，但仍會有一個 JS 幫你產生的全域物件，因為 JS 執行環境已被產生</p>
 </li>
 </ul>
 <h2 id="建立變數"><a href="#建立變數" class="headerlink" title="建立變數"></a>建立變數</h2><p>接下來我們在 app.js 內寫一點程式碼如下:</p>
@@ -3138,11 +3135,11 @@
 <p>一段基本的變數宣告如下</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;a&#x27;</span>, a);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;b&#x27;</span>, b);</span><br><span class="line"></span><br><span class="line"><span class="comment">// a undefined</span></span><br><span class="line"><span class="comment">// b not defined</span></span><br></pre></td></tr></table></figure>
 <p>從以上結果來套討 undefined 與 not defined 的差異</p>
-<h3 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h3><p>在 JavaScript 中值為 undefined 的情況並非沒有值，而是在創造階段已被宣告且在記憶體中佔有空間，只是還未被主動賦予一個值，所以 JavaScript 預設都會賦予 undefined 這個特殊關鍵字</p>
-<h3 id="not-defined"><a href="#not-defined" class="headerlink" title="not defined"></a>not defined</h3><p>而 not defined 就不同了，由上面的結果可以知道 b 完全沒有宣告，所以在執行階段找殂道者個值所以出現 not defined 的提示</p>
+<h3 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h3><p>在 JavaScript 中值為 <code>undefined</code> 的情況並非沒有值，而是在創造階段已被宣告且在記憶體中佔有空間，只是還未被主動賦予一個值，所以 JavaScript 預設都會賦予 <code>undefined</code> 這個特殊關鍵字</p>
+<h3 id="not-defined"><a href="#not-defined" class="headerlink" title="not defined"></a>not defined</h3><p>而 not defined 就不同了，由上面的結果可以知道 b 完全沒有宣告，所以在執行階段找不到這個值所以出現 <code>not defined</code> 的提示</p>
 <h3 id="主動賦予-undefined"><a href="#主動賦予-undefined" class="headerlink" title="主動賦予 undefined"></a>主動賦予 undefined</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="literal">undefined</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a === <span class="literal">undefined</span>);   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
-<p>由上面的結果可以得知如果主動賦予變數 undefined 在 JavaScript 中是成立的，但這麼做是危險且不建議的，原因是 undefined 這個值為 JavaScript 在變數已宣告但為賦值時的預設值，所以如果這麼做就會難以區分這個變數為 undefined 的原因</p>
+<p>由上面的結果可以得知如果主動賦予變數 undefined 在 JavaScript 中是成立的，但這麼做是危險且不建議的，原因是 <code>undefined</code> 這個值為 JavaScript 在變數已宣告但未賦值時的預設值，所以如果這麼做就會難以區分這個變數為 <code>undefined</code> 的原因</p>
 ]]></content>
       <categories>
         <category>克服JS的奇怪部分</category>
@@ -3218,10 +3215,10 @@
 </li>
 <li><p>Outer Environment</p>
 </li>
-<li><p>Hoisting : Setup memory space for variables and functions<br>  在這個階段變數與函式會被定義且已經在記憶體中，函式的程式碼會被執行，但變數只會在記憶體中宣告但並不知道 ‘=’ 右側所賦予的質為何，所以預設賦予他一個 ‘undefined’ 的值，而不是未宣告的 ‘not defined’</p>
+<li><p>Hoisting : Setup memory space for variables and functions<br>  在這個階段變數與函式會被定義且已經在記憶體中，函式的程式碼會被執行，但變數只會在記憶體中宣告但並不知道等號 (=) 右側所賦予的質為何，所以預設賦予他一個 ‘undefined’ 的值，而不是未宣告的 ‘not defined’</p>
 </li>
 </ul>
-<h3 id="依序由上而下執行"><a href="#依序由上而下執行" class="headerlink" title="依序由上而下執行"></a>依序由上而下執行</h3><p>而在這個階段變數與函式都已經存在於記憶體中，接著 JS 會由上而下依序執行，直到出現 = 等號賦值才會出現我們期待的結果</p>
+<h3 id="依序由上而下執行"><a href="#依序由上而下執行" class="headerlink" title="依序由上而下執行"></a>依序由上而下執行</h3><p>而在這個階段變數與函式都已經存在於記憶體中，接著 JS 會由上而下依序執行，直到出現等號 (=) 賦值才會出現我們期待的結果</p>
 ]]></content>
       <categories>
         <category>克服JS的奇怪部分</category>

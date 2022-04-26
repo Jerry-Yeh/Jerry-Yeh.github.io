@@ -28,7 +28,7 @@
 <meta property="og:description" content="這章節會進一步套討變數的的預設值 undefined 與 not undefined 的差異">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-03-23T16:07:29.000Z">
-<meta property="article:modified_time" content="2021-03-23T16:25:59.778Z">
+<meta property="article:modified_time" content="2022-04-26T15:45:50.889Z">
 <meta property="article:author" content="Yeh">
 <meta name="twitter:card" content="summary">
 
@@ -224,10 +224,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
-      
 
-      <time title="創建時間：2021-03-24 00:07:29 / 修改時間：00:25:59" itemprop="dateCreated datePublished" datetime="2021-03-24T00:07:29+08:00">2021-03-24</time>
+      <time title="創建時間：2021-03-24 00:07:29" itemprop="dateCreated datePublished" datetime="2021-03-24T00:07:29+08:00">2021-03-24</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新於</span>
+        <time title="修改時間：2022-04-26 23:45:50" itemprop="dateModified" datetime="2022-04-26T23:45:50+08:00">2022-04-26</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -254,11 +260,11 @@
 <p>一段基本的變數宣告如下</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;a&#x27;</span>, a);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;b&#x27;</span>, b);</span><br><span class="line"></span><br><span class="line"><span class="comment">// a undefined</span></span><br><span class="line"><span class="comment">// b not defined</span></span><br></pre></td></tr></table></figure>
 <p>從以上結果來套討 undefined 與 not defined 的差異</p>
-<h3 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h3><p>在 JavaScript 中值為 undefined 的情況並非沒有值，而是在創造階段已被宣告且在記憶體中佔有空間，只是還未被主動賦予一個值，所以 JavaScript 預設都會賦予 undefined 這個特殊關鍵字</p>
-<h3 id="not-defined"><a href="#not-defined" class="headerlink" title="not defined"></a>not defined</h3><p>而 not defined 就不同了，由上面的結果可以知道 b 完全沒有宣告，所以在執行階段找殂道者個值所以出現 not defined 的提示</p>
+<h3 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h3><p>在 JavaScript 中值為 <code>undefined</code> 的情況並非沒有值，而是在創造階段已被宣告且在記憶體中佔有空間，只是還未被主動賦予一個值，所以 JavaScript 預設都會賦予 <code>undefined</code> 這個特殊關鍵字</p>
+<h3 id="not-defined"><a href="#not-defined" class="headerlink" title="not defined"></a>not defined</h3><p>而 not defined 就不同了，由上面的結果可以知道 b 完全沒有宣告，所以在執行階段找不到這個值所以出現 <code>not defined</code> 的提示</p>
 <h3 id="主動賦予-undefined"><a href="#主動賦予-undefined" class="headerlink" title="主動賦予 undefined"></a>主動賦予 undefined</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="literal">undefined</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a === <span class="literal">undefined</span>);   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
-<p>由上面的結果可以得知如果主動賦予變數 undefined 在 JavaScript 中是成立的，但這麼做是危險且不建議的，原因是 undefined 這個值為 JavaScript 在變數已宣告但為賦值時的預設值，所以如果這麼做就會難以區分這個變數為 undefined 的原因</p>
+<p>由上面的結果可以得知如果主動賦予變數 undefined 在 JavaScript 中是成立的，但這麼做是危險且不建議的，原因是 <code>undefined</code> 這個值為 JavaScript 在變數已宣告但未賦值時的預設值，所以如果這麼做就會難以區分這個變數為 <code>undefined</code> 的原因</p>
 
     </div>
 
