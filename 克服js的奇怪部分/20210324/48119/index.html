@@ -28,7 +28,7 @@
 <meta property="og:description" content="延續前面章節所提到的，JavaScript 分成兩個階段，第一階段為創造階段 (Creation Context)，這個章節將介紹第二階段，執行階段 (Execution Context)">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-03-23T16:27:25.000Z">
-<meta property="article:modified_time" content="2021-12-18T06:37:46.507Z">
+<meta property="article:modified_time" content="2022-04-26T23:40:42.117Z">
 <meta property="article:author" content="Yeh">
 <meta name="twitter:card" content="summary">
 
@@ -150,18 +150,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">110</span>
+          <span class="site-state-item-count">109</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -232,7 +232,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2021-12-18 14:37:46" itemprop="dateModified" datetime="2021-12-18T14:37:46+08:00">2021-12-18</time>
+        <time title="修改時間：2022-04-27 07:40:42" itemprop="dateModified" datetime="2022-04-27T07:40:42+08:00">2022-04-27</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -260,7 +260,7 @@
 <h3 id="執行階段"><a href="#執行階段" class="headerlink" title="執行階段"></a>執行階段</h3><p>在這個階段中，JavaScript 在創造變數與函式後，會 ‘逐行’ 執行你所寫的程式碼，執行範例結果如下:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Called b!&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">b();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="string">&#x27;Hellow World!&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Called b!</span></span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"><span class="comment">// Hellow World!</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>第一次呼叫的 a 在宣告前呼叫，所以因為創造階段的 hoisting 而賦予一個預設值 undefined，第二次呼叫的 a 就如大家預期在執行階段被主動賦值為 ‘Hellow World!’</p>
+<p>第一次呼叫的 a 在宣告前呼叫，所以因為創造階段的 <code>hoisting</code> 而賦予一個預設值 <code>undefined</code>，第二次呼叫的 a 就如大家預期在執行階段被主動賦值為 ‘Hellow World!’</p>
 
     </div>
 

@@ -3104,7 +3104,7 @@
 <h3 id="變數環境"><a href="#變數環境" class="headerlink" title="變數環境"></a>變數環境</h3><p>變數環境指的是變數創造時所在的環境，每個執行環境中的變數彼此式獨立的，並不會彼此影響，一段程式碼如下</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> myVar;</span><br><span class="line">  <span class="built_in">console</span>.log(myVar);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> myVar = <span class="number">2</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(myVar);</span><br><span class="line">  b();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myVar = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(myVar);</span><br><span class="line">a();</span><br><span class="line"><span class="built_in">console</span>.log(myVar);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"><span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
 
-<p>首先全域環境中的 myVar 變數被宣告，所以先取的 1，接著呼叫 a 函數加到執行堆上層並宣告該執行環境中的 myVar 變數取得 2 後同樣執行 b 函數加到執行堆上層並宣告該執行環境中的 myVar ，因為沒有賦值所以為 undefined ，最後 b 與 a 執行結束後離開執行堆，取得最後一個全域環境中的 1</p>
+<p>首先全域環境中的 myVar 變數被宣告，所以先取得 1，接著呼叫 a 函數加到執行堆上層並宣告該執行環境中的 myVar 變數取得 2 後同樣執行 b 函數加到執行堆上層並宣告該執行環境中的 myVar ，因為沒有賦值所以為 <code>undefined</code> ，最後 b 與 a 執行結束後離開執行堆，取得最後一個全域環境中的 1</p>
 <p><img src="%E8%AE%8A%E6%95%B8%E7%92%B0%E5%A2%83.PNG"></p>
 ]]></content>
       <categories>
@@ -3148,7 +3148,7 @@
   <entry>
     <title>函數呼叫與執行堆</title>
     <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20210324/82/</url>
-    <content><![CDATA[<p>函數呼叫 (Functoin Invocation) 與執行堆 (Exection Stack) 介紹</p>
+    <content><![CDATA[<p>函數呼叫 (Functoin Invocation) 與執行堆 (Execution Stack) 介紹</p>
 <span id="more"></span>
 
 <p>以下為一段最基礎的函示呼叫程式碼</p>
@@ -3169,11 +3169,11 @@
   <entry>
     <title>單執行緒與同步執行</title>
     <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20210324/46242/</url>
-    <content><![CDATA[<p>基礎介紹單執行緒 (Single threaded) 和同步執行 (Synchronous exection)</p>
+    <content><![CDATA[<p>基礎介紹單執行緒 (Single threaded) 和同步執行 (Synchronous execution)</p>
 <span id="more"></span>
 
 <h3 id="單執行緒-Single-threaded"><a href="#單執行緒-Single-threaded" class="headerlink" title="單執行緒 (Single threaded)"></a>單執行緒 (Single threaded)</h3><p>這個名詞指的是 JavaScript 一次只執行一件事，但並非瀏覽器一次只做一件事，而是以我們的角度看程式的執行</p>
-<h3 id="同步執行-Synchronous-exection"><a href="#同步執行-Synchronous-exection" class="headerlink" title="同步執行 (Synchronous exection)"></a>同步執行 (Synchronous exection)</h3><p>和單執行緒有點類似，但是以程式的說法指一次只執行一件事，且由上而下依序執行</p>
+<h3 id="同步執行-Synchronous-execution"><a href="#同步執行-Synchronous-execution" class="headerlink" title="同步執行 (Synchronous execution)"></a>同步執行 (Synchronous execution)</h3><p>和單執行緒有點類似，但是以程式的說法指一次只執行一件事，且由上而下依序執行</p>
 ]]></content>
       <categories>
         <category>克服JS的奇怪部分</category>
@@ -3188,7 +3188,7 @@
 <h3 id="執行階段"><a href="#執行階段" class="headerlink" title="執行階段"></a>執行階段</h3><p>在這個階段中，JavaScript 在創造變數與函式後，會 ‘逐行’ 執行你所寫的程式碼，執行範例結果如下:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Called b!&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">b();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="string">&#x27;Hellow World!&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Called b!</span></span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"><span class="comment">// Hellow World!</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>第一次呼叫的 a 在宣告前呼叫，所以因為創造階段的 hoisting 而賦予一個預設值 undefined，第二次呼叫的 a 就如大家預期在執行階段被主動賦值為 ‘Hellow World!’</p>
+<p>第一次呼叫的 a 在宣告前呼叫，所以因為創造階段的 <code>hoisting</code> 而賦予一個預設值 <code>undefined</code>，第二次呼叫的 a 就如大家預期在執行階段被主動賦值為 ‘Hellow World!’</p>
 ]]></content>
       <categories>
         <category>克服JS的奇怪部分</category>
@@ -3207,7 +3207,7 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">b();</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="string">&#x27;Hellow World&#x27;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Called b!&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Called b!</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
 
 <p>原因是 JS 執行環境被分成以下兩階段創造</p>
-<h3 id="Creation-Phase"><a href="#Creation-Phase" class="headerlink" title="Creation Phase"></a>Creation Phase</h3><p>在這個階段以下的東西會被創造</p>
+<h3 id="Creation-Phase-創造階段"><a href="#Creation-Phase-創造階段" class="headerlink" title="Creation Phase 創造階段"></a>Creation Phase 創造階段</h3><p>在這個階段以下的東西會被創造</p>
 <ul>
 <li><p>Global Object</p>
 </li>
@@ -3218,7 +3218,7 @@
 <li><p>Hoisting : Setup memory space for variables and functions<br>  在這個階段變數與函式會被定義且已經在記憶體中，函式的程式碼會被執行，但變數只會在記憶體中宣告但並不知道等號 (=) 右側所賦予的質為何，所以預設賦予他一個 ‘undefined’ 的值，而不是未宣告的 ‘not defined’</p>
 </li>
 </ul>
-<h3 id="依序由上而下執行"><a href="#依序由上而下執行" class="headerlink" title="依序由上而下執行"></a>依序由上而下執行</h3><p>而在這個階段變數與函式都已經存在於記憶體中，接著 JS 會由上而下依序執行，直到出現等號 (=) 賦值才會出現我們期待的結果</p>
+<h3 id="Execution-Phase-執行階段"><a href="#Execution-Phase-執行階段" class="headerlink" title="Execution Phase 執行階段"></a>Execution Phase 執行階段</h3><p>而在這個階段變數與函式都已經存在於記憶體中，接著 JS 會由上而下依序執行，直到出現等號 (=) 賦值才會出現我們期待的結果</p>
 ]]></content>
       <categories>
         <category>克服JS的奇怪部分</category>
@@ -3230,8 +3230,8 @@
     <content><![CDATA[<p>前面章節所提到變數環境、詞彙環境定義了 ‘範圍’，’範圍’是變數可以被取用的區域</p>
 <span id="more"></span>
 
-<p>下一版本的 JavaScript 稱作 ‘ECMAScript 6’ 、 ‘ECMAScript 2015’ 或 ES6，這個版本提供了新的變數宣告方式 ‘let’</p>
-<h3 id="let"><a href="#let" class="headerlink" title="let"></a>let</h3><p>let 並非完全取代 var，var 還是存在，但 let 讓 JavaScript 引擎使用一種叫做區塊範圍 (block scoping) 的東西，所謂區塊的定義包括 if &amp; for 的 ‘大括號 {}’，所以如在執行 for loop 時每次變數在記憶體都是指向不同的位置</p>
+<p>下一版本的 JavaScript 稱作 ECMAScript 6、ECMAScript 2015 或 ES6，這個版本提供了新的變數宣告方式 <code>let</code></p>
+<h3 id="let"><a href="#let" class="headerlink" title="let"></a>let</h3><p><code>let</code> 並非完全取代 <code>var</code>，<code>var</code> 還是存在，但 <code>let</code> 讓 JavaScript 引擎使用一種叫做區塊範圍 (block scoping) 的東西，所謂區塊的定義包括 <code>if</code> &amp; <code>for</code> 的 大括號 {}，所以如果在執行 <code>for loop</code> 時，每次變數在記憶體都是指向不同的位置</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (a &gt; b) &#123;</span><br><span class="line">    <span class="keyword">let</span> c = <span class="literal">true</span>;</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">for</span> () &#123;</span><br><span class="line">    <span class="keyword">let</span> d = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
@@ -3241,18 +3241,18 @@
   <entry>
     <title>範圍鏈 (Scope Chain)</title>
     <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20210403/9017/</url>
-    <content><![CDATA[<p>延續上一章節的執行堆 (Excution Stack)，進一步介紹執行堆中的範圍鏈 (Scope Chain)，’範圍’代表我能取到變數的地方，而’鏈’則是外部環境參照的連結</p>
+    <content><![CDATA[<p>延續上一章節的執行堆 (Execution Stack)，進一步介紹執行堆中的範圍鏈 (Scope Chain)，’範圍’代表我能取到變數的地方，而’鏈’則是外部環境參照的連結</p>
 <span id="more"></span>
 
 <p>在 JavaScript 中每個執行環境都有一個參照的外部環境，如果在函數執行時沒有找到該變數，JavaScript 就會往外向外部環境尋找，和這個函數的程式碼在哪裡被寫出來無關，只與執行環境被創造和你呼叫的時間點有關</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(myVar);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> myVar = <span class="number">2</span></span><br><span class="line">    b();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myVar = <span class="number">1</span>;</span><br><span class="line">a();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
 
-<p>如下圖所示，這整個執行堆就稱為範圍鏈 (Scope Chain)，’範圍’代表我能取到變數的地方，而’鏈’則是外部環境參照的連結，外部環境不一定是正下方的環境，正下方的環境只代表程式碼的物理位置，稱之為 ‘詞彙環境’，換個說法，外部參照會找到被函數創造的執行環境</p>
+<p>如下圖所示，這整個執行堆就稱為範圍鏈 (Scope Chain)，’範圍’代表我能取到變數的地方，而’鏈’則是外部環境參照的連結，外部環境不一定是正下方的環境，正下方的環境只代表程式碼的物理位置，稱之為 ‘詞彙環境’;換個說法，外部參照會找到被函數創造的執行環境</p>
 <p><img src="%E5%A4%96%E9%83%A8%E7%92%B0%E5%A2%83.PNG"></p>
-<p>黨我們將函數 b 換個環境如下</p>
+<p>當我們將函數 b 換個環境如下</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(myVar);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> myVar = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    b();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myVar = <span class="number">1</span>;</span><br><span class="line">a();   <span class="comment">// 2</span></span><br><span class="line">b();   <span class="comment">// b is not defined</span></span><br></pre></td></tr></table></figure>
 
-<p>b 會出現 not defined，原因是當程式碼執行時，a 在創造階段被創造後，並不會執行內部指令，而是會直接跳到該函數最後一行，所以 b 在全域環境中並不存在，直到 a 被呼叫後，才會在該執行環境創造 b 函數</p>
+<p>b 會出現 <code>not defined</code>，原因是當程式碼執行時，a 在創造階段被創造後，並不會執行內部指令，而是會直接跳到該函數最後一行，所以 b 在全域環境中並不存在，直到 a 被呼叫後，才會在該執行環境創造 b 函數</p>
 ]]></content>
       <categories>
         <category>克服JS的奇怪部分</category>
@@ -3264,11 +3264,11 @@
     <content><![CDATA[<p>在章節的最前面有提到 JavaScript 會同步執行程式碼，而非同步指的就是在同一個時間不只執行一段程式碼</p>
 <span id="more"></span>
 
-<p>在瀏覽器中，JavaScript 並非唯一執行的引擎，還包括渲染引擎 (Rendering Engine) 和 HTTP Request ，彼此是非同步執行，不會因為一個卡住而使其他引擎停止運作，其中只有 JavaScript 使同步執行的</p>
+<p>在瀏覽器中，JavaScript 並非唯一執行的引擎，還包括渲染引擎 (Rendering Engine) 和 HTTP Request ，彼此是非同步執行，不會因為一個卡住而使其他引擎停止運作，其中只有 JavaScript 使用同步執行</p>
 <p><img src="%E5%BC%95%E6%93%8E.PNG"></p>
 <p>JavaScript 的非同步其實是瀏覽器將事件放到事件佇列 (Event Queue) 中，原本的程式碼仍然一行行執行，當每個執行堆執行完清空後，才會繼續執行下一個事件，並創造其執行環境</p>
 <p><img src="event-queue.PNG"></p>
-<p>一段程式碼如下，首先執行一段 3 秒的 callback function，並宣告一個點擊事件，最後印出完成，如果在 3 秒內點擊會依照下方順序印出，原因是非同步只在於 JavaScript 引擎外，所以非同步只是將事件加入事件佇列，等到執行環境清空後才會依序執行事件佇列中的事件 </p>
+<p>一段程式碼如下，首先執行一段 3 秒的 callback function，並宣告一個點擊事件，最後印出完成，如果在 3 秒內點擊會依照下方順序印出，原因是非同步只存在於 JavaScript 引擎外，所以非同步只是將事件加入 Event Queue，等到執行環境清空後才會依序執行 Event Queue 中的事件 </p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// long runuing function</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">waitThreeSeconds</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> ms = <span class="number">3000</span> = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">    <span class="keyword">while</span> (<span class="keyword">new</span> <span class="built_in">Date</span>() &lt; ms)&#123;&#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;finished function&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clickHandler</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;click event !&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// listen for the click event</span></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">&#x27;click&#x27;</span>, clickHandler);</span><br><span class="line"></span><br><span class="line">waitThreeSeconds();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;finished execution&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// finished function</span></span><br><span class="line"><span class="comment">// finished execution</span></span><br><span class="line"><span class="comment">// click event</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
@@ -3278,29 +3278,29 @@
   <entry>
     <title>型別與純值</title>
     <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20210413/11502/</url>
-    <content><![CDATA[<p>JavaScript 型別基礎</p>
+    <content><![CDATA[<p>JavaScript 型別基礎介紹</p>
 <span id="more"></span>
 
 <h3 id="型別"><a href="#型別" class="headerlink" title="型別"></a>型別</h3><p>JavaScript 是一個動態型別的語言，也就是在賦值時才會知道型別</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// c#</span></span><br><span class="line">bool isNew = <span class="string">&#x27;hello&#x27;</span>;   <span class="comment">// error</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// js</span></span><br><span class="line"><span class="keyword">var</span> isNew = <span class="literal">true</span>;   <span class="comment">// boolean and no errors</span></span><br><span class="line">isNew = <span class="string">&#x27;yup&#x27;</span>;</span><br><span class="line">isNew = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// c#</span></span><br><span class="line">bool isNew = <span class="string">&#x27;hello&#x27;</span>;   <span class="comment">// error</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// js</span></span><br><span class="line"><span class="keyword">var</span> isNew = <span class="literal">true</span>;   <span class="comment">// boolean and no errors</span></span><br><span class="line">isNew = <span class="string">&#x27;yup&#x27;</span>;      <span class="comment">// string and no errors</span></span><br><span class="line">isNew = <span class="number">1</span>;          <span class="comment">// number and no errors</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="純值-基本型別"><a href="#純值-基本型別" class="headerlink" title="純值 (基本型別)"></a>純值 (基本型別)</h3><p>純值是一種資料的型別，表示一個值，換句話說不是物件，因為物件是名稱/值的配對，JS 有以下六種值</p>
-<h4 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h4><p>JS 給所有變數的初始值，直到你主動賦值，這表還未設定值，所以不應該使用它來設定值</p>
+<h4 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h4><p>JS 給所有變數的初始值，直到你主動賦值，這表示還未設定值，所以不應該使用它來設定值</p>
 <h4 id="null"><a href="#null" class="headerlink" title="null"></a>null</h4><p>這也表示沒有值，但與 undefined 的差異在於可使用它來定義變數沒有值</p>
 <h4 id="boolean"><a href="#boolean" class="headerlink" title="boolean"></a>boolean</h4><p>true 或 false 表示</p>
-<h4 id="number"><a href="#number" class="headerlink" title="number"></a>number</h4><p>表示一個浮點數 float，所以永遠有小數點跟在後面，和其他程式語言分成整數和福點數不同，JS 只有一種</p>
+<h4 id="number"><a href="#number" class="headerlink" title="number"></a>number</h4><p>表示一個浮點數 float，所以永遠有小數點跟在後面，和其他程式語言分成整數和浮點數不同，JS 只有一種型別來表示數字</p>
 <h4 id="string"><a href="#string" class="headerlink" title="string"></a>string</h4><p>可使用單引號 ‘’ 或雙引號 “” 來括住任何字符</p>
 <h4 id="symbol"><a href="#symbol" class="headerlink" title="symbol"></a>symbol</h4><p>symbol 代表一個唯一值，可透過 symbol() 函數來生成</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = symbol();</span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> s1;   <span class="comment">// symbol</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> s2 = sybol();</span><br><span class="line"></span><br><span class="line">s1 === s2;   <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="built_in">Symbol</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> s1;   <span class="comment">// symbol</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> s2 = <span class="built_in">Symbol</span>();</span><br><span class="line"></span><br><span class="line">s1 === s2;   <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
 
-<p>因為 symbol 為一個函數不是 constructor，所以使用關鍵字 new 會出錯</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// TypeError: Symbol is not a constructor</span></span><br><span class="line"><span class="keyword">let</span> s1 = <span class="keyword">new</span> symbol();</span><br></pre></td></tr></table></figure>
+<p>因為 symbol 為一個函數不是 constructor，所以使用關鍵字 <code>new</code> 會出錯</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// TypeError: Symbol is not a constructor</span></span><br><span class="line"><span class="keyword">let</span> s1 = <span class="keyword">new</span> <span class="built_in">Symbol</span>();</span><br></pre></td></tr></table></figure>
 
 <p>symbol 函數可以給定一個字串參數來命名，藉此區別不同的 symbol 參數，但因為唯一特性，即使給定同一參數也是不同的值</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = symbol(<span class="string">&#x27;foo&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> s2 = symbol(<span class="string">&#x27;bar&#x27;</span>);</span><br><span class="line"></span><br><span class="line">s1.toString();   <span class="comment">// &#x27;Symbol(foo)&#x27;</span></span><br><span class="line">s2.toString();   <span class="comment">// &#x27;Symbol(bar)&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> s3 = symbol(<span class="string">&#x27;foo&#x27;</span>);</span><br><span class="line"></span><br><span class="line">s1 === s2;   <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="built_in">Symbol</span>(<span class="string">&#x27;foo&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> s2 = <span class="built_in">Symbol</span>(<span class="string">&#x27;bar&#x27;</span>);</span><br><span class="line"></span><br><span class="line">s1.toString();   <span class="comment">// &#x27;Symbol(foo)&#x27;</span></span><br><span class="line">s2.toString();   <span class="comment">// &#x27;Symbol(bar)&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> s3 = <span class="built_in">Symbol</span>(<span class="string">&#x27;foo&#x27;</span>);</span><br><span class="line"></span><br><span class="line">s1 === s3;   <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
 
 <p>由於 symbol 的唯一特性，所以 symbol 被拿來當物件屬性名稱時可以確保不會出現相同的名稱，也確保不會被覆蓋，物件的賦值有以下 3 種方式</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="keyword">let</span> a = &#123;&#125;;</span><br><span class="line">a[mySymbol] = <span class="string">&#x27;Hello&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">    [mySymbol]: <span class="string">&#x27;Hello&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"><span class="keyword">let</span> a = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(a, mySymbol, &#123;<span class="attr">value</span>: <span class="string">&#x27;Hello&#x27;</span>&#125;);</span><br><span class="line"></span><br><span class="line">a[mySymbol] = <span class="string">&#x27;Hello&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> mySymbol = <span class="built_in">Symbol</span>(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line">obj[mySymbol] = <span class="string">&#x27;Hello&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    [mySymbol]: <span class="string">&#x27;Hello&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(obj, mySymbol, &#123;<span class="attr">value</span>: <span class="string">&#x27;Hello&#x27;</span>&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>這裡要注意的是，使用 symbol 作為物件的屬性時，只能透過 <code>computed property []</code> 語法，不能使用 <code>.</code> 運算子</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">a.mySymbol = <span class="string">&#x27;Hello&#x27;</span>;</span><br><span class="line"></span><br><span class="line">a[mySymbol];   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
@@ -3314,7 +3314,7 @@
 </ul>
 <h5 id="Object-getOwnPropertySymbols-Symbol-遍歷"><a href="#Object-getOwnPropertySymbols-Symbol-遍歷" class="headerlink" title="Object.getOwnPropertySymbols() : Symbol 遍歷"></a>Object.getOwnPropertySymbols() : Symbol 遍歷</h5><p>物件的 symbol 屬性名稱無法被遍歷，如 <code>for....in</code>、<code>for...of</code>、<code>Object.keys()</code>、<code>Object.getOwnPropertyNames()</code> 和 <code>JSON.stringify()</code> 都不會返回 Symbol 屬性名稱</p>
 <p>因此如果要取得 Symbol 屬性名稱可以使用 <code>Object.getOwnPropertySymbols()</code> 方法，此方法會返回一個陣列</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">obj[<span class="built_in">Symbol</span>(<span class="string">&#x27;a&#x27;</span>)] = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">obj[<span class="built_in">Symbol</span>.for(<span class="string">&#x27;b&#x27;</span>)] = <span class="string">&#x27;b&#x27;</span>;</span><br><span class="line">obj[<span class="string">&#x27;c&#x27;</span>] = <span class="string">&#x27;c&#x27;</span>;</span><br><span class="line">obj.d = <span class="string">&#x27;d&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &quot;c&quot;</span></span><br><span class="line"><span class="comment">// &quot;d&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> objectSymbols = <span class="built_in">Object</span>.getOwnPropertySymbols(obj);</span><br><span class="line"></span><br><span class="line">objectSymbols;   <span class="comment">// [Symbol(a), Symbol(b)]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">obj[<span class="built_in">Symbol</span>(<span class="string">&#x27;a&#x27;</span>)] = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">obj[<span class="built_in">Symbol</span>.for(<span class="string">&#x27;b&#x27;</span>)] = <span class="string">&#x27;b&#x27;</span>;</span><br><span class="line">obj[<span class="string">&#x27;c&#x27;</span>] = <span class="string">&#x27;c&#x27;</span>;</span><br><span class="line">obj.d = <span class="string">&#x27;d&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// c</span></span><br><span class="line"><span class="comment">// d</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> objectSymbols = <span class="built_in">Object</span>.getOwnPropertySymbols(obj);</span><br><span class="line"></span><br><span class="line">objectSymbols;   <span class="comment">// [Symbol(a), Symbol(b)]</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>克服JS的奇怪部分</category>
@@ -3543,7 +3543,7 @@
 <p>所以如果是一般函數呼叫就會像是以下方式</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">+(<span class="number">3</span>, <span class="number">4</span>);   <span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
 
-<p>但為了精簡這樣的寫法，就如同多數程式語言，使用 ‘中綴表示法’，也就是將函數名稱放在兩個變數之間，並去掉, 和 () 最終成為了我們常見的表示方式</p>
+<p>但為了精簡這樣的寫法，就如同多數程式語言，使用 ‘中綴表示法’，也就是將函數名稱放在兩個變數之間，並去掉逗號, 和括號 () ，最終成為了我們常見的表示方式</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">3</span> + <span class="number">4</span>;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
@@ -3551,49 +3551,12 @@
       </categories>
   </entry>
   <entry>
-    <title>面試紀錄-哲煜科技-前端工程師</title>
-    <url>/interview/20211005/27559/</url>
-    <content><![CDATA[<p>哲煜科技接案公司前端工程師面試紀錄</p>
-<span id="more"></span>
-
-<h3 id="面試流程"><a href="#面試流程" class="headerlink" title="面試流程"></a>面試流程</h3><p>前端主管與技術長二人同時一起面試，主要針對過往工作經歷、專案內容操作與相關技術進行提問</p>
-<h3 id="提問"><a href="#提問" class="headerlink" title="提問"></a>提問</h3><h4 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h4><ul>
-<li>Q: Vue 生命週期了解程度</li>
-<li>Q: 如何處理不同裝置解析度下載入不同圖片</li>
-<li>Q: Vue 中如何使用 jQuery<br>A: 於 <code>mounted</code> 後 Vue 綁定到 DOM 上方可使用</li>
-<li>Q: created 更新 data <code>watch()</code> 會先觸發還是 <code>mounted</code> ?</li>
-</ul>
-<h4 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h4><ul>
-<li>Q: ES6 &amp; ES6+ 了解程度<br>A: 常用於變數、函式宣告與陣列方法</li>
-<li>Q: 什麼是 JavaScript 中的 Event Loop ?</li>
-<li>Q: JavaScript 是一個單線程還是多線程的程式語言 ?</li>
-</ul>
-<h4 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h4><ul>
-<li>Q: 協作時發生 <code>conflict</code> 應該下什麼指令來解決</li>
-</ul>
-<h4 id="Else"><a href="#Else" class="headerlink" title="Else"></a>Else</h4><ul>
-<li>Q: 是否使用過 CI/CD 進行自動部屬 ?</li>
-</ul>
-<h3 id="最後對公司提問"><a href="#最後對公司提問" class="headerlink" title="最後對公司提問"></a>最後對公司提問</h3><ul>
-<li>Q: 接案公司開發週期<br>A: 是專案內容而定，常見半年至一年不等</li>
-<li>Q: 什麼情況下會採用新技術 (Ex: Vue3)<br>A: 判定技術社群較為成熟且採用成本可以接受為主</li>
-<li>Q: 如何規範 Coding Style ?<br>A: 透過 ESLint 與命名方式同步開發，並進行互相 Code Review</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Interview</category>
-      </categories>
-      <tags>
-        <tag>Interview</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>強制型轉 Coercion</title>
     <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211003/50074/</url>
-    <content><![CDATA[<p>JavaScript 是一個動態型別的語言，當不同型別的參數透過運算子來院算時，JavaScript 會將參數的型別轉乘相同，而不是回傳一個錯誤的訊息</p>
+    <content><![CDATA[<p>JavaScript 是一個動態型別的語言，當不同型別的參數透過運算子來運算時，JavaScript 會將參數的型別轉為相同，而不是回傳一個錯誤的訊息</p>
 <span id="more"></span>
 
-<p>上一章節中有提到透過 <code>加號 +</code> 來做數字的運算，但其實不只能用在數字，在字串使用時會將彼此連結</p>
+<p>上一章節中有提到透過加號 + 來做數字的運算，但其實不只能用在數字，在字串使用時會將彼此連結</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&#x27;Hello &#x27;</span> + <span class="string">&#x27;World&#x27;</span>;   <span class="comment">// Hello World</span></span><br></pre></td></tr></table></figure>
 
 <p>如果是一個數字加上字串的運算，JavaScript 會將數字的參數強制型轉成字串</p>
@@ -3608,7 +3571,7 @@
   <entry>
     <title>運算子的優先性與相依性</title>
     <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211003/33835/</url>
-    <content><![CDATA[<p>在一般的運算式中，通常不會只有一個運算子，所以當出現多個運算子時，就需要透過<code>優先性 Precedence</code> 和 <code>相依性 Associativity</code> 這兩個原則來規範運算，而這兩個原則並沒有名義上的複雜，國小數學中的先乘除後加減即是基礎規範的體現</p>
+    <content><![CDATA[<p>在一般的運算式中，通常不會只有一個運算子，所以當出現多個運算子時，就需要透過優先性 (Precedence) 和 相依性 (Associativity) 這兩個原則來規範運算，而這兩個原則並沒有名義上的複雜，國小數學中的先乘除後加減即是基礎規範的體現</p>
 <span id="more"></span>
 
 <h3 id="優先性-Precedence"><a href="#優先性-Precedence" class="headerlink" title="優先性 Precedence"></a>優先性 Precedence</h3><p>優先性即是當出現不同運算子時，函式執行的優先順序，如<code>乘號 *</code> 優先於<code>加號+</code> </p>
@@ -3629,7 +3592,7 @@
     <content><![CDATA[<p>結合上一章的強制轉型與運算子介紹比較運算子的應用範例</p>
 <span id="more"></span>
 
-<p>我們直接從一個最簡單的例子來理解 JavaScrit 中比較運算子的規則，下方的例子我們可以很直覺的反應答案是 <code>true</code></p>
+<p>我們直接從一個最簡單的例子來理解 JavaScript 中比較運算子的規則 ; 下方的例子我們可以很直覺的反應答案是 <code>true</code></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> &lt; <span class="number">2</span> &lt; <span class="number">3</span>);   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
 <p>接著看到第二個例子</p>
@@ -3637,10 +3600,10 @@
 
 <p>會發現答案也是 <code>true</code> ?，這裡我們先看一下 <code>&lt;</code> 這個比較運算子的規則</p>
 <p><img src="less-than.PNG"></p>
-<p>規則為由左到右，而兩個相同的運算子層級相同，所以由最左邊開始</p>
+<p>規則為由左到右，而兩個相同的運算子層級相同，所以由最左邊開始，3 &lt; 2 的結果為 <code>false</code></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">false</span> &lt; <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
 
-<p>在強制轉型章節有提到，當不同型別的值進行運算時，會被強制轉型，而 <code>false</code> 經過轉型成數字後會是 <code>0</code>，<code>true</code> 則是 <code>1</code>，所以最後答案才會是 <code>true</code></p>
+<p>接著，在強制轉型章節有提到，當不同型別的值進行運算時，會被強制轉型，而 <code>false</code> 經過轉型成數字後會是 <code>0</code>，<code>true</code> 則是 <code>1</code>，所以最後答案才會是 <code>true</code></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span> &lt; <span class="number">1</span>);   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
 <p>這時候我們回過頭看到一開始大家覺得理所當然的比較運算就會發現，雖然答案剛好和直覺相同，但運算的過程其實不一樣</p>
@@ -3656,7 +3619,7 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="literal">null</span> == <span class="number">0</span>;   <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="運算子-1"><a href="#運算子-1" class="headerlink" title="=== 運算子"></a>=== 運算子</h4><p>這也是一般開發在進行值的比較時建議使用的方式，避免值被強制傳型出現無法預期的錯誤</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> === <span class="number">1</span>;     <span class="comment">// true</span></span><br><span class="line"><span class="number">1</span> === <span class="string">&#x27;1&#x27;</span>;   <span class="comment">// false </span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> == <span class="string">&#x27;1&#x27;</span>     <span class="comment">// true</span></span><br><span class="line"><span class="number">1</span> === <span class="number">1</span>;     <span class="comment">// true</span></span><br><span class="line"><span class="number">1</span> === <span class="string">&#x27;1&#x27;</span>;   <span class="comment">// false </span></span><br></pre></td></tr></table></figure>
 
 <h4 id="amp-運算子"><a href="#amp-運算子" class="headerlink" title="!= &amp; !== 運算子"></a>!= &amp; !== 運算子</h4><p>同理 <code>!=</code> 在比較是否不相等時會強制傳型，<code>!==</code> 則不會</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">0</span> != <span class="literal">false</span>;   <span class="comment">// false</span></span><br><span class="line"><span class="number">0</span> !== <span class="literal">false</span>;  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
@@ -3678,7 +3641,7 @@
 <p>表示這些值都不存在，但其實一般開發並不太會使用 <code>Boolean</code> 這個函式直接強制轉型，而是會透過 <code>if-else</code> 來判斷<br>如下範例，如果沒有為一個參數主動賦值，預設值就是 <code>undefined</code>，因此會被強制轉型為 <code>false</code></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"></span><br><span class="line"><span class="comment">// goes to internet and looks for a value</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (a) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Something is there.&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>接著看到如果賦值為 <code>0</code>，也會被強制轉型為 <code>false</code>，但如果再加上一個 <code>||</code> 使值為 <code>0</code> 的時候也通過，因為 <code>===</code> 優先於 <code>||</code>，在 <code>false</code> 或 <code>true</code> 的結果，結果就會是 <code>true</code></p>
+<p>接著看到如果賦值為 <code>0</code>，也會被強制轉型為 <code>false</code> ; 但如果再加上一個 <code>||</code> 使值為 <code>0</code> 的時候也通過，判定的結果就會正確，因為 <code>===</code> 優先於 <code>||</code>，在 <code>false</code> 或 <code>true</code> 的結果，結果就會是 <code>true</code></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始條件</span></span><br><span class="line"><span class="keyword">if</span> (a || a === <span class="number">0</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// === 運算子優先運算</span></span><br><span class="line"><span class="keyword">if</span> (a || <span class="literal">true</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// || 運算子由左到右，0 被轉型為 false</span></span><br><span class="line"><span class="keyword">if</span> (<span class="literal">false</span> || <span class="literal">true</span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -3693,10 +3656,10 @@
   <entry>
     <title>框架小叮嚀:預設值 Framework Aside</title>
     <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211016/19790/</url>
-    <content><![CDATA[<p>在開發 JavaScript 時，我們常會透過 <code>&lt;script&gt;</code> 來導入不同的套件，這章節來進一步了解透件被引入後的執行方式</p>
+    <content><![CDATA[<p>在開發 JavaScript 時，我們常會透過 <code>&lt;script&gt;</code> 來導入不同的套件，這章節來進一步了解套件被引入後的執行方式</p>
 <span id="more"></span>
 
-<p>一段常見的用法如下，我們透過 <code>&lt;script&gt;</code> 導入 <code>lib1.js</code> 和 <code>lib2.js</code> 這兩個框架，最後導入 <code>app.js</code> 來執行</p>
+<p>一段常見的用法如下，我們透過 <code>&lt;script&gt;</code> 導入 <code>lib1.js</code> 和 <code>lib2.js</code> 這兩個套件，最後導入 <code>app.js</code> 來執行</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;lib1.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;lib2.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;app.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>各自的程式碼如下</p>
@@ -3719,7 +3682,7 @@
     <content><![CDATA[<p>這章節會透過其他角度來看 JavaScript 強制轉型的特性</p>
 <span id="more"></span>
 
-<p>首先先宣告一個擁有一個參數的函式，我們都知道 JavaScript 的變數如果沒有主動賦值，都會被給予一個 <code>undefined</code>，所以城市並不會出錯</p>
+<p>首先先宣告一個擁有一個參數的函式，我們都知道 JavaScript 的變數如果沒有主動賦值，都會被給予一個 <code>undefined</code>，所以程式並不會出錯</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Hello &#x27;</span> + name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greet();        <span class="comment">// Hello undefined</span></span><br><span class="line">greet(Jerry);   <span class="comment">// Hello Jerry  </span></span><br></pre></td></tr></table></figure>
 
 <p>接著將變數改成如果沒有賦值，我們透過 <code>||</code> 給予一個預設值</p>
@@ -3817,7 +3780,7 @@
 <p>我們也可以透過呼叫函式時建立物件</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">greet(&#123;</span><br><span class="line">  firstname: <span class="string">&#x27;Mary&#x27;</span>,</span><br><span class="line">  lastname: <span class="string">&#x27;Doe&#x27;</span>&#125;</span><br><span class="line">);   <span class="comment">// Hi Mary</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><p>無論是使用 <code>new</code> 關鍵字或大括號 {} 來建立物件，對於 JavaScript 底層來說都是一樣的，本質上都是建立物件到記憶體中，並建立該物件的屬性 (Property) 和方法 (Method) 在記憶體中。</p>
+<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><p>無論是使用 <code>new</code> 關鍵字或大括號 {} 來建立物件，對於 JavaScript 底層來說都是一樣的，本質上都是建立物件到記憶體中，並建立該物件的屬性 (Property) 和方法 (Method) 於記憶體中。</p>
 ]]></content>
       <categories>
         <category>克服JS的奇怪部分</category>
@@ -3832,13 +3795,13 @@
     <content><![CDATA[<p>這篇文章中我們將會探討什麼是 JavaScript 中的<code>物件 (Object)</code></p>
 <span id="more"></span>
 
-<h2 id="什麼是物件-Object"><a href="#什麼是物件-Object" class="headerlink" title="什麼是物件 Object ?"></a>什麼是物件 Object ?</h2><p>在 JavaScript 中，物件其實就是一對<code>名稱/值的配對 (key value pairs)</code>，而直又可以是另一組名稱/值的配對</p>
+<h2 id="什麼是物件-Object"><a href="#什麼是物件-Object" class="headerlink" title="什麼是物件 Object ?"></a>什麼是物件 Object ?</h2><p>在 JavaScript 中，物件其實就是一對<code>名稱/值的配對 (key value pairs)</code>，而值又可以是另一組名稱/值的配對</p>
 <p><img src="key-value-pairs.PNG"></p>
 <p>物件的值又可以方為以下三種:</p>
 <ul>
-<li>純值 Primitive<br>第一種是原生的值，像是布林值 (Boolean)、數值 (Number) 和字串 (String)，在物件當中，我們把這類的職稱為物件的屬性 (Property)</li>
-<li>物件 Object<br>第二種是物件 (Object)，沒有錯，就像一開始說的物件中也可以再放入物件，也就是另一組名稱/值的配對，就像是孩子一樣，這一類的值我們也稱它會為物件的屬性 (Property</li>
-<li>函數 Function<br>第三種是值是函數，在物件中的函數我們會將它稱為物件的方法 (Method)</li>
+<li>純值 Primitive<br>第一種是原生的值，像是布林值 (Boolean)、數值 (Number) 和字串 (String)，在物件當中，我們把這類的值稱為物件的屬性 (Property)</li>
+<li>物件 Object<br>第二種是物件 (Object)，沒有錯，就像一開始說的物件中也可以再放入物件，也就是另一組名稱/值的配對，就像是孩子一樣，這一類的值我們也稱它會為物件的屬性 (Property)</li>
+<li>函數 Function<br>第三種值是函數，在物件中的函數我們會將它稱為物件的方法 (Method)</li>
 </ul>
 <p>當 JavaScript 宣告一個物件時，這個物件會在記憶體中佔有一個位置，物件中的屬性 (Property) 和方法 (Method) 也會，而物件會記錄其屬性和方法的位置使其可以參考到，這些屬性和方法的位置彼此可能有關也可能無關</p>
 <h2 id="建立物件與屬性"><a href="#建立物件與屬性" class="headerlink" title="建立物件與屬性"></a>建立物件與屬性</h2><h3 id="方法一-中括號-Bracket"><a href="#方法一-中括號-Bracket" class="headerlink" title="方法一: 中括號 [] (Bracket)"></a>方法一: 中括號 [] (Bracket)</h3><p>首先透過 <code>new</code> 這個關鍵字來建立一個物件，並透過中括號 [] (Bracket) 來新增物件的屬性，而中括號其實也是一個運算子，我們可以透過它使物件參考到對應屬性的值</p>
@@ -3866,7 +3829,7 @@
   <entry>
     <title>函數就是物件</title>
     <url>/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211207/50804/</url>
-    <content><![CDATA[<p>在 JavaScript 中，函數就是物件的一種，以下針對函數先有一個基礎的介紹</p>
+    <content><![CDATA[<p>在 JavaScript 中，函數就是物件的一種，以下先針對函數有一個基礎的介紹</p>
 <span id="more"></span>
 
 <h3 id="函數就是物件"><a href="#函數就是物件" class="headerlink" title="函數就是物件"></a>函數就是物件</h3><p>函數就是物件的一種，所以所有可以對物件做的事都可以對函數做</p>
@@ -3880,7 +3843,7 @@
 <li>Name<br>函數不一定要有名稱，沒有名稱的函數就稱為匿名函數 Anonymous Function</li>
 <li>Code<br>函數中你所寫的程式是函數的屬性之一，但函數還有其他屬性</li>
 </ul>
-<h3 id="函數範例"><a href="#函數範例" class="headerlink" title="函數範例"></a>函數範例</h3><p>黨我們建立一個函數且追加一個屬性，並透過 <code>console.log</code> 印出時，只會印出函數內容，但呼叫屬性時還是可以取得先前建立的值，因為函數就是物件</p>
+<h3 id="函數範例"><a href="#函數範例" class="headerlink" title="函數範例"></a>函數範例</h3><p>當我們建立一個函數且追加一個屬性，並透過 <code>console.log</code> 印出時，只會印出函數內容，但呼叫屬性時還是可以取得先前建立的值，因為函數就是物件</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hi&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greet.language = <span class="string">&#x27;english&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(greet);   <span class="comment">// function greet() &#123;</span></span><br><span class="line">                        <span class="comment">// console.log(&#x27;hi&#x27;);</span></span><br><span class="line">                      <span class="comment">//&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(greet.language);   <span class="comment">// english</span></span><br></pre></td></tr></table></figure>
 
 
