@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211229/60572/new-object.png">
 <meta property="og:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211229/60572/new-two-object.png">
 <meta property="article:published_time" content="2021-12-29T15:26:04.000Z">
-<meta property="article:modified_time" content="2022-01-02T16:03:18.471Z">
+<meta property="article:modified_time" content="2022-04-29T00:26:48.872Z">
 <meta property="article:author" content="Yeh">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211229/60572/new-object.png">
@@ -153,18 +153,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -235,7 +235,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2022-01-03 00:03:18" itemprop="dateModified" datetime="2022-01-03T00:03:18+08:00">2022-01-03</time>
+        <time title="修改時間：2022-04-29 08:26:48" itemprop="dateModified" datetime="2022-04-29T08:26:48+08:00">2022-04-29</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -257,11 +257,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>在過去的章節介紹過物件最基本的建立方式 - <code>literal object</code>，這堂課將透過 <code>JavaScript</code> 的歷史來介紹物件的其他建立方式。</p>
+        <p>在過去的章節介紹過物件最基本的建立方式 - literal object，這堂課將透過 JavaScript 的歷史來介紹物件的其他建立方式。</p>
 <span id="more"></span>
 
-<p><code>JavaScript</code> 在創立初期，作者為了吸引 <code>Java</code> 的開發者使用它，所以在命名上便參考 <code>Java</code> 這個字，但在開發上其實有非常大的不同 ; 其中 <code>new</code> 這個關鍵字便是模仿 <code>Java</code> 而來，但在 <code>Java</code> 中，<code>new</code> 是用來建立一個 <code>class</code>，<code>class</code> 並非 <code>object</code>，而是用來定義並建立 <code>object</code> ; 然而在 <code>JavaScript</code> 中，<code>new</code> 則是被用來建立 <code>object</code>，這也是本堂課將介紹的用法 ; <code>JavaScript</code> 在 <code>ES6</code> 後的本版也有 <code>class</code> 這個關鍵字，但用法則和 <code>Java</code> 完全不同。</p>
-<h2 id="new-object"><a href="#new-object" class="headerlink" title="new object"></a>new object</h2><p>前面提到，<code>JavaScript</code> 中的關鍵字 <code>new</code> 和 <code>Java</code> 中的用法並不一樣，那麼當我們透過 <code>new</code> 來建立物件的時候到底會發生什麼事呢 ?</p>
+<p>JavaScript 在創立初期，作者為了吸引 Java 的開發者使用它，所以在命名上便參考 Java 這個字，但在開發上其實有非常大的不同 ; 其中 <code>new</code> 這個關鍵字便是模仿 Java 而來，但在 Java 中，<code>new</code> 是用來建立一個 <code>class</code>，<code>class</code> 並非 <code>object</code>，而是用來定義並建立 <code>object</code> ; 然而在 JavaScript 中，<code>new</code> 則是被用來建立 <code>object</code>，這也是本堂課將介紹的用法 ; JavaScript 在 ES6 後的本版也有 <code>class</code> 這個關鍵字，但用法則和 <code>Java</code> 完全不同。</p>
+<h2 id="new-object"><a href="#new-object" class="headerlink" title="new object"></a>new object</h2><p>前面提到，JavaScript 中的關鍵字 <code>new</code> 和 <code>Java</code> 中的用法並不一樣，那麼當我們透過 <code>new</code> 來建立物件的時候到底會發生什麼事呢 ?</p>
 <p>讓我們透過一段程式碼範例來了解:</p>
 <p>首先，建立一個函式 <code>person</code>，接著透過 <code>new</code> 來呼叫這個函式並指派給一個變數 <code> john</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">  <span class="built_in">this</span>.firstname = <span class="string">&#x27;John&#x27;</span>;</span><br><span class="line">  <span class="built_in">this</span>.lastname = <span class="string">&#x27;Doe&#x27;</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;This function is invoked.&#x27;</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> john = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(john);</span><br></pre></td></tr></table></figure>
@@ -277,7 +277,7 @@
 <p>前面提到，這種建立物件的方式其實會先呼叫這個函式，再將它的 <code>this</code> 指向一個新產生的空物件，所以就如同一般函式，我們可以傳入參數，並指派給它的屬性，這麼一來就可以達到自由賦予屬性值的目的了。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">firstname, lastnmae</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">this</span>.firstname = firstname;</span><br><span class="line">  <span class="built_in">this</span>.lastname = lastname;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> john = <span class="keyword">new</span> Person(<span class="string">&#x27;John&#x27;</span>, <span class="string">&#x27;Doe&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(john);   <span class="comment">// &#123;firstname: &#x27;John&#x27;, lastname: &#x27;Doe&#x27;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> jane = <span class="keyword">new</span> Person(<span class="string">&#x27;Jane&#x27;</span>, <span class="string">&#x27;Doe&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(jane);   <span class="comment">// &#123;firstname: &#x27;Jane&#x27;, lastname: &#x27;Doe&#x27;&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>這種被用來透過關鍵字 <code>new</code> 來建立物件並回傳將 <code>this</code> 指派給新生成空物件的函式就稱為 <code>Function Constructors</code>。</p>
+<p>這種被用來透過關鍵字 <code>new</code> 來建立物件並回傳將 <code>this</code> 指派給新生成空物件的函式就稱為 Function Constructors。</p>
 <h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.udemy.com/course/understand-javascript/">Udemy-JavaScript: Understanding the Weird Parts</a>`</p>
 
     </div>

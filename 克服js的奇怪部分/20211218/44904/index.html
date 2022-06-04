@@ -20,19 +20,19 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jerry-yeh.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="這堂課將介紹一個在 JavaScript 中惡名昭彰的一個觀念 - 閉包 Closures">
+<meta name="description" content="這堂課將介紹一個在 JavaScript 中惡名昭彰的一個觀念 - 閉包 (Closures)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="了解閉包 Closures (一)">
 <meta property="og:url" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211218/44904/index.html">
 <meta property="og:site_name" content="JustNOTE">
-<meta property="og:description" content="這堂課將介紹一個在 JavaScript 中惡名昭彰的一個觀念 - 閉包 Closures">
+<meta property="og:description" content="這堂課將介紹一個在 JavaScript 中惡名昭彰的一個觀念 - 閉包 (Closures)">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211218/44904/Function-Invoked.png">
 <meta property="og:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211218/44904/Garbage-Collection.png">
 <meta property="og:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211218/44904/Next-Execution-Context.png">
 <meta property="og:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211218/44904/Closures.png">
 <meta property="article:published_time" content="2021-12-18T07:15:34.000Z">
-<meta property="article:modified_time" content="2021-12-19T10:29:37.443Z">
+<meta property="article:modified_time" content="2022-04-28T01:58:19.270Z">
 <meta property="article:author" content="Yeh">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211218/44904/Function-Invoked.png">
@@ -155,18 +155,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -237,7 +237,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2021-12-19 18:29:37" itemprop="dateModified" datetime="2021-12-19T18:29:37+08:00">2021-12-19</time>
+        <time title="修改時間：2022-04-28 09:58:19" itemprop="dateModified" datetime="2022-04-28T09:58:19+08:00">2022-04-28</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -259,26 +259,26 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>這堂課將介紹一個在 <code>JavaScript</code> 中惡名昭彰的一個觀念 - 閉包 <code>Closures</code></p>
+        <p>這堂課將介紹一個在 JavaScript 中惡名昭彰的一個觀念 - 閉包 (Closures)</p>
 <span id="more"></span>
 
-<h2 id="了解閉包"><a href="#了解閉包" class="headerlink" title="了解閉包"></a>了解閉包</h2><p>在過去的課程中所學到的 <code>Execution Stack</code>、<code>Execution Context</code> 等觀念都會在 <code>Closures</code> 中被應用到。</p>
+<h2 id="了解閉包"><a href="#了解閉包" class="headerlink" title="了解閉包"></a>了解閉包</h2><p>在過去的課程中所學到的 Execution Stack、Execution Context 等觀念都會在 Closures 中被應用到。</p>
 <p>首先我們建立一個函式並回傳一個函式，接著，呼叫這個函式再加上一組括號呼叫回傳的函式，看起來有點奇怪，但其實就只是馬上執行回傳的函式。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params">whattosay</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(whattosay + <span class="string">&#x27; &#x27;</span> + name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">greet(<span class="string">&#x27;Hello&#x27;</span>)(<span class="string">&#x27;Tony&#x27;</span>);   <span class="comment">// Hello Tony</span></span><br></pre></td></tr></table></figure>
 
 <p>那如果我們透過一個變數儲存第一次函式的呼叫，再呼叫這個變數來執行回傳的函式呢?</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params">whattosay</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(whattosay + <span class="string">&#x27; &#x27;</span> + name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> satHi = greet(<span class="string">&#x27;Hi&#x27;</span>);</span><br><span class="line">sayHi(<span class="string">&#x27;Tony&#x27;</span>);   <span class="comment">// Hi Tony</span></span><br></pre></td></tr></table></figure>
 
-<p>還是會得到和原來一樣預期的結果，為什麼這麼做也會成立呢 ? 因為當我們執行 <code>sayHi</code> 函式的時候，<code>whattosay</code> 這個變數仍然存在，其實這就是一個閉包 <code>Closures</code>。</p>
-<p>讓我們依序拆解這段程式的執行流程，當我們執行 <code>JavaScript</code> 時，會先產生一個 <code>Global Execution Context</code>，接著，執行 <code>greet</code> 函式的時候會在 <code>Context Stack</code> 上產生它的 <code>Execution Context</code>， 並回傳一個匿名函式物件 <code>creates a function on the fly</code>。</p>
+<p>還是會得到和原來一樣預期的結果，為什麼這麼做也會成立呢 ? 因為當我們執行 <code>sayHi</code> 函式的時候，<code>whattosay</code> 這個變數仍然存在，其實這就是一個閉包 (Closures)。</p>
+<p>讓我們依序拆解這段程式的執行流程，當我們執行 JavaScript 時，會先產生一個 Global Execution Context，接著，執行 <code>greet</code> 函式的時候會在 Context Stack 上產生它的 Execution Context， 並回傳一個匿名函式物件 (creates a function on the fly)。</p>
 <p><img src="Function-Invoked.png"></p>
-<p>這裡有一個問題是，每一個函式 <code>Execution Context</code> 都有其記憶體的位置，但當一個 <code>Execution Context</code> 在 <code>return</code> 後抽離 <code>Execution Stack</code> 後，它的記憶體會發生什麼事 ?</p>
-<p>一般來說，<code>JavaScript Engine</code> 會透過一個 <code>Garbage Collection</code> 的機制來清除這些內容，雖然 <code>Execution Context</code> 已經不在了，但其中的變數還是會留在該記憶體位置。</p>
+<p>這裡有一個問題是，每一個函式 Execution Context 都有其記憶體的位置，但當一個 Execution Context 在 <code>return</code> 抽離 Execution Stack 後，它的記憶體會發生什麼事 ?</p>
+<p>一般來說，JavaScript Engine 會透過一個 Garbage Collection 的機制來清除這些內容，雖然 Execution Context 已經不在了，但其中的變數還是會留在該記憶體位置。</p>
 <p><img src="Garbage-Collection.png"></p>
-<p>接著，當程式碼執行到 <code>sayHi()</code> 時，會再建立一個匿名函式的 <code>Execution Context</code>，同時帶有一個變數 <code>name</code>。</p>
+<p>接著，當程式碼執行到 <code>sayHi()</code> 時，會再建立一個匿名函式的 Execution Context，同時帶有一個變數 <code>name</code>。</p>
 <p><img src="Next-Execution-Context.png"></p>
-<p>當這個匿名函式執行到 <code>whattosay</code> 這個變數時，無法在函式內找到這個變數，因此根據 <code>Scoped Chain</code> 的概念就會往外部環境逐層搜尋，這時候就會找到這個變數。</p>
-<p>在這裡，我們把這個匿名函式的 <code>Execution</code> 和外部變數關 <code>Close</code> 在一起，這種現象在 <code>JavaScript</code> 就是一個閉包 <code>Closures</code>。透過 <code>Closures</code> 這個特性，可以確保在函式執行時找對其對應的外部變數，不論某個函式是否執行完畢將 <code>Execution Context</code> 抽離 <code>Execution Stack</code>，<code>JavaScript Engine</code> 仍然可以找到對應的外部變數。  </p>
+<p>當這個匿名函式執行到 <code>whattosay</code> 這個變數時，無法在函式內找到這個變數，因此根據 <code>Scoped Chain</code> 的概念就會往外部環境逐層搜尋，這時候就會找到剛剛留在 <code>greet</code> 記憶體位置中的這個變數。</p>
+<p>在這裡，我們把這個匿名函式的 Execution 和外部變數關 (Close) 在一起，這種現象在 JavaScript 就是一個閉包 (Closures)。透過 Closures 這個特性，可以確保在函式執行時找對其對應的外部變數，不論某個函式是否執行完畢將 Execution Context 抽離 Execution Stack，JavaScript Engine 仍然可以找到對應的外部變數。  </p>
 <p><img src="Closures.png"></p>
 <h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.udemy.com/course/understand-javascript/">Udemy-JavaScript: Understanding the Weird Parts</a>`</p>
 

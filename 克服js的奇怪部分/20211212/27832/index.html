@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211212/27832/By-Value.PNG">
 <meta property="og:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211212/27832/By-Reference.PNG">
 <meta property="article:published_time" content="2021-12-12T12:14:40.000Z">
-<meta property="article:modified_time" content="2021-12-13T14:08:00.340Z">
+<meta property="article:modified_time" content="2022-04-27T12:26:14.711Z">
 <meta property="article:author" content="Yeh">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211212/27832/By-Value.PNG">
@@ -153,18 +153,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -235,7 +235,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2021-12-13 22:08:00" itemprop="dateModified" datetime="2021-12-13T22:08:00+08:00">2021-12-13</time>
+        <time title="修改時間：2022-04-27 20:26:14" itemprop="dateModified" datetime="2022-04-27T20:26:14+08:00">2022-04-27</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -268,11 +268,11 @@
 <p><img src="By-Value.PNG"></p>
 <h3 id="傳址-傳參考-By-Reference"><a href="#傳址-傳參考-By-Reference" class="headerlink" title="傳址(傳參考) By Reference"></a>傳址(傳參考) By Reference</h3><p>相對的，如果宣告一個變數 <code>a</code> 並給它一個型別為物件 (Function 也是) 的值，同樣會在記憶體中給它一個位置 <code>0x001</code> ;但當我們建立另一個變數 <code>b</code> ，並把 <code>b</code> 的值等同於 <code>a</code>，實際上不會在記憶體中再給它一個位置，變數 <code>a</code> 和 <code>b</code> 都會指向相同的位置 <code>0x001</code> ，所以當 <code>a</code> 的值給便時也會影響到 <code>b</code>，這種情況我們就稱為傳址 (傳參考) <code>pass by reference</code>。</p>
 <p><img src="By-Reference.PNG"></p>
-<p>一段簡單的程式碼如下，當我們建立一個變數 <code>c</code> 並給它一個物件 <code>object</code> 的值，再建立一個 <code>d</code> 並讓它等於 <code>c</code>，接著更改 <code>mutate</code> <code>c</code> 的值時，<code>d</code> 也會跟著改變; 甚至我們都過一個函式來更改 <code>c</code> 的值時，<code>d</code> 也會跟著改變</p>
+<p>一段簡單的程式碼如下，當我們建立一個變數 <code>c</code> 並給它一個物件 <code>object</code> 的值，再建立一個 <code>d</code> 並讓它等於 <code>c</code>，接著更改 (mutate) <code>c</code> 的值時，<code>d</code> 也會跟著改變; 甚至我們透過一個函式來更改 <code>c</code> 的值時，<code>d</code> 也會跟著改變</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> c = &#123; <span class="attr">greeting</span>: <span class="string">&quot;Hello&quot;</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> d;</span><br><span class="line"></span><br><span class="line">d = c;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(c); <span class="comment">// &#123; greeting: &quot;Hello&quot; &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(d); <span class="comment">// &#123; greeting: &quot;Hello&quot; &#125;</span></span><br><span class="line"></span><br><span class="line">c.greeting = <span class="string">&quot;Hola&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(c); <span class="comment">// &#123; greeting: &quot;Hola&quot; &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(d); <span class="comment">// &#123; greeting: &quot;Hola&quot; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeGreeting</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  obj.greeting = <span class="string">&quot;Hi&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">changeGreeting(c);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(c); <span class="comment">// &#123; greeting: &quot;Hi&quot; &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(d); <span class="comment">// &#123; greeting: &quot;Hi&quot; &#125;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="例外"><a href="#例外" class="headerlink" title="例外"></a>例外</h3><p>前面提到如果建立變數 <code>c</code> 並給予一個 <code>object</code> 的值，並新增另一個變數<code>d</code> 等於 <code>c</code>， 就會透過 <code>pass by reference</code> 的方式指向記憶體中的這個位置，但當我們透過 <code>object literal</code> 的方式重新賦予這個變數另外一個 <code>object</code> 的值時，JavaScript 會在記憶體中新增一個位置來存放這個新的物件，這時候 <code>c</code> 和 <code>d</code> 就會分別指向記憶體中不同的 <code>object</code>。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> c = &#123; <span class="attr">greeting</span>: <span class="string">&quot;Hello&quot;</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> d;</span><br><span class="line"></span><br><span class="line">d = c;</span><br><span class="line"></span><br><span class="line">c.greeting = &#123; <span class="attr">gretting</span>: <span class="string">&quot;Hi&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(c); <span class="comment">// &#123; greeting: &quot;Hi&quot; &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(d); <span class="comment">// &#123; greeting: &quot;Hello&quot; &#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> c = &#123; <span class="attr">greeting</span>: <span class="string">&quot;Hello&quot;</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> d;</span><br><span class="line"></span><br><span class="line">d = c;</span><br><span class="line"></span><br><span class="line">c = &#123; <span class="attr">gretting</span>: <span class="string">&quot;Hi&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(c); <span class="comment">// &#123; greeting: &quot;Hi&quot; &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(d); <span class="comment">// &#123; greeting: &quot;Hello&quot; &#125;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.udemy.com/course/understand-javascript/">Udemy-JavaScript: Understanding the Weird Parts</a></p>
 

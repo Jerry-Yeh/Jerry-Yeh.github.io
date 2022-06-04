@@ -28,7 +28,7 @@
 <meta property="og:description" content="有了之前對於 First Class Function 的了解後，這堂課將介紹 JavaScript 程式設計很強大的地方 - Functional Programming">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-12-23T13:41:03.000Z">
-<meta property="article:modified_time" content="2021-12-26T04:03:03.455Z">
+<meta property="article:modified_time" content="2022-04-28T15:23:05.406Z">
 <meta property="article:author" content="Yeh">
 <meta name="twitter:card" content="summary">
 
@@ -150,18 +150,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -232,7 +232,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2021-12-26 12:03:03" itemprop="dateModified" datetime="2021-12-26T12:03:03+08:00">2021-12-26</time>
+        <time title="修改時間：2022-04-28 23:23:05" itemprop="dateModified" datetime="2022-04-28T23:23:05+08:00">2022-04-28</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -254,16 +254,16 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>有了之前對於 <code>First Class Function</code> 的了解後，這堂課將介紹 <code>JavaScript</code> 程式設計很強大的地方 - <code>Functional Programming</code></p>
+        <p>有了之前對於 First Class Function 的了解後，這堂課將介紹 JavaScript 程式設計很強大的地方 - Functional Programming</p>
 <span id="more"></span>
 
-<p>在 <code>JavaScript</code> 有一個很特別的地方在於函式屬於物件，所以可以透過匿名函式 <code>Anonymous Function</code> 的方式指派一個變數，並透過 <code>return</code> 回傳一個值，這種方法就稱為 <code>First Class Function</code>，這是在其他程式語言中不太會見到的。</p>
+<p>在 JavaScript 有一個很特別的地方在於函式屬於物件，所以可以透過匿名函式 (Anonymous Function) 的方式指派一個變數，並透過 <code>return</code> 回傳一個值，這種方法就稱為 First Class Function，這是在其他程式語言中不太會見到的。</p>
 <p>首先看到一段程式碼如下:</p>
 <p>建立一個陣列，接著建立第二個空陣列，並透過 <code>for</code> 迴圈 <code>push</code> 2 倍的值進入第二個空陣列，如此一來就可以得到和第一個陣列長度相同且兩倍的值。 </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr1 = [<span class="number">1</span>, <span class="number">2.</span> <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr2 = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr1.length; i++) &#123;</span><br><span class="line"></span><br><span class="line">  arr2.push(arr1[i] * <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(arr2);   <span class="comment">// [2, 4, 6]</span></span><br></pre></td></tr></table></figure>
 
-<p>但身為一個程式開發人員，我們總是想要透過最少的程式碼來達到相同的目的，且避免重複撰寫類似的程式碼，所以我們試著透過 <code>Functional Programming</code> 的概念來改寫這段程式碼。</p>
-<p>首先，建立一個函式，並將這個 <code>for</code> 迴圈放入函式內，接著將第一個陣列作為第一個參數傳入，再將要對陣列做的 <code>callback function</code> 做為第二個參數傳入。</p>
+<p>但身為一個程式開發人員，我們總是想要透過最少的程式碼來達到相同的目的，且避免重複撰寫類似的程式碼，所以我們試著透過 Functional Programming 的概念來改寫這段程式碼。</p>
+<p>首先，建立一個函式，並將這個 <code>for</code> 迴圈放入函式內，接著將第一個陣列作為第一個參數傳入，再將要對陣列做的 Callback Function 做為第二個參數傳入。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapForEach</span>(<span class="params">arr, fn</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> newArr = [];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    newArr.push(</span><br><span class="line">      fn(arr[i]);</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>為了達到和原先一樣把陣列的所有值乘上 2 的目的，只要透過呼叫 <code>mapForEach</code> 這個函式，並將要處理的陣列帶入第一個參數，接著把要處理的條件透過 <code>function expressions</code> 帶入第二個參數:</p>
@@ -273,15 +273,15 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr3 = mapForEach(arr1, <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item &gt; <span class="number">2</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(arr3);   <span class="comment">// [false, false, true]</span></span><br></pre></td></tr></table></figure>
 
 <p>如此一來就可以透過 <code>mapForEach</code> 中的第 2 個 <code>function</code> 參數對 <code>array</code> 做到不一樣的效果。</p>
-<h2 id="Function-Programming-進階用法"><a href="#Function-Programming-進階用法" class="headerlink" title="Function Programming 進階用法"></a>Function Programming 進階用法</h2><p>延續上方的範例，我們來看到一個更進階的用法，如果連判斷是否大於 <code>2</code> 的條件都可以彈性透過參數帶入我們可以譖麼做呢 ?</p>
+<h2 id="Function-Programming-進階用法"><a href="#Function-Programming-進階用法" class="headerlink" title="Function Programming 進階用法"></a>Function Programming 進階用法</h2><p>延續上方的範例，我們來看到一個更進階的用法，如果連判斷是否大於 <code>2</code> 的條件都可以彈性透過參數帶入我們可以怎麼做呢 ?</p>
 <p>首先建立一個函式來判斷傳入的參數 <code>item</code> 是否大於條件 <code>limiter</code>。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapForEach</span>(<span class="params">arr, fn</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> newArr = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line"></span><br><span class="line">    newArr.push(</span><br><span class="line">      fn(arr[i])</span><br><span class="line">    );</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> checkPastLimit = <span class="function"><span class="keyword">function</span>(<span class="params">limiter, item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item &gt; limiter;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>寫到這裡，會有一個疑問是，<code>mapForEach</code> 在呼叫這個函式的時候，只有帶入一個參數 <code>fn(arr[i])</code>，那麼要如何給定 <code>limiter</code> 一個預設值呢 ?</p>
-<p>在這裡就可以用到前面章節所學到的 <code>bind()</code> 來帶入預設的參數了，只要在使用 <code>bind()</code> 的時候，預先帶入一個參數，這個參數就會是 <code>limiter</code> 的值，接著後續呼叫鎖帶入的值自然就會是 <code>item</code> 了。</p>
+<p>在這裡就可以用到前面章節所學到的 <code>bind()</code> 來帶入預設的參數了，只要在使用 <code>bind()</code> 的時候，預先帶入一個參數，這個參數就會是 <code>limiter</code> 的值，接著後續呼叫所帶入的值自然就會是 <code>item</code> 了。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> arr4 = mapForEach(arr1, checkPastLimit.bind(<span class="built_in">this</span>, <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(arr4);</span><br><span class="line"><span class="comment">// [false, true, true]</span></span><br><span class="line"><span class="comment">// (1 &gt; 1, 2 &gt; 1, 3 &gt; 1)</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="簡化-checkPastLimit-到只帶入一個參數"><a href="#簡化-checkPastLimit-到只帶入一個參數" class="headerlink" title="簡化 checkPastLimit 到只帶入一個參數"></a>簡化 checkPastLimit 到只帶入一個參數</h2><p>接著，我們進一步來簡化上述範例，讓這個函是在使用時，不用每次都透過 <code>bind()</code> 來帶入 <code>this</code> 與參數，而是只要透過帶入一個參數作為 <code>limiter</code> 即可。</p>
+<h2 id="簡化-checkPastLimit-到只帶入一個參數"><a href="#簡化-checkPastLimit-到只帶入一個參數" class="headerlink" title="簡化 checkPastLimit 到只帶入一個參數"></a>簡化 checkPastLimit 到只帶入一個參數</h2><p>接著，我們進一步來簡化上述範例，讓這個函式在使用時，不用每次都透過 <code>bind()</code> 來帶入 <code>this</code> 與參數，而是只要透過帶入一個參數作為 <code>limiter</code> 即可。</p>
 <p>在這裡，我們要做的其實就只是將 <code>bind()</code> 的應用包裝成另一個函式，並給定一個參數 <code>limiter</code> 帶入:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> checkPastLimitSimplified = <span class="function"><span class="keyword">function</span>(<span class="params">limiter</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">limiter, item</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> item &gt; limiter;</span><br><span class="line">  &#125;.bind(<span class="built_in">this</span>, limiter);</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> arr5 = mapForEach(arr1, checkPastLimitSimplified(<span class="number">1</span>));</span><br><span class="line"><span class="built_in">console</span>.log(arr5);   <span class="comment">// [false, true, true]</span></span><br></pre></td></tr></table></figure>
 

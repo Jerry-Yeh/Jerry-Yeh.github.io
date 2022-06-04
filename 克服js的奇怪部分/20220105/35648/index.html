@@ -28,7 +28,7 @@
 <meta property="og:description" content="這堂課將介紹兩個實用的內建語法，typeof and instanceof">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-01-05T15:51:37.000Z">
-<meta property="article:modified_time" content="2022-01-06T14:14:11.468Z">
+<meta property="article:modified_time" content="2022-04-29T01:41:19.904Z">
 <meta property="article:author" content="Yeh">
 <meta name="twitter:card" content="summary">
 
@@ -150,18 +150,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -232,7 +232,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2022-01-06 22:14:11" itemprop="dateModified" datetime="2022-01-06T22:14:11+08:00">2022-01-06</time>
+        <time title="修改時間：2022-04-29 09:41:19" itemprop="dateModified" datetime="2022-04-29T09:41:19+08:00">2022-04-29</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -269,11 +269,11 @@
 <p>而 <code>undefined</code> 的型別就是 <code>undefined</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">undefined</span>);   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="Bug"><a href="#Bug" class="headerlink" title="Bug"></a>Bug</h3><p>但這裡有一個 <code>JavaScript</code> 的 Bug，而且它也沒有打算修復，因為這個 Bug 已經存在很久了，如果修復它會影響很多已存在的專案和 <code>library</code> ; 那就是透過 <code>typeof</code> 查看 <code>null</code> 時，會回傳字串 <code>object</code></p>
+<h3 id="Bug"><a href="#Bug" class="headerlink" title="Bug"></a>Bug</h3><p>但這裡有一個 <code>JavaScript</code> 的 Bug，而且它也沒有打算修復，因為這個 Bug 已經存在很久了，如果修復它會影響很多已存在的專案和 library ; 那就是透過 <code>typeof</code> 查看 <code>null</code> 時，會回傳字串 <code>object</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">null</span>);   <span class="comment">// object</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h2><p><code>instanceof</code> 則是會判斷前面的值是否可以在它的 <code>prototypal chain</code> 找到後面的值，如下範例:</p>
-<p>先建立一個 <code>function constructor</code> - <code>Person</code>，再透過 <code>new</code> 建立新的物件 <code>e</code> ，因為 <code>e</code> 的 <code>prototype</code> 就是 <code>Person</code>，所以回傳 <code>true</code>。</p>
+<p>先建立一個 function constructor - <code>Person</code>，再透過 <code>new</code> 建立新的物件 <code>e</code> ，因為 <code>e</code> 的 <code>prototype</code> 就是 <code>Person</code>，所以回傳 <code>true</code>。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> e = <span class="keyword">new</span> Person(<span class="string">&#x27;Jane&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> e);   <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(e <span class="keyword">instanceof</span> Person);   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
 

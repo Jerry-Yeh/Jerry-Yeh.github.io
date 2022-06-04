@@ -28,7 +28,7 @@
 <meta property="og:description" content="在 ES6 中增加了一個新的方法來展開陣列中的值，這個方法就是展開 ...">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2019-10-23T01:59:03.000Z">
-<meta property="article:modified_time" content="2019-10-23T02:09:38.560Z">
+<meta property="article:modified_time" content="2022-05-31T00:13:19.663Z">
 <meta property="article:author" content="Yeh">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="ES6">
@@ -138,7 +138,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%95%E9%96%8B-%E2%80%A6"><span class="nav-number">1.</span> <span class="nav-text">展開 …</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BA%E5%B1%A4%E8%A4%87%E8%A3%BD-Shallow-copy"><span class="nav-number">1.1.</span> <span class="nav-text">淺層複製 Shallow copy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%9E%E9%99%A3%E5%88%97-Array-like-%E8%BD%89%E9%99%A3%E5%88%97-Array"><span class="nav-number">1.2.</span> <span class="nav-text">類陣列 Array-like 轉陣列 Array</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E9%A4%98%E5%8F%83%E6%95%B8"><span class="nav-number">2.</span> <span class="nav-text">其餘參數</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%95%E9%96%8B-Spread-%E2%80%A6"><span class="nav-number">1.</span> <span class="nav-text">展開 Spread …</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BA%E5%B1%A4%E8%A4%87%E8%A3%BD-Shallow-copy"><span class="nav-number">1.1.</span> <span class="nav-text">淺層複製 Shallow copy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%9E%E9%99%A3%E5%88%97-Array-like-%E8%BD%89%E9%99%A3%E5%88%97-Array"><span class="nav-number">1.2.</span> <span class="nav-text">類陣列 Array-like 轉陣列 Array</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E9%A4%98%E5%8F%83%E6%95%B8"><span class="nav-number">2.</span> <span class="nav-text">其餘參數</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -152,18 +152,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -226,10 +226,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
-      
 
-      <time title="創建時間：2019-10-23 09:59:03 / 修改時間：10:09:38" itemprop="dateCreated datePublished" datetime="2019-10-23T09:59:03+08:00">2019-10-23</time>
+      <time title="創建時間：2019-10-23 09:59:03" itemprop="dateCreated datePublished" datetime="2019-10-23T09:59:03+08:00">2019-10-23</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新於</span>
+        <time title="修改時間：2022-05-31 08:13:19" itemprop="dateModified" datetime="2022-05-31T08:13:19+08:00">2022-05-31</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -253,7 +259,7 @@
         <p>在 ES6 中增加了一個新的方法來展開陣列中的值，這個方法就是展開 <code>...</code></p>
 <span id="more"></span>
 
-<h2 id="展開-…"><a href="#展開-…" class="headerlink" title="展開 …"></a>展開 …</h2><p>如下範例，我們將一班的陣列在前方加上 <code>...</code> 後，陣列的資料內容就會被一一展示開來 </p>
+<h2 id="展開-Spread-…"><a href="#展開-Spread-…" class="headerlink" title="展開 Spread …"></a>展開 Spread …</h2><p>如下範例，我們將一班的陣列在前方加上 <code>...</code> 後，陣列的資料內容就會被一一展示開來 </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> groupA = [<span class="string">&#x27;魯夫&#x27;</span>, <span class="string">&#x27;索隆&#x27;</span>, <span class="string">&#x27;娜美&#x27;</span>];</span><br><span class="line"><span class="keyword">let</span> groupB = [<span class="string">&#x27;香吉士&#x27;</span>, <span class="string">&#x27;騙人布&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(...groupA);   <span class="comment">// 魯夫 喬巴 索隆</span></span><br></pre></td></tr></table></figure>
 
 <p>透過展開這個方法，我們還可以連接陣列 ; 順便比較 ES6 以前的方法</p>

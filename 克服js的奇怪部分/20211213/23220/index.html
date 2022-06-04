@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211213/23220/change-property.PNG">
 <meta property="og:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211213/23220/property-in-window.PNG">
 <meta property="article:published_time" content="2021-12-13T14:08:37.000Z">
-<meta property="article:modified_time" content="2021-12-13T15:29:40.613Z">
+<meta property="article:modified_time" content="2022-04-28T00:48:26.319Z">
 <meta property="article:author" content="Yeh">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211213/23220/this-in-object.PNG">
@@ -154,18 +154,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -228,10 +228,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
-      
 
-      <time title="創建時間：2021-12-13 22:08:37 / 修改時間：23:29:40" itemprop="dateCreated datePublished" datetime="2021-12-13T22:08:37+08:00">2021-12-13</time>
+      <time title="創建時間：2021-12-13 22:08:37" itemprop="dateCreated datePublished" datetime="2021-12-13T22:08:37+08:00">2021-12-13</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新於</span>
+        <time title="修改時間：2022-04-28 08:48:26" itemprop="dateModified" datetime="2022-04-28T08:48:26+08:00">2022-04-28</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -258,20 +264,20 @@
 <h2 id="Global-Object-Window-物件"><a href="#Global-Object-Window-物件" class="headerlink" title="Global Object - Window 物件"></a>Global Object - Window 物件</h2><p>首先，我們直接透過以下三個例子來印出 <code>this</code>，分別是全域環境、函式 <code>a</code> 函式陳述式 <code>Function Statement</code>和函式 <code>b</code> 函式表達式 <code>Function Expression</code>，在執行這三段程式碼時，會分別產生三個執行階段 <code>Execution Context</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">this</span>);   <span class="comment">// Window</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a();   <span class="comment">// Window</span></span><br><span class="line">b();   <span class="comment">// Window</span></span><br></pre></td></tr></table></figure>
 
-<p>會發現三者的結果都是全域環境中的 <code>Global Object - Window</code>，這也代表我們可以透過 <code>Function Statement</code> 和 <code>Function Expression</code> 來建立全域變數 <code>Global Variable</code>，而痊癒變數可以透過直接呼叫變數名稱來使用，不需要透過 . <code>dot-notation</code> 來指稱。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">  <span class="built_in">this</span>.newvariable = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newvariable);</span><br></pre></td></tr></table></figure>
+<p>會發現三者的結果都是全域環境中的 Global Object - Window，這也代表我們可以透過 Function Statement 和 Function Expression 來建立全域變數 (Global Variable)，而全域變數可以透過直接呼叫變數名稱來使用，不需要透過 . (dot-notation) 來指稱。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">  <span class="built_in">this</span>.newvariable = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newvariable);   <span class="comment">// hello</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="this-in-object-物件中的-this"><a href="#this-in-object-物件中的-this" class="headerlink" title="this in object 物件中的 this"></a>this in object 物件中的 this</h2><p>在 JavaScript 的物件中，如果值的型別是 <code>Primitive Type</code> (物件以外)，我們就稱為物件的屬性 <code>property</code>;而如果是一個函式 <code>Funciton</code>，我們就會稱為物件的方法 <code>method</code>，以下透過物件的 <code>method</code> 來呼叫 <code>this</code>:</p>
+<h2 id="this-in-object-物件中的-this"><a href="#this-in-object-物件中的-this" class="headerlink" title="this in object 物件中的 this"></a>this in object 物件中的 this</h2><p>在 JavaScript 的物件中，如果值的型別是 Primitive Type (物件以外)，我們就稱為物件的屬性 (property);而如果是一個函式 (Funciton)，我們就會稱為物件的方法 (method)，以下透過物件的方法 (method) 來呼叫 <code>this</code>:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> c = &#123;</span><br><span class="line">  name: <span class="string">&#x27;The c object&#x27;</span>,</span><br><span class="line">  log: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">c.log();</span><br></pre></td></tr></table></figure>
 
-<p>會發現這次的 <code>this</code> 指向 <code>c</code> 這個 <code>object</code> 本身</p>
+<p>會發現這次的 <code>this</code> 指向 <code>c</code> 這個 object 本身</p>
 <p><img src="this-in-object.PNG"></p>
-<h2 id="JavaScripg-中-this-的問題"><a href="#JavaScripg-中-this-的問題" class="headerlink" title="JavaScripg 中 this 的問題"></a>JavaScripg 中 this 的問題</h2><p>延續上方的範例，當我們在物件中的 <code>method</code> 再新增一個 <code>setname</code> 函式並呼叫 <code>this</code> 來更改物件的 <code>property</code>，且在這個函式的前後印出 <code>this</code></p>
+<h2 id="JavaScripg-中-this-的問題"><a href="#JavaScripg-中-this-的問題" class="headerlink" title="JavaScripg 中 this 的問題"></a>JavaScripg 中 this 的問題</h2><p>延續上方的範例，當我們在物件中的 method 再新增一個 <code>setname</code> 函式並呼叫 <code>this</code> 來更改物件的 property，且在這個函式的前後印出 <code>this</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> c = &#123;</span><br><span class="line">  name: <span class="string">&#x27;The c object&#x27;</span>,</span><br><span class="line">  log: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.name = <span class="string">&#x27;Updated c object&#x27;</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> setname = <span class="function"><span class="keyword">function</span>(<span class="params">newname</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">this</span>.name = newname;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    setname(<span class="string">&#x27;Updated again!&#x27;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">c.log();</span><br></pre></td></tr></table></figure>
 
 <p>會發現即使 <code>setname</code> 函式前後的 <code>this</code> 都指向 <code>c</code> 這個物件本身</p>
 <p><img src="change-property.PNG"></p>
-<p>但 <code>c</code> 的 <code>property</code> 並沒有再次被改變，而是將 <code>this.name</code> 新增在全域物件 <code>Window</code> 上</p>
+<p>但 <code>c</code> 的 property 並沒有再次被改變，而是將 <code>this.name</code> 新增在全域物件 <code>Window</code> 上</p>
 <p><img src="property-in-window.PNG"></p>
 <p>這被許多人認為是 JavaScript 中的一個問題</p>
 <h3 id="解決-this-指向-Window"><a href="#解決-this-指向-Window" class="headerlink" title="解決 this 指向 Window"></a>解決 this 指向 Window</h3><p>所以在一般開發時，為了解決這個 <code>this</code> 在物件中卻指向全域物件 <code>Window</code> 的問題，我們會透過一個變數先將 <code>this</code> 存起來，當內部函式要使用而沒有定義這個變數名稱時，就會透過 <code>scoped chain</code> 一層一層往外找這個變數名稱，就會找到前面預先存起來的 <code>this</code></p>

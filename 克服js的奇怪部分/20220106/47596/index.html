@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20220106/47596/error.png">
 <meta property="og:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20220106/47596/error-in-function.png">
 <meta property="article:published_time" content="2022-01-05T16:35:59.000Z">
-<meta property="article:modified_time" content="2022-01-05T16:57:05.676Z">
+<meta property="article:modified_time" content="2022-04-29T01:42:51.951Z">
 <meta property="article:author" content="Yeh">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20220106/47596/error.png">
@@ -153,18 +153,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -227,10 +227,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
-      
 
-      <time title="創建時間：2022-01-06 00:35:59 / 修改時間：00:57:05" itemprop="dateCreated datePublished" datetime="2022-01-06T00:35:59+08:00">2022-01-06</time>
+      <time title="創建時間：2022-01-06 00:35:59" itemprop="dateCreated datePublished" datetime="2022-01-06T00:35:59+08:00">2022-01-06</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新於</span>
+        <time title="修改時間：2022-04-29 09:42:51" itemprop="dateModified" datetime="2022-04-29T09:42:51+08:00">2022-04-29</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -253,10 +259,10 @@
     <div class="post-body" itemprop="articleBody">
         <!-- @format -->
 
-<p><code>JavaScript</code> 有一個特別的選擇性模式來偵測我們所寫的程式碼，開啟它可以迫使 <code>JavaScript Engine</code> 更嚴謹的審視程式碼，它就是嚴謹模式 <code>strict mode</code></p>
+<p>JavaScript 有一個特別的選擇性模式來偵測我們所寫的程式碼，開啟它可以迫使 JavaScript Engine 更嚴謹的審視程式碼，它就是嚴謹模式 <code>strict mode</code></p>
 <span id="more"></span>
 
-<p>只要在 <code>JavaScript</code> 中加上字串 <code>use strict</code>，就會開啟嚴謹模式 <code>strict mode</code>。在嚴謹模式下，會有許多更嚴謹的規範來避免開發上的疏失，如下範例:</p>
+<p>只要在 JavaScript 中加上字串 <code>use strict</code>，就會開啟嚴謹模式 <code>strict mode</code>。在嚴謹模式下，會有許多更嚴謹的規範來避免開發上的疏失，如下範例:</p>
 <p>如果先建立一個變數，但在之後賦值時拼錯了，一般情況下並不會有任何錯誤，只是前者會因為沒有值而為預設的 <code>undefined</code>。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person;</span><br><span class="line"></span><br><span class="line">persom = &#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(person); <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(persom); <span class="comment">// &#123;&#125;</span></span><br></pre></td></tr></table></figure>
 
@@ -268,8 +274,8 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logNewPerson</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">  &quot;use strict&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> person2;</span><br><span class="line"></span><br><span class="line">  persom2 = &#123;&#125;;</span><br><span class="line">  <span class="built_in">console</span>.log(person2); <span class="comment">// undefined</span></span><br><span class="line">  <span class="built_in">console</span>.log(persom2); <span class="comment">// &#123;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person;</span><br><span class="line"></span><br><span class="line">persom = &#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(person); <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(persom); <span class="comment">// &#123;&#125;</span></span><br><span class="line">logNewPerson();</span><br></pre></td></tr></table></figure>
 
 <p><img src="error-in-function.png"></p>
-<p>嚴謹模式固然好用，但需要選擇性開啟的原因是每個 <code>JavaScript Engine</code> 對嚴謹模式所支援的規範並不相同，因此我們無法完全依賴它來開發。</p>
-<p>另外有一種情況是如果我們在一支主要的 <code>JavaScript</code> 檔案開啟嚴謹模式，並透過它引入其它的 <code>JavaScript</code> 檔案，但其它的 <code>JavaScript</code> 檔案在開發時並沒有開啟且遵守嚴謹模式的規範，那麼這可能為你帶來一些預料之外的問題。</p>
+<p>嚴謹模式固然好用，但需要選擇性開啟的原因是每個 JavaScript Engine 對嚴謹模式所支援的規範並不相同，因此我們無法完全依賴它來開發。</p>
+<p>另外有一種情況是如果我們在一支主要的 JavaScript 檔案開啟嚴謹模式，並透過它引入其它的 JavaScript 檔案，但其它的 JavaScript 檔案在開發時並沒有開啟且遵守嚴謹模式的規範，那麼這可能為你帶來一些預料之外的問題。</p>
 <h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">MDN Mozilla Developer Network</a><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.udemy.com/course/understand-javascript/">Udemy-JavaScript: Understanding the Weird Parts</a></p>
 
     </div>
