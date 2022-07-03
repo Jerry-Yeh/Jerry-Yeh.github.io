@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jerry-yeh.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="這堂課將介紹如何克制畫一個 Component">
+<meta name="description" content="這堂課將介紹如何客製化一個 Component">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Building a First Custom Component">
 <meta property="og:url" content="https://jerry-yeh.github.io/react/20220604/5794/index.html">
 <meta property="og:site_name" content="JustNOTE">
-<meta property="og:description" content="這堂課將介紹如何克制畫一個 Component">
+<meta property="og:description" content="這堂課將介紹如何客製化一個 Component">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-06-04T04:12:49.000Z">
-<meta property="article:modified_time" content="2022-06-04T09:02:50.995Z">
+<meta property="article:modified_time" content="2022-07-03T08:41:14.124Z">
 <meta property="article:author" content="Yeh">
 <meta property="article:tag" content="React - The Complete Guide (Incl Hooks, React Router, Redux)">
 <meta name="twitter:card" content="summary">
@@ -137,7 +137,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Building-a-Basic-Component"><span class="nav-number">1.</span> <span class="nav-text">Building a Basic Component</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Writing-More-Complex-JSX-Code"><span class="nav-number">2.</span> <span class="nav-text">Writing More Complex JSX Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adding-Basic-CSS-Styling"><span class="nav-number">3.</span> <span class="nav-text">Adding Basic CSS Styling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Outputting-Dynamic-Data-amp-Working-with-Expressions-in-JSX"><span class="nav-number">4.</span> <span class="nav-text">Outputting Dynamic Data &amp; Working with Expressions in JSX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Passing-Data-via-%E2%80%9Cprops%E2%80%9D"><span class="nav-number">5.</span> <span class="nav-text">Passing Data via “props”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adding-%E2%80%9Cnormal%E2%80%9D-JavaScript-Logic-to-Components"><span class="nav-number">6.</span> <span class="nav-text">Adding “normal” JavaScript Logic to Components</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E5%8F%83%E8%80%83"><span class="nav-number">7.</span> <span class="nav-text">資料參考</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Building-a-Basic-Component"><span class="nav-number">1.</span> <span class="nav-text">Building a Basic Component</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Writing-More-Complex-JSX-Code"><span class="nav-number">2.</span> <span class="nav-text">Writing More Complex JSX Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adding-Basic-CSS-Styling"><span class="nav-number">3.</span> <span class="nav-text">Adding Basic CSS Styling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Outputting-Dynamic-Data-amp-Working-with-Expressions-in-JSX"><span class="nav-number">4.</span> <span class="nav-text">Outputting Dynamic Data &amp; Working with Expressions in JSX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Passing-Data-via-%E2%80%9Cprops%E2%80%9D"><span class="nav-number">5.</span> <span class="nav-text">Passing Data via “props”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adding-%E2%80%9Cnormal%E2%80%9D-JavaScript-Logic-to-Components"><span class="nav-number">6.</span> <span class="nav-text">Adding “normal” JavaScript Logic to Components</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Splitting-Components-into-Multiple-Components"><span class="nav-number">7.</span> <span class="nav-text">Splitting Components into Multiple Components</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E5%8F%83%E8%80%83"><span class="nav-number">8.</span> <span class="nav-text">資料參考</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -151,7 +151,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-count">139</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -225,10 +225,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
-      
 
-      <time title="創建時間：2022-06-04 12:12:49 / 修改時間：17:02:50" itemprop="dateCreated datePublished" datetime="2022-06-04T12:12:49+08:00">2022-06-04</time>
+      <time title="創建時間：2022-06-04 12:12:49" itemprop="dateCreated datePublished" datetime="2022-06-04T12:12:49+08:00">2022-06-04</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新於</span>
+        <time title="修改時間：2022-07-03 16:41:14" itemprop="dateModified" datetime="2022-07-03T16:41:14+08:00">2022-07-03</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -249,7 +255,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>這堂課將介紹如何克制畫一個 Component</p>
+        <p>這堂課將介紹如何客製化一個 Component</p>
 <span id="more"></span>
 
 <h2 id="Building-a-Basic-Component"><a href="#Building-a-Basic-Component" class="headerlink" title="Building a Basic Component"></a>Building a Basic Component</h2><p>延續先前的環境，其實在預設環境中，就有一個名為 APP 的 Component，這個 Component 是整個 SPA 專安的 Root Component，之後所有開發的 Component 都會從中做延伸。</p>
@@ -284,7 +290,11 @@
 <p>即便在 React JSX 中，我們可以在大括號 {} 寫入任何 JavaScript 邏輯，但為了 HTML 與 JavaScript 可以區分得更明確，我們可以透過變數儲存這些邏輯再帶入 JSX 中</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ExpenseItem.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./ExpenseItem.css&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ExpenseItem</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> month = props.date.toLocaleString(<span class="string">&quot;en-US&quot;</span>, &#123; <span class="attr">month</span>: <span class="string">&quot;long&quot;</span> &#125;);</span><br><span class="line">  <span class="keyword">const</span> day = props.date.toLocaleString(<span class="string">&quot;en-US&quot;</span>, &#123; <span class="attr">day</span>: <span class="string">&quot;2-digit&quot;</span> &#125;);</span><br><span class="line">  <span class="keyword">const</span> year = props.date.getFullYear();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">&quot;expense-item&quot;</span>&gt;</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;div&gt;&#123;props.date.toLocaleString(<span class="string">&quot;en-US&quot;</span>, &#123; <span class="attr">month</span>: <span class="string">&quot;long&quot;</span> &#125;)&#125;&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;&#123;props.date.toLocaleString(<span class="string">&quot;en-US&quot;</span>, &#123; <span class="attr">day</span>: <span class="string">&quot;2-digit&quot;</span> &#125;)&#125;&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;&#123;props.date.getFullYear()&#125;&lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div className=<span class="string">&quot;expense-item__description&quot;</span>&gt;</span><br><span class="line">        &lt;h2&gt;&#123;props.title&#125;&lt;/h2&gt;</span><br><span class="line">        &lt;div className=<span class="string">&quot;expense-item__price&quot;</span>&gt;$&#123;props.amount&#125;&lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> ExpenseItem;</span><br></pre></td></tr></table></figure>
 
-<h2 id="資料參考"><a href="#資料參考" class="headerlink" title="資料參考"></a>資料參考</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.udemy.com/course/react-the-complete-guide-incl-redux/">React - The Complete Guide (Incl Hooks, React Router, Redux)</a></p>
+<h2 id="Splitting-Components-into-Multiple-Components"><a href="#Splitting-Components-into-Multiple-Components" class="headerlink" title="Splitting Components into Multiple Components"></a>Splitting Components into Multiple Components</h2><p>一般在開發時，為了因應使用需求，專案往往會有越來越多的功能與 Component，這是非常正常的 ; 因此，為了讓每個 Component 負責的功能更加單純，我們會將原有的 Component 繼續拆分成更小的 Component，但這並沒有一個硬性的規定什麼時候應該拆分，單純依照需求和經驗來判斷，延續上方的範例，我們可以嘗試將 ExpenseItem 中的 date 拆分成一個 ExpenseDate 使其功能更加單純。</p>
+<p>首先，從 ExpenseItem 拆分出去後，我們需要 import ExpenseDate 將其引入使用，並將接受到的 date 這筆資料再次透過 <code>props</code> 傳給它，這裡特別注意一下，即便 ExpenseItem 因將 date 功能拆分出去後，並沒有直接使用到 date 這筆資料，但仍需透過它再將這筆資料 <code>props</code> 給 ExpenseDate，因為在 React 中，如果透過 <code>props</code> 傳遞資料，我們無法”跳過”中間層的 Component</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ExpenseItem.js</span></span><br><span class="line"><span class="keyword">import</span> ExpenseDate <span class="keyword">from</span> <span class="string">&quot;./ExpenseDate&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./ExpenseItem.css&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ExpenseItem</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">&quot;expense-item&quot;</span>&gt;</span><br><span class="line">      &lt;ExpenseDate date=&#123;props.date&#125; /&gt;</span><br><span class="line">      &lt;div className=<span class="string">&quot;expense-item__description&quot;</span>&gt;</span><br><span class="line">        &lt;h2&gt;&#123;props.title&#125;&lt;/h2&gt;</span><br><span class="line">        &lt;div className=<span class="string">&quot;expense-item__price&quot;</span>&gt;$&#123;props.amount&#125;&lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> ExpenseItem;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ExpenseDate.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ExpenseDate</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> month = props.date.toLocaleString(<span class="string">&quot;en-US&quot;</span>, &#123; <span class="attr">month</span>: <span class="string">&quot;long&quot;</span> &#125;);</span><br><span class="line">  <span class="keyword">const</span> day = props.date.toLocaleString(<span class="string">&quot;en-US&quot;</span>, &#123; <span class="attr">day</span>: <span class="string">&quot;2-digit&quot;</span> &#125;);</span><br><span class="line">  <span class="keyword">const</span> year = props.date.getFullYear();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;div&gt;&#123;month&#125;&lt;/div&gt;</span><br><span class="line">      &lt;div&gt;&#123;day&#125;&lt;/div&gt;</span><br><span class="line">      &lt;div&gt;&#123;year&#125;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> ExpenseDate;</span><br></pre></td></tr></table></figure>
+
+<h2 id="資料參考"><a href="#資料參考" class="headerlink" title="資料參考"></a>資料參考</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.udemy.com/course/react-the-complete-guide-incl-redux/">React - The Complete Guide (Incl Hooks, React Router, Redux)</a><br><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/Jerry-Yeh/react-complete-guide/commit/f2bd63783737eb58e311d7ecd36d476baaebc7d8">Github</a></p>
 
     </div>
 
@@ -306,6 +316,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/react/20220605/53422/" rel="next" title="The Concept of Composition (children props)">
+                  The Concept of Composition (children props) <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
