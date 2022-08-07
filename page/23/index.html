@@ -145,7 +145,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">139</span>
+          <span class="site-state-item-count">155</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -156,7 +156,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -195,7 +195,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191022/3401/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/vue/20191114/26866/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -208,7 +208,249 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/javascript/20191022/3401/" class="post-title-link" itemprop="url">JavaScript - ES6 - 函式預設值</a>
+          <a href="/vue/20191114/26866/" class="post-title-link" itemprop="url">Vuex 中的 Getters、mapGetters 與 mapActions</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2019-11-14 00:49:45 / 修改時間：00:52:02" itemprop="dateCreated datePublished" datetime="2019-11-14T00:49:45+08:00">2019-11-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在先前有提到，<code>store</code> 中有一個類似原件中的 <code>computed</code> 的方法叫做 <code>getters</code>，當有多個原件要用到這個屬性時，可以將其放到 <code>store</code> 中供其他原件使用，同樣會在其依賴的值發生變化時重新計算</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/vue/20191114/26866/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/vue/20191113/32048/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yeh">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JustNOTE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/vue/20191113/32048/" class="post-title-link" itemprop="url">payload 傳遞參數</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2019-11-13 23:53:07 / 修改時間：23:59:57" itemprop="dateCreated datePublished" datetime="2019-11-13T23:53:07+08:00">2019-11-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>當我們要從元件傳遞參數到 <code>actions</code> 時，如果原先在元件中的事件就有一個以上的參數，則第二個以後的參數就會出現 <code>undefined</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in component</span></span><br><span class="line"><span class="function"><span class="title">addtoCart</span>(<span class="params">id, qty = <span class="number">1</span></span>)</span> &#123;</span><br><span class="line">  <span class="built_in">this</span>.$store.dispatch(<span class="string">&#x27;addtoCart&#x27;</span>, id, qty);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// in store</span></span><br><span class="line">actions: &#123;</span><br><span class="line">  <span class="function"><span class="title">addtoCart</span>(<span class="params">context, id, qty</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(context, id, qty);   <span class="comment">// &#x27;預設 context 內容&#x27; &#x27;id&#x27; undefined</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="物件形式傳遞多個參數"><a href="#物件形式傳遞多個參數" class="headerlink" title="物件形式傳遞多個參數"></a>物件形式傳遞多個參數</h2><p>如果原先事件就有一個以上的參數，就可以透過物件 <code>&#123;&#125;</code> 的形式將所有參數包起來傳遞，再透過 “解構” 的方式取出參數</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in component</span></span><br><span class="line"><span class="function"><span class="title">addtoCart</span>(<span class="params">id, qty = <span class="number">1</span></span>)</span> &#123;</span><br><span class="line">  <span class="built_in">this</span>.$store.dispatch(<span class="string">&#x27;addtoCart&#x27;</span>, &#123; id, qty &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// in store</span></span><br><span class="line">actions: &#123;</span><br><span class="line">  <span class="function"><span class="title">addtoCart</span>(<span class="params">context, &#123; id, qty &#125;</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(context, id, qty);   <span class="comment">// &#x27;預設 context 內容&#x27; &#x27;id&#x27; &#x27;qty&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/vue/20191113/7550/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yeh">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JustNOTE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/vue/20191113/7550/" class="post-title-link" itemprop="url">使用 actions 取得遠端資料</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2019-11-13 23:46:46 / 修改時間：23:52:42" itemprop="dateCreated datePublished" datetime="2019-11-13T23:46:46+08:00">2019-11-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><code>Vuex</code> 最大的特色就是可以將 “重複” 使用到的變數與方法統一放到 <code>store</code> 來管理，而其管理的流程是透過元件來呼叫 <code>actions</code> 來觸發 “非同步” 的事件，再透過 <code>commit</code> 呼叫 <code>mutations</code> 中的同步事件來改變 <code>state</code> 中的資料狀態，進而影響畫面的呈現</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/vue/20191113/7550/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/vue/20191113/36215/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yeh">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JustNOTE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/vue/20191113/36215/" class="post-title-link" itemprop="url">Vuex 嚴謹模式</a>
         </h2>
 
         <div class="post-meta-container">
@@ -219,14 +461,14 @@
       </span>
       <span class="post-meta-item-text">發表於</span>
 
-      <time title="創建時間：2019-10-22 14:35:03" itemprop="dateCreated datePublished" datetime="2019-10-22T14:35:03+08:00">2019-10-22</time>
+      <time title="創建時間：2019-11-13 01:22:53" itemprop="dateCreated datePublished" datetime="2019-11-13T01:22:53+08:00">2019-11-13</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2019-10-23 11:27:38" itemprop="dateModified" datetime="2019-10-23T11:27:38+08:00">2019-10-23</time>
+        <time title="修改時間：2020-06-17 23:23:24" itemprop="dateModified" datetime="2020-06-17T23:23:24+08:00">2020-06-17</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -234,7 +476,7 @@
       </span>
       <span class="post-meta-item-text">分類於</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+          <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
         </span>
     </span>
 
@@ -248,10 +490,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>在 ES6 中，可以很簡單的給予函式參數預設值，只要在參數的位置加上等號 <code>=</code> 賦值即可，可以避免沒有帶入參數出現的錯誤</p>
+          <p>在 <code>Vuex</code> 中，一直重複提到一個很重要的觀念就是 <code>mutations</code> 只負責同步的行為，非同步的行為如 <code>AJAX</code> 與 <code>setTimeout</code> 等都是由 <code>actions</code> 來負責</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/javascript/20191022/3401/#more" rel="contents">
+              <a class="btn" href="/vue/20191113/36215/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -282,7 +524,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191022/54708/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/vue/20191113/2212/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -295,7 +537,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/javascript/20191022/54708/" class="post-title-link" itemprop="url">JavaScript - ES6 - 縮寫</a>
+          <a href="/vue/20191113/2212/" class="post-title-link" itemprop="url">Actions 與 Mutations 改變資料狀態</a>
         </h2>
 
         <div class="post-meta-container">
@@ -307,7 +549,7 @@
       <span class="post-meta-item-text">發表於</span>
       
 
-      <time title="創建時間：2019-10-22 14:30:13 / 修改時間：14:33:57" itemprop="dateCreated datePublished" datetime="2019-10-22T14:30:13+08:00">2019-10-22</time>
+      <time title="創建時間：2019-11-13 01:13:20 / 修改時間：01:22:02" itemprop="dateCreated datePublished" datetime="2019-11-13T01:13:20+08:00">2019-11-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -315,7 +557,7 @@
       </span>
       <span class="post-meta-item-text">分類於</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+          <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
         </span>
     </span>
 
@@ -329,259 +571,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>ES6 提供了所多縮寫的方式，使程式碼更為簡潔</p>
+          <p>在第一個章節中有提到，在 <code>vuex</code> 中，<code>actions</code> 處理非同步的事件或取得遠端的資料，但不處理資料的狀態，而 <code>mutation</code> 則是改變資料內容的方法，所以上一章節直接更改變數的方式在 <code>vuex</code> 中並不完全正確</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/javascript/20191022/54708/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191022/30921/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yeh">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JustNOTE">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/javascript/20191022/30921/" class="post-title-link" itemprop="url">JavaScript - ES6 - 樣板字串</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-      
-
-      <time title="創建時間：2019-10-22 14:12:43 / 修改時間：14:29:41" itemprop="dateCreated datePublished" datetime="2019-10-22T14:12:43+08:00">2019-10-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>以往在組字串時，都是透過 引號 <code>&#39;</code>、<code>&quot;</code> 和 加號 <code>+</code> 來組合，換行也必須在結尾加上 反斜線 <code>\</code>，撰寫上容易混亂，閱讀也不夠自然，因此 ES6 新增了組字串的新方法，組起來也較為接近原生的 HTML</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/javascript/20191022/30921/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191014/33154/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yeh">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JustNOTE">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/javascript/20191014/33154/" class="post-title-link" itemprop="url">JavaScript - ES6 - 箭頭函式</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2019-10-14 00:00:12" itemprop="dateCreated datePublished" datetime="2019-10-14T00:00:12+08:00">2019-10-14</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2021-09-30 23:56:08" itemprop="dateModified" datetime="2021-09-30T23:56:08+08:00">2021-09-30</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>ES6</code> 開始可以使用箭頭 <code>=&gt;</code> 來定義涵式，但與原先的函式在某些情況並不完全相同，在這篇文章中會探討箭頭函式的寫法與傳統函式的差異</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/javascript/20191014/33154/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191013/50209/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yeh">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JustNOTE">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/javascript/20191013/50209/" class="post-title-link" itemprop="url">JavaScript - ES6 - 變數</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-      
-
-      <time title="創建時間：2019-10-13 23:18:19 / 修改時間：23:37:00" itemprop="dateCreated datePublished" datetime="2019-10-13T23:18:19+08:00">2019-10-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在 ES6 中多了兩種變數的宣告方式，<code>let</code> 與 <code>const</code>，其最大的目的在於盡量避免汙染到全域，原因在於載入多個模組或進行多人協作時，如果遇到相同名稱的全域變數就會發生衝突，也減少了程式的靈活性</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/javascript/20191013/50209/#more" rel="contents">
+              <a class="btn" href="/vue/20191113/2212/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -605,7 +598,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/22/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/24/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <a class="extend prev" rel="prev" href="/page/22/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="extend next" rel="next" href="/page/24/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 </div>
@@ -637,6 +630,8 @@
 <script src="/js/third-party/search/local-search.js"></script>
 
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
 
 
   

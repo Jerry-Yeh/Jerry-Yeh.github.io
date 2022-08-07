@@ -145,7 +145,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">139</span>
+          <span class="site-state-item-count">155</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -156,7 +156,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -195,7 +195,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220703/4435/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220804/64624/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -208,7 +208,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/react/20220703/4435/" class="post-title-link" itemprop="url">How React really work?</a>
+          <a href="/react/20220804/64624/" class="post-title-link" itemprop="url">Working with Multiple Slices</a>
         </h2>
 
         <div class="post-meta-container">
@@ -218,10 +218,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
-      
 
-      <time title="創建時間：2022-07-03 15:02:49 / 修改時間：16:38:01" itemprop="dateCreated datePublished" datetime="2022-07-03T15:02:49+08:00">2022-07-03</time>
+      <time title="創建時間：2022-08-04 23:04:07" itemprop="dateCreated datePublished" datetime="2022-08-04T23:04:07+08:00">2022-08-04</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新於</span>
+        <time title="修改時間：2022-08-07 09:19:56" itemprop="dateModified" datetime="2022-08-07T09:19:56+08:00">2022-08-07</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -242,10 +248,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>test</p>
+          <p>在一般的專案開發中，功能當然不會只有一個 counter 這麼簡單，一個基本的網站可能就包含登入、列表等功能，而登入的狀態是很典型會被應用在許多不同 component 的資料 (app-wide state)，接下來就會探討如何在 Redux 中管理多項不同的功能</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/react/20220703/4435/#more" rel="contents">
+              <a class="btn" href="/react/20220804/64624/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -276,7 +282,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220628/12461/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220731/37510/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -289,7 +295,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/react/20220628/12461/" class="post-title-link" itemprop="url">Spread HTML attribute in React</a>
+          <a href="/react/20220731/37510/" class="post-title-link" itemprop="url">Adding State Slices</a>
         </h2>
 
         <div class="post-meta-container">
@@ -299,10 +305,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
-      
 
-      <time title="創建時間：2022-06-28 23:14:53 / 修改時間：23:28:15" itemprop="dateCreated datePublished" datetime="2022-06-28T23:14:53+08:00">2022-06-28</time>
+      <time title="創建時間：2022-07-31 17:33:13" itemprop="dateCreated datePublished" datetime="2022-07-31T17:33:13+08:00">2022-07-31</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新於</span>
+        <time title="修改時間：2022-08-04 23:05:13" itemprop="dateModified" datetime="2022-08-04T23:05:13+08:00">2022-08-04</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -323,10 +335,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>在使用 HTML form 表單相關 elemnt 時，常會透過許多內建的 attribute 來定義格式，在 React 中，如果將這些 element 封裝成 component，可以透過 props 的方式彈性改變 attribute </p>
+          <!-- @format -->
+
+<p>接下來將介紹另一個 libray - Redux Toolkit 使我們在使用 Redux 時更加簡潔</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/react/20220628/12461/#more" rel="contents">
+              <a class="btn" href="/react/20220731/37510/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -357,7 +371,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220626/61058/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220731/39070/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -370,7 +384,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/react/20220626/61058/" class="post-title-link" itemprop="url">Diving into Forward Refs</a>
+          <a href="/react/20220731/39070/" class="post-title-link" itemprop="url">Redux in React</a>
         </h2>
 
         <div class="post-meta-container">
@@ -382,7 +396,7 @@
       <span class="post-meta-item-text">發表於</span>
       
 
-      <time title="創建時間：2022-06-26 16:32:54 / 修改時間：21:50:01" itemprop="dateCreated datePublished" datetime="2022-06-26T16:32:54+08:00">2022-06-26</time>
+      <time title="創建時間：2022-07-31 12:19:04 / 修改時間：17:19:55" itemprop="dateCreated datePublished" datetime="2022-07-31T12:19:04+08:00">2022-07-31</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -406,10 +420,10 @@
     <div class="post-body" itemprop="articleBody">
           <!-- @format -->
 
-<p>在 React 中，如果要透過 <code>useRef()</code> 取得 component 內的 element，並操作它執行一些行為，如 focus、activate 等，就會需要特殊的處理</p>
+<p>Redux 其實並不限於 React 專案之中，它可以被使用在任何 JavaScript 專案，接下來將介紹如何在 React 專案知終始用 Redux</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/react/20220626/61058/#more" rel="contents">
+              <a class="btn" href="/react/20220731/39070/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -440,7 +454,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220626/49936/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220731/30803/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -453,7 +467,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/react/20220626/49936/" class="post-title-link" itemprop="url">Rules of Hooks</a>
+          <a href="/react/20220731/30803/" class="post-title-link" itemprop="url">Core Redux Concepts</a>
         </h2>
 
         <div class="post-meta-container">
@@ -465,7 +479,7 @@
       <span class="post-meta-item-text">發表於</span>
       
 
-      <time title="創建時間：2022-06-26 15:08:45 / 修改時間：15:27:03" itemprop="dateCreated datePublished" datetime="2022-06-26T15:08:45+08:00">2022-06-26</time>
+      <time title="創建時間：2022-07-31 10:19:30 / 修改時間：12:12:46" itemprop="dateCreated datePublished" datetime="2022-07-31T10:19:30+08:00">2022-07-31</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -487,10 +501,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>到目前為止已經介紹過不少 React Hooks，這章節將進一步這些 hooks 在使用上的限制</p>
+          <p>Redux 基礎應用流程</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/react/20220626/49936/#more" rel="contents">
+              <a class="btn" href="/react/20220731/30803/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -521,7 +535,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220626/41766/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220727/28096/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -534,7 +548,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/react/20220626/41766/" class="post-title-link" itemprop="url">React Context API</a>
+          <a href="/react/20220727/28096/" class="post-title-link" itemprop="url">Redux</a>
         </h2>
 
         <div class="post-meta-container">
@@ -544,10 +558,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
-      
 
-      <time title="創建時間：2022-06-26 09:45:24 / 修改時間：15:05:15" itemprop="dateCreated datePublished" datetime="2022-06-26T09:45:24+08:00">2022-06-26</time>
+      <time title="創建時間：2022-07-27 23:07:05" itemprop="dateCreated datePublished" datetime="2022-07-27T23:07:05+08:00">2022-07-27</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新於</span>
+        <time title="修改時間：2022-07-31 10:10:48" itemprop="dateModified" datetime="2022-07-31T10:10:48+08:00">2022-07-31</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -568,10 +588,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>在開發中，時常會遇到一個問題是，因為 component 層層區分，當有一個子元件要傳資料給另外一條支線的子元件時，如果透過 props 傳遞就會變得相當麻煩，中間不需要得到這些資訊的 component 也需要幫忙傳遞，就像是如果今天要送一個禮物給堂弟，我不能直接拿給他，只能先傳給父親，再傳給爺爺，接這再傳給堂弟的父親，最後才會交到他的手上，在 Vue 中，可以透過 <code>provide/inject</code> &amp; <code>Vuex</code> 來解決這些問題，React 中提供了一些方法稱為 - Context API </p>
+          <p>接下來的章節將介紹一個 React 生態圈中很重要的 library - Redux</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/react/20220626/41766/#more" rel="contents">
+              <a class="btn" href="/react/20220727/28096/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -595,7 +615,7 @@
 
 
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 </div>
@@ -627,6 +647,8 @@
 <script src="/js/third-party/search/local-search.js"></script>
 
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
 
 
   

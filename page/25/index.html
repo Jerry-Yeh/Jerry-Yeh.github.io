@@ -145,7 +145,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">139</span>
+          <span class="site-state-item-count">155</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -156,7 +156,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -195,7 +195,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/json/20190927/b2a33033/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191024/33578/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -208,7 +208,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/json/20190927/b2a33033/" class="post-title-link" itemprop="url">JSON概述</a>
+          <a href="/javascript/20191024/33578/" class="post-title-link" itemprop="url">JavaScript - 閉包 Closure</a>
         </h2>
 
         <div class="post-meta-container">
@@ -220,7 +220,7 @@
       <span class="post-meta-item-text">發表於</span>
       
 
-      <time title="創建時間：2019-09-27 02:32:22 / 修改時間：02:35:53" itemprop="dateCreated datePublished" datetime="2019-09-27T02:32:22+08:00">2019-09-27</time>
+      <time title="創建時間：2019-10-24 00:40:03 / 修改時間：01:14:02" itemprop="dateCreated datePublished" datetime="2019-10-24T00:40:03+08:00">2019-10-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -228,7 +228,7 @@
       </span>
       <span class="post-meta-item-text">分類於</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/json/" itemprop="url" rel="index"><span itemprop="name">JSON</span></a>
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
         </span>
     </span>
 
@@ -242,10 +242,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>JSON 常用來作為資料傳遞的檔案格式，這篇文章針對 JSON 做一個簡單的概述</p>
+          <p>閉包 <code>Closure</code> 是 JavaScript 中一種透過函式包住函式的技巧，透過這種技巧可以避免函式中的變數汙染到全域，而出現相同變數名稱互相干擾的情況</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/json/20190927/b2a33033/#more" rel="contents">
+              <a class="btn" href="/javascript/20191024/33578/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -276,7 +276,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20190927/25fb3458/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191024/42922/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -289,7 +289,174 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/javascript/20190927/25fb3458/" class="post-title-link" itemprop="url">JavaScript入門篇 - 迴圈</a>
+          <a href="/javascript/20191024/42922/" class="post-title-link" itemprop="url">JavaScript 中的 this</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2019-10-24 00:23:43 / 修改時間：00:41:04" itemprop="dateCreated datePublished" datetime="2019-10-24T00:23:43+08:00">2019-10-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <ul>
+<li><code>this</code> 是 JavaScript 中的一個關鍵字</li>
+<li><code>this</code> 是 <code>function</code> 執行時，自動生成的一個內部物件</li>
+<li>隨著執行的場合不同， <code>this</code> 所指向的值也會有所不同</li>
+<li>影響 <code>this</code> 的是 “函式的呼叫方法”，而非函式宣告的時機</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/javascript/20191024/42922/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191023/6199/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yeh">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JustNOTE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/javascript/20191023/6199/" class="post-title-link" itemprop="url">JavaScript - ES6 - class 建構式語法糖</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2019-10-23 11:03:43 / 修改時間：11:18:21" itemprop="dateCreated datePublished" datetime="2019-10-23T11:03:43+08:00">2019-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>JavaScript 與其他物件導向的語言不太一樣，是以 “原型” <code>prototype</code> 為基礎的物件導向，ES6 新增了 <code>class</code> 這個語法糖 <code>syntactical sugar</code>，使得原型的建構更簡潔好閱讀</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/javascript/20191023/6199/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191023/25937/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yeh">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JustNOTE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/javascript/20191023/25937/" class="post-title-link" itemprop="url">JavaScript - ES6 - 陣列方法</a>
         </h2>
 
         <div class="post-meta-container">
@@ -300,14 +467,14 @@
       </span>
       <span class="post-meta-item-text">發表於</span>
 
-      <time title="創建時間：2019-09-27 02:23:17" itemprop="dateCreated datePublished" datetime="2019-09-27T02:23:17+08:00">2019-09-27</time>
+      <time title="創建時間：2019-10-23 10:32:39" itemprop="dateCreated datePublished" datetime="2019-10-23T10:32:39+08:00">2019-10-23</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2019-09-28 01:26:53" itemprop="dateModified" datetime="2019-09-28T01:26:53+08:00">2019-09-28</time>
+        <time title="修改時間：2021-10-12 14:27:07" itemprop="dateModified" datetime="2021-10-12T14:27:07+08:00">2021-10-12</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -329,10 +496,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>迴圈指的是透過 “遞增” 或 “遞減” 來完成退出的條件，使我們不用反覆撰寫相同的程式，在 JS 中，常見的迴圈語法有 <code>for</code> 和 <code>while</code> 兩種</p>
+          <p>ES6 以前在處理陣列都是使用 <code>for</code> 迴圈，以陣列元素的數量來設定 <code>for 迴圈</code> 的次數，ES6 新增了許多方法來搭配 箭頭函式 <code>=&gt;</code>、樣板字串 <code>template-string</code> 使程式碼更精簡、直覺</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/javascript/20190927/25fb3458/#more" rel="contents">
+              <a class="btn" href="/javascript/20191023/25937/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -363,7 +530,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20190927/2be5d539/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191023/13442/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -376,7 +543,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/javascript/20190927/2be5d539/" class="post-title-link" itemprop="url">JavaScript入門篇 - 流程判斷</a>
+          <a href="/javascript/20191023/13442/" class="post-title-link" itemprop="url">JavaScript - ES6 - 解構賦值 deconstructing</a>
         </h2>
 
         <div class="post-meta-container">
@@ -387,14 +554,14 @@
       </span>
       <span class="post-meta-item-text">發表於</span>
 
-      <time title="創建時間：2019-09-27 02:17:48" itemprop="dateCreated datePublished" datetime="2019-09-27T02:17:48+08:00">2019-09-27</time>
+      <time title="創建時間：2019-10-23 10:07:59" itemprop="dateCreated datePublished" datetime="2019-10-23T10:07:59+08:00">2019-10-23</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2019-09-28 01:26:45" itemprop="dateModified" datetime="2019-09-28T01:26:45+08:00">2019-09-28</time>
+        <time title="修改時間：2022-05-31 08:22:11" itemprop="dateModified" datetime="2022-05-31T08:22:11+08:00">2022-05-31</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -416,178 +583,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>JS 用來控制流程的條件語法指的是，當指定條件為 <code>true</code>，就會執行後續指令，JS 條件語法分為以兩種 : <code>if...else</code> 和 <code>switch</code></p>
+          <p>過去陣列和物件內的元素在賦值時，都是透過一一給值的方式達成，在 ES6 中，可以透過解構的方式一次賦值，有效減少程式碼</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/javascript/20190927/2be5d539/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20190927/d8cdf04e/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yeh">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JustNOTE">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/javascript/20190927/d8cdf04e/" class="post-title-link" itemprop="url">JavaScript入門篇 - 運算式(Expression)與運算子(Operator)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2019-09-27 00:55:59" itemprop="dateCreated datePublished" datetime="2019-09-27T00:55:59+08:00">2019-09-27</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2019-09-28 01:26:37" itemprop="dateModified" datetime="2019-09-28T01:26:37+08:00">2019-09-28</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在 JS 語法可以分為兩大類，敘述句 <code>Statement</code> 與 運算式 <code>Expression</code></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/javascript/20190927/d8cdf04e/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/jquery/20190927/1d3a5dfe/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yeh">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JustNOTE">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/jquery/20190927/1d3a5dfe/" class="post-title-link" itemprop="url">滾動視差-滾動套用CSS效果</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-      
-
-      <time title="創建時間：2019-09-27 00:37:46 / 修改時間：00:46:36" itemprop="dateCreated datePublished" datetime="2019-09-27T00:37:46+08:00">2019-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/jquery/" itemprop="url" rel="index"><span itemprop="name">jQuery</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在這篇文章中，會透過 jQuery 來達到滾動網頁到指定位置時，套用特定的 CSS 效果</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/jquery/20190927/1d3a5dfe/#more" rel="contents">
+              <a class="btn" href="/javascript/20191023/13442/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -611,7 +610,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/24/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><span class="page-number current">25</span><a class="page-number" href="/page/26/">26</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/26/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <a class="extend prev" rel="prev" href="/page/24/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><span class="page-number current">25</span><a class="page-number" href="/page/26/">26</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="extend next" rel="next" href="/page/26/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 </div>
@@ -643,6 +642,8 @@
 <script src="/js/third-party/search/local-search.js"></script>
 
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
 
 
   

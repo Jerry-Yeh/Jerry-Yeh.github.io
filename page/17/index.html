@@ -145,7 +145,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">139</span>
+          <span class="site-state-item-count">155</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -156,7 +156,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -195,7 +195,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20210403/9017/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211020/22552/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -208,7 +208,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20210403/9017/" class="post-title-link" itemprop="url">範圍鏈 (Scope Chain)</a>
+          <a href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211020/22552/" class="post-title-link" itemprop="url">物件與點 Objects and the Dot</a>
         </h2>
 
         <div class="post-meta-container">
@@ -219,14 +219,14 @@
       </span>
       <span class="post-meta-item-text">發表於</span>
 
-      <time title="創建時間：2021-04-03 14:41:02" itemprop="dateCreated datePublished" datetime="2021-04-03T14:41:02+08:00">2021-04-03</time>
+      <time title="創建時間：2021-10-20 11:59:21" itemprop="dateCreated datePublished" datetime="2021-10-20T11:59:21+08:00">2021-10-20</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2022-04-27 07:56:29" itemprop="dateModified" datetime="2022-04-27T07:56:29+08:00">2022-04-27</time>
+        <time title="修改時間：2022-04-27 09:00:29" itemprop="dateModified" datetime="2022-04-27T09:00:29+08:00">2022-04-27</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -248,10 +248,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>延續上一章節的執行堆 (Execution Stack)，進一步介紹執行堆中的範圍鏈 (Scope Chain)，’範圍’代表我能取到變數的地方，而’鏈’則是外部環境參照的連結</p>
+          <p>這篇文章中我們將會探討什麼是 JavaScript 中的<code>物件 (Object)</code></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20210403/9017/#more" rel="contents">
+              <a class="btn" href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211020/22552/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -282,7 +282,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20210325/37130/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/browser/20211017/20624/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -295,7 +295,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20210325/37130/" class="post-title-link" itemprop="url">函數、環境與變數環境</a>
+          <a href="/browser/20211017/20624/" class="post-title-link" itemprop="url">Debug 神器: Debugger</a>
         </h2>
 
         <div class="post-meta-container">
@@ -305,23 +305,17 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
+      
 
-      <time title="創建時間：2021-03-25 00:56:06" itemprop="dateCreated datePublished" datetime="2021-03-25T00:56:06+08:00">2021-03-25</time>
+      <time title="創建時間：2021-10-17 17:57:22 / 修改時間：18:33:51" itemprop="dateCreated datePublished" datetime="2021-10-17T17:57:22+08:00">2021-10-17</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2022-04-27 07:52:13" itemprop="dateModified" datetime="2022-04-27T07:52:13+08:00">2022-04-27</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">分類於</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/" itemprop="url" rel="index"><span itemprop="name">克服JS的奇怪部分</span></a>
+          <a href="/categories/browser/" itemprop="url" rel="index"><span itemprop="name">Browser</span></a>
         </span>
     </span>
 
@@ -335,10 +329,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>這章節針對變數的環境最一個簡單的介紹</p>
+          <p>紀錄一下透過胡立大在 Lidemy 平台上 <code>先別急著寫 leetcode</code> 這堂課中所學到的 Chrome Debug 技巧</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20210325/37130/#more" rel="contents">
+              <a class="btn" href="/browser/20211017/20624/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -369,7 +363,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20210324/82/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211016/19790/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -382,7 +376,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20210324/82/" class="post-title-link" itemprop="url">函數呼叫與執行堆</a>
+          <a href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211016/19790/" class="post-title-link" itemprop="url">框架小叮嚀:預設值 Framework Aside</a>
         </h2>
 
         <div class="post-meta-container">
@@ -393,14 +387,14 @@
       </span>
       <span class="post-meta-item-text">發表於</span>
 
-      <time title="創建時間：2021-03-24 00:48:00" itemprop="dateCreated datePublished" datetime="2021-03-24T00:48:00+08:00">2021-03-24</time>
+      <time title="創建時間：2021-10-16 17:11:09" itemprop="dateCreated datePublished" datetime="2021-10-16T17:11:09+08:00">2021-10-16</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2022-04-27 07:46:24" itemprop="dateModified" datetime="2022-04-27T07:46:24+08:00">2022-04-27</time>
+        <time title="修改時間：2022-04-27 08:58:03" itemprop="dateModified" datetime="2022-04-27T08:58:03+08:00">2022-04-27</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -422,10 +416,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>函數呼叫 (Functoin Invocation) 與執行堆 (Execution Stack) 介紹</p>
+          <p>在開發 JavaScript 時，我們常會透過 <code>&lt;script&gt;</code> 來導入不同的套件，這章節來進一步了解套件被引入後的執行方式</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20210324/82/#more" rel="contents">
+              <a class="btn" href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211016/19790/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -456,7 +450,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20210324/46242/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211016/58810/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -469,7 +463,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20210324/46242/" class="post-title-link" itemprop="url">單執行緒與同步執行</a>
+          <a href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211016/58810/" class="post-title-link" itemprop="url">預設值 Default Value</a>
         </h2>
 
         <div class="post-meta-container">
@@ -480,14 +474,14 @@
       </span>
       <span class="post-meta-item-text">發表於</span>
 
-      <time title="創建時間：2021-03-24 00:37:03" itemprop="dateCreated datePublished" datetime="2021-03-24T00:37:03+08:00">2021-03-24</time>
+      <time title="創建時間：2021-10-16 16:17:21" itemprop="dateCreated datePublished" datetime="2021-10-16T16:17:21+08:00">2021-10-16</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2022-04-27 07:42:29" itemprop="dateModified" datetime="2022-04-27T07:42:29+08:00">2022-04-27</time>
+        <time title="修改時間：2022-04-27 08:55:06" itemprop="dateModified" datetime="2022-04-27T08:55:06+08:00">2022-04-27</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -509,10 +503,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>基礎介紹單執行緒 (Single threaded) 和同步執行 (Synchronous execution)</p>
+          <p>這章節會透過其他角度來看 JavaScript 強制轉型的特性</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20210324/46242/#more" rel="contents">
+              <a class="btn" href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211016/58810/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -543,7 +537,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20210324/48119/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211016/61081/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -556,7 +550,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20210324/48119/" class="post-title-link" itemprop="url">程式執行</a>
+          <a href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211016/61081/" class="post-title-link" itemprop="url">存在與布林 Existence and Booleans</a>
         </h2>
 
         <div class="post-meta-container">
@@ -567,14 +561,14 @@
       </span>
       <span class="post-meta-item-text">發表於</span>
 
-      <time title="創建時間：2021-03-24 00:27:25" itemprop="dateCreated datePublished" datetime="2021-03-24T00:27:25+08:00">2021-03-24</time>
+      <time title="創建時間：2021-10-16 09:32:31" itemprop="dateCreated datePublished" datetime="2021-10-16T09:32:31+08:00">2021-10-16</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2022-04-27 07:40:42" itemprop="dateModified" datetime="2022-04-27T07:40:42+08:00">2022-04-27</time>
+        <time title="修改時間：2022-04-27 08:53:58" itemprop="dateModified" datetime="2022-04-27T08:53:58+08:00">2022-04-27</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -596,10 +590,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>延續前面章節所提到的，JavaScript 分成兩個階段，第一階段為創造階段 (Creation Context)，這個章節將介紹第二階段，執行階段 (Execution Context)</p>
+          <p>在 JavaScript 中，我們可以透過 <code>Boolean</code> 來判斷一個值是否存在，某些值被轉型為布林後會被判斷為 <code>false</code>，如下:</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20210324/48119/#more" rel="contents">
+              <a class="btn" href="/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/20211016/61081/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -623,7 +617,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 </div>
@@ -655,6 +649,8 @@
 <script src="/js/third-party/search/local-search.js"></script>
 
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
 
 
   
