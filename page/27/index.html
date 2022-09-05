@@ -145,18 +145,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">155</span>
+          <span class="site-state-item-count">167</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -195,7 +195,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191013/50209/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191105/49319/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -208,7 +208,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/javascript/20191013/50209/" class="post-title-link" itemprop="url">JavaScript - ES6 - 變數</a>
+          <a href="/javascript/20191105/49319/" class="post-title-link" itemprop="url">JavaScript 物件與原型鍊</a>
         </h2>
 
         <div class="post-meta-container">
@@ -220,7 +220,7 @@
       <span class="post-meta-item-text">發表於</span>
       
 
-      <time title="創建時間：2019-10-13 23:18:19 / 修改時間：23:37:00" itemprop="dateCreated datePublished" datetime="2019-10-13T23:18:19+08:00">2019-10-13</time>
+      <time title="創建時間：2019-11-05 12:34:42 / 修改時間：14:44:28" itemprop="dateCreated datePublished" datetime="2019-11-05T12:34:42+08:00">2019-11-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -242,10 +242,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>在 ES6 中多了兩種變數的宣告方式，<code>let</code> 與 <code>const</code>，其最大的目的在於盡量避免汙染到全域，原因在於載入多個模組或進行多人協作時，如果遇到相同名稱的全域變數就會發生衝突，也減少了程式的靈活性</p>
+          <p>JavaScript 是一門 “物件導向” 的程式語言，但物件彼此是透過 “原型” 來繼承屬性，在介紹原型鍊之前，會先透過 “串聯” <code>Cascade</code> 與物件來了解背後的觀念</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/javascript/20191013/50209/#more" rel="contents">
+              <a class="btn" href="/javascript/20191105/49319/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -276,7 +276,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191004/8109/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191105/30734/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -289,7 +289,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/javascript/20191004/8109/" class="post-title-link" itemprop="url">JavaScript - localStorage</a>
+          <a href="/javascript/20191105/30734/" class="post-title-link" itemprop="url">JavaScript 中的傳值與傳址</a>
         </h2>
 
         <div class="post-meta-container">
@@ -299,16 +299,10 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
+      
 
-      <time title="創建時間：2019-10-04 23:22:32" itemprop="dateCreated datePublished" datetime="2019-10-04T23:22:32+08:00">2019-10-04</time>
+      <time title="創建時間：2019-11-05 10:30:59 / 修改時間：12:34:52" itemprop="dateCreated datePublished" datetime="2019-11-05T10:30:59+08:00">2019-11-05</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2019-10-05 01:32:49" itemprop="dateModified" datetime="2019-10-05T01:32:49+08:00">2019-10-05</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -329,10 +323,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><code>Web storage</code> 為 <code>HTML 5</code> 問世後提供的新技術，提供比 <code>cookie</code> (每條 <code>cookie</code> 的儲存空間為 <code>4K</code>) 更大 (<code>localStorage</code> 為 <code>5M</code>) 更安全的本地端儲存空間，也不會影響到網頁效能</p>
+          <p>JavaScript 的變數再賦予不同型別的時候，會有同的傳遞方式，以 “基本型別” <code>Primitive</code> 和 “物件型別” <code>Object</code> 作為區分 </p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/javascript/20191004/8109/#more" rel="contents">
+              <a class="btn" href="/javascript/20191105/30734/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -363,7 +357,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191004/50136/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191024/33578/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -376,7 +370,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/javascript/20191004/50136/" class="post-title-link" itemprop="url">JavaScript - AJAX</a>
+          <a href="/javascript/20191024/33578/" class="post-title-link" itemprop="url">JavaScript - 閉包 Closure</a>
         </h2>
 
         <div class="post-meta-container">
@@ -386,16 +380,10 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
+      
 
-      <time title="創建時間：2019-10-04 22:32:23" itemprop="dateCreated datePublished" datetime="2019-10-04T22:32:23+08:00">2019-10-04</time>
+      <time title="創建時間：2019-10-24 00:40:03 / 修改時間：01:14:02" itemprop="dateCreated datePublished" datetime="2019-10-24T00:40:03+08:00">2019-10-24</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2021-09-21 13:47:06" itemprop="dateModified" datetime="2021-09-21T13:47:06+08:00">2021-09-21</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -416,10 +404,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>透過 AJAX，可與伺服器進行非同步更新，不需要重新載入網頁就可以更新內容</p>
+          <p>閉包 <code>Closure</code> 是 JavaScript 中一種透過函式包住函式的技巧，透過這種技巧可以避免函式中的變數汙染到全域，而出現相同變數名稱互相干擾的情況</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/javascript/20191004/50136/#more" rel="contents">
+              <a class="btn" href="/javascript/20191024/33578/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -450,7 +438,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191003/52047/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191024/42922/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -463,7 +451,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/javascript/20191003/52047/" class="post-title-link" itemprop="url">JavaScript - 事件</a>
+          <a href="/javascript/20191024/42922/" class="post-title-link" itemprop="url">JavaScript 中的 this</a>
         </h2>
 
         <div class="post-meta-container">
@@ -475,7 +463,7 @@
       <span class="post-meta-item-text">發表於</span>
       
 
-      <time title="創建時間：2019-10-03 01:14:05 / 修改時間：02:19:36" itemprop="dateCreated datePublished" datetime="2019-10-03T01:14:05+08:00">2019-10-03</time>
+      <time title="創建時間：2019-10-24 00:23:43 / 修改時間：00:41:04" itemprop="dateCreated datePublished" datetime="2019-10-24T00:23:43+08:00">2019-10-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -497,10 +485,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>JavaScript 是一個事件驅動 <code>Event-driven</code> 的程式語言，當瀏覽器載入網頁開始讀取後，會馬上讀取 JS 事件的相關程式碼，但必須等到事件被觸發後，才會進行對應程式的執行</p>
+          <ul>
+<li><code>this</code> 是 JavaScript 中的一個關鍵字</li>
+<li><code>this</code> 是 <code>function</code> 執行時，自動生成的一個內部物件</li>
+<li>隨著執行的場合不同， <code>this</code> 所指向的值也會有所不同</li>
+<li>影響 <code>this</code> 的是 “函式的呼叫方法”，而非函式宣告的時機</li>
+</ul>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/javascript/20191003/52047/#more" rel="contents">
+              <a class="btn" href="/javascript/20191024/42922/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -531,7 +524,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20190928/32632/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/javascript/20191023/6199/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -544,7 +537,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/javascript/20190928/32632/" class="post-title-link" itemprop="url">瀏覽器裡的 JavaScript</a>
+          <a href="/javascript/20191023/6199/" class="post-title-link" itemprop="url">JavaScript - ES6 - class 建構式語法糖</a>
         </h2>
 
         <div class="post-meta-container">
@@ -556,7 +549,7 @@
       <span class="post-meta-item-text">發表於</span>
       
 
-      <time title="創建時間：2019-09-28 01:22:53 / 修改時間：02:15:02" itemprop="dateCreated datePublished" datetime="2019-09-28T01:22:53+08:00">2019-09-28</time>
+      <time title="創建時間：2019-10-23 11:03:43 / 修改時間：11:18:21" itemprop="dateCreated datePublished" datetime="2019-10-23T11:03:43+08:00">2019-10-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -578,10 +571,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>前端開發在網頁的操作方法其實都是由 JS 的執行平台，也就是 瀏覽器 所提供，操作方法分別由 <code>BOM</code> 和 <code>DOM</code> 這兩種物件所擁有，而 JavaScript 就是透過 <code>BOM</code> 和 <code>DOM</code> 所提供的 <code>API</code> 來控制瀏覽器的行為與網頁的內容</p>
+          <p>JavaScript 與其他物件導向的語言不太一樣，是以 “原型” <code>prototype</code> 為基礎的物件導向，ES6 新增了 <code>class</code> 這個語法糖 <code>syntactical sugar</code>，使得原型的建構更簡潔好閱讀</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/javascript/20190928/32632/#more" rel="contents">
+              <a class="btn" href="/javascript/20191023/6199/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -605,7 +598,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/26/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="extend next" rel="next" href="/page/28/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <a class="extend prev" rel="prev" href="/page/26/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/28/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 </div>

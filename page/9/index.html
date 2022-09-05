@@ -145,18 +145,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">155</span>
+          <span class="site-state-item-count">167</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -195,7 +195,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220605/34888/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220613/54546/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -208,7 +208,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/react/20220605/34888/" class="post-title-link" itemprop="url">An Alternative Function Syntax</a>
+          <a href="/react/20220613/54546/" class="post-title-link" itemprop="url">Debugging React Apps</a>
         </h2>
 
         <div class="post-meta-container">
@@ -220,7 +220,7 @@
       <span class="post-meta-item-text">發表於</span>
       
 
-      <time title="創建時間：2022-06-05 15:02:48 / 修改時間：15:55:34" itemprop="dateCreated datePublished" datetime="2022-06-05T15:02:48+08:00">2022-06-05</time>
+      <time title="創建時間：2022-06-13 08:03:36 / 修改時間：23:00:16" itemprop="dateCreated datePublished" datetime="2022-06-13T08:03:36+08:00">2022-06-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -242,10 +242,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>在 React Componet 中，有一點反覆提到的就是其實我們就是在寫 JavaScript，所以我們當然也可以透過其他 JavaScript 語法來進行改寫，如 ES6 Arrow Function 就可以直接改寫 Compoent return function，但這並非必要，只是更進一步說明任何 JavaScript 語法都可以直接運用在 React Component 之中。</p>
+          <p>這章節將介紹透過 Chrome Debug 的方式</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/react/20220605/34888/#more" rel="contents">
+              <a class="btn" href="/react/20220613/54546/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -276,7 +276,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220605/55243/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220612/39569/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -289,7 +289,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/react/20220605/55243/" class="post-title-link" itemprop="url">A Closer Look at JSX</a>
+          <a href="/react/20220612/39569/" class="post-title-link" itemprop="url">Using CSS Modules</a>
         </h2>
 
         <div class="post-meta-container">
@@ -301,7 +301,7 @@
       <span class="post-meta-item-text">發表於</span>
       
 
-      <time title="創建時間：2022-06-05 14:22:55 / 修改時間：14:49:19" itemprop="dateCreated datePublished" datetime="2022-06-05T14:22:55+08:00">2022-06-05</time>
+      <time title="創建時間：2022-06-12 22:14:42 / 修改時間：23:03:09" itemprop="dateCreated datePublished" datetime="2022-06-12T22:14:42+08:00">2022-06-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -323,10 +323,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>在前面關於 React 的基礎介紹中，我們反覆提到 React Component 中的 function return 的 JSX 並非瀏覽器所能讀取的 HTML，只是經過 React 封裝過看起來像是 HTML 而已，接下來我們會進一步探討 JSX 是如何運作的</p>
+          <p>在前一章節，我們介紹了透過 styled-components 將 CSS 限制在 Component 內的方式，無論你喜不喜歡這個方式，它成功解決了 global style 的問題，並擁有許多擁護者，但好消息是，如果你不喜歡這個方式，React 提供了另一個稱為 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/">CSS Module</a> 的方式來解決這個問題，如果是透過 create-react-app 建立專案，這個方式甚至已經內建在專案內了，接下來讓我們透過 CSS Module 來改寫相同的範例。 </p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/react/20220605/55243/#more" rel="contents">
+              <a class="btn" href="/react/20220612/39569/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -357,7 +357,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220605/53422/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220612/60289/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -370,7 +370,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/react/20220605/53422/" class="post-title-link" itemprop="url">The Concept of Composition (children props)</a>
+          <a href="/react/20220612/60289/" class="post-title-link" itemprop="url">Introducing Styled Components</a>
         </h2>
 
         <div class="post-meta-container">
@@ -382,7 +382,88 @@
       <span class="post-meta-item-text">發表於</span>
       
 
-      <time title="創建時間：2022-06-05 10:46:40 / 修改時間：14:19:43" itemprop="dateCreated datePublished" datetime="2022-06-05T10:46:40+08:00">2022-06-05</time>
+      <time title="創建時間：2022-06-12 16:35:59 / 修改時間：22:31:30" itemprop="dateCreated datePublished" datetime="2022-06-12T16:35:59+08:00">2022-06-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>到目前為止，在我們建立 Component 時，都會再額外建立一個同名的 css 檔案作為 Comoponent Style，但在 React 中，.css 一旦被任意 Component 導入，它就會成為 global style，而非只有導入的 Component 可以使用 (Scoped)，這在小專案也許不會是什麼問題，但當專案逐漸擴大、參與協作的人逐漸增加，就難免會發生 class 命名上重複的問題，進一步導致彼此的 CSS 互相覆蓋，這章節將介紹一個 React Plugin - <a target="_blank" rel="external nofollow noopener noreferrer" href="https://styled-components.com/">styled-components</a> 來解決這個問題</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/react/20220612/60289/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220612/18219/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yeh">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JustNOTE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/react/20220612/18219/" class="post-title-link" itemprop="url">Setting Dynamic Inline Styles</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2022-06-12 15:31:38 / 修改時間：16:36:07" itemprop="dateCreated datePublished" datetime="2022-06-12T15:31:38+08:00">2022-06-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -406,10 +487,10 @@
     <div class="post-body" itemprop="articleBody">
           <!-- @format -->
 
-<p>延續之前的範例，我們還可以將 Component 中 container 共同的特性獨立出來做為一個可複用的 Component，這就稱為 Composition</p>
+<p>在前一章節中，我們可以將變數代入 JSX style 中動態賦值，這堂課將進一步套討 Conditional Style 更好的應用方式</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/react/20220605/53422/#more" rel="contents">
+              <a class="btn" href="/react/20220612/18219/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -440,7 +521,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220604/5794/">
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220612/34522/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -453,7 +534,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/react/20220604/5794/" class="post-title-link" itemprop="url">Building a First Custom Component</a>
+          <a href="/react/20220612/34522/" class="post-title-link" itemprop="url">Adding a Chart</a>
         </h2>
 
         <div class="post-meta-container">
@@ -463,16 +544,10 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
+      
 
-      <time title="創建時間：2022-06-04 12:12:49" itemprop="dateCreated datePublished" datetime="2022-06-04T12:12:49+08:00">2022-06-04</time>
+      <time title="創建時間：2022-06-12 15:25:47 / 修改時間：15:30:49" itemprop="dateCreated datePublished" datetime="2022-06-12T15:25:47+08:00">2022-06-12</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2022-07-03 16:41:14" itemprop="dateModified" datetime="2022-07-03T16:41:14+08:00">2022-07-03</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -493,97 +568,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>這堂課將介紹如何客製化一個 Component</p>
+          <p>這堂課將加上圖表來統計每個月份的總開銷，並根據資料動態改變 CSS Style</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/react/20220604/5794/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220601/56348/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yeh">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JustNOTE">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/react/20220601/56348/" class="post-title-link" itemprop="url">JSX</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2022-06-01 23:14:32" itemprop="dateCreated datePublished" datetime="2022-06-01T23:14:32+08:00">2022-06-01</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2022-06-05 14:36:21" itemprop="dateModified" datetime="2022-06-05T14:36:21+08:00">2022-06-05</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在 React 中，我們可以透過將 HTML 直接寫在 JavaScript 來達到開發 UI 的目的，這種專屬格式就稱為 JSX</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/react/20220601/56348/#more" rel="contents">
+              <a class="btn" href="/react/20220612/34522/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -607,7 +595,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 </div>
