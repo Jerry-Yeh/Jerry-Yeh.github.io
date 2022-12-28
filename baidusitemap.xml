@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://jerry-yeh.github.io/react/20220712/3141/</loc>
+    <lastmod>2022-10-30</lastmod>
+  </url>
+  <url>
+    <loc>https://jerry-yeh.github.io/react/20221015/65126/</loc>
+    <lastmod>2022-10-17</lastmod>
+  </url>
+  <url>
+    <loc>https://jerry-yeh.github.io/react/20220903/39499/</loc>
+    <lastmod>2022-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://jerry-yeh.github.io/react/20220903/40383/</loc>
+    <lastmod>2022-09-11</lastmod>
+  </url>
+  <url>
     <loc>https://jerry-yeh.github.io/react/20220904/50067/</loc>
-    <lastmod>2022-09-04</lastmod>
+    <lastmod>2022-09-11</lastmod>
   </url>
   <url>
     <loc>https://jerry-yeh.github.io/typescript/20220904/36157/</loc>
@@ -10,14 +26,6 @@
   </url>
   <url>
     <loc>https://jerry-yeh.github.io/react/20220626/41766/</loc>
-    <lastmod>2022-09-04</lastmod>
-  </url>
-  <url>
-    <loc>https://jerry-yeh.github.io/react/20220903/40383/</loc>
-    <lastmod>2022-09-04</lastmod>
-  </url>
-  <url>
-    <loc>https://jerry-yeh.github.io/react/20220903/39499/</loc>
     <lastmod>2022-09-04</lastmod>
   </url>
   <url>
@@ -91,10 +99,6 @@
   <url>
     <loc>https://jerry-yeh.github.io/react/20220717/16490/</loc>
     <lastmod>2022-07-17</lastmod>
-  </url>
-  <url>
-    <loc>https://jerry-yeh.github.io/react/20220712/3141/</loc>
-    <lastmod>2022-07-16</lastmod>
   </url>
   <url>
     <loc>https://jerry-yeh.github.io/react/20220711/20001/</loc>
