@@ -28,7 +28,7 @@
 <meta property="og:description" content="Redux 基礎應用流程">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-07-31T02:19:30.000Z">
-<meta property="article:modified_time" content="2022-07-31T04:12:46.716Z">
+<meta property="article:modified_time" content="2023-03-08T15:32:17.562Z">
 <meta property="article:author" content="Yeh">
 <meta property="article:tag" content="React - The Complete Guide (Incl Hooks, React Router, Redux)">
 <meta property="article:tag" content="Redux">
@@ -152,13 +152,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-count">171</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -226,10 +226,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
-      
 
-      <time title="創建時間：2022-07-31 10:19:30 / 修改時間：12:12:46" itemprop="dateCreated datePublished" datetime="2022-07-31T10:19:30+08:00">2022-07-31</time>
+      <time title="創建時間：2022-07-31 10:19:30" itemprop="dateCreated datePublished" datetime="2022-07-31T10:19:30+08:00">2022-07-31</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新於</span>
+        <time title="修改時間：2023-03-08 23:32:17" itemprop="dateModified" datetime="2023-03-08T23:32:17+08:00">2023-03-08</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -250,22 +256,24 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>Redux 基礎應用流程</p>
+        <!-- @format -->
+
+<p>Redux 基礎應用流程</p>
 <span id="more"></span>
 
 <p>在透過一個最單純的範例來了解 Redux 應用流程時，甚至不需要 create-react-app 來建立專案，只需要單純透過 Node.js 讓 JavaScript 可以在非瀏覽器環境中執行就可以了;首先，開啟一個新的專案資料夾，再透過以下指令安裝 Node.js 與 Redux</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br><span class="line"></span><br><span class="line">npm install redux</span><br></pre></td></tr></table></figure>
 
 <p>安裝後，因為是在 Node.js 環境，所以 import library 的方式有些微的差異:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> redux = <span class="built_in">require</span>(<span class="string">&#x27;redux&#x27;</span>); </span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> redux = <span class="built_in">require</span>(<span class="string">&quot;redux&quot;</span>);</span><br></pre></td></tr></table></figure>
 
-<h3 id="crateStore"><a href="#crateStore" class="headerlink" title="crateStore()"></a>crateStore()</h3><p>接著可以透過 <code>redux.createStore()</code> 來建立 store，其中第一個參數就是 reducer callback function，在這裡只需要待入不需要即時呼叫它</p>
+<h3 id="crateStore"><a href="#crateStore" class="headerlink" title="crateStore()"></a>crateStore()</h3><p>接著可以透過 <code>redux.createStore()</code> 來建立 store，其中第一個參數就是 reducer callback function，在這裡只需要帶入，不需要即時呼叫它</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = redux.createStore(counterReducer);</span><br></pre></td></tr></table></figure>
 
 <h3 id="reducer-callback-function"><a href="#reducer-callback-function" class="headerlink" title="reducer callback function"></a>reducer callback function</h3><p>而 reducer function 只是一個 general JavaScript function，其中兩個參數分別為:</p>
 <ul>
-<li>Old State: 舊的 state 值 </li>
-<li>Dispatched Action: 修改 state 值得指令 Action</li>
+<li>Old State: 舊的 state 值</li>
+<li>Dispatched Action: 修改 state 值的指令 Action</li>
 </ul>
 <p>最後會回傳最新的 State，State 為 object</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> counterReducer = <span class="function">(<span class="params">state, action</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    counter: state.counter + <span class="number">1</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -281,11 +289,11 @@
 
 <p>結果會發現，並沒有顯示 subscriber 中的預期會顯示的值，原因是 subscribe 需要透過 dispatch 來觸發</p>
 <h3 id="store-dispatch"><a href="#store-dispatch" class="headerlink" title="store.dispatch()"></a>store.dispatch()</h3><p>當我們透過 <code>store.dispatch()</code> 觸發 state 更新時，可以在其中帶入辨別行為的參數</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store.dispatch(&#123;<span class="attr">type</span>: <span class="string">&#x27;increment&#x27;</span>&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store.dispatch(&#123; <span class="attr">type</span>: <span class="string">&quot;increment&quot;</span> &#125;);</span><br></pre></td></tr></table></figure>
 
 <p>最終結果會得到 counterReducer 執行”兩次”的 <code>counter: 2</code>，原因是在 store 建立時，就先呼叫一次 reducer，如果執行 dispatch 就會再次被呼叫</p>
 <h2 id="Look-Into-Action"><a href="#Look-Into-Action" class="headerlink" title="Look Into Action"></a>Look Into Action</h2><p>當然有了 aciton 所指定的行為後，就可以在 reducer function 中藉由判斷 action 的指示對 state 做出對應的操作</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> counterReducer = <span class="function">(<span class="params">state = &#123; counter: <span class="number">0</span> &#125;, action</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;increment&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        counter: state.counter + <span class="number">1</span>,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;decrement&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        counter: state.counter - <span class="number">1</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> state;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = redux.createStore(counterReducer);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> counterSubscriber = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> latestState = store.getState();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;latestState&quot;</span>, latestState);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">store.subscribe(counterSubscriber);</span><br><span class="line"></span><br><span class="line">store.dispatch(&#123; <span class="attr">type</span>: <span class="string">&quot;increment&quot;</span> &#125;);   <span class="comment">// &#123; counter: 1 &#125;</span></span><br><span class="line">store.dispatch(&#123; <span class="attr">type</span>: <span class="string">&quot;decrement&quot;</span> &#125;);   <span class="comment">// &#123; counter: 0 &#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> counterReducer = <span class="function">(<span class="params">state = &#123; counter: <span class="number">0</span> &#125;, action</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;increment&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        counter: state.counter + <span class="number">1</span>,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;decrement&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        counter: state.counter - <span class="number">1</span>,</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> state;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = redux.createStore(counterReducer);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> counterSubscriber = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> latestState = store.getState();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;latestState&quot;</span>, latestState);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">store.subscribe(counterSubscriber);</span><br><span class="line"></span><br><span class="line">store.dispatch(&#123; <span class="attr">type</span>: <span class="string">&quot;increment&quot;</span> &#125;); <span class="comment">// &#123; counter: 1 &#125;</span></span><br><span class="line">store.dispatch(&#123; <span class="attr">type</span>: <span class="string">&quot;decrement&quot;</span> &#125;); <span class="comment">// &#123; counter: 0 &#125;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="資料參考"><a href="#資料參考" class="headerlink" title="資料參考"></a>資料參考</h2><p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.udemy.com/course/react-the-complete-guide-incl-redux/">React - The Complete Guide (Incl Hooks, React Router, Redux)</a></p>
 

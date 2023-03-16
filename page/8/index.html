@@ -145,13 +145,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-count">171</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -186,6 +186,176 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220626/49936/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yeh">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JustNOTE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/react/20220626/49936/" class="post-title-link" itemprop="url">Rules of Hooks</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2022-06-26 15:08:45 / 修改時間：15:27:03" itemprop="dateCreated datePublished" datetime="2022-06-26T15:08:45+08:00">2022-06-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>到目前為止已經介紹過不少 React Hooks，這章節將進一步這些 hooks 在使用上的限制</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/react/20220626/49936/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
+    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220626/41766/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yeh">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JustNOTE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/react/20220626/41766/" class="post-title-link" itemprop="url">React Context API</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2022-06-26 09:45:24" itemprop="dateCreated datePublished" datetime="2022-06-26T09:45:24+08:00">2022-06-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新於</span>
+        <time title="修改時間：2022-09-04 11:56:02" itemprop="dateModified" datetime="2022-09-04T11:56:02+08:00">2022-09-04</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <!-- @format -->
+
+<p>在開發中，時常會遇到一個問題是，因為 component 層層區分，當有一個子元件要傳資料給另外一條支線的子元件時，如果透過 props 傳遞就會變得相當麻煩，中間不需要得到這些資訊的 component 也需要幫忙傳遞，就像是如果今天要送一個禮物給堂弟，我不能直接拿給他，只能先傳給父親，再傳給爺爺，接這再傳給堂弟的父親，最後才會交到他的手上，在 Vue 中，可以透過 <code>provide/inject</code> &amp; <code>Vuex</code> 來解決這些問題，React 中提供了一些方法稱為 - Context API</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/react/20220626/41766/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -442,182 +612,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220618/21072/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yeh">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JustNOTE">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/react/20220618/21072/" class="post-title-link" itemprop="url">React Portals</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2022-06-18 11:27:40" itemprop="dateCreated datePublished" datetime="2022-06-18T11:27:40+08:00">2022-06-18</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2022-06-19 10:00:17" itemprop="dateModified" datetime="2022-06-19T10:00:17+08:00">2022-06-19</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>這章節將介紹另一個 React 的功能 - Portals，他可以使我們的程式碼更符合操作邏輯和語意，不只是技術上可行而已 </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/react/20220618/21072/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang>
-    <link itemprop="mainEntityOfPage" href="https://jerry-yeh.github.io/react/20220615/47101/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yeh">
-      <meta itemprop="description" content>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JustNOTE">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/react/20220615/47101/" class="post-title-link" itemprop="url">JSX Limitations & Workrounds</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2022-06-15 23:26:07" itemprop="dateCreated datePublished" datetime="2022-06-15T23:26:07+08:00">2022-06-15</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新於</span>
-        <time title="修改時間：2022-06-19 09:59:16" itemprop="dateModified" datetime="2022-06-19T09:59:16+08:00">2022-06-19</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>這章節將來討論 JSX 的限制與解決方法</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/react/20220615/47101/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 </div>
