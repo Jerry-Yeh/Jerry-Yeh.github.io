@@ -7829,6 +7829,7 @@
       </categories>
       <tags>
         <tag>Cracking the Coding Interview</tag>
+        <tag>Hash Table</tag>
       </tags>
   </entry>
   <entry>
@@ -7905,6 +7906,7 @@
       </categories>
       <tags>
         <tag>Cracking the Coding Interview</tag>
+        <tag>Linked List</tag>
       </tags>
   </entry>
   <entry>
@@ -7927,6 +7929,204 @@
       </categories>
       <tags>
         <tag>Bug</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Stacks and Queues</title>
+    <url>/data-structure/20230317/62505/</url>
+    <content><![CDATA[<!-- @format -->
+
+<p>Stacks 與 Queues 是相對單純的資料結構，在取得資料時，只會依序取得最前或最後的那一筆資料，目的也是為了限制資料的使用; 而實作上，並不限於使用 Array 或 Linked List，只要符合個別的定義都可以稱為 Stacks 或 Queues。</p>
+<span id="more"></span>
+
+<h2 id="Stacks"><a href="#Stacks" class="headerlink" title="Stacks"></a>Stacks</h2><p>採用後進先出 last-in-first-out (LIFO) 的方式排列，可以想像成蝶盤子的形式，最後疊上來的盤子會優先被取出，使用上常用於操昨工具時的上一步或瀏覽器的上一頁</p>
+<p><img src="stacks.png"></p>
+<h3 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h3><ul>
+<li>pop: 刪除最上層的一筆資料，時間複雜度為 O(1)</li>
+<li>push: 加入一筆資料在最上層，時間複雜度為 O(1)</li>
+<li>peek: 取得最上層的一筆資料，但不刪除資料，時間複雜度為 O(1)</li>
+<li>isEmpty: 檢查 Stacks 是否為空</li>
+</ul>
+<p>在 JavaScript 中，Array 有直接提供 method 來完成 Stack 的需求，而如果採用 Linked List 來實作，就需要使用 Doubly Linked List 來提供 previous data</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">  value: <span class="built_in">any</span>;</span><br><span class="line">  next: Node | <span class="literal">null</span>;</span><br><span class="line">  prev: Node | <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">value: <span class="built_in">any</span></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.value = value;</span><br><span class="line">    <span class="built_in">this</span>.next = <span class="literal">null</span>;</span><br><span class="line">    <span class="built_in">this</span>.prev = <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Stacks</span> </span>&#123;</span><br><span class="line">  length: <span class="built_in">number</span>;</span><br><span class="line">  head: Node | <span class="literal">null</span>;</span><br><span class="line">  tail: Node | <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">push</span>(<span class="params">value: <span class="built_in">any</span></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> newNode = <span class="keyword">new</span> Node(value);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.length === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="built_in">this</span>.head = newNode;</span><br><span class="line">      <span class="built_in">this</span>.tail = newNode;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      newNode.prev = <span class="built_in">this</span>.tail;</span><br><span class="line">      <span class="built_in">this</span>.tail!.next = newNode;</span><br><span class="line">      <span class="built_in">this</span>.tail = newNode;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">this</span>.length++;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">pop</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.length === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">this</span>.length === <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> value = <span class="built_in">this</span>.tail!.value;</span><br><span class="line">      <span class="built_in">this</span>.head = <span class="literal">null</span>;</span><br><span class="line">      <span class="built_in">this</span>.tail = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> value;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> value = <span class="built_in">this</span>.tail!.value;</span><br><span class="line">      <span class="built_in">this</span>.tail = <span class="built_in">this</span>.tail!.prev;</span><br><span class="line">      <span class="built_in">this</span>.tail!.next = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">peek</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.length === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">this</span>.tail!.value;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">isEmpty</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.length === <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Queues"><a href="#Queues" class="headerlink" title="Queues"></a>Queues</h2><p>採用先進先出 first-in-first-out (FIFO) 的方式排列，可以想像成排隊的人潮，第一個排隊的人就可以優先進場</p>
+<p><img src="queues.png"></p>
+<h3 id="Method-1"><a href="#Method-1" class="headerlink" title="Method"></a>Method</h3><ul>
+<li>add (enqueue): 加入一筆資料在最後面，時間複雜度為 O(1)</li>
+<li>remove (dequeue): 移除最前面的一筆資料，時間複雜度為 O(1)</li>
+<li>peek: 取得最前面的一筆資料，但不刪除資料，時間複雜度為 O(1)</li>
+<li>isEmpty: 檢查 Queues 是否為空</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">  value: <span class="built_in">any</span>;</span><br><span class="line">  next: Node | <span class="literal">null</span>;</span><br><span class="line">  prev: Node | <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">value: <span class="built_in">any</span></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.value = value;</span><br><span class="line">    <span class="built_in">this</span>.next = <span class="literal">null</span>;</span><br><span class="line">    <span class="built_in">this</span>.prev = <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Queues</span> </span>&#123;</span><br><span class="line">  length: <span class="built_in">number</span>;</span><br><span class="line">  head: Node | <span class="literal">null</span>;</span><br><span class="line">  tail: Node | <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">add</span>(<span class="params">value: <span class="built_in">any</span></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> newNode = <span class="keyword">new</span> Node(value);</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.length === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="built_in">this</span>.head = newNode;</span><br><span class="line">      <span class="built_in">this</span>.tail = newNode;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      newNode.next = <span class="built_in">this</span>.head;</span><br><span class="line">      <span class="built_in">this</span>.head!.prev = newNode;</span><br><span class="line">      <span class="built_in">this</span>.head = newNode;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">this</span>.length++;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">remove</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.length === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">this</span>.length === <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> value = <span class="built_in">this</span>.head!.value;</span><br><span class="line">      <span class="built_in">this</span>.head = <span class="literal">null</span>;</span><br><span class="line">      <span class="built_in">this</span>.tail = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> value;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> value = <span class="built_in">this</span>.head!.value;</span><br><span class="line">      <span class="built_in">this</span>.head = <span class="built_in">this</span>.head!.next;</span><br><span class="line">      <span class="built_in">this</span>.head!.prev = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">peek</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.length === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">this</span>.head!.value;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">isEmpty</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.length === <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Array-與-Linked-List-比較"><a href="#Array-與-Linked-List-比較" class="headerlink" title="Array 與 Linked List 比較"></a>Array 與 Linked List 比較</h2><p>在 JavaScript 中，如果使用 Array 來實作 Stacks 與 Queues，其實都有預設的 Array functions 可以直接達到目的，只是因為 Queues 所使用的 remove (<code>unshift</code>) 會改變所有 Array 的 index，所以在效能上會比較差 (同理 <code>shift</code> 也是)，所以如果有效能上的考量，Queues 會建議使用 Linked List 來進行實作。</p>
+<h2 id="資料參考"><a href="#資料參考" class="headerlink" title="資料參考"></a>資料參考</h2><p><a href="https://crackingthecodinginterview.com/">Cracking the Coding Interview</a><br><a href="https://pjchender.dev/dsa/dsa-stacks-queues/">[資料結構] Stacks and Queues</a><br><a href=""></a></p>
+]]></content>
+      <categories>
+        <category>Data Structure</category>
+      </categories>
+      <tags>
+        <tag>Cracking the Coding Interview</tag>
+        <tag>Stack</tag>
+        <tag>Queue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Tree</title>
+    <url>/data-structure/20230319/57117/</url>
+    <content><![CDATA[<!-- @format -->
+
+<p>先前提到的資料結構如: Array, Linked List, Stack 和 Queue 都是屬於 Linear，而接下來介紹的 Tree 和 Graph 則是屬於 Non-Linear，Tree 又屬於 Graph 的其中一種; 對於一位前端工程師來說，Non-Linear 這種資料結構在開發上鮮少會運用到，但其實每天在接觸的 Dom ，其資料結構就是 Tree!</p>
+<span id="more"></span>
+
+<h2 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h2><p>Tree 這種資料結構之所以會被這麼稱呼就是因為它的結構像是一棵倒過來的樹，是一種 Non-Linear、具有階層的的結構，在生活上，如公司組織圖、族譜和賽程表都是很類似的應用。</p>
+<p><img src="tree.png"></p>
+<p>一個 Tree 是由許多 node (結點) 所組成，其資料結構會有以下特色:</p>
+<ul>
+<li>root: 代表最上面的根結點，每一個 Tree 只會有一個</li>
+<li>parent node: 有 child node 的結點，所以除了 leaf 都算是</li>
+<li>child node: 有 parent node 的都算是，所以只有 root 不算</li>
+<li>subtree: 由結點與其後代結點所組成</li>
+<li>leaf: 葉結點或外部結點，為沒有 child node 的結點</li>
+<li>depth: 結點的深度，代表該結點有幾層祖先結點，root depth 即為 0</li>
+<li>height: Tree 的高度，代表總共有幾層</li>
+</ul>
+<p>Tree 無法包含循環結構(cycle)，也就是 child node 無法再指向回 parent node</p>
+<p><img src="tree-none-cycle.png"></p>
+<h2 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h2><p>一個 Node 會包含以下內容:</p>
+<ul>
+<li>value: 所代表的值</li>
+<li>children: 所指向的 child node</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">value</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.value = value;</span><br><span class="line">    <span class="built_in">this</span>.children = [];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Tree-的種類"><a href="#Tree-的種類" class="headerlink" title="Tree 的種類"></a>Tree 的種類</h2><p>Tree 有許多種類型，接下來將介紹幾種常見的類型</p>
+<h3 id="Binary-Tree"><a href="#Binary-Tree" class="headerlink" title="Binary Tree"></a>Binary Tree</h3><p>Binary Tree 的定義是每個 node “最多”只能有 2 個 child node，所以下方左圖是 Binary Tree，而右圖則否</p>
+<p><img src="binary-tree.png"></p>
+<h3 id="Binary-Search-Tree"><a href="#Binary-Search-Tree" class="headerlink" title="Binary Search Tree"></a>Binary Search Tree</h3><p>Binary Search Tree 是 Binary Tree 的一種，同樣也有最多 2 個 child node 的規則，只是在 key 的部分多了一些規則如下:</p>
+<ul>
+<li>左邊所有的 child node: key 會小於等於 parent node</li>
+<li>右邊所有的 child node: key 會大於 parent node</li>
+</ul>
+<p>所以結果會是 左邊所有的 child node &lt;= parent node &lt; 右邊所有的 child node</p>
+<p><img src="binary-search-tree.png"></p>
+<p>在 Binary Search Tree 中，每個結點最多只會有兩個子結點 (left and right)</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BinarySearchTree</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">value</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.value = value;</span><br><span class="line">    <span class="built_in">this</span>.left = <span class="literal">null</span>;</span><br><span class="line">    <span class="built_in">this</span>.right = <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Insert<br>插入一個 node，其值會從 root 開始比較，如果小於 parent node，則從 left node 繼續比較，反之則從 right node 繼續比; 以新結點 4 來說，總共比較了 3 次</p>
+<p><img src="bst-insert.png"></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">insert</span>(<span class="params">value</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> newNode = <span class="keyword">new</span> BinarySearchTree(value);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (value &lt;= <span class="built_in">this</span>.value) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">this</span>.left) &#123;</span><br><span class="line">      <span class="built_in">this</span>.left = newNode;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.left.insert(value);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">this</span>.right) &#123;</span><br><span class="line">      <span class="built_in">this</span>.right = newNode;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.right.insert(value);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>Min/Max<br>在 Binary Search Tree 中，最小的值一定會在最左邊，反之，最大的值會在最右邊</p>
+<p><img src="bst-min-and-max.png"></p>
+</li>
+</ul>
+<h3 id="Balanced-vs-Unbalanced-Tree"><a href="#Balanced-vs-Unbalanced-Tree" class="headerlink" title="Balanced vs. Unbalanced Tree"></a>Balanced vs. Unbalanced Tree</h3><p>Balanced Tree 指的並非是左右結點的高度相同(如果左右高度相同，總結點數勢必為奇數)，而是指包含一定程度排列，使的 insert 和 find 都可以在 O(log n) 的時間複雜度之內完成，經典的例子是紅黑樹(Red-black Trees) 和 AVL Trees。</p>
+<h3 id="Complete-Binary-Tree"><a href="#Complete-Binary-Tree" class="headerlink" title="Complete Binary Tree"></a>Complete Binary Tree</h3><p>所有結點都是由左到右依序被填滿的，所以如果只有右結點而沒有左結點，就不是一個 Complete Binary Tree，如下左圖是，右圖則否</p>
+<p><img src="complete-binary-tree.png"></p>
+<h3 id="Full-Binary-Tree"><a href="#Full-Binary-Tree" class="headerlink" title="Full Binary Tree"></a>Full Binary Tree</h3><p>代表所有結點都沒有子結點或包含兩個子結點，也就是不會只有一個子結點</p>
+<h3 id="Perfect-Binary-Tree"><a href="#Perfect-Binary-Tree" class="headerlink" title="Perfect Binary Tree"></a>Perfect Binary Tree</h3><p>同時包含 Full 和 Complete Binary Tree 的特性，所以所有 leaf node 都會在同一個 level，總結點數會是 2^k - 1 個，k 代表 level 的數量，要特別注意的是，遇到 Binary Tree 相關題目時，不應該預設為 Perfect Tree，避免考量的不夠周全。</p>
+<h3 id="Binary-Heap"><a href="#Binary-Heap" class="headerlink" title="Binary Heap"></a>Binary Heap</h3><p>Binary Heap 是 Complete Binary Tree 的其中一種，所以同樣也有最多兩個子結點和優先填寫左子結點的特性，但有相同父結點的子結點彼此並沒有潛藏的關聯性; 其中，又根據降冪和升冪排列分成 Min/Max Binary Heap，Min 的所有父結點都會小於子結點，所以 root 會有最小的值; 反之，Max 則會是大於。</p>
+<p><img src="binary-heap.png"></p>
+<h4 id="什麼時候需要使用-Binary-Heap"><a href="#什麼時候需要使用-Binary-Heap" class="headerlink" title="什麼時候需要使用 Binary Heap?"></a>什麼時候需要使用 Binary Heap?</h4><p>Binary Heap 通常會使用在 Priority Queues，那什麼又是 Priority Queues?</p>
+<p>Queues 在先前的章節有介紹過，即是一種先進先出 (FIFO) 的資料結構，而 Priority Queues 顧名思義是每個結點又額外包含優先級 (priority) 的特性，所以在取出資料時 (dequeue)，可以優先取出高優先級的資料。</p>
+<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><p>以下方法都會先以 Min Binary Heap 為例</p>
+<ul>
+<li><p>Insert<br>在插入一個結點後，會依序往上比較，如果子結點的值大於父結點，則兩者交換位置，直到子結點小於父結點為止，反之，Max 則是大於，時間複雜度為 O(log n)</p>
+<p><img src="binary-heap-insert.png"></p>
+</li>
+<li><p>Remove (Deqeue)<br>移除一個最小值非常容易，因為它就是 root (高優先級)，重點是，移除之後，要由誰來遞補 root 的位置，時間複雜度為 O(log n)，會由以下幾個步驟來完成:</p>
+<ul>
+<li>Step 1: 移除 root</li>
+<li>Step 2: 取最後一個結點替換到 root</li>
+<li>Step 3: 依序向下比較，如果父結點大於子結點，則兩者交換; 如果左右兩子結點皆符合條件，在 Min Binary Heap 中，則以”較小者”優先交換</li>
+</ul>
+<p><img src="binary-heap-remove.png"></p>
+</li>
+</ul>
+<h2 id="Traversal"><a href="#Traversal" class="headerlink" title="Traversal"></a>Traversal</h2><p>在 Binary Tree 中，traversal 又分成以下 3 種:</p>
+<h3 id="In-Order-Traversal"><a href="#In-Order-Traversal" class="headerlink" title="In-Order Traversal"></a>In-Order Traversal</h3><p>從底部開始，由左至右依序輸出，left -&gt; self -&gt; right，所以在 Binary Search Tree 中，會依序輸出由小至大的值，下圖中的數字代表執行順序</p>
+<p><img src="in-order.png"></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">inOrder</span>(<span class="params">root</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!root) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  inOrder(root.left);</span><br><span class="line">  <span class="built_in">console</span>.log(root.key);</span><br><span class="line">  inOrder(root.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Pre-Order-Traversal"><a href="#Pre-Order-Traversal" class="headerlink" title="Pre-Order Traversal"></a>Pre-Order Traversal</h3><p>由上而下，再由左至右依序輸出，self -&gt; left -&gt; right; 所以在 Pre-Order 中，root 總會是造訪的起點，下圖中的數字代表執行順序</p>
+<p><img src="pre-order.png"></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">preOrder</span>(<span class="params">root</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!root) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(root.key);</span><br><span class="line">  preOrder(root.left);</span><br><span class="line">  preOrder(root.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Post-Order-Traversal"><a href="#Post-Order-Traversal" class="headerlink" title="Post-Order Traversal"></a>Post-Order Traversal</h3><p>由下而上，在由左至右依序輸出，left -&gt; right -&gt; self，下圖中的數字代表執行順序</p>
+<p><img src="post-order.png"></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">postOrder</span>(<span class="params">root</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!root) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  postOrder(root.left);</span><br><span class="line">  postOrder(root.right);</span><br><span class="line">  <span class="built_in">console</span>.(root.key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Search"><a href="#Search" class="headerlink" title="Search"></a>Search</h2><p>在搜尋上，又分成兩種，分別從廣度與深度著手搜尋</p>
+<ul>
+<li><p>Depth First Search(DFS): 由左至右搜尋完一個 branch 後，才會跳至右側的 branch 繼續搜尋，下圖中的數字代表執行順序</p>
+<p><img src="dfs.png"></p>
+</li>
+<li><p>Breadth First Search(BFS): 由左至右搜尋完一個 level 後，才會跳至下一個 level 繼續搜尋，下圖中的數字代表執行順序</p>
+<p><img src="bfs.png"></p>
+</li>
+</ul>
+<h2 id="資料參考"><a href="#資料參考" class="headerlink" title="資料參考"></a>資料參考</h2><p><a href="https://crackingthecodinginterview.com/">Cracking the Coding Interview</a><br><a href="https://www.youtube.com/watch?v=fPz40W9mfCg&ab_channel=Coderbyte">Depth First &amp; Tree Traversals (Pre, In, Post) Explained</a><br><a href="https://pjchender.blogspot.com/2020/05/binary-tree.html">[資料結構] Binary Search Tree</a><br><a href="https://medium.com/geekculture/binary-heaps-in-javascript-94900035ee0c">Binary Heaps in JavaScript</a></p>
+]]></content>
+      <categories>
+        <category>Data Structure</category>
+      </categories>
+      <tags>
+        <tag>Cracking the Coding Interview</tag>
+        <tag>Tree</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Graph</title>
+    <url>/data-structure/20230320/34778/</url>
+    <content><![CDATA[<!-- @format -->
+
+<p>先前介紹的 Tree 只是 Graph 的其中一種，所以 Graph 不一定為 Tree，Graph 也包含了更多種 Tree 不存在的資料格式，如: 循環(cycle)、雙向(undirected) …等。</p>
+<span id="more"></span>
+
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><p>Graph 可能會包含以下幾種特性:</p>
+<ul>
+<li><p>Directed &amp; Undirected<br>directed 代表節點之間是單向的，反之，undirected 節點之間是雙向的; 在 Tree 的資料結構中，只會有 direcrted 的情況</p>
+</li>
+<li><p>Connected Graph<br>一個 Graph 可能由多個獨立的 subgraph 所組成，如果這些 subgraph 的頂點彼此相連，則可以成為 Conneceted Graph</p>
+</li>
+<li><p>Acyclic Graph<br>與 Tree 不同的是，Graph 可以包含 cycle，也就是子結點可以指向回父結點，如果不包含 cycle 的 graph 則可以稱為 acyclic graph</p>
+</li>
+</ul>
+<h2 id="Adjacency-List"><a href="#Adjacency-List" class="headerlink" title="Adjacency List"></a>Adjacency List</h2><p>Adjacency List 是一種 Graph 中 常見的儲存方式，表示每個結點都會儲存相鄰的結點，所以在 Undirected Graph 中，如果 A 與 B 兩個結點彼此相鄰，A 的 Adjacency List 會儲存 B，反之，B 也會儲存 A。</p>
+<p>與 Tree 不同的是，不需要透過固定的結點(root)來到達所有結點，所以基本的 Graph 會包含所有結點，如下所示:</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">  name: <span class="built_in">string</span>;</span><br><span class="line">  children: Node[]; <span class="comment">// adjacency list</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Graph</span> </span>&#123;</span><br><span class="line">  nodes: Node[] = [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然而，其實不需要額外定義新的資料結構來代表 Graph，任何序列的資料格式，如 Array、Linked List 或 Hash Table …等，都可以作為 Graph 的格式應用</p>
+<p>在 JavaScript ES6+ 中，可以透過 Map 輕易地完成 Graph 結構的基本實作，其他方法如下:</p>
+<ul>
+<li>addNode: 新增一個節點，並賦予一個 array 以儲存相鄰的結點</li>
+<li>addEdge: 為兩個結點建立連線，如果是 Undirected Graph，則會在兩個結點都分別記錄彼此的值</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> adjacencyList = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> addNode = <span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">  adjacencyList.set(value, []);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Add edge, undirected</span></span><br><span class="line"><span class="keyword">const</span> addEdge = <span class="function">(<span class="params">origin, destination</span>) =&gt;</span> &#123;</span><br><span class="line">  adjacencyList.get(origin).push(destination);</span><br><span class="line">  adjacencyList.get(destination).push(origin);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Adjacency-Matries"><a href="#Adjacency-Matries" class="headerlink" title="Adjacency Matries"></a>Adjacency Matries</h2><p>Adjacency Matries 是透過 NxN boolean matrix 來表示 Graph，N 代表總共有 N 個個結點，<code>matrix[i][j]</code> 指向結點 i 到結點 j，boolean 則代表彼此是否相連; 一個 Undirected Graph 的 Adjacency Matrix 會呈現對稱</p>
+<p><img src="adjacency-matrix.png"></p>
+<h2 id="Search-amp-Traversal"><a href="#Search-amp-Traversal" class="headerlink" title="Search &amp; Traversal"></a>Search &amp; Traversal</h2><p>在 Graph 的搜尋(search)和遍歷(traversal)上，和 Tree 一樣普遍分成兩種方法，分別是依循深度 depth-first-search (DFS) 和廣度 breadth-first-search (BFS)</p>
+<h3 id="Bread-First-Search"><a href="#Bread-First-Search" class="headerlink" title="Bread First Search"></a>Bread First Search</h3><p>在 JavaScript 中，可以透過建立一個 Queue，選定一個結點當作結點後，將其相鄰的結點儲存到 Queue 中，而根據 first-in-first-out 的特性，會依序沿著 level 向下尋找，直到 Queue 清空為止</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> bfs = <span class="function">(<span class="params">start</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> queue = [start];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (queue.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> node = queue.shift();</span><br><span class="line">    <span class="keyword">const</span> children = adjacencyList.get(node);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> child <span class="keyword">of</span> children) &#123;</span><br><span class="line">      queue.push(child);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// do something if found the target</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>但這裡可能會有一個問題是，Graph 是允許包含 Circle 的，這種情況下， Queue 會永遠無法清空，進而產生無窮迴圈，所以需要再額外建立一個 list (visited)來儲存已經走訪過的結點，在 JavaScript 中，可以使用 Set 儲存不重複的值</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> bfs = <span class="function">(<span class="params">start</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> queue = [start];</span><br><span class="line">  <span class="keyword">const</span> visited = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (queue.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> node = queue.shift();</span><br><span class="line">    <span class="keyword">const</span> children = adjacencyList.get(node);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> child <span class="keyword">of</span> children) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!visited.has(child)) &#123;</span><br><span class="line">        visited.add(child);</span><br><span class="line">        queue.push(child);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// do something if found the target</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Depth-First-Search"><a href="#Depth-First-Search" class="headerlink" title="Depth First Search"></a>Depth First Search</h3><p>這種搜尋方式會優先以第一個子結點向下尋找，直到沒有子結點後，才會回到上層繼續尋找其他子結點，適用於搜尋明確的兩點間最佳距離</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> dfs = <span class="function">(<span class="params">start, visited = <span class="keyword">new</span> Seet()</span>) =&gt;</span> &#123;</span><br><span class="line">  visited.add(start);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> children = adjacencyList.get(start);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> child <span class="keyword">of</span> children) &#123;</span><br><span class="line">    <span class="comment">// return if found the target</span></span><br><span class="line">    <span class="keyword">if</span> () <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!visted.has(child)) &#123;</span><br><span class="line">      dfs(child, visited);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="時間複雜度"><a href="#時間複雜度" class="headerlink" title="時間複雜度"></a>時間複雜度</h3><p>在 Graph 中，BFS 和 DFS 的時間複雜度都是 O(n)，這裡的 n 來自於結點(vertex) + 邊(edges) 的總和，所以會與資料量呈正比增加</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://crackingthecodinginterview.com/">Cracking the Coding Interview</a><br><a href="https://www.youtube.com/watch?v=cWNEl4HE2OE&ab_channel=Fireship">Graph Search Algorithms in 100 Seconds - And Beyond with JS</a></p>
+]]></content>
+      <categories>
+        <category>Data Structure</category>
+      </categories>
+      <tags>
+        <tag>Cracking the Coding Interview</tag>
+        <tag>Graph</tag>
       </tags>
   </entry>
 </search>
