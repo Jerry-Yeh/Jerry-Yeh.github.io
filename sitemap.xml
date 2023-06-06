@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jerry-yeh.github.io/react/20230429/52605/</loc>
+    
+    <lastmod>2023-04-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jerry-yeh.github.io/uncategorized/20230419/49571/</loc>
+    
+    <lastmod>2023-04-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jerry-yeh.github.io/react/20220731/39070/</loc>
+    
+    <lastmod>2023-04-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jerry-yeh.github.io/react/20230419/60376/</loc>
+    
+    <lastmod>2023-04-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jerry-yeh.github.io/react/20220703/4435/</loc>
+    
+    <lastmod>2023-04-04</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jerry-yeh.github.io/data-structure/20230320/34778/</loc>
     
     <lastmod>2023-03-21</lastmod>
@@ -198,13 +233,6 @@
   </url>
   
   <url>
-    <loc>https://jerry-yeh.github.io/react/20220731/39070/</loc>
-    
-    <lastmod>2022-07-31</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jerry-yeh.github.io/react/20220721/1097/</loc>
     
     <lastmod>2022-07-20</lastmod>
@@ -262,13 +290,6 @@
   
   <url>
     <loc>https://jerry-yeh.github.io/react/20220705/38306/</loc>
-    
-    <lastmod>2022-07-05</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jerry-yeh.github.io/react/20220703/4435/</loc>
     
     <lastmod>2022-07-05</lastmod>
     
@@ -1236,7 +1257,7 @@
 
   <url>
     <loc>https://jerry-yeh.github.io/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -1244,287 +1265,294 @@
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/scss/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/bootstrap/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/css/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/javascript/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/git/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/ajax/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/json/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/jquery/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/es6/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/react-the-complete-guide-incl-hooks-react-router-redux/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/vue/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/vuex/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/class-based/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/vscode/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/redux/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/network/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/http/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/typescript/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/units-tests/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/jest/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/http-server/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/browser/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/react-router/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/chrome-extension/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/chrome/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/debug/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/node/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/back-end/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/%E7%89%A9%E4%BB%B6%E8%88%87%E5%87%BD%E5%BC%8F/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/bug/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/vite/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/vue-router/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/jsp/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/java/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/cracking-the-coding-interview/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/stack/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/queue/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/tree/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/graph/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/linked-list/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/tags/hash-table/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jerry-yeh.github.io/tags/local-storage-strict-mode/</loc>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1533,133 +1561,133 @@
   
   <url>
     <loc>https://jerry-yeh.github.io/categories/scss/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/categories/boostrap/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/categories/css/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/categories/javascript/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/categories/git/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/categories/json/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/categories/jquery/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/categories/react/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/categories/vue/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/categories/vscode/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/categories/%E5%85%8B%E6%9C%8Djs%E7%9A%84%E5%A5%87%E6%80%AA%E9%83%A8%E5%88%86/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/categories/network/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/categories/typescript/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/categories/browser/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/categories/npm/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/categories/vue-3/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/categories/es6/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/categories/data-structure/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jerry-yeh.github.io/categories/storybook/</loc>
-    <lastmod>2023-03-21</lastmod>
+    <lastmod>2023-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
